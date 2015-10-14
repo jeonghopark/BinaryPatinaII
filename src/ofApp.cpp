@@ -36,13 +36,22 @@ void ofApp::setup(){
     liveCamGlitch.inputBaseArch(baseArch);
     liveCamGlitch.setup();
     
+    labyrinth.inputBaseArch(baseArch);
+    labyrinth.setup();
     
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    liveCamGlitch.update();
+    if (gui->OnOff_LiveCamGlitch) {
+        liveCamGlitch.update();
+    }
+    
+    if (gui->OnOff_Labyrinth) {
+        labyrinth.update();
+    }
+    
     
     
 }
@@ -63,6 +72,12 @@ void ofApp::draw(){
         glungeWinter.drawBackTexture();
         glungeWinter.drawBack();
     }
+    
+    if (gui->OnOff_Labyrinth) {
+        labyrinth.draw();
+    }
+    
+
     
     //    baseArch.guideFrames();
     baseArch.drawEdgeCover( ofColor(0) );
@@ -104,6 +119,8 @@ void ofApp::keyReleased(int key){
     
     liveCamGlitch.keyReleased(key);
     liveCamGlitch.keyReleased(key);
+    
+    labyrinth.keyReleased(key);
 
     
     if (key == 'o') {

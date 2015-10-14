@@ -6,6 +6,8 @@
 
 #include "GlungeWinter.h"
 #include "LiveCamGlitch.hpp"
+#include "Labyrinth.hpp"
+
 
 class ofApp : public ofBaseApp{
     
@@ -54,6 +56,6 @@ public:
     
     GlungeWinter glungeWinter;
     LiveCamGlitch liveCamGlitch;
-
+    Labyrinth labyrinth;
     
 };

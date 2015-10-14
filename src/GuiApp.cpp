@@ -17,10 +17,12 @@ void GuiApp::setup(){
     glungeWinterG.setName("GlungeWinter");
     glungeWinterG.add( OnOff_GlungeWinter.set("On/Off", false) );
 
-    
     liveCamGlitchG.setName("LiveCamGlitch");
     liveCamGlitchG.add( OnOff_LiveCamGlitch.set("On/Off", false) );
-    
+
+    labyrinthG.setName("Labyrinth");
+    labyrinthG.add( OnOff_Labyrinth.set("On/Off", false) );
+
 	main.setup(mainG);
     main.setPosition(10, 10);
 
@@ -29,6 +31,9 @@ void GuiApp::setup(){
     
     liveCamGlitch.setup(liveCamGlitchG);
     liveCamGlitch.setPosition(10, 150);
+
+    labyrinth.setup(labyrinthG);
+    labyrinth.setPosition(10, 200);
 
     ofBackground(30);
 	ofSetVerticalSync(false);
@@ -46,5 +51,6 @@ void GuiApp::draw(){
     main.draw();
     glungeWinter.draw();
     liveCamGlitch.draw();
+    labyrinth.draw();
     
 }

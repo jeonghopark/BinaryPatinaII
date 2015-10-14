@@ -21,10 +21,14 @@ public:
     ofParameterGroup liveCamGlitchG;
     ofParameter<bool> OnOff_LiveCamGlitch;
 
+    ofParameterGroup labyrinthG;
+    ofParameter<bool> OnOff_Labyrinth;
+
     
     ofxPanel main;
     ofxPanel glungeWinter;
     ofxPanel liveCamGlitch;
+    ofxPanel labyrinth;
     
     ofParameter<bool> audioInputOnOff;
     

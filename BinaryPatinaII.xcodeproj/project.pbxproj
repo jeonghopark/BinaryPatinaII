@@ -49,6 +49,8 @@
 		A892B65C1BCEDC0B00323768 /* GuiApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6591BCEDC0B00323768 /* GuiApp.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B6611BCEE82400323768 /* GlungeWinter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B65F1BCEE82400323768 /* GlungeWinter.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B6641BCEE9B000323768 /* LiveCamGlitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6621BCEE9B000323768 /* LiveCamGlitch.cpp */; settings = {ASSET_TAGS = (); }; };
+		A892B6671BCEF26900323768 /* Labyrinth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6651BCEF26900323768 /* Labyrinth.cpp */; settings = {ASSET_TAGS = (); }; };
+		A892B66A1BCEF5F100323768 /* Calligraphy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6681BCEF5F100323768 /* Calligraphy.cpp */; settings = {ASSET_TAGS = (); }; };
 		A90BD1857986C638E780E425 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07853DBFC70478F3562A1472 /* ofxCvGrayscaleImage.cpp */; };
 		A9D85B9BF0FB5A1B65DD3E34 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57BFA2AD0192A7419C5AB226 /* ofxCvShortImage.cpp */; };
 		B27047E79090878383CB00A8 /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D309B7195C036C9274D16 /* ofxFft.cpp */; };
@@ -302,6 +304,10 @@
 		A892B6601BCEE82400323768 /* GlungeWinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlungeWinter.h; sourceTree = "<group>"; };
 		A892B6621BCEE9B000323768 /* LiveCamGlitch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiveCamGlitch.cpp; sourceTree = "<group>"; };
 		A892B6631BCEE9B000323768 /* LiveCamGlitch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LiveCamGlitch.hpp; sourceTree = "<group>"; };
+		A892B6651BCEF26900323768 /* Labyrinth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Labyrinth.cpp; sourceTree = "<group>"; };
+		A892B6661BCEF26900323768 /* Labyrinth.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Labyrinth.hpp; sourceTree = "<group>"; };
+		A892B6681BCEF5F100323768 /* Calligraphy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Calligraphy.cpp; sourceTree = "<group>"; };
+		A892B6691BCEF5F100323768 /* Calligraphy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calligraphy.h; sourceTree = "<group>"; };
 		A92D73B789B3347CBCD18F7B /* ofxMidiOut.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiOut.cpp; path = ../../../../openFrameworks/addons/ofxMidi/src/ofxMidiOut.cpp; sourceTree = SOURCE_ROOT; };
 		AA0130D578AA6F7698BDBE9D /* gpu.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = gpu.hpp; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/gpu.hpp; sourceTree = SOURCE_ROOT; };
 		ACAC417593A2D59F8D5168DE /* ofTextConverter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofTextConverter.h; path = ../../../../openFrameworks/addons/ofxUnicode/src/ofTextConverter.h; sourceTree = SOURCE_ROOT; };
@@ -1365,6 +1371,10 @@
 				A892B6601BCEE82400323768 /* GlungeWinter.h */,
 				A892B6621BCEE9B000323768 /* LiveCamGlitch.cpp */,
 				A892B6631BCEE9B000323768 /* LiveCamGlitch.hpp */,
+				A892B6651BCEF26900323768 /* Labyrinth.cpp */,
+				A892B6661BCEF26900323768 /* Labyrinth.hpp */,
+				A892B6681BCEF5F100323768 /* Calligraphy.cpp */,
+				A892B6691BCEF5F100323768 /* Calligraphy.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1631,12 +1641,14 @@
 				1A02AF0E0CA0774D73DD1AAE /* ofxCvContourFinder.cpp in Sources */,
 				FE24FC9FD1A1CDEB813053EA /* ofxCvFloatImage.cpp in Sources */,
 				A90BD1857986C638E780E425 /* ofxCvGrayscaleImage.cpp in Sources */,
+				A892B6671BCEF26900323768 /* Labyrinth.cpp in Sources */,
 				F8C4C39F71D74259C09609AC /* ofxCvHaarFinder.cpp in Sources */,
 				5A7031CB746C756FBC922543 /* ofxCvImage.cpp in Sources */,
 				A892B65B1BCEDC0B00323768 /* BaseArch.cpp in Sources */,
 				A9D85B9BF0FB5A1B65DD3E34 /* ofxCvShortImage.cpp in Sources */,
 				682B7CD0B59CED54535A9F23 /* ofxPostGlitch.cpp in Sources */,
 				DE0F5E83650646A1D5D96CED /* ofTextConverter.cpp in Sources */,
+				A892B66A1BCEF5F100323768 /* Calligraphy.cpp in Sources */,
 				2277316C413EB04EB836D9BE /* ofUnicode.cpp in Sources */,
 				2E74014010EC7E65C8D13350 /* ofUTF8.cpp in Sources */,
 				F6534AED134055E88D5B93D8 /* ofxXmlSettings.cpp in Sources */,
