@@ -1,0 +1,14 @@
+ofxCsv
+ofxFft
+ofxFirstPersonCamera
+ofxFontStash
+ofxGui
+ofxImmediateModeInput
+ofxJSON
+ofxKinect
+ofxLeapMotion2
+ofxMidi
+ofxOpenCv
+ofxPostGlitch
+ofxUnicode
+ofxXmlSettings
