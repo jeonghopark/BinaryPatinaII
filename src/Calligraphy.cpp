@@ -126,20 +126,22 @@ void Calligraphy::drawElement(float _xPos, float _yPos, int _h){
     
     ofBeginShape();
     
-    for (int i=0; i<calliSize; i++){
-
-        ofSetColor( 255 );
-        ofSetColor( ofColor::fromHsb( _h, 255, 255) );
-
-        
-        float _fftFactor1 = ofMap(captureFFTSmoothed[i], 0, 1, 0, 25);
-        float _x1 = captureFFTIndex[i];
-        
-        float _xCircle = cos( captureFFTIndex[i] * 36 / 127.0 ) * _fftFactor1;
-        float _yCircle = sin( captureFFTIndex[i] * 36 / 127.0 ) * _fftFactor1;
-        
-        ofCurveVertex(_xCircle + _xPos, _yCircle + _yPos);
-        
+    if (captureFFTSmoothed.size()>0) {
+        for (int i=0; i<calliSize; i++){
+            
+            ofSetColor( 255 );
+            ofSetColor( ofColor::fromHsb( _h, 255, 255) );
+            
+            
+            float _fftFactor1 = ofMap(captureFFTSmoothed[i], 0, 1, 0, 25);
+            float _x1 = captureFFTIndex[i];
+            
+            float _xCircle = cos( captureFFTIndex[i] * 36 / 127.0 ) * _fftFactor1;
+            float _yCircle = sin( captureFFTIndex[i] * 36 / 127.0 ) * _fftFactor1;
+            
+            ofCurveVertex(_xCircle + _xPos, _yCircle + _yPos);
+            
+        }
     }
     
     ofEndShape();

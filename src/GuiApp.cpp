@@ -23,6 +23,9 @@ void GuiApp::setup(){
     labyrinthG.setName("Labyrinth");
     labyrinthG.add( OnOff_Labyrinth.set("On/Off", false) );
 
+    calligraphyG.setName("Calligraphy");
+    calligraphyG.add( OnOff_Calligraphy.set("On/Off", false) );
+
 	main.setup(mainG);
     main.setPosition(10, 10);
 
@@ -34,6 +37,9 @@ void GuiApp::setup(){
 
     labyrinth.setup(labyrinthG);
     labyrinth.setPosition(10, 200);
+
+    calligraphy.setup(calligraphyG);
+    calligraphy.setPosition(10, 250);
 
     ofBackground(30);
 	ofSetVerticalSync(false);
@@ -52,5 +58,10 @@ void GuiApp::draw(){
     glungeWinter.draw();
     liveCamGlitch.draw();
     labyrinth.draw();
+    calligraphy.draw();
     
 }
+
+
+
+

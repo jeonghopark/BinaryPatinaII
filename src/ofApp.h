@@ -4,9 +4,14 @@
 #include "GuiApp.h"
 #include "BaseArch.h"
 
+
 #include "GlungeWinter.h"
 #include "LiveCamGlitch.hpp"
 #include "Labyrinth.hpp"
+
+#include "ofxProcessFFT.h"
+
+#include "Calligraphy.h"
 
 
 class ofApp : public ofBaseApp{
@@ -28,34 +33,24 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    void audioIn(float * input, int bufferSize, int nChannels);
-    
-    vector <float> left;
-    vector <float> right;
-    vector <float> volHistory;
-    
-    int 	bufferCounter;
-    int 	drawCounter;
-    
-    float smoothedVol;
-    float scaledVol;
-    
-    ofSoundStream soundStream;
-    
-    
     shared_ptr<GuiApp> gui;
+    
     BaseArch baseArch;
-    
-    //    void drawEdgeCover();
-    
-    ofImage originArchBase;
-    //    void drawOriginArchBase();
-    
-    float mainOffSetXPos, mainOffSetYPos;
-    
     
     GlungeWinter glungeWinter;
     LiveCamGlitch liveCamGlitch;
     Labyrinth labyrinth;
+    ProcessFFT fft;
+    Calligraphy calligraphy;
+
+    int nBandsToGet;
+
+    float mainOffSetXPos, mainOffSetYPos;
+    
+    vector<float> captureFFTSmoothed;
+    vector<int> captureFFTIndex;
+    
+    
+
     
 };

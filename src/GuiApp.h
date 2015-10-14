@@ -24,11 +24,15 @@ public:
     ofParameterGroup labyrinthG;
     ofParameter<bool> OnOff_Labyrinth;
 
+    ofParameterGroup calligraphyG;
+    ofParameter<bool> OnOff_Calligraphy;
+
     
     ofxPanel main;
     ofxPanel glungeWinter;
     ofxPanel liveCamGlitch;
     ofxPanel labyrinth;
+    ofxPanel calligraphy;
     
     ofParameter<bool> audioInputOnOff;
     

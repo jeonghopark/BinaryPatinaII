@@ -17,32 +17,35 @@ void ofApp::setup(){
     baseArch.mainOffSetXPos = mainOffSetXPos;
     baseArch.mainOffSetYPos = mainOffSetYPos;
     
+
+    nBandsToGet = 32 * 2;
     
-    int bufferSize = 256;
-    left.assign(bufferSize, 0.0);
-    right.assign(bufferSize, 0.0);
-    volHistory.assign(400, 0.0);
-    
-    bufferCounter	= 0;
-    drawCounter		= 0;
-    smoothedVol     = 0.0;
-    scaledVol		= 0.0;
-    
-    soundStream.setup(this, 0, 2, 44100, bufferSize, 4);
-    
+    fft.fft.stream.setDeviceID(2);
+    fft.setup();
+    fft.fft.setup(16384);
+    fft.setNumFFTBins(nBandsToGet);
+    fft.setFFTpercentage(0.9);
     
 
+
     glungeWinter.inputBaseArch(baseArch);
+
     liveCamGlitch.inputBaseArch(baseArch);
     liveCamGlitch.setup();
     
     labyrinth.inputBaseArch(baseArch);
     labyrinth.setup();
     
+    calligraphy.inputBaseArch( baseArch );
+    calligraphy.inputFFTP( fft );
+    
+    
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
     
     if (gui->OnOff_LiveCamGlitch) {
         liveCamGlitch.update();
@@ -52,6 +55,14 @@ void ofApp::update(){
         labyrinth.update();
     }
     
+
+    if (gui->OnOff_Calligraphy) {
+
+        fft.update();
+        calligraphy.update();
+
+    }
+
     
     
 }
@@ -76,7 +87,14 @@ void ofApp::draw(){
     if (gui->OnOff_Labyrinth) {
         labyrinth.draw();
     }
-    
+
+
+    if (gui->OnOff_Calligraphy) {
+
+        calligraphy.draw();
+
+    }
+
 
     
     //    baseArch.guideFrames();
@@ -98,12 +116,6 @@ void ofApp::draw(){
 }
 
 
-//--------------------------------------------------------------
-void ofApp::audioIn(float * input, int bufferSize, int nChannels){
-    
-
-    
-}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){

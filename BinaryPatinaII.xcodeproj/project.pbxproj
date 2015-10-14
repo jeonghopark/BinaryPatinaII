@@ -50,7 +50,7 @@
 		A892B6611BCEE82400323768 /* GlungeWinter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B65F1BCEE82400323768 /* GlungeWinter.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B6641BCEE9B000323768 /* LiveCamGlitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6621BCEE9B000323768 /* LiveCamGlitch.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B6671BCEF26900323768 /* Labyrinth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6651BCEF26900323768 /* Labyrinth.cpp */; settings = {ASSET_TAGS = (); }; };
-		A892B66A1BCEF5F100323768 /* Calligraphy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6681BCEF5F100323768 /* Calligraphy.cpp */; settings = {ASSET_TAGS = (); }; };
+		A892B66D1BCF0FB300323768 /* Calligraphy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B66B1BCF0FB300323768 /* Calligraphy.cpp */; settings = {ASSET_TAGS = (); }; };
 		A90BD1857986C638E780E425 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07853DBFC70478F3562A1472 /* ofxCvGrayscaleImage.cpp */; };
 		A9D85B9BF0FB5A1B65DD3E34 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57BFA2AD0192A7419C5AB226 /* ofxCvShortImage.cpp */; };
 		B27047E79090878383CB00A8 /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D309B7195C036C9274D16 /* ofxFft.cpp */; };
@@ -296,18 +296,18 @@
 		A72E5144CF52F7371D8E070A /* cxcore.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = cxcore.hpp; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv/cxcore.hpp; sourceTree = SOURCE_ROOT; };
 		A7FCFCA6CC3DC54344CE4BBB /* streams.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = streams.hpp; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv2/legacy/streams.hpp; sourceTree = SOURCE_ROOT; };
 		A892B6551BCEDBBD00323768 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
-		A892B6571BCEDC0B00323768 /* BaseArch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseArch.cpp; sourceTree = "<group>"; };
-		A892B6581BCEDC0B00323768 /* BaseArch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseArch.h; sourceTree = "<group>"; };
-		A892B6591BCEDC0B00323768 /* GuiApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GuiApp.cpp; sourceTree = "<group>"; };
-		A892B65A1BCEDC0B00323768 /* GuiApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuiApp.h; sourceTree = "<group>"; };
-		A892B65F1BCEE82400323768 /* GlungeWinter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlungeWinter.cpp; sourceTree = "<group>"; };
-		A892B6601BCEE82400323768 /* GlungeWinter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlungeWinter.h; sourceTree = "<group>"; };
-		A892B6621BCEE9B000323768 /* LiveCamGlitch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiveCamGlitch.cpp; sourceTree = "<group>"; };
-		A892B6631BCEE9B000323768 /* LiveCamGlitch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LiveCamGlitch.hpp; sourceTree = "<group>"; };
-		A892B6651BCEF26900323768 /* Labyrinth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Labyrinth.cpp; sourceTree = "<group>"; };
-		A892B6661BCEF26900323768 /* Labyrinth.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Labyrinth.hpp; sourceTree = "<group>"; };
-		A892B6681BCEF5F100323768 /* Calligraphy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Calligraphy.cpp; sourceTree = "<group>"; };
-		A892B6691BCEF5F100323768 /* Calligraphy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calligraphy.h; sourceTree = "<group>"; };
+		A892B6571BCEDC0B00323768 /* BaseArch.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = BaseArch.cpp; sourceTree = "<group>"; };
+		A892B6581BCEDC0B00323768 /* BaseArch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = BaseArch.h; sourceTree = "<group>"; };
+		A892B6591BCEDC0B00323768 /* GuiApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = GuiApp.cpp; sourceTree = "<group>"; };
+		A892B65A1BCEDC0B00323768 /* GuiApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = GuiApp.h; sourceTree = "<group>"; };
+		A892B65F1BCEE82400323768 /* GlungeWinter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = GlungeWinter.cpp; sourceTree = "<group>"; };
+		A892B6601BCEE82400323768 /* GlungeWinter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = GlungeWinter.h; sourceTree = "<group>"; };
+		A892B6621BCEE9B000323768 /* LiveCamGlitch.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = LiveCamGlitch.cpp; sourceTree = "<group>"; };
+		A892B6631BCEE9B000323768 /* LiveCamGlitch.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = LiveCamGlitch.hpp; sourceTree = "<group>"; };
+		A892B6651BCEF26900323768 /* Labyrinth.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = Labyrinth.cpp; sourceTree = "<group>"; };
+		A892B6661BCEF26900323768 /* Labyrinth.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = Labyrinth.hpp; sourceTree = "<group>"; };
+		A892B66B1BCF0FB300323768 /* Calligraphy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Calligraphy.cpp; sourceTree = "<group>"; };
+		A892B66C1BCF0FB300323768 /* Calligraphy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calligraphy.h; sourceTree = "<group>"; };
 		A92D73B789B3347CBCD18F7B /* ofxMidiOut.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiOut.cpp; path = ../../../../openFrameworks/addons/ofxMidi/src/ofxMidiOut.cpp; sourceTree = SOURCE_ROOT; };
 		AA0130D578AA6F7698BDBE9D /* gpu.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = gpu.hpp; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/gpu.hpp; sourceTree = SOURCE_ROOT; };
 		ACAC417593A2D59F8D5168DE /* ofTextConverter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofTextConverter.h; path = ../../../../openFrameworks/addons/ofxUnicode/src/ofTextConverter.h; sourceTree = SOURCE_ROOT; };
@@ -378,9 +378,9 @@
 		E3894C818E1A243545D4B9FC /* ofxCsv.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxCsv.cpp; path = ../../../../openFrameworks/addons/ofxCsv/src/ofxCsv.cpp; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../../openFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* BinaryPatinaIIDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BinaryPatinaIIDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
-		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
-		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
+		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 30; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 30; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
 		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
 		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../../openFrameworks/libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
 		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
@@ -1373,8 +1373,8 @@
 				A892B6631BCEE9B000323768 /* LiveCamGlitch.hpp */,
 				A892B6651BCEF26900323768 /* Labyrinth.cpp */,
 				A892B6661BCEF26900323768 /* Labyrinth.hpp */,
-				A892B6681BCEF5F100323768 /* Calligraphy.cpp */,
-				A892B6691BCEF5F100323768 /* Calligraphy.h */,
+				A892B66B1BCF0FB300323768 /* Calligraphy.cpp */,
+				A892B66C1BCF0FB300323768 /* Calligraphy.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1648,7 +1648,7 @@
 				A9D85B9BF0FB5A1B65DD3E34 /* ofxCvShortImage.cpp in Sources */,
 				682B7CD0B59CED54535A9F23 /* ofxPostGlitch.cpp in Sources */,
 				DE0F5E83650646A1D5D96CED /* ofTextConverter.cpp in Sources */,
-				A892B66A1BCEF5F100323768 /* Calligraphy.cpp in Sources */,
+				A892B66D1BCF0FB300323768 /* Calligraphy.cpp in Sources */,
 				2277316C413EB04EB836D9BE /* ofUnicode.cpp in Sources */,
 				2E74014010EC7E65C8D13350 /* ofUTF8.cpp in Sources */,
 				F6534AED134055E88D5B93D8 /* ofxXmlSettings.cpp in Sources */,

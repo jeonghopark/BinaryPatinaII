@@ -14,7 +14,7 @@
 #include "ofMain.h"
 #include "BaseArch.h"
 
-struct Particle {
+struct Particle : public ofBaseApp {
     
     ofPolyline pathPolyLine;
     float movingFactor = 0;
