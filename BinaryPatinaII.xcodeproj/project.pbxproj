@@ -51,6 +51,8 @@
 		A892B6641BCEE9B000323768 /* LiveCamGlitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6621BCEE9B000323768 /* LiveCamGlitch.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B6671BCEF26900323768 /* Labyrinth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6651BCEF26900323768 /* Labyrinth.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B66D1BCF0FB300323768 /* Calligraphy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B66B1BCF0FB300323768 /* Calligraphy.cpp */; settings = {ASSET_TAGS = (); }; };
+		A892B6701BCF14C800323768 /* Pluto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B66E1BCF14C800323768 /* Pluto.cpp */; settings = {ASSET_TAGS = (); }; };
+		A892B6731BCF1B4C00323768 /* IndiaTower.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6711BCF1B4C00323768 /* IndiaTower.cpp */; settings = {ASSET_TAGS = (); }; };
 		A90BD1857986C638E780E425 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07853DBFC70478F3562A1472 /* ofxCvGrayscaleImage.cpp */; };
 		A9D85B9BF0FB5A1B65DD3E34 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57BFA2AD0192A7419C5AB226 /* ofxCvShortImage.cpp */; };
 		B27047E79090878383CB00A8 /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D309B7195C036C9274D16 /* ofxFft.cpp */; };
@@ -308,6 +310,10 @@
 		A892B6661BCEF26900323768 /* Labyrinth.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = Labyrinth.hpp; sourceTree = "<group>"; };
 		A892B66B1BCF0FB300323768 /* Calligraphy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Calligraphy.cpp; sourceTree = "<group>"; };
 		A892B66C1BCF0FB300323768 /* Calligraphy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calligraphy.h; sourceTree = "<group>"; };
+		A892B66E1BCF14C800323768 /* Pluto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pluto.cpp; sourceTree = "<group>"; };
+		A892B66F1BCF14C800323768 /* Pluto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Pluto.hpp; sourceTree = "<group>"; };
+		A892B6711BCF1B4C00323768 /* IndiaTower.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndiaTower.cpp; sourceTree = "<group>"; };
+		A892B6721BCF1B4C00323768 /* IndiaTower.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IndiaTower.hpp; sourceTree = "<group>"; };
 		A92D73B789B3347CBCD18F7B /* ofxMidiOut.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiOut.cpp; path = ../../../../openFrameworks/addons/ofxMidi/src/ofxMidiOut.cpp; sourceTree = SOURCE_ROOT; };
 		AA0130D578AA6F7698BDBE9D /* gpu.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = gpu.hpp; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/gpu.hpp; sourceTree = SOURCE_ROOT; };
 		ACAC417593A2D59F8D5168DE /* ofTextConverter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofTextConverter.h; path = ../../../../openFrameworks/addons/ofxUnicode/src/ofTextConverter.h; sourceTree = SOURCE_ROOT; };
@@ -1363,10 +1369,10 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
-				A892B6571BCEDC0B00323768 /* BaseArch.cpp */,
-				A892B6581BCEDC0B00323768 /* BaseArch.h */,
 				A892B6591BCEDC0B00323768 /* GuiApp.cpp */,
 				A892B65A1BCEDC0B00323768 /* GuiApp.h */,
+				A892B6571BCEDC0B00323768 /* BaseArch.cpp */,
+				A892B6581BCEDC0B00323768 /* BaseArch.h */,
 				A892B65F1BCEE82400323768 /* GlungeWinter.cpp */,
 				A892B6601BCEE82400323768 /* GlungeWinter.h */,
 				A892B6621BCEE9B000323768 /* LiveCamGlitch.cpp */,
@@ -1375,6 +1381,10 @@
 				A892B6661BCEF26900323768 /* Labyrinth.hpp */,
 				A892B66B1BCF0FB300323768 /* Calligraphy.cpp */,
 				A892B66C1BCF0FB300323768 /* Calligraphy.h */,
+				A892B66E1BCF14C800323768 /* Pluto.cpp */,
+				A892B66F1BCF14C800323768 /* Pluto.hpp */,
+				A892B6711BCF1B4C00323768 /* IndiaTower.cpp */,
+				A892B6721BCF1B4C00323768 /* IndiaTower.hpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1640,12 +1650,14 @@
 				522A399BD102FF88E9CEF814 /* ofxCvColorImage.cpp in Sources */,
 				1A02AF0E0CA0774D73DD1AAE /* ofxCvContourFinder.cpp in Sources */,
 				FE24FC9FD1A1CDEB813053EA /* ofxCvFloatImage.cpp in Sources */,
+				A892B6701BCF14C800323768 /* Pluto.cpp in Sources */,
 				A90BD1857986C638E780E425 /* ofxCvGrayscaleImage.cpp in Sources */,
 				A892B6671BCEF26900323768 /* Labyrinth.cpp in Sources */,
 				F8C4C39F71D74259C09609AC /* ofxCvHaarFinder.cpp in Sources */,
 				5A7031CB746C756FBC922543 /* ofxCvImage.cpp in Sources */,
 				A892B65B1BCEDC0B00323768 /* BaseArch.cpp in Sources */,
 				A9D85B9BF0FB5A1B65DD3E34 /* ofxCvShortImage.cpp in Sources */,
+				A892B6731BCF1B4C00323768 /* IndiaTower.cpp in Sources */,
 				682B7CD0B59CED54535A9F23 /* ofxPostGlitch.cpp in Sources */,
 				DE0F5E83650646A1D5D96CED /* ofTextConverter.cpp in Sources */,
 				A892B66D1BCF0FB300323768 /* Calligraphy.cpp in Sources */,

@@ -4,14 +4,14 @@
 #include "GuiApp.h"
 #include "BaseArch.h"
 
+#include "ofxProcessFFT.h"
 
 #include "GlungeWinter.h"
 #include "LiveCamGlitch.hpp"
 #include "Labyrinth.hpp"
-
-#include "ofxProcessFFT.h"
-
 #include "Calligraphy.h"
+#include "Pluto.hpp"
+#include "IndiaTower.hpp"
 
 
 class ofApp : public ofBaseApp{
@@ -42,6 +42,8 @@ public:
     Labyrinth labyrinth;
     ProcessFFT fft;
     Calligraphy calligraphy;
+    Pluto pluto;
+    IndiaTower indiaTower;
 
     int nBandsToGet;
 

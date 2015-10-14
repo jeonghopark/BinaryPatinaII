@@ -12,9 +12,9 @@
 #define __MusicFFT_score__Calligraphy__
 
 #include "ofMain.h"
+#include "ofxProcessFFT.h"
 
 #include "BaseArch.h"
-#include "ofxProcessFFT.h"
 
 class Calligraphy{
     

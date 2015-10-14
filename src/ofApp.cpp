@@ -39,6 +39,8 @@ void ofApp::setup(){
     calligraphy.inputBaseArch( baseArch );
     calligraphy.inputFFTP( fft );
     
+    indiaTower.inputBaseArch( baseArch );
+    indiaTower.inputFFTP( fft );
     
     
 }
@@ -57,12 +59,17 @@ void ofApp::update(){
     
 
     if (gui->OnOff_Calligraphy) {
-
         fft.update();
         calligraphy.update();
-
     }
 
+    if (gui->OnOff_Pluto) {
+        pluto.update();
+    }
+
+    if (gui->OnOff_IndiaTower) {
+        fft.update();
+    }
     
     
 }
@@ -95,6 +102,10 @@ void ofApp::draw(){
 
     }
 
+    if (gui->OnOff_Pluto) {
+        pluto.draw();
+    }
+
 
     
     //    baseArch.guideFrames();
@@ -102,12 +113,22 @@ void ofApp::draw(){
     //    baseArch.guideLines( ofColor(255) );
     //    baseArch.guidePoints( ofColor(255) );
     
-    baseArch.drawWindows( ofColor(255, 0, 0, 80) );
+    if (gui->OnOff_Windows) {
+        ofColor _c = gui->color_Windows;
+        baseArch.drawWindows( _c );
+    }
 
     if (gui->OnOff_GlungeWinter) {
         glungeWinter.drawFront();
     }
     
+    
+    if (gui->OnOff_IndiaTower) {
+        indiaTower.drawingRectColumn();
+        indiaTower.drawingNumber();
+        indiaTower.drawingBeziel();
+    }
+
     
     ofPopMatrix();
     

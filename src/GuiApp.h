@@ -12,7 +12,8 @@ public:
 	void draw();
 
 	ofParameterGroup mainG;
-	ofParameter<float> windowsAlpha;
+	ofParameter<bool> OnOff_Windows;
+    ofParameter<ofColor> color_Windows;
     ofParameter<string> FrameRate;
 
     ofParameterGroup glungeWinterG;
@@ -27,12 +28,20 @@ public:
     ofParameterGroup calligraphyG;
     ofParameter<bool> OnOff_Calligraphy;
 
+    ofParameterGroup plutoG;
+    ofParameter<bool> OnOff_Pluto;
+
+    ofParameterGroup indiaTowerG;
+    ofParameter<bool> OnOff_IndiaTower;
+
     
     ofxPanel main;
     ofxPanel glungeWinter;
     ofxPanel liveCamGlitch;
     ofxPanel labyrinth;
     ofxPanel calligraphy;
+    ofxPanel pluto;
+    ofxPanel indiaTower;
     
     ofParameter<bool> audioInputOnOff;
     
