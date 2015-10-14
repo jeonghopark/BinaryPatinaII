@@ -9,12 +9,28 @@
 
 void GuiApp::setup(){
 	
-    parameters.setName("parameters");
-    parameters.add(FrameRate.set("FrameRate", ""));
-    parameters.add(windowsAlpha.set("WindowsAlpha", 255, 0, 255));
-    parameters.add(audioInputOnOff.set("AuioOnOff", false));
-	gui.setup(parameters);
-	ofBackground(30);
+    mainG.setName("parameters");
+    mainG.add(FrameRate.set("FrameRate", ""));
+    mainG.add(windowsAlpha.set("WindowsAlpha", 255, 0, 255));
+    mainG.add(audioInputOnOff.set("AuioOnOff", false));
+    
+    glungeWinterG.setName("GlungeWinter");
+    glungeWinterG.add( OnOff_GlungeWinter.set("On/Off", false) );
+
+    
+    liveCamGlitchG.setName("LiveCamGlitch");
+    liveCamGlitchG.add( OnOff_LiveCamGlitch.set("On/Off", false) );
+    
+	main.setup(mainG);
+    main.setPosition(10, 10);
+
+    glungeWinter.setup(glungeWinterG);
+    glungeWinter.setPosition(10, 100);
+    
+    liveCamGlitch.setup(liveCamGlitchG);
+    liveCamGlitch.setPosition(10, 150);
+
+    ofBackground(30);
 	ofSetVerticalSync(false);
     
 }
@@ -27,6 +43,8 @@ void GuiApp::update(){
 
 void GuiApp::draw(){
 
-    gui.draw();
+    main.draw();
+    glungeWinter.draw();
+    liveCamGlitch.draw();
     
 }

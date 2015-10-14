@@ -11,11 +11,20 @@ public:
 	void update();
 	void draw();
 
-	ofParameterGroup parameters;
+	ofParameterGroup mainG;
 	ofParameter<float> windowsAlpha;
     ofParameter<string> FrameRate;
 
-	ofxPanel gui;
+    ofParameterGroup glungeWinterG;
+    ofParameter<bool> OnOff_GlungeWinter;
+    
+    ofParameterGroup liveCamGlitchG;
+    ofParameter<bool> OnOff_LiveCamGlitch;
+
+    
+    ofxPanel main;
+    ofxPanel glungeWinter;
+    ofxPanel liveCamGlitch;
     
     ofParameter<bool> audioInputOnOff;
     

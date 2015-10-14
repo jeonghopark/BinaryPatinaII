@@ -4,11 +4,10 @@
 void ofApp::setup(){
     
     
-    //    ofSetDataPathRoot("../Resources/data/");
+    ofEnableAlphaBlending();
     ofSetFrameRate( 60 );
     ofBackground( 0 );
     
-    ofEnableAlphaBlending();
     //    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     
@@ -31,18 +30,20 @@ void ofApp::setup(){
     
     soundStream.setup(this, 0, 2, 44100, bufferSize, 4);
     
+    
+
+    glungeWinter.inputBaseArch(baseArch);
+    liveCamGlitch.inputBaseArch(baseArch);
+    liveCamGlitch.setup();
+    
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    scaledVol = ofMap(smoothedVol, 0.0, 0.17, 0.0, 1.0, true);
+    liveCamGlitch.update();
     
-    if (gui->audioInputOnOff) {
-        if (scaledVol>0.2) {
-            
-        }
-    }
     
 }
 
@@ -54,10 +55,26 @@ void ofApp::draw(){
     
     ofTranslate( mainOffSetXPos, mainOffSetYPos );
     
-    baseArch.guideFrames();
-    baseArch.drawEdgeCover();
-    baseArch.guideLines();
-    baseArch.guidePoints();
+    if (gui->OnOff_LiveCamGlitch) {
+        liveCamGlitch.draw();
+    }
+    
+    if (gui->OnOff_GlungeWinter) {
+        glungeWinter.drawBackTexture();
+        glungeWinter.drawBack();
+    }
+    
+    //    baseArch.guideFrames();
+    baseArch.drawEdgeCover( ofColor(0) );
+    //    baseArch.guideLines( ofColor(255) );
+    //    baseArch.guidePoints( ofColor(255) );
+    
+    baseArch.drawWindows( ofColor(255, 0, 0, 80) );
+
+    if (gui->OnOff_GlungeWinter) {
+        glungeWinter.drawFront();
+    }
+    
     
     ofPopMatrix();
     
@@ -69,36 +86,14 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::audioIn(float * input, int bufferSize, int nChannels){
     
-    float curVol = 0.0;
-    
-    // samples are "interleaved"
-    int numCounted = 0;
-    
-    //lets go through each sample and calculate the root mean square which is a rough way to calculate volume
-    for (int i = 0; i < bufferSize; i++){
-        left[i]		= input[i*2]*0.5;
-        right[i]	= input[i*2+1]*0.5;
-        
-        curVol += left[i] * left[i];
-        curVol += right[i] * right[i];
-        numCounted+=2;
-    }
-    
-    //this is how we get the mean of rms :)
-    curVol /= (float)numCounted;
-    
-    // this is how we get the root of rms :)
-    curVol = sqrt( curVol );
-    
-    smoothedVol *= 0.93;
-    smoothedVol += 0.07 * curVol;
-    
-    bufferCounter++;
+
     
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    
+    liveCamGlitch.keyPressed(key);
     
 }
 
@@ -106,6 +101,10 @@ void ofApp::keyPressed(int key){
 void ofApp::keyReleased(int key){
     
     baseArch.keyInteraction(key);
+    
+    liveCamGlitch.keyReleased(key);
+    liveCamGlitch.keyReleased(key);
+
     
     if (key == 'o') {
         baseArch.setupDefault();

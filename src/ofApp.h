@@ -4,6 +4,8 @@
 #include "GuiApp.h"
 #include "BaseArch.h"
 
+#include "GlungeWinter.h"
+#include "LiveCamGlitch.hpp"
 
 class ofApp : public ofBaseApp{
     
@@ -50,5 +52,8 @@ public:
     float mainOffSetXPos, mainOffSetYPos;
     
     
+    GlungeWinter glungeWinter;
+    LiveCamGlitch liveCamGlitch;
+
     
 };
