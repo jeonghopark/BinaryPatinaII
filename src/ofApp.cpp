@@ -42,6 +42,7 @@ void ofApp::setup(){
     indiaTower.inputBaseArch( baseArch );
     indiaTower.inputFFTP( fft );
     
+    trierFlyingCam.setup();
     
 }
 
@@ -71,6 +72,10 @@ void ofApp::update(){
         fft.update();
     }
     
+    
+    if (gui->OnOff_TrierFlyingCam) {
+        trierFlyingCam.update();
+    }
     
 }
 
@@ -104,6 +109,11 @@ void ofApp::draw(){
 
     if (gui->OnOff_Pluto) {
         pluto.draw();
+    }
+
+
+    if (gui->OnOff_TrierFlyingCam) {
+        trierFlyingCam.draw();
     }
 
 

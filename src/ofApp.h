@@ -12,6 +12,7 @@
 #include "Calligraphy.h"
 #include "Pluto.hpp"
 #include "IndiaTower.hpp"
+#include "TrierFlyingCam.hpp"
 
 
 class ofApp : public ofBaseApp{
@@ -44,6 +45,7 @@ public:
     Calligraphy calligraphy;
     Pluto pluto;
     IndiaTower indiaTower;
+    TrierFlyingCam trierFlyingCam;
 
     int nBandsToGet;
 

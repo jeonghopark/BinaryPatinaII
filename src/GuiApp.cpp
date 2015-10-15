@@ -33,6 +33,9 @@ void GuiApp::setup(){
     indiaTowerG.setName("IndiaTower");
     indiaTowerG.add( OnOff_IndiaTower.set("On/Off", false) );
 
+    trierFlyingCamG.setName("TrierFlyingCam");
+    trierFlyingCamG.add( OnOff_TrierFlyingCam.set("On/Off", false) );
+
     
     
 	main.setup(mainG);
@@ -56,6 +59,9 @@ void GuiApp::setup(){
     indiaTower.setup(indiaTowerG);
     indiaTower.setPosition(10, 450);
 
+    trierFlyingCam.setup(trierFlyingCamG);
+    trierFlyingCam.setPosition(10, 550);
+
     
     ofBackground(30);
 	ofSetVerticalSync(false);
@@ -77,6 +83,8 @@ void GuiApp::draw(){
     calligraphy.draw();
     pluto.draw();
     indiaTower.draw();
+    trierFlyingCam.draw();
+    
     
 }
 

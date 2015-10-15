@@ -34,6 +34,9 @@ public:
     ofParameterGroup indiaTowerG;
     ofParameter<bool> OnOff_IndiaTower;
 
+    ofParameterGroup trierFlyingCamG;
+    ofParameter<bool> OnOff_TrierFlyingCam;
+
     
     ofxPanel main;
     ofxPanel glungeWinter;
@@ -42,6 +45,7 @@ public:
     ofxPanel calligraphy;
     ofxPanel pluto;
     ofxPanel indiaTower;
+    ofxPanel trierFlyingCam;
     
     ofParameter<bool> audioInputOnOff;
     
