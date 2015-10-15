@@ -13,7 +13,6 @@ void GuiApp::setup(){
     mainG.add(FrameRate.set("FrameRate", ""));
     mainG.add(OnOff_Windows.set("OnOff Windows", false));
     mainG.add(color_Windows.set("Color Windows", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
-    mainG.add(audioInputOnOff.set("AuioOnOff", false));
     
     glungeWinterG.setName("GlungeWinter");
     glungeWinterG.add( OnOff_GlungeWinter.set("On/Off", false) );
@@ -35,6 +34,9 @@ void GuiApp::setup(){
 
     trierFlyingCamG.setName("TrierFlyingCam");
     trierFlyingCamG.add( OnOff_TrierFlyingCam.set("On/Off", false) );
+
+    cubicMapFlyingCamG.setName("CubicMapFlyingCam");
+    cubicMapFlyingCamG.add( OnOff_CubicMapFlyingCam.set("On/Off", false) );
 
     
     
@@ -62,6 +64,9 @@ void GuiApp::setup(){
     trierFlyingCam.setup(trierFlyingCamG);
     trierFlyingCam.setPosition(10, 550);
 
+    cubicMapFlyingCam.setup(cubicMapFlyingCamG);
+    cubicMapFlyingCam.setPosition(10, 600);
+
     
     ofBackground(30);
 	ofSetVerticalSync(false);
@@ -84,6 +89,7 @@ void GuiApp::draw(){
     pluto.draw();
     indiaTower.draw();
     trierFlyingCam.draw();
+    cubicMapFlyingCam.draw();
     
     
 }

@@ -6,6 +6,9 @@
 //
 //
 
+#pragma once
+
+
 #ifndef __vectorTileExperiment__JsonLoader__
 #define __vectorTileExperiment__JsonLoader__
 #define R_EARTH 6378137

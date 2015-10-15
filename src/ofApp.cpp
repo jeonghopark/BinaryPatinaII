@@ -44,6 +44,8 @@ void ofApp::setup(){
     
     trierFlyingCam.setup();
     
+    cubicMapFlyingCam.setup();
+    
 }
 
 //--------------------------------------------------------------
@@ -72,11 +74,15 @@ void ofApp::update(){
         fft.update();
     }
     
-    
     if (gui->OnOff_TrierFlyingCam) {
         trierFlyingCam.update();
     }
+
     
+    if (gui->OnOff_CubicMapFlyingCam) {
+        cubicMapFlyingCam.update();
+    }
+
 }
 
 //--------------------------------------------------------------
@@ -114,6 +120,10 @@ void ofApp::draw(){
 
     if (gui->OnOff_TrierFlyingCam) {
         trierFlyingCam.draw();
+    }
+
+    if (gui->OnOff_CubicMapFlyingCam) {
+        cubicMapFlyingCam.draw();
     }
 
 

@@ -13,7 +13,7 @@
 #include "Pluto.hpp"
 #include "IndiaTower.hpp"
 #include "TrierFlyingCam.hpp"
-
+#include "CubicMapFlyingCam.hpp"
 
 class ofApp : public ofBaseApp{
     
@@ -46,6 +46,7 @@ public:
     Pluto pluto;
     IndiaTower indiaTower;
     TrierFlyingCam trierFlyingCam;
+    CubicMapFlyingCam cubicMapFlyingCam;
 
     int nBandsToGet;
 

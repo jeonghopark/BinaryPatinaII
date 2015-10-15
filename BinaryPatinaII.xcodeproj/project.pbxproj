@@ -58,6 +58,7 @@
 		A892B6AA1BCF238300323768 /* FeatureNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6A41BCF238300323768 /* FeatureNode.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B6AB1BCF238300323768 /* JsonLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6A61BCF238300323768 /* JsonLoader.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B6AE1BCF23B300323768 /* TrierFlyingCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6AC1BCF23B300323768 /* TrierFlyingCam.cpp */; settings = {ASSET_TAGS = (); }; };
+		A892B6B11BCF26F300323768 /* CubicMapFlyingCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6AF1BCF26F300323768 /* CubicMapFlyingCam.cpp */; settings = {ASSET_TAGS = (); }; };
 		A90BD1857986C638E780E425 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07853DBFC70478F3562A1472 /* ofxCvGrayscaleImage.cpp */; };
 		A9D85B9BF0FB5A1B65DD3E34 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57BFA2AD0192A7419C5AB226 /* ofxCvShortImage.cpp */; };
 		B27047E79090878383CB00A8 /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D309B7195C036C9274D16 /* ofxFft.cpp */; };
@@ -329,6 +330,8 @@
 		A892B6A71BCF238300323768 /* JsonLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonLoader.h; sourceTree = "<group>"; };
 		A892B6AC1BCF23B300323768 /* TrierFlyingCam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrierFlyingCam.cpp; sourceTree = "<group>"; };
 		A892B6AD1BCF23B300323768 /* TrierFlyingCam.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TrierFlyingCam.hpp; sourceTree = "<group>"; };
+		A892B6AF1BCF26F300323768 /* CubicMapFlyingCam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CubicMapFlyingCam.cpp; sourceTree = "<group>"; };
+		A892B6B01BCF26F300323768 /* CubicMapFlyingCam.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CubicMapFlyingCam.hpp; sourceTree = "<group>"; };
 		A92D73B789B3347CBCD18F7B /* ofxMidiOut.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiOut.cpp; path = ../../../../openFrameworks/addons/ofxMidi/src/ofxMidiOut.cpp; sourceTree = SOURCE_ROOT; };
 		AA0130D578AA6F7698BDBE9D /* gpu.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = gpu.hpp; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/gpu.hpp; sourceTree = SOURCE_ROOT; };
 		ACAC417593A2D59F8D5168DE /* ofTextConverter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofTextConverter.h; path = ../../../../openFrameworks/addons/ofxUnicode/src/ofTextConverter.h; sourceTree = SOURCE_ROOT; };
@@ -1402,6 +1405,8 @@
 				A892B6721BCF1B4C00323768 /* IndiaTower.hpp */,
 				A892B6AC1BCF23B300323768 /* TrierFlyingCam.cpp */,
 				A892B6AD1BCF23B300323768 /* TrierFlyingCam.hpp */,
+				A892B6AF1BCF26F300323768 /* CubicMapFlyingCam.cpp */,
+				A892B6B01BCF26F300323768 /* CubicMapFlyingCam.hpp */,
 				A892B6A01BCF238300323768 /* FeatureCollectionNode.cpp */,
 				A892B6A11BCF238300323768 /* FeatureCollectionNode.h */,
 				A892B6A21BCF238300323768 /* FeatureLeafNode.cpp */,
@@ -1695,6 +1700,7 @@
 				2E74014010EC7E65C8D13350 /* ofUTF8.cpp in Sources */,
 				F6534AED134055E88D5B93D8 /* ofxXmlSettings.cpp in Sources */,
 				0B66F1AE0CA4BD88FB8B04DC /* tinyxml.cpp in Sources */,
+				A892B6B11BCF26F300323768 /* CubicMapFlyingCam.cpp in Sources */,
 				5732B662A0B9D0B2ACD8A692 /* tinyxmlerror.cpp in Sources */,
 				A892B6641BCEE9B000323768 /* LiveCamGlitch.cpp in Sources */,
 				38FFB71FA9B3878F6698ACEE /* tinyxmlparser.cpp in Sources */,
