@@ -55,6 +55,9 @@ void ofApp::setup(){
     
     droneAttack.setup();
 
+    webLiveCam.inputBaseArch( baseArch );
+    webLiveCam.setup();
+    
 }
 
 //--------------------------------------------------------------
@@ -105,6 +108,10 @@ void ofApp::update(){
 
     if (gui->OnOff_DroneAttack) {
         droneAttack.update();
+    }
+
+    if (gui->OnOff_WebLiveCam) {
+        webLiveCam.update();
     }
 
     
@@ -171,6 +178,12 @@ void ofApp::draw(){
     }
 
     
+    if (gui->OnOff_WebLiveCam) {
+        webLiveCam.draw();
+    }
+
+    
+    
     baseArch.guideFrames( ofColor(255, 0, 0) );
     //    baseArch.guideLines( ofColor(255) );
     //    baseArch.guidePoints( ofColor(255) );
@@ -219,10 +232,15 @@ void ofApp::keyReleased(int key){
     
     baseArch.keyInteraction(key);
     
+    
     liveCamGlitch.keyReleased(key);
     liveCamGlitch.keyReleased(key);
     
+    
     labyrinth.keyReleased(key);
+    
+
+    webLiveCam.keyReleased(key);
 
     
     if (key == 'o') {

@@ -50,6 +50,9 @@ void GuiApp::setup(){
     droneAttackG.setName("DroneAttack");
     droneAttackG.add( OnOff_DroneAttack.set("On/Off", false) );
 
+    webLiveCamG.setName("WebLiveCam");
+    webLiveCamG.add( OnOff_WebLiveCam.set("On/Off", false) );
+
     
     
     
@@ -93,6 +96,10 @@ void GuiApp::setup(){
     droneAttack.setup(droneAttackG);
     droneAttack.setPosition(220, 160);
 
+    webLiveCam.setup(webLiveCamG);
+    webLiveCam.setPosition(220, 210);
+
+    
     
     
     ofBackground(30);
@@ -121,8 +128,11 @@ void GuiApp::draw(){
     lineVideo.draw();
     movingObject.draw();
     droneAttack.draw();
+    webLiveCam.draw();
+    
     
 }
+
 
 
 

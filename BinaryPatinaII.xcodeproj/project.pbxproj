@@ -63,6 +63,7 @@
 		A892B6B81BCF300000323768 /* LineVideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6B61BCF300000323768 /* LineVideo.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B6BB1BCF323C00323768 /* MovingObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6B91BCF323C00323768 /* MovingObjects.cpp */; settings = {ASSET_TAGS = (); }; };
 		A892B6BE1BCF368300323768 /* DroneAttack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6BC1BCF368300323768 /* DroneAttack.cpp */; settings = {ASSET_TAGS = (); }; };
+		A892B6C21BCF395D00323768 /* WebLiveCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A892B6C01BCF395D00323768 /* WebLiveCam.cpp */; settings = {ASSET_TAGS = (); }; };
 		A90BD1857986C638E780E425 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07853DBFC70478F3562A1472 /* ofxCvGrayscaleImage.cpp */; };
 		A9D85B9BF0FB5A1B65DD3E34 /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57BFA2AD0192A7419C5AB226 /* ofxCvShortImage.cpp */; };
 		B27047E79090878383CB00A8 /* ofxFft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D309B7195C036C9274D16 /* ofxFft.cpp */; };
@@ -344,6 +345,8 @@
 		A892B6BA1BCF323C00323768 /* MovingObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingObjects.h; sourceTree = "<group>"; };
 		A892B6BC1BCF368300323768 /* DroneAttack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DroneAttack.cpp; sourceTree = "<group>"; };
 		A892B6BD1BCF368300323768 /* DroneAttack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DroneAttack.hpp; sourceTree = "<group>"; };
+		A892B6C01BCF395D00323768 /* WebLiveCam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebLiveCam.cpp; sourceTree = "<group>"; };
+		A892B6C11BCF395D00323768 /* WebLiveCam.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WebLiveCam.hpp; sourceTree = "<group>"; };
 		A92D73B789B3347CBCD18F7B /* ofxMidiOut.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiOut.cpp; path = ../../../../openFrameworks/addons/ofxMidi/src/ofxMidiOut.cpp; sourceTree = SOURCE_ROOT; };
 		AA0130D578AA6F7698BDBE9D /* gpu.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = gpu.hpp; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/gpu.hpp; sourceTree = SOURCE_ROOT; };
 		ACAC417593A2D59F8D5168DE /* ofTextConverter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofTextConverter.h; path = ../../../../openFrameworks/addons/ofxUnicode/src/ofTextConverter.h; sourceTree = SOURCE_ROOT; };
@@ -1427,6 +1430,8 @@
 				A892B6BA1BCF323C00323768 /* MovingObjects.h */,
 				A892B6BC1BCF368300323768 /* DroneAttack.cpp */,
 				A892B6BD1BCF368300323768 /* DroneAttack.hpp */,
+				A892B6C01BCF395D00323768 /* WebLiveCam.cpp */,
+				A892B6C11BCF395D00323768 /* WebLiveCam.hpp */,
 				A892B6A01BCF238300323768 /* FeatureCollectionNode.cpp */,
 				A892B6A11BCF238300323768 /* FeatureCollectionNode.h */,
 				A892B6A21BCF238300323768 /* FeatureLeafNode.cpp */,
@@ -1701,6 +1706,7 @@
 				92CE807AB8C5C50ADDB8BDEE /* ofxMidiIn.cpp in Sources */,
 				7230629D9AD91E889942BE30 /* ofxMidiMessage.cpp in Sources */,
 				A892B6611BCEE82400323768 /* GlungeWinter.cpp in Sources */,
+				A892B6C21BCF395D00323768 /* WebLiveCam.cpp in Sources */,
 				E3A93874D15B148E880CFD12 /* ofxMidiOut.cpp in Sources */,
 				FD2F16FCFA65E195CF6E8332 /* RtMidi.cpp in Sources */,
 				522A399BD102FF88E9CEF814 /* ofxCvColorImage.cpp in Sources */,

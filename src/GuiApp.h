@@ -52,6 +52,10 @@ public:
     ofParameterGroup droneAttackG;
     ofParameter<bool> OnOff_DroneAttack;
 
+    ofParameterGroup webLiveCamG;
+    ofParameter<bool> OnOff_WebLiveCam;
+
+    
     
     ofxPanel main;
     ofxPanel glungeWinter;
@@ -66,6 +70,7 @@ public:
     ofxPanel lineVideo;
     ofxPanel movingObject;
     ofxPanel droneAttack;
+    ofxPanel webLiveCam;
     
     
     

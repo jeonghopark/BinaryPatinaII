@@ -18,6 +18,7 @@
 #include "LineVideo.h"
 #include "MovingObjects.h"
 #include "DroneAttack.hpp"
+#include "WebLiveCam.hpp"
 
 
 class ofApp : public ofBaseApp{
@@ -56,6 +57,7 @@ public:
     LineVideo lineVideo;
     MovingObjects movingObjects;
     DroneAttack droneAttack;
+    WebLiveCam webLiveCam;
 
     
     int nBandsToGet;
