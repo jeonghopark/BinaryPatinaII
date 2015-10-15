@@ -11,11 +11,21 @@ public:
 	void update();
 	void draw();
 
-	ofParameterGroup mainG;
+	
+    ofParameterGroup mainG;
+    ofParameter<string> FrameRate;
 	ofParameter<bool> OnOff_Windows;
     ofParameter<ofColor> color_Windows;
-    ofParameter<string> FrameRate;
+    ofParameter<bool> OnOff_Frames;
+    ofParameter<ofColor> color_Frames;
+    ofParameter<bool> OnOff_Lines;
+    ofParameter<ofColor> color_Lines;
+    ofParameter<bool> OnOff_Numbers;
+    ofParameter<ofColor> color_Numbers;
+    ofParameter<bool> OnOff_Points;
+    ofParameter<ofColor> color_Points;
 
+    
     ofParameterGroup glungeWinterG;
     ofParameter<bool> OnOff_GlungeWinter;
     

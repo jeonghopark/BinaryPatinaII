@@ -11,15 +11,6 @@
 //--------------------------------------------------------------
 LineVideo::LineVideo(){
     
-    cam.setDeviceID(0);
-    cam.setup(480, 360);
-    
-    colorImg.allocate(480, 360);
-    
-//    halfCam.allocate( 480, 360, OF_IMAGE_COLOR );
-    
-    startLineColors.resize( 120 );
-    controlPosY.resize( 120 );
     
 }
 
@@ -48,7 +39,16 @@ void LineVideo::inputBaseArch(BaseArch & _baseArch){
 //--------------------------------------------------------------
 void LineVideo::setup(){
 
+    cam.setDeviceID(0);
+    cam.setup(480, 360);
     
+    colorImg.allocate(480, 360);
+    
+    //    halfCam.allocate( 480, 360, OF_IMAGE_COLOR );
+    
+    startLineColors.resize( 120 );
+    controlPosY.resize( 120 );
+
     
 }
 

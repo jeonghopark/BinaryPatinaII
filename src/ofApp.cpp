@@ -48,6 +48,7 @@ void ofApp::setup(){
     
     moonCreator.setup();
     
+    lineVideo.setup();
     lineVideo.inputBaseArch(baseArch);
 
     movingObjects.inputBaseArch( baseArch );
@@ -126,38 +127,34 @@ void ofApp::draw(){
     
     ofTranslate( mainOffSetXPos, mainOffSetYPos );
     
-    if (gui->OnOff_LiveCamGlitch) {
-        liveCamGlitch.draw();
-    }
-    
-    if (gui->OnOff_GlungeWinter) {
-        glungeWinter.drawBackTexture();
-        glungeWinter.drawBack();
-    }
-    
-    if (gui->OnOff_Labyrinth) {
-        labyrinth.draw();
-    }
-
-
-    if (gui->OnOff_Calligraphy) {
-
-        calligraphy.draw();
-
-    }
-
     if (gui->OnOff_Pluto) {
         pluto.draw();
     }
 
+    if (gui->OnOff_LiveCamGlitch) {
+        liveCamGlitch.draw();
+    }
+    
+    if (gui->OnOff_WebLiveCam) {
+        webLiveCam.draw();
+    }
+    
+    if (gui->OnOff_LineVideo) {
+        lineVideo.draw();
+        lineVideo.drawStartPoints();
+        lineVideo.drawLines();
+        lineVideo.drawColorNumber();
+    }
 
     if (gui->OnOff_TrierFlyingCam) {
         trierFlyingCam.draw();
     }
-
+    
     if (gui->OnOff_CubicMapFlyingCam) {
         cubicMapFlyingCam.draw();
     }
+
+    
 
     
     if (gui->OnOff_MoonCreator) {
@@ -169,24 +166,42 @@ void ofApp::draw(){
     }
 
 
-
-    if (gui->OnOff_LineVideo) {
-        lineVideo.draw();
-        lineVideo.drawStartPoints();
-        lineVideo.drawLines();
-        lineVideo.drawColorNumber();
+    if (gui->OnOff_Calligraphy) {
+        calligraphy.draw();
     }
 
     
-    if (gui->OnOff_WebLiveCam) {
-        webLiveCam.draw();
+    if (gui->OnOff_GlungeWinter) {
+        glungeWinter.drawBackTexture();
+        glungeWinter.drawBack();
     }
 
+    if (gui->OnOff_Labyrinth) {
+        labyrinth.draw();
+    }
+
+
     
+    if (gui->OnOff_Frames) {
+        ofColor _c = gui->color_Frames;
+        baseArch.guideFrames( _c );
+    }
     
-    baseArch.guideFrames( ofColor(255, 0, 0) );
-    //    baseArch.guideLines( ofColor(255) );
-    //    baseArch.guidePoints( ofColor(255) );
+    if (gui->OnOff_Lines) {
+        ofColor _c = gui->color_Lines;
+        baseArch.guideLines( _c );
+    }
+
+    if (gui->OnOff_Points) {
+        ofColor _c = gui->color_Points;
+        baseArch.guidePoints( _c );
+    }
+    
+    if (gui->OnOff_Numbers) {
+        ofColor _c = gui->color_Numbers;
+        baseArch.drawPointNumber( _c );
+    }
+
     
     
     if (gui->OnOff_Windows) {
@@ -299,4 +314,5 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){
     
 }
+
 

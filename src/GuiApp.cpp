@@ -11,8 +11,23 @@ void GuiApp::setup(){
 	
     mainG.setName("parameters");
     mainG.add(FrameRate.set("FrameRate", ""));
-    mainG.add(OnOff_Windows.set("OnOff Windows", false));
+
     mainG.add(color_Windows.set("Color Windows", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    mainG.add(OnOff_Windows.set("OnOff Windows", false));
+
+    mainG.add(color_Frames.set("Color Frames", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    mainG.add(OnOff_Frames.set("OnOff Frames", false));
+
+    mainG.add(color_Lines.set("Color Lines", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    mainG.add(OnOff_Lines.set("OnOff Lines", false));
+
+    mainG.add(color_Points.set("Color Points", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    mainG.add(OnOff_Points.set("OnOff Points", false));
+
+    mainG.add(color_Numbers.set("Color Numbers", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    mainG.add(OnOff_Numbers.set("OnOff Numbers", false));
+    
+    
     
     glungeWinterG.setName("GlungeWinter");
     glungeWinterG.add( OnOff_GlungeWinter.set("On/Off", false) );
@@ -61,28 +76,28 @@ void GuiApp::setup(){
     main.setPosition(10, 10);
 
     glungeWinter.setup(glungeWinterG);
-    glungeWinter.setPosition(10, 200);
+    glungeWinter.setPosition(220, 260);
     
     liveCamGlitch.setup(liveCamGlitchG);
-    liveCamGlitch.setPosition(10, 250);
+    liveCamGlitch.setPosition(220, 310);
 
     labyrinth.setup(labyrinthG);
-    labyrinth.setPosition(10, 300);
+    labyrinth.setPosition(220, 370);
 
     calligraphy.setup(calligraphyG);
-    calligraphy.setPosition(10, 350);
+    calligraphy.setPosition(220, 420);
 
     pluto.setup(plutoG);
-    pluto.setPosition(10, 400);
+    pluto.setPosition(220, 470);
 
     indiaTower.setup(indiaTowerG);
-    indiaTower.setPosition(10, 450);
+    indiaTower.setPosition(220, 520);
 
     trierFlyingCam.setup(trierFlyingCamG);
-    trierFlyingCam.setPosition(10, 550);
+    trierFlyingCam.setPosition(220, 570);
 
     cubicMapFlyingCam.setup(cubicMapFlyingCamG);
-    cubicMapFlyingCam.setPosition(10, 600);
+    cubicMapFlyingCam.setPosition(430, 10);
 
     moonCreator.setup(moonCreatorG);
     moonCreator.setPosition(220, 10);
