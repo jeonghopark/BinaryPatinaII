@@ -22,6 +22,7 @@
 #include "WebLiveCam.hpp"
 #include "KinectView.hpp"
 
+
 class ofApp : public ofBaseApp{
     
 public:
@@ -43,9 +44,12 @@ public:
     
     MidiInput midiInput;
 
+    ofVideoGrabber webCamHD;
+
     shared_ptr<GuiApp> gui;
     
     BaseArch baseArch;
+    
     
     GlungeWinter glungeWinter;
     LiveCamGlitch liveCamGlitch;

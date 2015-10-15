@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 
+
 class GuiApp: public ofBaseApp {
 
 public:

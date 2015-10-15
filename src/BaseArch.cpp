@@ -26,7 +26,7 @@ BaseArch::~BaseArch(){
 
 //--------------------------------------------------------------
 void BaseArch::setupDefault(){
-    
+        
     font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
     font.addFont("VeraMono-Bold.ttf");
 

@@ -27,11 +27,16 @@ void ofApp::setup(){
     
     midiInput.setup();
 
+    
+    webCamHD.setDeviceID(1);
+    webCamHD.setup(1280,720);
+    
 
     glungeWinter.inputBaseArch(baseArch);
 
     liveCamGlitch.inputBaseArch(baseArch);
-//    liveCamGlitch.inputMidiInput(midiInput);
+    liveCamGlitch.inputMidiInput(midiInput);
+    liveCamGlitch.inputCam(webCamHD);
     liveCamGlitch.setup();
     
     labyrinth.inputBaseArch(baseArch);
@@ -49,8 +54,9 @@ void ofApp::setup(){
     
     moonCreator.setup();
     
-//    lineVideo.setup();
-//    lineVideo.inputBaseArch(baseArch);
+    lineVideo.setup();
+    lineVideo.setupBaseArch(baseArch);
+    lineVideo.inputCam(webCamHD);
 
     movingObjects.inputBaseArch( baseArch );
     movingObjects.setup();
@@ -68,6 +74,8 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
+    webCamHD.update();
+    
     midiInput.drumPadOutput();
     
     if (gui->OnOff_LiveCamGlitch) {
@@ -78,7 +86,6 @@ void ofApp::update(){
         labyrinth.update();
     }
     
-
     if (gui->OnOff_Calligraphy) {
         fft.update();
         calligraphy.update();

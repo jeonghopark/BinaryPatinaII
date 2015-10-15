@@ -23,7 +23,7 @@ LineVideo::~LineVideo(){
 
 
 //--------------------------------------------------------------
-void LineVideo::inputBaseArch(BaseArch & _baseArch){
+void LineVideo::setupBaseArch(BaseArch & _baseArch){
     
     baseArch = & _baseArch;
 
@@ -37,10 +37,16 @@ void LineVideo::inputBaseArch(BaseArch & _baseArch){
 
 
 //--------------------------------------------------------------
+void LineVideo::inputCam(ofVideoGrabber & _c){
+    
+    webCam = & _c;
+    
+}
+
+
+//--------------------------------------------------------------
 void LineVideo::setup(){
 
-    cam.setDeviceID(1);
-    cam.setup(480, 360);
     
     colorImg.allocate(480, 360);
     
@@ -58,12 +64,8 @@ void LineVideo::setup(){
 void LineVideo::update(){
     
     
-    cam.update();
-    colorImg.setFromPixels(cam.getPixels());
-    
-    
+    colorImg.setFromPixels(webCam->getPixels());
     colorImg.setROI(180,0,120,360);
-    
     halfCam.setFromPixels( colorImg.getRoiPixels() );
     
     for (int i=0; i<startLineColors.size(); i++) {

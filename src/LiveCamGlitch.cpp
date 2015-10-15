@@ -11,54 +11,52 @@
 
 //--------------------------------------------------------------
 LiveCamGlitch::LiveCamGlitch(){
-    
 
-    
 }
 
 
 //--------------------------------------------------------------
 LiveCamGlitch::~LiveCamGlitch(){
     
-    webCam.close();
-
 }
 
 
 //--------------------------------------------------------------
 void LiveCamGlitch::inputBaseArch(BaseArch & _baseArch){
-    
     baseArchData = & _baseArch;
-    
 }
 
 
 //--------------------------------------------------------------
-//void LiveCamGlitch::inputMidiInput(MidiInput & _midiInput){
-//    
-//    midiInput = & _midiInput;
-//    
-//}
+void LiveCamGlitch::inputMidiInput(MidiInput & _midiInput){
+    midiInput = & _midiInput;
+}
+
+
+//--------------------------------------------------------------
+void LiveCamGlitch::inputCam(ofVideoGrabber & _c){
+    webCam = & _c;
+}
+
 
 
 //--------------------------------------------------------------
 void LiveCamGlitch::setup(){
     
-    
     quality = OF_IMAGE_QUALITY_WORST;
     
-    webCam.setDeviceID(1);
-    webCam.setup(1280, 720); // 1920, 1080 : 1280, 720
-
-    liveVideoFbo.clear();
-    liveVideoFbo.allocate(webCam.getWidth(), webCam.getHeight());
+    videoW = 1280;
+    videoH = 720;
     
-    windowView.allocate(webCam.getWidth(), webCam.getHeight());
-    captureCam.allocate(webCam.getWidth() * 0.5, webCam.getHeight());
+    liveVideoFbo.clear();
+    liveVideoFbo.allocate(videoW, videoH);
+    
+    windowView.allocate(videoW, videoH);
+    captureCam.allocate(videoW * 0.5, videoH);
     
     float _w = baseArchData->fassadeCorner[1].x - baseArchData->fassadeCorner[0].x;
     float _h = baseArchData->fassadeCorner[2].y - baseArchData->fassadeCorner[0].y;
-    imgDirectGlitch.allocate(webCam.getWidth(), webCam.getHeight(), OF_IMAGE_COLOR);
+    imgDirectGlitch.allocate(videoW, videoH, OF_IMAGE_COLOR);
     
     glitchEffect.setup(&liveVideoFbo);
     
@@ -68,18 +66,16 @@ void LiveCamGlitch::setup(){
 
 
 
+
+
+
 //--------------------------------------------------------------
 void LiveCamGlitch::update(){
     
-    webCam.update();
-    
-//    if (bDirectglitch) {
-//        glitchUpdate(webCam.getPixels());
-//    }
-    
-    if (webCam.isFrameNew()){
-        windowView.setFromPixels(webCam.getPixels());
-        windowView.setROI(640, 0, 640, 720);
+    if (webCam->isFrameNew()){
+
+        windowView.setFromPixels(webCam->getPixels());
+        windowView.setROI(640, 0, videoW * 0.5, videoH);
         captureCam.setFromPixels( windowView.getRoiPixels() );
 
         liveVideoFbo.begin();
@@ -88,11 +84,15 @@ void LiveCamGlitch::update(){
         liveVideoFbo.end();
 
     }
-    
-    
-
-    
-//    glitchEffect.setFx(OFXPOSTGLITCH_CONVERGENCE, midiInput->drumPad[0]);
+        
+    glitchEffect.setFx(OFXPOSTGLITCH_CONVERGENCE, midiInput->drumPad[0]);
+    glitchEffect.setFx(OFXPOSTGLITCH_GLOW, midiInput->drumPad[1]);
+    glitchEffect.setFx(OFXPOSTGLITCH_SHAKER, midiInput->drumPad[2]);
+    glitchEffect.setFx(OFXPOSTGLITCH_CUTSLIDER, midiInput->drumPad[3]);
+    glitchEffect.setFx(OFXPOSTGLITCH_TWIST, midiInput->drumPad[4]);
+    glitchEffect.setFx(OFXPOSTGLITCH_NOISE, midiInput->drumPad[5]);
+    glitchEffect.setFx(OFXPOSTGLITCH_SLITSCAN, midiInput->drumPad[6]);
+    glitchEffect.setFx(OFXPOSTGLITCH_SWELL, midiInput->drumPad[7]);
 
 }
 
@@ -114,7 +114,7 @@ void LiveCamGlitch::glitchUpdate(ofPixels _p) {
     
     float _w = baseArchData->fassadeCorner[1].x - baseArchData->fassadeCorner[0].x;
     float _h = baseArchData->fassadeCorner[2].y - baseArchData->fassadeCorner[0].y;
-    imgDirectGlitch.setFromPixels(_c, webCam.getWidth(), webCam.getHeight(), OF_IMAGE_COLOR);
+    imgDirectGlitch.setFromPixels(_c, videoW, videoH, OF_IMAGE_COLOR);
     
     imgDirectGlitch.save(compressedFilename, quality);
     
@@ -154,12 +154,10 @@ void LiveCamGlitch::glitchUpdate(ofPixels _p) {
 void LiveCamGlitch::draw(){
     
     
-//    webCam.setAnchorPercent(0, 0);
-    webCam.draw(0, 0);
+    webCam->draw(0, 0);
     glitchEffect.generateFx();
     liveVideoFbo.draw(640, 0);  // 640 : 960
 
-    
     if (bDirectglitch) {
         float _w = baseArchData->fassadeCorner[1].x - baseArchData->fassadeCorner[0].x;
         float _h = baseArchData->fassadeCorner[2].y - baseArchData->fassadeCorner[0].y;

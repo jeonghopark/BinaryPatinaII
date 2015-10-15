@@ -16,10 +16,10 @@
 #include "ofxPostGlitch.h"
 #include "BaseArch.h"
 
-//#include "MidiInput.hpp"
+#include "MidiInput.hpp"
 
 
-class LiveCamGlitch {
+class LiveCamGlitch : public ofBaseApp{
     
     public :
     
@@ -35,12 +35,13 @@ class LiveCamGlitch {
     void keyReleased(int key);
 
     void inputBaseArch(BaseArch &);
-//    void inputMidiInput(MidiInput &);
+    void inputMidiInput(MidiInput &);
+    void inputCam(ofVideoGrabber &);
     
     BaseArch * baseArchData;
-//    MidiInput * midiInput;
+    MidiInput * midiInput;
     
-    ofVideoGrabber webCam;
+    ofVideoGrabber * webCam;
     ofxPostGlitch glitchEffect;
     ofFbo liveVideoFbo;
 
@@ -53,6 +54,8 @@ class LiveCamGlitch {
     
     ofxCvColorImage windowView;
     ofxCvColorImage captureCam;
+    
+    float videoW, videoH;
     
     
 };

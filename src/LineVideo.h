@@ -30,14 +30,15 @@ class LineVideo {
     void drawLines();
     void drawColorNumber();
     
-    void inputBaseArch(BaseArch & _baseArch);
-
+    void setupBaseArch(BaseArch & _baseArch);
+    void inputCam(ofVideoGrabber & _c);
+    
     void drawWindows();
     
     BaseArch * baseArch;
-
+    ofVideoGrabber * webCam;
     
-    ofVideoGrabber cam;
+//    ofVideoGrabber cam;
     ofImage halfCam;
 
     ofxCvColorImage colorImg;

@@ -41,7 +41,7 @@ void MidiInput::setup() {
 
     
     drumPad.resize(8);
-    for (int i=0; i<8; i++) {
+    for (int i=0; i<drumPad.size(); i++) {
         drumPad[i] = false;
     }
 
@@ -59,8 +59,12 @@ void MidiInput::update(){
 //--------------------------------------------------------------
 vector<bool> MidiInput::drumPadOutput(){
     
-    int _torelance = 5;
+    int _torelance = 10;
     if (midiMessage.channel == 10) {
+
+        for (int i=0; i<drumPad.size(); i++) {
+            drumPad[i] = false;
+        }
 
         if (midiMessage.pitch == 49) {
             if (midiMessage.velocity > _torelance) {
