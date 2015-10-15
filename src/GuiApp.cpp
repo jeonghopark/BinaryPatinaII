@@ -23,7 +23,10 @@ void GuiApp::setup(){
 
     mainG.add(color_Points.set("Color Points", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
     mainG.add(OnOff_Points.set("OnOff Points", false));
-
+    
+    mainG.add(color_Cross.set("Color Cross", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    mainG.add(OnOff_Cross.set("OnOff Cross", false));
+    
     mainG.add(color_Numbers.set("Color Numbers", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
     mainG.add(OnOff_Numbers.set("OnOff Numbers", false));
     

@@ -5,6 +5,7 @@
 #include "BaseArch.h"
 
 #include "ofxProcessFFT.h"
+#include "MidiInput.hpp"
 
 #include "GlungeWinter.h"
 #include "LiveCamGlitch.hpp"
@@ -20,7 +21,6 @@
 #include "DroneAttack.hpp"
 #include "WebLiveCam.hpp"
 #include "KinectView.hpp"
-
 
 class ofApp : public ofBaseApp{
     
@@ -41,6 +41,8 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    MidiInput midiInput;
+
     shared_ptr<GuiApp> gui;
     
     BaseArch baseArch;

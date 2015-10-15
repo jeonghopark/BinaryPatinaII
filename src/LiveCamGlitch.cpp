@@ -12,6 +12,7 @@
 //--------------------------------------------------------------
 LiveCamGlitch::LiveCamGlitch(){
     
+
     
 }
 
@@ -19,7 +20,8 @@ LiveCamGlitch::LiveCamGlitch(){
 //--------------------------------------------------------------
 LiveCamGlitch::~LiveCamGlitch(){
     
-    
+    webCam.close();
+
 }
 
 
@@ -32,22 +34,31 @@ void LiveCamGlitch::inputBaseArch(BaseArch & _baseArch){
 
 
 //--------------------------------------------------------------
+//void LiveCamGlitch::inputMidiInput(MidiInput & _midiInput){
+//    
+//    midiInput = & _midiInput;
+//    
+//}
+
+
+//--------------------------------------------------------------
 void LiveCamGlitch::setup(){
     
     
     quality = OF_IMAGE_QUALITY_WORST;
     
     webCam.setDeviceID(1);
-    webCam.setup(1920, 1080);
+    webCam.setup(1280, 720); // 1920, 1080 : 1280, 720
+
+    liveVideoFbo.clear();
+    liveVideoFbo.allocate(webCam.getWidth(), webCam.getHeight());
     
-//    liveVideoFbo.allocate(webCam.getWidth(), webCam.getHeight());
-    
-    liveVideoFbo.allocate(1920, 1080);
+    windowView.allocate(webCam.getWidth(), webCam.getHeight());
+    captureCam.allocate(webCam.getWidth() * 0.5, webCam.getHeight());
     
     float _w = baseArchData->fassadeCorner[1].x - baseArchData->fassadeCorner[0].x;
     float _h = baseArchData->fassadeCorner[2].y - baseArchData->fassadeCorner[0].y;
-    imgDirectGlitch.allocate(liveVideoFbo.getWidth(), liveVideoFbo.getHeight(), OF_IMAGE_COLOR);
-    
+    imgDirectGlitch.allocate(webCam.getWidth(), webCam.getHeight(), OF_IMAGE_COLOR);
     
     glitchEffect.setup(&liveVideoFbo);
     
@@ -62,19 +73,27 @@ void LiveCamGlitch::update(){
     
     webCam.update();
     
-    if (bDirectglitch) {
-        glitchUpdate(webCam.getPixels());
+//    if (bDirectglitch) {
+//        glitchUpdate(webCam.getPixels());
+//    }
+    
+    if (webCam.isFrameNew()){
+        windowView.setFromPixels(webCam.getPixels());
+        windowView.setROI(640, 0, 640, 720);
+        captureCam.setFromPixels( windowView.getRoiPixels() );
+
+        liveVideoFbo.begin();
+        ofColor(0,255);
+        captureCam.draw(0, 0);
+        liveVideoFbo.end();
+
     }
     
     
-    liveVideoFbo.begin();
-    ofColor(0,255);
-    webCam.setAnchorPercent(0.5, 0);
-    webCam.draw(0, 0);
-    
-    liveVideoFbo.end();
 
     
+//    glitchEffect.setFx(OFXPOSTGLITCH_CONVERGENCE, midiInput->drumPad[0]);
+
 }
 
 
@@ -124,6 +143,8 @@ void LiveCamGlitch::glitchUpdate(ofPixels _p) {
     //    if (coin > 95) {
     //        reset();
     //    }
+ 
+    
     
 }
 
@@ -133,10 +154,10 @@ void LiveCamGlitch::glitchUpdate(ofPixels _p) {
 void LiveCamGlitch::draw(){
     
     
-    webCam.setAnchorPercent(0, 0);
+//    webCam.setAnchorPercent(0, 0);
     webCam.draw(0, 0);
     glitchEffect.generateFx();
-    liveVideoFbo.draw(960, 0);  // 640 : 960
+    liveVideoFbo.draw(640, 0);  // 640 : 960
 
     
     if (bDirectglitch) {
@@ -155,50 +176,50 @@ void LiveCamGlitch::draw(){
 //--------------------------------------------------------------
 void LiveCamGlitch::keyPressed(int key){
     
-    if (key == '1') glitchEffect.setFx(OFXPOSTGLITCH_CONVERGENCE	, true);
-    if (key == '2') glitchEffect.setFx(OFXPOSTGLITCH_GLOW			, true);
-    if (key == '3') glitchEffect.setFx(OFXPOSTGLITCH_SHAKER			, true);
-    if (key == '4') glitchEffect.setFx(OFXPOSTGLITCH_CUTSLIDER		, true);
-    if (key == '5') glitchEffect.setFx(OFXPOSTGLITCH_TWIST			, true);
-    if (key == '6') bDirectglitch = true;
-    if (key == '7') glitchEffect.setFx(OFXPOSTGLITCH_NOISE			, true);
-    if (key == '8') glitchEffect.setFx(OFXPOSTGLITCH_SLITSCAN		, true);
-    if (key == '9') glitchEffect.setFx(OFXPOSTGLITCH_SWELL			, true);
-    if (key == '0') glitchEffect.setFx(OFXPOSTGLITCH_INVERT			, true);
-    
-    if (key == 'q') glitchEffect.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, true);
-    if (key == 'w') glitchEffect.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, true);
-    if (key == 'e') glitchEffect.setFx(OFXPOSTGLITCH_CR_REDRAISE	, true);
-    if (key == 'r') glitchEffect.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, true);
-    if (key == 't') glitchEffect.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, true);
-    if (key == 'y') glitchEffect.setFx(OFXPOSTGLITCH_CR_REDINVERT	, true);
-    if (key == 'u') glitchEffect.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, true);
+//    if (key == '1') glitchEffect.setFx(OFXPOSTGLITCH_CONVERGENCE	, true);
+//    if (key == '2') glitchEffect.setFx(OFXPOSTGLITCH_GLOW			, true);
+//    if (key == '3') glitchEffect.setFx(OFXPOSTGLITCH_SHAKER			, true);
+//    if (key == '4') glitchEffect.setFx(OFXPOSTGLITCH_CUTSLIDER		, true);
+//    if (key == '5') glitchEffect.setFx(OFXPOSTGLITCH_TWIST			, true);
+//    if (key == '6') bDirectglitch = true;
+//    if (key == '7') glitchEffect.setFx(OFXPOSTGLITCH_NOISE			, true);
+//    if (key == '8') glitchEffect.setFx(OFXPOSTGLITCH_SLITSCAN		, true);
+//    if (key == '9') glitchEffect.setFx(OFXPOSTGLITCH_SWELL			, true);
+//    if (key == '0') glitchEffect.setFx(OFXPOSTGLITCH_INVERT			, true);
+//    
+//    if (key == 'q') glitchEffect.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, true);
+//    if (key == 'w') glitchEffect.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, true);
+//    if (key == 'e') glitchEffect.setFx(OFXPOSTGLITCH_CR_REDRAISE	, true);
+//    if (key == 'r') glitchEffect.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, true);
+//    if (key == 't') glitchEffect.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, true);
+//    if (key == 'y') glitchEffect.setFx(OFXPOSTGLITCH_CR_REDINVERT	, true);
+//    if (key == 'u') glitchEffect.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, true);
     
 }
 
 //--------------------------------------------------------------
 void LiveCamGlitch::keyReleased(int key){
     
-    if (key == '1') glitchEffect.setFx(OFXPOSTGLITCH_CONVERGENCE	, false);
-    if (key == '2') glitchEffect.setFx(OFXPOSTGLITCH_GLOW			, false);
-    if (key == '3') glitchEffect.setFx(OFXPOSTGLITCH_SHAKER			, false);
-    if (key == '4') glitchEffect.setFx(OFXPOSTGLITCH_CUTSLIDER		, false);
-    if (key == '5') glitchEffect.setFx(OFXPOSTGLITCH_TWIST			, false);
-    if (key == '6') bDirectglitch = false;
-    if (key == '7') glitchEffect.setFx(OFXPOSTGLITCH_NOISE			, false);
-    if (key == '8') glitchEffect.setFx(OFXPOSTGLITCH_SLITSCAN		, false);
-    if (key == '9') glitchEffect.setFx(OFXPOSTGLITCH_SWELL			, false);
-    if (key == '0') glitchEffect.setFx(OFXPOSTGLITCH_INVERT			, false);
-    
-    if (key == 'q') glitchEffect.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, false);
-    if (key == 'w') glitchEffect.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, false);
-    if (key == 'e') glitchEffect.setFx(OFXPOSTGLITCH_CR_REDRAISE	, false);
-    if (key == 'r') glitchEffect.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, false);
-    if (key == 't') glitchEffect.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, false);
-    if (key == 'y') glitchEffect.setFx(OFXPOSTGLITCH_CR_REDINVERT	, false);
-    if (key == 'u') glitchEffect.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, false);
-    
-    if (key == ' ') baseArchData->keyInteraction(' ');
+//    if (key == '1') glitchEffect.setFx(OFXPOSTGLITCH_CONVERGENCE	, false);
+//    if (key == '2') glitchEffect.setFx(OFXPOSTGLITCH_GLOW			, false);
+//    if (key == '3') glitchEffect.setFx(OFXPOSTGLITCH_SHAKER			, false);
+//    if (key == '4') glitchEffect.setFx(OFXPOSTGLITCH_CUTSLIDER		, false);
+//    if (key == '5') glitchEffect.setFx(OFXPOSTGLITCH_TWIST			, false);
+//    if (key == '6') bDirectglitch = false;
+//    if (key == '7') glitchEffect.setFx(OFXPOSTGLITCH_NOISE			, false);
+//    if (key == '8') glitchEffect.setFx(OFXPOSTGLITCH_SLITSCAN		, false);
+//    if (key == '9') glitchEffect.setFx(OFXPOSTGLITCH_SWELL			, false);
+//    if (key == '0') glitchEffect.setFx(OFXPOSTGLITCH_INVERT			, false);
+//    
+//    if (key == 'q') glitchEffect.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, false);
+//    if (key == 'w') glitchEffect.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, false);
+//    if (key == 'e') glitchEffect.setFx(OFXPOSTGLITCH_CR_REDRAISE	, false);
+//    if (key == 'r') glitchEffect.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, false);
+//    if (key == 't') glitchEffect.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, false);
+//    if (key == 'y') glitchEffect.setFx(OFXPOSTGLITCH_CR_REDINVERT	, false);
+//    if (key == 'u') glitchEffect.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, false);
+//    
+//    if (key == ' ') baseArchData->keyInteraction(' ');
     
 }
 

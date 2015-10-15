@@ -30,7 +30,7 @@ void BaseArch::setupDefault(){
     font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
     font.addFont("VeraMono-Bold.ttf");
 
-    float _sizeRatio = 1.5;
+    float _sizeRatio = 1; // 1.5 : 1
     
     csv.clear();
     csv.loadFile(ofToDataPath("facadeData.csv"));

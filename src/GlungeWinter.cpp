@@ -92,6 +92,33 @@ void GlungeWinter::drawBack() {
         }
     }
     
+    
+    for (int j=0; j<22-1; j++) {
+        for (int i=0; i<10; i++) {
+            
+            ofBeginShape();
+            ofSetColor( ofColor::fromHsb(ofRandom(255), ofRandom(255), ofRandom(255), 50) );
+            
+            float _centerX = (baseArchData->windowsCorner[j][1].x + baseArchData->windowsCorner[j+1][0].x) * 0.5;
+            float _centerY = baseArchData->windowsOriginCenter[10][2].y;
+            
+            float _xL = _centerX - 6;
+            float _xR = _centerX + 6;
+            float _yU = _centerY - i * 40;
+            float _yD = _centerY + i * 40;
+            
+            
+            ofVertex( _xL, _yD);
+            ofVertex( _xL, _yU);
+            ofVertex( _xR, _yU);
+            ofVertex( _xR, _yD);
+            
+            ofEndShape();
+            
+        }
+    }
+
+    
     ofPopStyle();
     
     ofPopMatrix();

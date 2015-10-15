@@ -25,11 +25,13 @@ void ofApp::setup(){
     fft.setNumFFTBins(nBandsToGet);
     fft.setFFTpercentage(0.9);
     
+    midiInput.setup();
 
 
     glungeWinter.inputBaseArch(baseArch);
 
     liveCamGlitch.inputBaseArch(baseArch);
+//    liveCamGlitch.inputMidiInput(midiInput);
     liveCamGlitch.setup();
     
     labyrinth.inputBaseArch(baseArch);
@@ -47,8 +49,8 @@ void ofApp::setup(){
     
     moonCreator.setup();
     
-    lineVideo.setup();
-    lineVideo.inputBaseArch(baseArch);
+//    lineVideo.setup();
+//    lineVideo.inputBaseArch(baseArch);
 
     movingObjects.inputBaseArch( baseArch );
     movingObjects.setup();
@@ -66,6 +68,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
+    midiInput.drumPadOutput();
     
     if (gui->OnOff_LiveCamGlitch) {
         liveCamGlitch.update();
@@ -207,7 +210,12 @@ void ofApp::draw(){
         ofColor _c = gui->color_Points;
         baseArch.guidePoints( _c );
     }
-    
+
+    if (gui->OnOff_Cross) {
+        ofColor _c = gui->color_Cross;
+        baseArch.guideCrossPoints( _c );
+    }
+
     if (gui->OnOff_Numbers) {
         ofColor _c = gui->color_Numbers;
         baseArch.drawPointNumber( _c );
@@ -239,8 +247,6 @@ void ofApp::draw(){
     baseArch.drawEdgeCover( ofColor(0) );
 
     ofPopMatrix();
-    
-    
     
 }
 

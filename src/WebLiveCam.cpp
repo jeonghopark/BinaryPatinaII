@@ -35,7 +35,7 @@ void WebLiveCam::inputBaseArch(BaseArch & _baseArch){
 //--------------------------------------------------------------
 void WebLiveCam::setup(){
     
-    webCam01.load("Street Cams and Market Square-Finland-1142_1410_2015.mp4");
+    webCam01.load("Asakusa Traffic Cam - japan - 1151 - 1410 - 2015.mp4");
     webCam01.play();
     windowView.allocate(webCam01.getWidth(), webCam01.getHeight());
     

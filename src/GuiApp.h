@@ -22,6 +22,8 @@ public:
     ofParameter<ofColor> color_Lines;
     ofParameter<bool> OnOff_Numbers;
     ofParameter<ofColor> color_Numbers;
+    ofParameter<bool> OnOff_Cross;
+    ofParameter<ofColor> color_Cross;
     ofParameter<bool> OnOff_Points;
     ofParameter<ofColor> color_Points;
 

@@ -18,7 +18,7 @@ struct Particle : public ofBaseApp {
     
     ofPolyline pathPolyLine;
     float movingFactor = 0;
-    float movingSpeed = ofRandom(0.1, 0.6) * 0.005;
+    float movingSpeed = ofRandom(0.1, 0.6) * 0.01;
     float direction = 1;
     int size = ofRandom(2, 5);
     

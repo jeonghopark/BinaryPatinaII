@@ -29,7 +29,7 @@ void CubicMapFlyingCam::setup(){
     
     cam.setNearClip(0.0001f);
     cam.setFarClip(10000.0f);
-    cam.toggleControl();
+//    cam.toggleControl();
     
     
     buildingsMesh_top = buildingsMesh("vectorTile_16_33975_22294.json");

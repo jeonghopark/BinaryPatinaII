@@ -116,11 +116,11 @@ void Labyrinth::initParticles(){
                     break;
             }
             
-            //            ofVec2f _vC = baseArch.framesCenter[abs(_xIndex)%21+1][abs(_yIndex)%4+1];
-            //            _p.curveTo(_vC);
+                        ofVec2f _vC = baseArchData->framesCenter[abs(_xIndex)%21+1][abs(_yIndex)%4+1];
+                        _p.curveTo(_vC);
             
-            ofVec2f _vD = baseArchData->framesCenter[abs(_xIndex)%23][abs(_yIndex)%6];
-            _p.addVertex( _vD );
+//            ofVec2f _vD = baseArchData->framesCenter[abs(_xIndex)%23][abs(_yIndex)%6];
+//            _p.addVertex( _vD );
         }
         
         particles[j].pathPolyLine = _p;
