@@ -38,6 +38,20 @@ void GuiApp::setup(){
     cubicMapFlyingCamG.setName("CubicMapFlyingCam");
     cubicMapFlyingCamG.add( OnOff_CubicMapFlyingCam.set("On/Off", false) );
 
+    moonCreatorG.setName("MoonCreator");
+    moonCreatorG.add( OnOff_MoonCreator.set("On/Off", false) );
+    
+    lineVideoG.setName("LineVideo");
+    lineVideoG.add( OnOff_LineVideo.set("On/Off", false) );
+
+    movingObjectG.setName("MovingObject");
+    movingObjectG.add( OnOff_MovingObject.set("On/Off", false) );
+
+    droneAttackG.setName("DroneAttack");
+    droneAttackG.add( OnOff_DroneAttack.set("On/Off", false) );
+
+    
+    
     
     
 	main.setup(mainG);
@@ -67,6 +81,19 @@ void GuiApp::setup(){
     cubicMapFlyingCam.setup(cubicMapFlyingCamG);
     cubicMapFlyingCam.setPosition(10, 600);
 
+    moonCreator.setup(moonCreatorG);
+    moonCreator.setPosition(220, 10);
+
+    lineVideo.setup(lineVideoG);
+    lineVideo.setPosition(220, 60);
+
+    movingObject.setup(movingObjectG);
+    movingObject.setPosition(220, 110);
+
+    droneAttack.setup(droneAttackG);
+    droneAttack.setPosition(220, 160);
+
+    
     
     ofBackground(30);
 	ofSetVerticalSync(false);
@@ -90,9 +117,13 @@ void GuiApp::draw(){
     indiaTower.draw();
     trierFlyingCam.draw();
     cubicMapFlyingCam.draw();
-    
+    moonCreator.draw();
+    lineVideo.draw();
+    movingObject.draw();
+    droneAttack.draw();
     
 }
+
 
 
 

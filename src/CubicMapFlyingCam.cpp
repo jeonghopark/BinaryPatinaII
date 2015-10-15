@@ -52,7 +52,7 @@ void CubicMapFlyingCam::setup(){
     
     
     
-    camera = ofEasyCam();
+//    camera = ofEasyCam();
     //    camera.setPosition(_rootNode_33975_22294->getGlobalPosition());
     //    camera.move(0, 0, 300);
     //    camera.setTarget(_rootNode_33975_22294->getGlobalPosition());

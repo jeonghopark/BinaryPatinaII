@@ -46,6 +46,15 @@ void ofApp::setup(){
     
     cubicMapFlyingCam.setup();
     
+    moonCreator.setup();
+    
+    lineVideo.inputBaseArch(baseArch);
+
+    movingObjects.inputBaseArch( baseArch );
+    movingObjects.setup();
+    
+    droneAttack.setup();
+
 }
 
 //--------------------------------------------------------------
@@ -78,11 +87,28 @@ void ofApp::update(){
         trierFlyingCam.update();
     }
 
-    
     if (gui->OnOff_CubicMapFlyingCam) {
         cubicMapFlyingCam.update();
     }
+    
+    if (gui->OnOff_MoonCreator) {
+        moonCreator.update();
+    }
 
+    if (gui->OnOff_LineVideo) {
+        lineVideo.update();
+    }
+
+    if (gui->OnOff_MovingObject) {
+        movingObjects.update();
+    }
+
+    if (gui->OnOff_DroneAttack) {
+        droneAttack.update();
+    }
+
+    
+    
 }
 
 //--------------------------------------------------------------
@@ -126,12 +152,29 @@ void ofApp::draw(){
         cubicMapFlyingCam.draw();
     }
 
+    
+    if (gui->OnOff_MoonCreator) {
+        moonCreator.draw();
+    }
+    
+    if (gui->OnOff_DroneAttack) {
+        droneAttack.draw();
+    }
+
+
+
+    if (gui->OnOff_LineVideo) {
+        lineVideo.draw();
+        lineVideo.drawStartPoints();
+        lineVideo.drawLines();
+        lineVideo.drawColorNumber();
+    }
 
     
-    //    baseArch.guideFrames();
-    baseArch.drawEdgeCover( ofColor(0) );
+    baseArch.guideFrames( ofColor(255, 0, 0) );
     //    baseArch.guideLines( ofColor(255) );
     //    baseArch.guidePoints( ofColor(255) );
+    
     
     if (gui->OnOff_Windows) {
         ofColor _c = gui->color_Windows;
@@ -149,7 +192,13 @@ void ofApp::draw(){
         indiaTower.drawingBeziel();
     }
 
+    if (gui->OnOff_MovingObject) {
+        movingObjects.draw();
+    }
+
     
+    baseArch.drawEdgeCover( ofColor(0) );
+
     ofPopMatrix();
     
     
@@ -232,3 +281,4 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){
     
 }
+

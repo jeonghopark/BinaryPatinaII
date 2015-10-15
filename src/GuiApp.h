@@ -40,6 +40,17 @@ public:
     ofParameterGroup cubicMapFlyingCamG;
     ofParameter<bool> OnOff_CubicMapFlyingCam;
     
+    ofParameterGroup moonCreatorG;
+    ofParameter<bool> OnOff_MoonCreator;
+
+    ofParameterGroup lineVideoG;
+    ofParameter<bool> OnOff_LineVideo;
+    
+    ofParameterGroup movingObjectG;
+    ofParameter<bool> OnOff_MovingObject;
+
+    ofParameterGroup droneAttackG;
+    ofParameter<bool> OnOff_DroneAttack;
 
     
     ofxPanel main;
@@ -51,8 +62,20 @@ public:
     ofxPanel indiaTower;
     ofxPanel trierFlyingCam;
     ofxPanel cubicMapFlyingCam;
+    ofxPanel moonCreator;
+    ofxPanel lineVideo;
+    ofxPanel movingObject;
+    ofxPanel droneAttack;
+    
+    
     
     ofParameter<bool> audioInputOnOff;
     
+    
+    
+    
 };
+
+
+
 

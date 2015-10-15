@@ -14,6 +14,11 @@
 #include "IndiaTower.hpp"
 #include "TrierFlyingCam.hpp"
 #include "CubicMapFlyingCam.hpp"
+#include "MoonCreator.hpp"
+#include "LineVideo.h"
+#include "MovingObjects.h"
+#include "DroneAttack.hpp"
+
 
 class ofApp : public ofBaseApp{
     
@@ -47,15 +52,21 @@ public:
     IndiaTower indiaTower;
     TrierFlyingCam trierFlyingCam;
     CubicMapFlyingCam cubicMapFlyingCam;
+    MoonCreator moonCreator;
+    LineVideo lineVideo;
+    MovingObjects movingObjects;
+    DroneAttack droneAttack;
 
+    
     int nBandsToGet;
 
     float mainOffSetXPos, mainOffSetYPos;
     
     vector<float> captureFFTSmoothed;
     vector<int> captureFFTIndex;
-    
-    
 
     
 };
+
+
+
