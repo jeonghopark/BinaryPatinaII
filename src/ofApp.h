@@ -19,6 +19,7 @@
 #include "MovingObjects.h"
 #include "DroneAttack.hpp"
 #include "WebLiveCam.hpp"
+#include "KinectView.hpp"
 
 
 class ofApp : public ofBaseApp{
@@ -58,6 +59,7 @@ public:
     MovingObjects movingObjects;
     DroneAttack droneAttack;
     WebLiveCam webLiveCam;
+    KinectView kinectView;
 
     
     int nBandsToGet;
@@ -66,6 +68,7 @@ public:
     
     vector<float> captureFFTSmoothed;
     vector<int> captureFFTIndex;
+
 
     
 };

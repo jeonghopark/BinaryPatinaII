@@ -37,15 +37,16 @@ void LiveCamGlitch::setup(){
     
     quality = OF_IMAGE_QUALITY_WORST;
     
+    webCam.setDeviceID(1);
+    webCam.setup(1920, 1080);
     
-    webCam.setDeviceID(0);
-    webCam.setup(1280, 720);
+//    liveVideoFbo.allocate(webCam.getWidth(), webCam.getHeight());
     
-    liveVideoFbo.allocate(webCam.getWidth(), webCam.getHeight());
+    liveVideoFbo.allocate(1920, 1080);
     
     float _w = baseArchData->fassadeCorner[1].x - baseArchData->fassadeCorner[0].x;
     float _h = baseArchData->fassadeCorner[2].y - baseArchData->fassadeCorner[0].y;
-    imgDirectGlitch.allocate(webCam.getWidth(), webCam.getHeight(), OF_IMAGE_COLOR);
+    imgDirectGlitch.allocate(liveVideoFbo.getWidth(), liveVideoFbo.getHeight(), OF_IMAGE_COLOR);
     
     
     glitchEffect.setup(&liveVideoFbo);
@@ -135,7 +136,7 @@ void LiveCamGlitch::draw(){
     webCam.setAnchorPercent(0, 0);
     webCam.draw(0, 0);
     glitchEffect.generateFx();
-    liveVideoFbo.draw(640, 0);
+    liveVideoFbo.draw(960, 0);  // 640 : 960
 
     
     if (bDirectglitch) {

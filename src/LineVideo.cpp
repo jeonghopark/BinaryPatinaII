@@ -39,7 +39,7 @@ void LineVideo::inputBaseArch(BaseArch & _baseArch){
 //--------------------------------------------------------------
 void LineVideo::setup(){
 
-    cam.setDeviceID(0);
+    cam.setDeviceID(1);
     cam.setup(480, 360);
     
     colorImg.allocate(480, 360);

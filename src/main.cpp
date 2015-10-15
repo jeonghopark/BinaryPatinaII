@@ -15,11 +15,11 @@ int main( ){
     settings.resizable = false;
     shared_ptr<ofAppBaseWindow> guiWindow = ofCreateWindow(settings);
     
-    settings.width = 1280;  // 1920
-    settings.height = 720;  // 1080
+    settings.width = 1920;  // 1920 : 1280
+    settings.height = 1080;  // 1080 :  720
     settings.resizable = true;
     settings.setPosition( ofVec2f(settings.width, 0 ));
-    //    settings.windowMode = OF_FULLSCREEN;
+    settings.windowMode = OF_FULLSCREEN;
     shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
     
     shared_ptr<GuiApp> guiApp(new GuiApp);

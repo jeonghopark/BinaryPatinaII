@@ -68,6 +68,9 @@ void GuiApp::setup(){
     webLiveCamG.setName("WebLiveCam");
     webLiveCamG.add( OnOff_WebLiveCam.set("On/Off", false) );
 
+    nightVisionG.setName("NightVision");
+    nightVisionG.add( OnOff_NightVision.set("On/Off", false) );
+
     
     
     
@@ -115,6 +118,10 @@ void GuiApp::setup(){
     webLiveCam.setPosition(220, 210);
 
     
+    nightVision.setup(nightVisionG);
+    nightVision.setPosition(430, 60);
+
+    
     
     
     ofBackground(30);
@@ -144,7 +151,7 @@ void GuiApp::draw(){
     movingObject.draw();
     droneAttack.draw();
     webLiveCam.draw();
-    
+    nightVision.draw();
     
 }
 

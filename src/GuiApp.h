@@ -65,6 +65,8 @@ public:
     ofParameterGroup webLiveCamG;
     ofParameter<bool> OnOff_WebLiveCam;
 
+    ofParameterGroup nightVisionG;
+    ofParameter<bool> OnOff_NightVision;
     
     
     ofxPanel main;
@@ -81,6 +83,7 @@ public:
     ofxPanel movingObject;
     ofxPanel droneAttack;
     ofxPanel webLiveCam;
+    ofxPanel nightVision;
     
     
     

@@ -10,7 +10,6 @@ void ofApp::setup(){
     
     //    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
-    
     mainOffSetXPos = (ofGetWidth() - (baseArch.fassadeCorner[0].x + baseArch.fassadeCorner[1].x)) * 0.5;
     mainOffSetYPos = (ofGetHeight() - (baseArch.fassadeCorner[0].y + baseArch.fassadeCorner[3].y)) * 0.5;
     
@@ -20,7 +19,7 @@ void ofApp::setup(){
 
     nBandsToGet = 32 * 2;
     
-    fft.fft.stream.setDeviceID(2);
+    fft.fft.stream.setDeviceID(0);
     fft.setup();
     fft.fft.setup(16384);
     fft.setNumFFTBins(nBandsToGet);
@@ -59,6 +58,9 @@ void ofApp::setup(){
     webLiveCam.inputBaseArch( baseArch );
     webLiveCam.setup();
     
+    kinectView.inputBaseArch(baseArch);
+    kinectView.setup();
+
 }
 
 //--------------------------------------------------------------
@@ -115,7 +117,11 @@ void ofApp::update(){
         webLiveCam.update();
     }
 
-    
+    if (gui->OnOff_NightVision) {
+        kinectView.update();
+    }
+
+
     
 }
 
@@ -138,7 +144,12 @@ void ofApp::draw(){
     if (gui->OnOff_WebLiveCam) {
         webLiveCam.draw();
     }
-    
+
+    if (gui->OnOff_NightVision) {
+        kinectView.drawNightVision();
+    }
+
+
     if (gui->OnOff_LineVideo) {
         lineVideo.draw();
         lineVideo.drawStartPoints();
@@ -240,6 +251,7 @@ void ofApp::keyPressed(int key){
     
     liveCamGlitch.keyPressed(key);
     
+    
 }
 
 //--------------------------------------------------------------
@@ -262,6 +274,7 @@ void ofApp::keyReleased(int key){
         baseArch.setupDefault();
     }
     
+
 }
 
 //--------------------------------------------------------------

@@ -30,14 +30,15 @@ void BaseArch::setupDefault(){
     font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
     font.addFont("VeraMono-Bold.ttf");
 
+    float _sizeRatio = 1.5;
     
     csv.clear();
     csv.loadFile(ofToDataPath("facadeData.csv"));
     
-    fassadeCorner[0] = ofVec2f( ofToFloat(csv.data[0][0]), ofToFloat(csv.data[0][1]) );
-    fassadeCorner[1] = ofVec2f( ofToFloat(csv.data[22][0]), ofToFloat(csv.data[22][1]) );
-    fassadeCorner[2] = ofVec2f( ofToFloat(csv.data[53][0]), ofToFloat(csv.data[53][1]) );
-    fassadeCorner[3] = ofVec2f( ofToFloat(csv.data[31][0]), ofToFloat(csv.data[31][1]) );
+    fassadeCorner[0] = ofVec2f( ofToFloat(csv.data[0][0]), ofToFloat(csv.data[0][1]) ) * _sizeRatio;
+    fassadeCorner[1] = ofVec2f( ofToFloat(csv.data[22][0]), ofToFloat(csv.data[22][1]) ) * _sizeRatio;
+    fassadeCorner[2] = ofVec2f( ofToFloat(csv.data[53][0]), ofToFloat(csv.data[53][1]) ) * _sizeRatio;
+    fassadeCorner[3] = ofVec2f( ofToFloat(csv.data[31][0]), ofToFloat(csv.data[31][1]) ) * _sizeRatio;
 
 
     randomNumberGenerator();
@@ -45,8 +46,8 @@ void BaseArch::setupDefault(){
     
     for (int j=0; j<110; j++) {
         for (int i=0; i<4; i++) {
-            float _x = ofToFloat(csv.data[j+54][i*2]);
-            float _y = ofToFloat(csv.data[j+54][i*2+1]);
+            float _x = ofToFloat(csv.data[j+54][i*2]) * _sizeRatio;
+            float _y = ofToFloat(csv.data[j+54][i*2+1]) * _sizeRatio;
             windowsCorner[j][i] = ofVec2f( _x, _y );
         }
     }
@@ -62,14 +63,14 @@ void BaseArch::setupDefault(){
 
     
     for (int i=1; i<23; i++) {
-        float _x = ofToFloat(csv.data[i][0]);
-        float _y = abs(windowsCorner[i-1][1].y + ofToFloat(csv.data[i-1][1])) * 0.5;
+        float _x = ofToFloat(csv.data[i][0]) * _sizeRatio;
+        float _y = abs(windowsCorner[i-1][1].y + ofToFloat(csv.data[i-1][1]) * _sizeRatio ) * 0.5;
         framesCenter[i][0] = ofVec2f( _x, _y );
     }
     
     for (int i=1; i<23; i++) {
-        float _x = ofToFloat(csv.data[i+31][0]);
-        float _y = abs(windowsCorner[i+88][3].y + ofToFloat(csv.data[i+31][1])) * 0.5;
+        float _x = ofToFloat(csv.data[i+31][0]) * _sizeRatio;
+        float _y = abs(windowsCorner[i+88][3].y + ofToFloat(csv.data[i+31][1]) * _sizeRatio) * 0.5;
         framesCenter[i][5] = ofVec2f( _x, _y );
     }
     
@@ -82,15 +83,15 @@ void BaseArch::setupDefault(){
     }
 
     for (int j=1; j<5; j++) {
-        float _x = abs(ofToFloat(csv.data[(j-1)+23][0]) + windowsCorner[j*22][0].x) * 0.5;
-        float _y = ofToFloat(csv.data[j-1+23][1]);
+        float _x = abs(ofToFloat(csv.data[(j-1)+23][0]) * _sizeRatio + windowsCorner[j*22][0].x) * 0.5;
+        float _y = ofToFloat(csv.data[j-1+23][1]) * _sizeRatio;
         framesCenter[0][j] = ofVec2f( _x, _y );
     }
 
     
     for (int j=1; j<5; j++) {
-        float _x = abs(ofToFloat(csv.data[(j-1)+27][0]) + windowsCorner[(j-1)*22+21][1].x) * 0.5;
-        float _y = ofToFloat(csv.data[j-1+23][1]);
+        float _x = abs(ofToFloat(csv.data[(j-1)+27][0]) * _sizeRatio + windowsCorner[(j-1)*22+21][1].x) * 0.5;
+        float _y = ofToFloat(csv.data[j-1+23][1]) * _sizeRatio;
         framesCenter[22][j] = ofVec2f( _x, _y );
     }
 
