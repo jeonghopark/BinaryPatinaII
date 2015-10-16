@@ -76,7 +76,7 @@ void ofApp::setup(){
 void ofApp::update(){
     
     webCamHD.update();
-    
+    midiInput.update();
     midiInput.drumPadOutput();
     
     if (gui->ResetShader) {

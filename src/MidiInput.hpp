@@ -22,6 +22,7 @@ public:
     ofxMidiIn midiIn;
     ofxMidiIn midiInDrumPad;
     ofxMidiIn midiInKaosPad;
+    ofxMidiIn midiInPadKontrol;
     ofxMidiMessage midiMessage;
     
     
@@ -32,6 +33,8 @@ public:
 
     vector<bool> drumPadOutput();
     vector<bool> drumPad;
+    
+    void padKONTROL();
     
     void newMidiMessage(ofxMidiMessage& eventArgs);
     
@@ -54,6 +57,7 @@ public:
     bool isPlaying;
     
     
+    bool _oldOn;
     
 };
 

@@ -21,39 +21,74 @@ void MidiInput::setup() {
     midiIn.openPort("IAC Driver Bus 1");	// by name
     midiInDrumPad.openPort("E-MU Xmidi 2x2 Midi In 1");	// by name
     midiInKaosPad.openPort("E-MU Xmidi 2x2 Midi In 2");	// by name
+    midiInPadKontrol.openPort("padKONTROL PORT B");
+    
     //midiIn.openVirtualPort("ofxMidiIn Input"); // open a virtual port
     
     // don't ignore sysex, timing, & active sense messages,
     // these are ignored by default
     midiIn.ignoreTypes(false, false, false);
     midiInDrumPad.ignoreTypes(false, false, false);
-    midiInKaosPad.ignoreTypes(false, false, false);
+    midiInDrumPad.ignoreTypes(false, false, false);
+    midiInPadKontrol.ignoreTypes(false, false, false);
     
     // add ofApp as a listener
     midiIn.addListener(this);
     midiInDrumPad.addListener(this);
     midiInKaosPad.addListener(this);
+    midiInPadKontrol.addListener(this);
     
     // print received messages to the console
     midiIn.setVerbose(true);
     midiInDrumPad.setVerbose(true);
     midiInKaosPad.setVerbose(true);
-
+    midiInPadKontrol.setVerbose(true);
     
     drumPad.resize(8);
     for (int i=0; i<drumPad.size(); i++) {
         drumPad[i] = false;
     }
 
+    _oldOn = false;
+
 }
+
 
 
 //--------------------------------------------------------------
 void MidiInput::update(){
     
     
+    
+    padKONTROL();
+    
+    
 }
 
+
+
+//--------------------------------------------------------------
+void MidiInput::padKONTROL(){
+    
+    if (midiMessage.portName == "padKONTROL PORT B") {
+        
+        if (midiMessage.channel == 1) {
+            
+            if (midiMessage.control == 48) {
+                
+                if ((midiMessage.value > 10)&&(!_oldOn)) {
+                    cout << "Bang" << endl;
+                    _oldOn = true;
+                } else if ((midiMessage.value < 10)&&(_oldOn)) {
+                    _oldOn = false;
+                }
+            }
+            
+        }
+        
+    }
+
+}
 
 
 //--------------------------------------------------------------
