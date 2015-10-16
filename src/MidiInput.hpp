@@ -35,6 +35,8 @@ public:
     vector<bool> drumPad;
     
     void padKONTROL();
+   
+    void kaosPad();
     
     void newMidiMessage(ofxMidiMessage& eventArgs);
     

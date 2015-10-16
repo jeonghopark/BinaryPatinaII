@@ -14,6 +14,13 @@
 #include "ofMain.h"
 #include "BaseArch.h"
 
+namespace LABYRINTH_LINE_TYPE {
+    enum TYPE {
+        LINE,
+        CURVE
+    };
+}
+
 struct Particle : public ofBaseApp {
     
     ofPolyline pathPolyLine;
@@ -44,11 +51,12 @@ class Labyrinth {
     
     BaseArch * baseArchData;
 
-    void initParticles();
+    void initParticles(int _i);
     void drawParticles();
 
     vector<Particle> particles;
 
+    int _oldType;
     
     
 };

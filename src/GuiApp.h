@@ -34,6 +34,7 @@ public:
     ofxButton ResetShader;
     
     ofParameter<bool> OnOff_Labyrinth;
+    ofxToggle LineType;
 
     ofParameter<bool> OnOff_Calligraphy;
 

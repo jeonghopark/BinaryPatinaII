@@ -19,7 +19,7 @@ void ofApp::setup(){
 
     nBandsToGet = 32 * 2;
     
-    fft.fft.stream.setDeviceID(0);
+    fft.fft.stream.setDeviceID(2);
     fft.setup();
     fft.fft.setup(16384);
     fft.setNumFFTBins(nBandsToGet);
@@ -98,6 +98,7 @@ void ofApp::update(){
     
     if (gui->OnOff_Labyrinth) {
         labyrinth.update();
+        labyrinth.initParticles(gui->LineType);
     }
     
     if (gui->OnOff_Calligraphy) {

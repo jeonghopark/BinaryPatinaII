@@ -31,7 +31,9 @@ void Labyrinth::inputBaseArch(BaseArch & _baseArch){
 //--------------------------------------------------------------
 void Labyrinth::setup(){
     
-    initParticles();
+    initParticles(LABYRINTH_LINE_TYPE::CURVE);
+    
+    _oldType = LABYRINTH_LINE_TYPE::CURVE;
     
 }
 
@@ -63,64 +65,74 @@ void Labyrinth::draw(){
 
 
 //--------------------------------------------------------------
-void Labyrinth::initParticles(){
+void Labyrinth::initParticles(int _i){
     
-    int _numParticles = 260;
-    particles.resize(_numParticles);
-    
-    for (int j=0; j<_numParticles; j++) {
+    if ((_oldType-_i)!=0) {
+
+        int _numParticles = 120;
+        particles.resize(_numParticles);
         
-        int _xIndex = floor(ofRandom(23));
-        int _yIndex = floor(ofRandom(6));
-        
-        
-        ofPolyline _p;
-        for (int i=0; i<10; i++) {
+        for (int j=0; j<_numParticles; j++) {
             
-            int _directionXY = floor(ofRandom(6));
+            int _xIndex = floor(ofRandom(23));
+            int _yIndex = floor(ofRandom(6));
             
-            switch (_directionXY) {
-                case 0:
-                    _xIndex = _xIndex - 1;
-                    _yIndex = _yIndex + 0;
-                    break;
-                case 1:
-                    _xIndex = _xIndex + 0;
-                    _yIndex = _yIndex - 23;
-                    break;
-                case 2:
-                    _xIndex = _xIndex + 1;
-                    _yIndex = _yIndex + 0;
-                    break;
-                case 3:
-                    _xIndex = _xIndex + 0;
-                    _yIndex = _yIndex + 23;
-                    break;
-                case 4:
-                    _xIndex = _xIndex - 1;
-                    _yIndex = _yIndex + 0;
-                    break;
-                case 5:
-                    _xIndex = _xIndex + 1;
-                    _yIndex = _yIndex + 0;
-                    break;
-                    
-                default:
-                    break;
+            
+            ofPolyline _p;
+            for (int i=0; i<10; i++) {
+                
+                int _directionXY = floor(ofRandom(6));
+                
+                switch (_directionXY) {
+                    case 0:
+                        _xIndex = _xIndex - 1;
+                        _yIndex = _yIndex + 0;
+                        break;
+                    case 1:
+                        _xIndex = _xIndex + 0;
+                        _yIndex = _yIndex - 23;
+                        break;
+                    case 2:
+                        _xIndex = _xIndex + 1;
+                        _yIndex = _yIndex + 0;
+                        break;
+                    case 3:
+                        _xIndex = _xIndex + 0;
+                        _yIndex = _yIndex + 23;
+                        break;
+                    case 4:
+                        _xIndex = _xIndex - 1;
+                        _yIndex = _yIndex + 0;
+                        break;
+                    case 5:
+                        _xIndex = _xIndex + 1;
+                        _yIndex = _yIndex + 0;
+                        break;
+                        
+                    default:
+                        break;
+                }
+                
+                
+                if (_i == LABYRINTH_LINE_TYPE::LINE) {
+                    ofVec2f _vD = baseArchData->framesCenter[abs(_xIndex)%23][abs(_yIndex)%6];
+                    _p.addVertex( _vD );
+                } else if (_i == LABYRINTH_LINE_TYPE::CURVE) {
+                    ofVec2f _vC = baseArchData->framesCenter[abs(_xIndex)%21+1][abs(_yIndex)%4+1];
+                    _p.curveTo(_vC);
+                }
+                
+                
             }
             
-            ofVec2f _vC = baseArchData->framesCenter[abs(_xIndex)%21+1][abs(_yIndex)%4+1];
-            _p.curveTo(_vC);
+            particles[j].pathPolyLine = _p;
             
-            //            ofVec2f _vD = baseArchData->framesCenter[abs(_xIndex)%23][abs(_yIndex)%6];
-            //            _p.addVertex( _vD );
         }
         
-        particles[j].pathPolyLine = _p;
-        
+        _oldType = _i;
+    
     }
-    
-    
+
     
 }
 
@@ -132,7 +144,7 @@ void Labyrinth::drawParticles(){
     
     ofPushStyle();
     
-    ofSetColor(255, 180);
+    ofSetColor(255, 20);
     for (int i=0; i<particles.size(); i++) {
         particles[i].pathPolyLine.draw();
     }
@@ -185,13 +197,4 @@ void Labyrinth::drawParticles(){
 //--------------------------------------------------------------
 void Labyrinth::keyReleased(int key){
     
-    initParticles();
-    
 }
-
-
-
-
-
-
-

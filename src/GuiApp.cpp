@@ -41,7 +41,8 @@ void GuiApp::setup(){
     labyrinth.setName("Labyrinth");
     labyrinth.setPosition(220, 370);
     labyrinth.add( OnOff_Labyrinth.set("On/Off", false) );
-
+    labyrinth.add( LineType.setup("Line Type", false) );
+    
     calligraphy.setup();
     calligraphy.setName("Calligraphy");
     calligraphy.setPosition(220, 420);
