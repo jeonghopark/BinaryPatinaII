@@ -29,7 +29,7 @@ void CubicMapFlyingCam::setup(){
     
     cam.setNearClip(0.0001f);
     cam.setFarClip(10000.0f);
-//    cam.toggleControl();
+    cam.toggleControl();
     
     
     buildingsMesh_top = buildingsMesh("vectorTile_16_33975_22294.json");
@@ -99,7 +99,11 @@ void CubicMapFlyingCam::draw(){
     //    ofEnableLighting();
     
     cam.begin();
-    
+
+    ofEnableDepthTest();
+    ofDisableAlphaBlending();
+    ofDisableArbTex();
+
     //    mainLight.enable();
     
     ofVec3f _offSetPos = ofVec3f(540, 540, 540);
@@ -118,6 +122,8 @@ void CubicMapFlyingCam::draw(){
     //    drawRoadPolyLineMoving(roadsPolyline_back, ofVec3f(0, -_offSetPos.y, 0), ofVec3f(90, 0, 0));
     //    drawRoadPolyLineMoving(roadsPolyline_bottom, ofVec3f(0, 0, -_offSetPos.z), ofVec3f(180, 0, 0));
     
+    
+    ofDisableDepthTest();
     
     //    mainLight.disable();
     

@@ -4,6 +4,8 @@
 #include "GuiApp.h"
 #include "BaseArch.h"
 
+#include "OscPad.hpp"
+
 #include "ofxProcessFFT.h"
 #include "MidiInput.hpp"
 
@@ -42,6 +44,8 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
+    OscPad oscPad;
+    
     MidiInput midiInput;
 
     ofVideoGrabber webCamHD;
@@ -76,6 +80,7 @@ public:
     vector<int> captureFFTIndex;
 
 
+    void drawBaseArch();
     
 };
 

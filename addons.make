@@ -9,6 +9,7 @@ ofxKinect
 ofxLeapMotion2
 ofxMidi
 ofxOpenCv
+ofxOsc
 ofxPostGlitch
 ofxUnicode
 ofxXmlSettings

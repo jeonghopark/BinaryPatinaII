@@ -13,7 +13,6 @@ public:
 	void draw();
 
 	
-    ofParameterGroup mainG;
     ofParameter<string> FrameRate;
 	ofParameter<bool> OnOff_Windows;
     ofParameter<ofColor> color_Windows;
@@ -29,46 +28,33 @@ public:
     ofParameter<ofColor> color_Points;
 
     
-    ofParameterGroup glungeWinterG;
     ofParameter<bool> OnOff_GlungeWinter;
     
-    ofParameterGroup liveCamGlitchG;
     ofParameter<bool> OnOff_LiveCamGlitch;
-
-    ofParameterGroup labyrinthG;
+    ofxButton ResetShader;
+    
     ofParameter<bool> OnOff_Labyrinth;
 
-    ofParameterGroup calligraphyG;
     ofParameter<bool> OnOff_Calligraphy;
 
-    ofParameterGroup plutoG;
     ofParameter<bool> OnOff_Pluto;
 
-    ofParameterGroup indiaTowerG;
     ofParameter<bool> OnOff_IndiaTower;
 
-    ofParameterGroup trierFlyingCamG;
     ofParameter<bool> OnOff_TrierFlyingCam;
 
-    ofParameterGroup cubicMapFlyingCamG;
     ofParameter<bool> OnOff_CubicMapFlyingCam;
     
-    ofParameterGroup moonCreatorG;
     ofParameter<bool> OnOff_MoonCreator;
 
-    ofParameterGroup lineVideoG;
     ofParameter<bool> OnOff_LineVideo;
     
-    ofParameterGroup movingObjectG;
     ofParameter<bool> OnOff_MovingObject;
 
-    ofParameterGroup droneAttackG;
     ofParameter<bool> OnOff_DroneAttack;
 
-    ofParameterGroup webLiveCamG;
     ofParameter<bool> OnOff_WebLiveCam;
 
-    ofParameterGroup nightVisionG;
     ofParameter<bool> OnOff_NightVision;
     
     
@@ -87,13 +73,9 @@ public:
     ofxPanel droneAttack;
     ofxPanel webLiveCam;
     ofxPanel nightVision;
-    
-    
+
     
     ofParameter<bool> audioInputOnOff;
-    
-    
-    
     
 };
 

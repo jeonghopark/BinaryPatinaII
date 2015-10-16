@@ -9,120 +9,95 @@
 
 void GuiApp::setup(){
 	
-    mainG.setName("parameters");
-    mainG.add(FrameRate.set("FrameRate", ""));
-
-    mainG.add(color_Windows.set("Color Windows", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
-    mainG.add(OnOff_Windows.set("OnOff Windows", false));
-
-    mainG.add(color_Frames.set("Color Frames", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
-    mainG.add(OnOff_Frames.set("OnOff Frames", false));
-
-    mainG.add(color_Lines.set("Color Lines", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
-    mainG.add(OnOff_Lines.set("OnOff Lines", false));
-
-    mainG.add(color_Points.set("Color Points", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
-    mainG.add(OnOff_Points.set("OnOff Points", false));
-    
-    mainG.add(color_Cross.set("Color Cross", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
-    mainG.add(OnOff_Cross.set("OnOff Cross", false));
-    
-    mainG.add(color_Numbers.set("Color Numbers", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
-    mainG.add(OnOff_Numbers.set("OnOff Numbers", false));
-    
-    
-    
-    glungeWinterG.setName("GlungeWinter");
-    glungeWinterG.add( OnOff_GlungeWinter.set("On/Off", false) );
-
-    liveCamGlitchG.setName("LiveCamGlitch");
-    liveCamGlitchG.add( OnOff_LiveCamGlitch.set("On/Off", false) );
-
-    labyrinthG.setName("Labyrinth");
-    labyrinthG.add( OnOff_Labyrinth.set("On/Off", false) );
-
-    calligraphyG.setName("Calligraphy");
-    calligraphyG.add( OnOff_Calligraphy.set("On/Off", false) );
-
-    plutoG.setName("Pluto");
-    plutoG.add( OnOff_Pluto.set("On/Off", false) );
-
-    indiaTowerG.setName("IndiaTower");
-    indiaTowerG.add( OnOff_IndiaTower.set("On/Off", false) );
-
-    trierFlyingCamG.setName("TrierFlyingCam");
-    trierFlyingCamG.add( OnOff_TrierFlyingCam.set("On/Off", false) );
-
-    cubicMapFlyingCamG.setName("CubicMapFlyingCam");
-    cubicMapFlyingCamG.add( OnOff_CubicMapFlyingCam.set("On/Off", false) );
-
-    moonCreatorG.setName("MoonCreator");
-    moonCreatorG.add( OnOff_MoonCreator.set("On/Off", false) );
-    
-    lineVideoG.setName("LineVideo");
-    lineVideoG.add( OnOff_LineVideo.set("On/Off", false) );
-
-    movingObjectG.setName("MovingObject");
-    movingObjectG.add( OnOff_MovingObject.set("On/Off", false) );
-
-    droneAttackG.setName("DroneAttack");
-    droneAttackG.add( OnOff_DroneAttack.set("On/Off", false) );
-
-    webLiveCamG.setName("WebLiveCam");
-    webLiveCamG.add( OnOff_WebLiveCam.set("On/Off", false) );
-
-    nightVisionG.setName("NightVision");
-    nightVisionG.add( OnOff_NightVision.set("On/Off", false) );
-
-    
-    
-    
-    
-	main.setup(mainG);
+    main.setup();
+    main.setName("parameters");
     main.setPosition(10, 10);
+    main.add(FrameRate.set("FrameRate", ""));
+//    main.add(color_Windows.set("Color Windows", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(OnOff_Windows.set("OnOff Windows", false));
+//    main.add(color_Frames.set("Color Frames", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(OnOff_Frames.set("OnOff Frames", false));
+//    main.add(color_Lines.set("Color Lines", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(OnOff_Lines.set("OnOff Lines", false));
+//    main.add(color_Points.set("Color Points", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(OnOff_Points.set("OnOff Points", false));
+//    main.add(color_Cross.set("Color Cross", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(OnOff_Cross.set("OnOff Cross", false));
+//    main.add(color_Numbers.set("Color Numbers", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(OnOff_Numbers.set("OnOff Numbers", false));
 
-    glungeWinter.setup(glungeWinterG);
+    glungeWinter.setup();
+    glungeWinter.setName("GlungeWinter");
     glungeWinter.setPosition(220, 260);
+    glungeWinter.add( OnOff_GlungeWinter.set("On/Off", false) );
     
-    liveCamGlitch.setup(liveCamGlitchG);
+    liveCamGlitch.setup();
+    liveCamGlitch.setName("LiveCamGlitch");
     liveCamGlitch.setPosition(220, 310);
+    liveCamGlitch.add( OnOff_LiveCamGlitch.set("On/Off", false) );
+    liveCamGlitch.add( ResetShader.setup("Reset Shader"));
 
-    labyrinth.setup(labyrinthG);
+    labyrinth.setup();
+    labyrinth.setName("Labyrinth");
     labyrinth.setPosition(220, 370);
+    labyrinth.add( OnOff_Labyrinth.set("On/Off", false) );
 
-    calligraphy.setup(calligraphyG);
+    calligraphy.setup();
+    calligraphy.setName("Calligraphy");
     calligraphy.setPosition(220, 420);
+    calligraphy.add( OnOff_Calligraphy.set("On/Off", false) );
 
-    pluto.setup(plutoG);
+    pluto.setup();
+    pluto.setName("Pluto");
     pluto.setPosition(220, 470);
+    pluto.add( OnOff_Pluto.set("On/Off", false) );
 
-    indiaTower.setup(indiaTowerG);
+    indiaTower.setup();
+    indiaTower.setName("IndiaTower");
     indiaTower.setPosition(220, 520);
+    indiaTower.add( OnOff_IndiaTower.set("On/Off", false) );
 
-    trierFlyingCam.setup(trierFlyingCamG);
+    trierFlyingCam.setup();
+    trierFlyingCam.setName("TrierFlyingCam");
     trierFlyingCam.setPosition(220, 570);
+    trierFlyingCam.add( OnOff_TrierFlyingCam.set("On/Off", false) );
 
-    cubicMapFlyingCam.setup(cubicMapFlyingCamG);
+    cubicMapFlyingCam.setup();
+    cubicMapFlyingCam.setName("CubicMapFlyingCam");
     cubicMapFlyingCam.setPosition(430, 10);
+    cubicMapFlyingCam.add( OnOff_CubicMapFlyingCam.set("On/Off", false) );
+    
 
-    moonCreator.setup(moonCreatorG);
+    moonCreator.setup();
+    moonCreator.setName("MoonCreator");
     moonCreator.setPosition(220, 10);
+    moonCreator.add( OnOff_MoonCreator.set("On/Off", false) );
 
-    lineVideo.setup(lineVideoG);
+    lineVideo.setup();
+    lineVideo.setName("LineVideo");
     lineVideo.setPosition(220, 60);
+    lineVideo.add( OnOff_LineVideo.set("On/Off", false) );
 
-    movingObject.setup(movingObjectG);
+    movingObject.setup();
+    movingObject.setName("MovingObject");
     movingObject.setPosition(220, 110);
+    movingObject.add( OnOff_MovingObject.set("On/Off", false) );
 
-    droneAttack.setup(droneAttackG);
+    droneAttack.setup();
+    droneAttack.setName("DroneAttack");
     droneAttack.setPosition(220, 160);
+    droneAttack.add( OnOff_DroneAttack.set("On/Off", false) );
 
-    webLiveCam.setup(webLiveCamG);
+    webLiveCam.setup();
+    webLiveCam.setName("WebLiveCam");
     webLiveCam.setPosition(220, 210);
+    webLiveCam.add( OnOff_WebLiveCam.set("On/Off", false) );
 
     
-    nightVision.setup(nightVisionG);
+    nightVision.setup();
+    nightVision.setName("NightVision");
     nightVision.setPosition(430, 60);
+    nightVision.add( OnOff_NightVision.set("On/Off", false) );
 
     
     

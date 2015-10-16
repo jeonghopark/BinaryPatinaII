@@ -229,7 +229,7 @@ void BaseArch::guidePoints(ofColor _c){
     ofSetColor(_c);
     
     for (int i=0; i<110; i++) {
-        for (int j=0; j<5; j++) {
+        for (int j=0; j<4; j++) {
             
             float _xS = windowsCorner[i][j].x;
             float _yS = windowsCorner[i][j].y;
@@ -250,7 +250,8 @@ void BaseArch::guidePoints(ofColor _c){
         }
     }
 
-    
+    ofSetColor(_c);
+
     for (int i=0; i<4; i++) {
         ofDrawCircle( fassadeCorner[i], _size );
     }
@@ -273,7 +274,7 @@ void BaseArch::guideCrossPoints(ofColor _c, float _size){
     ofSetColor(_c);
     
     for (int i=0; i<110; i++) {
-        for (int j=0; j<5; j++) {
+        for (int j=0; j<4; j++) {
             
             float _xS = windowsCorner[i][j].x;
             float _yS = windowsCorner[i][j].y;
@@ -440,7 +441,7 @@ void BaseArch::drawWindows( ofColor _c ){
 void BaseArch::randomNumberGenerator(){
     
     for (int j=0; j<110; j++) {
-        for (int i=0; i<5; i++) {
+        for (int i=0; i<4; i++) {
             float _r = ofRandom(550);
             windowsCornerNumber[j][i] = _r;
         }

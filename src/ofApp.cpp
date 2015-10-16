@@ -68,15 +68,33 @@ void ofApp::setup(){
     
     kinectView.inputBaseArch(baseArch);
     kinectView.setup();
+    
+    
+    oscPad.setup();
 
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     
+    oscPad.update();
+
     webCamHD.update();
     
     midiInput.drumPadOutput();
+    
+    if (gui->ResetShader) {
+        webCamHD.close();
+        webCamHD.setDeviceID(1);
+        webCamHD.setup(1280,720);
+        liveCamGlitch.inputBaseArch(baseArch);
+        liveCamGlitch.inputMidiInput(midiInput);
+        liveCamGlitch.inputCam(webCamHD);
+        liveCamGlitch.glitchEffect.loadShader();
+        liveCamGlitch.setup();
+        liveCamGlitch.update();
+        liveCamGlitch.draw();
+    }
     
     if (gui->OnOff_LiveCamGlitch) {
         liveCamGlitch.update();
@@ -159,7 +177,6 @@ void ofApp::draw(){
         kinectView.drawNightVision();
     }
 
-
     if (gui->OnOff_LineVideo) {
         lineVideo.draw();
         lineVideo.drawStartPoints();
@@ -174,8 +191,6 @@ void ofApp::draw(){
     if (gui->OnOff_CubicMapFlyingCam) {
         cubicMapFlyingCam.draw();
     }
-
-    
 
     
     if (gui->OnOff_MoonCreator) {
@@ -202,32 +217,7 @@ void ofApp::draw(){
     }
 
 
-    
-    if (gui->OnOff_Frames) {
-        ofColor _c = gui->color_Frames;
-        baseArch.guideFrames( _c );
-    }
-    
-    if (gui->OnOff_Lines) {
-        ofColor _c = gui->color_Lines;
-        baseArch.guideLines( _c );
-    }
-
-    if (gui->OnOff_Points) {
-        ofColor _c = gui->color_Points;
-        baseArch.guidePoints( _c );
-    }
-
-    if (gui->OnOff_Cross) {
-        ofColor _c = gui->color_Cross;
-        baseArch.guideCrossPoints( _c );
-    }
-
-    if (gui->OnOff_Numbers) {
-        ofColor _c = gui->color_Numbers;
-        baseArch.drawPointNumber( _c );
-    }
-
+    drawBaseArch();
     
     
     if (gui->OnOff_Windows) {
@@ -255,15 +245,58 @@ void ofApp::draw(){
 
     ofPopMatrix();
     
+//    oscPad.draw();
+    
 }
 
 
+//--------------------------------------------------------------
+void ofApp::drawBaseArch(){
+    
+    ofPushStyle();
+    
+//    ofEnableBlendMode(OF_BLENDMODE_ADD);
+    
+    if ((gui->OnOff_Frames)||(oscPad.bFB)) {
+        //        ofColor _c = gui->color_Frames;
+        ofColor _c = oscPad.frameColor;
+        baseArch.guideFrames( _c );
+    }
+    
+    if ((gui->OnOff_Lines)||(oscPad.bLB)) {
+        //        ofColor _c = gui->color_Lines;
+        ofColor _c = oscPad.lineColor;
+        baseArch.guideLines( _c );
+    }
+    
+    if ((gui->OnOff_Points)||(oscPad.bPB)) {
+        //                ofColor _c = gui->color_Points;
+        ofColor _c = oscPad.pointColor;
+        baseArch.guidePoints( _c );
+    }
+    
+    if ((gui->OnOff_Cross)||(oscPad.bCB)) {
+        //        ofColor _c = gui->color_Cross;
+        ofColor _c = oscPad.crossColor;
+        baseArch.guideCrossPoints( _c );
+    }
+    
+    if ((gui->OnOff_Numbers)||(oscPad.bNB)) {
+        //        ofColor _c = gui->color_Numbers;
+        ofColor _c = oscPad.numberColor;
+        baseArch.drawPointNumber( _c );
+    }
+    
+//    ofDisableBlendMode();
+    
+    
+    ofPopStyle();
+    
+
+}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    
-    liveCamGlitch.keyPressed(key);
-    
     
 }
 
@@ -272,17 +305,10 @@ void ofApp::keyReleased(int key){
     
     baseArch.keyInteraction(key);
     
-    
-    liveCamGlitch.keyReleased(key);
-    liveCamGlitch.keyReleased(key);
-    
-    
     labyrinth.keyReleased(key);
     
-
     webLiveCam.keyReleased(key);
 
-    
     if (key == 'o') {
         baseArch.setupDefault();
     }
