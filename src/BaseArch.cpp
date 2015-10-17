@@ -14,6 +14,7 @@
 BaseArch::BaseArch(){
     
     setupDefault();
+    randomNumberGenerator();
 
 }
 
@@ -41,7 +42,6 @@ void BaseArch::setupDefault(){
     fassadeCorner[3] = ofVec2f( ofToFloat(csv.data[31][0]), ofToFloat(csv.data[31][1]) ) * _sizeRatio;
 
 
-    randomNumberGenerator();
     
     
     for (int j=0; j<110; j++) {
@@ -363,6 +363,8 @@ void BaseArch::drawPointNumber( ofColor _c ){
     
     ofPushStyle();
     
+    ofEnableAlphaBlending();
+    
     ofSetColor(_c);
     
 //    for (int i=0; i<110; i++) {
@@ -384,10 +386,9 @@ void BaseArch::drawPointNumber( ofColor _c ){
             float _xS = framesCenter[i][j].x;
             float _yS = framesCenter[i][j].y;
          
-            string _s = ofToHex(windowsCornerNumber[i][j]);
-//            ofDrawBitmapString(_s, _xS, _yS);
-            
-            font.draw(_s, 14, _xS, _yS + 6);
+            string _s = ofToHex(&windowsCornerNumber[i+j]);
+            string _sS = ofToString(windowsCornerNumber[i+j], 4);
+            font.draw(ofToString(windowsCornerNumber[i+j]), 14, _xS, _yS + 6);
 
         }
     }
@@ -400,6 +401,8 @@ void BaseArch::drawPointNumber( ofColor _c ){
 //        ofDrawBitmapString(ofToString(windowsCornerNumber[i],0), _xS, _yS);
 //
 //    }
+    
+    ofDisableBlendMode();
     
     ofPopStyle();
     
@@ -440,11 +443,10 @@ void BaseArch::drawWindows( ofColor _c ){
 //--------------------------------------------------------------
 void BaseArch::randomNumberGenerator(){
     
-    for (int j=0; j<110; j++) {
-        for (int i=0; i<4; i++) {
-            float _r = ofRandom(550);
-            windowsCornerNumber[j][i] = _r;
-        }
+    windowsCornerNumber.resize(440);
+    for (int j=0; j<440; j++) {
+            float _r = ofRandom(440);
+            windowsCornerNumber[j] = _r;
     }
 
     

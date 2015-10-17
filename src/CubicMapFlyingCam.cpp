@@ -99,10 +99,12 @@ void CubicMapFlyingCam::draw(){
     //    ofEnableLighting();
     
     cam.begin();
+    
+    
 
-    ofEnableDepthTest();
-    ofDisableAlphaBlending();
-    ofDisableArbTex();
+//    ofEnableDepthTest();
+//    ofDisableAlphaBlending();
+//    ofDisableArbTex();
 
     //    mainLight.enable();
     
@@ -123,7 +125,7 @@ void CubicMapFlyingCam::draw(){
     //    drawRoadPolyLineMoving(roadsPolyline_bottom, ofVec3f(0, 0, -_offSetPos.z), ofVec3f(180, 0, 0));
     
     
-    ofDisableDepthTest();
+//    ofDisableDepthTest();
     
     //    mainLight.disable();
     
@@ -163,6 +165,7 @@ void CubicMapFlyingCam::drawBuildingsMesh(vector<ofMesh> _mesh, ofVec3f _positio
     ofEnableDepthTest();
     
     
+    
     ofSetColor(255, 255);
     
     float _height = 20;
@@ -183,6 +186,8 @@ void CubicMapFlyingCam::drawBuildingsMesh(vector<ofMesh> _mesh, ofVec3f _positio
             ofVertex(_vertices[j]);
         }
         ofEndShape();
+        
+        
         
         
         ofPushStyle();
