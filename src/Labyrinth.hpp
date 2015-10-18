@@ -47,13 +47,25 @@ public:
     
     void keyReleased(int key);
     
-    void initParticles(int _i);
+    void initParticles();
+    void changeType(int _i, ofVec2f _v);
     void drawParticles();
+    void drawPath();
+    void drawConnection();
     
     vector<Particle> particles;
     
     int _oldType;
     
+    int numParticles;
+    int LineType;
+    
+    float particlesizeFactor;
+    float speedFactor;
+    
+    ofColor pathC;
+    ofColor particleC;
+    ofColor connectionLineC;
     
 };
 

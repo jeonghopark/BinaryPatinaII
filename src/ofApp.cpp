@@ -44,6 +44,9 @@ void ofApp::setup(){
     
     labyrinth.inputBaseArch( baseArch );
     labyrinth.setup();
+    labyrinthOldNumParticle = 0;
+    labyrinthOldType = 0;
+    labyrinthChangeNum = false;
     
     calligraphy.inputBaseArch( baseArch );
     calligraphy.inputFFTP( fft );
@@ -107,10 +110,30 @@ void ofApp::update(){
 
     }
     
+    
     if (gui->OnOff_Labyrinth) {
         labyrinth.update();
-        labyrinth.initParticles(gui->LineType);
+        labyrinth.numParticles = gui->NumParticles;
+        labyrinth.LineType = gui->LineType;
+        labyrinth.speedFactor = gui->Speed;
+        labyrinth.particlesizeFactor = gui->ParticleSize;
+        labyrinth.particleC = gui->ParticleColor;
+        labyrinth.pathC = gui->PathColor;
+        labyrinth.connectionLineC = gui->ConnectionColor;
+        
+        if (((labyrinthOldNumParticle != gui->NumParticles) && !labyrinthChangeNum )||
+            ((labyrinthOldType != gui->LineType) && !labyrinthChangeNum )){
+            labyrinth.initParticles();
+            labyrinthOldNumParticle = gui->NumParticles;
+            labyrinthOldType = gui->LineType;
+            labyrinthChangeNum = true;
+        } else {
+            labyrinthChangeNum = false;
+        }
+        
+        if (gui->UpdateRandom) labyrinth.initParticles();
     }
+    
     
     if (gui->OnOff_Calligraphy) {
         fft.update();

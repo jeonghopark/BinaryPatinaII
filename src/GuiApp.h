@@ -35,6 +35,14 @@ public:
     
     ofParameter<bool> OnOff_Labyrinth;
     ofxToggle LineType;
+    ofxButton UpdateRandom;
+    ofxIntSlider NumParticles;
+    ofxFloatSlider Speed;
+    ofxFloatSlider ParticleSize;
+    ofxColorSlider ParticleColor;
+    ofxColorSlider PathColor;
+    ofxColorSlider ConnectionColor;
+
 
     ofParameter<bool> OnOff_Calligraphy;
     ofxFloatSlider fftSize;

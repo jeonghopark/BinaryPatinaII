@@ -26,9 +26,17 @@ Labyrinth::~Labyrinth(){
 //--------------------------------------------------------------
 void Labyrinth::setup(){
     
-    initParticles(LABYRINTH_LINE_TYPE::CURVE);
-    _oldType = LABYRINTH_LINE_TYPE::CURVE;
+    initParticles();
     
+    numParticles = 120;
+    LineType = 0;
+    speedFactor = 1;
+    particlesizeFactor = 1;
+ 
+    pathC = ofColor( 255, 20 );
+    particleC = ofColor( 255 );
+    connectionLineC = ofColor( 255 );
+
 }
 
 
@@ -36,7 +44,7 @@ void Labyrinth::setup(){
 void Labyrinth::update(){
     
     for (int i=0; i<particles.size(); i++) {
-        particles[i].movingFactor = particles[i].movingFactor + particles[i].movingSpeed *  particles[i].direction;
+        particles[i].movingFactor = particles[i].movingFactor + particles[i].movingSpeed *  particles[i].direction * speedFactor;
         
         if ((particles[i].movingFactor < 0.0)||(particles[i].movingFactor > 1.0)) {
             particles[i].direction = -particles[i].direction;
@@ -50,6 +58,8 @@ void Labyrinth::update(){
 //--------------------------------------------------------------
 void Labyrinth::draw(){
     
+    drawPath();
+    drawConnection();
     drawParticles();
 
     
@@ -59,11 +69,9 @@ void Labyrinth::draw(){
 
 
 //--------------------------------------------------------------
-void Labyrinth::initParticles(int _i){
+void Labyrinth::initParticles(){
     
-    if ((_oldType-_i)!=0) {
-
-        int _numParticles = 120;
+        int _numParticles = numParticles;
         particles.resize(_numParticles);
         
         for (int j=0; j<_numParticles; j++) {
@@ -109,14 +117,20 @@ void Labyrinth::initParticles(int _i){
                 
                 
                 ofVec2f _v;
-                if (_i == LABYRINTH_LINE_TYPE::LINE) {
-                    _v = baseArch->framesCenter[abs(_xIndex)%23][abs(_yIndex)%6];
-                    _p.addVertex(_v);
-                } else if (_i == LABYRINTH_LINE_TYPE::CURVE) {
-                    _v = baseArch->framesCenter[abs(_xIndex)%21+1][abs(_yIndex)%4+1];
-                    _p.curveTo(_v);
-                }
                 
+                switch (LineType) {
+                    case 0:
+                        _v = baseArch->framesCenter[abs(_xIndex)%23][abs(_yIndex)%6];
+                        _p.addVertex(_v);
+                        break;
+                    case 1:
+                        _v = baseArch->framesCenter[abs(_xIndex)%21+1][abs(_yIndex)%4+1];
+                        _p.curveTo(_v);
+                        break;
+                        
+                    default:
+                        break;
+                }
                 
             }
             
@@ -124,9 +138,24 @@ void Labyrinth::initParticles(int _i){
             
         }
         
-        _oldType = _i;
     
-    }
+
+
+    
+}
+
+
+
+//--------------------------------------------------------------
+void Labyrinth::changeType(int _i, ofVec2f _v){
+    
+//    if (_i == LABYRINTH_LINE_TYPE::LINE) {
+//        _v = baseArch->framesCenter[abs(_xIndex)%23][abs(_yIndex)%6];
+//        _p.addVertex(_v);
+//    } else if (_i == LABYRINTH_LINE_TYPE::CURVE) {
+//        _v = baseArch->framesCenter[abs(_xIndex)%21+1][abs(_yIndex)%4+1];
+//        _p.curveTo(_v);
+//    }
 
     
 }
@@ -137,28 +166,55 @@ void Labyrinth::drawParticles(){
     
     ofPushMatrix();
     
-    ofPushStyle();
-    
-    ofSetColor(255, 20);
-    for (int i=0; i<particles.size(); i++) {
-        particles[i].pathPolyLine.draw();
-    }
     
     ofPushStyle();
     
-    ofSetColor( 255, 255 );
+    ofSetColor( ofColor(particleC) );
     
     for (int i=0; i<particles.size(); i++) {
         
         float _percent = particles[i].movingFactor;
         ofVec2f _v = particles[i].pathPolyLine.getPointAtPercent( _percent );
-        ofDrawCircle( _v, particles[i].size );
+        ofDrawCircle( _v, particles[i].size * particlesizeFactor );
         
     }
     ofPopStyle();
     
+    ofPopMatrix();
+
     
-    ofSetColor(255, 120);
+    
+}
+
+
+//--------------------------------------------------------------
+void Labyrinth::drawPath(){
+
+    ofPushMatrix();
+    
+    ofPushStyle();
+    
+    ofSetColor( ofColor(pathC) );
+    for (int i=0; i<particles.size(); i++) {
+        particles[i].pathPolyLine.draw();
+    }
+    
+    ofPopStyle();
+    
+    ofPopMatrix();
+
+    
+}
+
+
+//--------------------------------------------------------------
+void Labyrinth::drawConnection(){
+    
+    ofPushMatrix();
+
+    ofPushStyle();
+    
+    ofSetColor( ofColor(connectionLineC) );
     
     for (int i=0; i<particles.size(); i++) {
         float _percentS = particles[i].movingFactor;
@@ -184,9 +240,8 @@ void Labyrinth::drawParticles(){
     ofPopStyle();
     
     ofPopMatrix();
-    
+   
 }
-
 
 
 //--------------------------------------------------------------

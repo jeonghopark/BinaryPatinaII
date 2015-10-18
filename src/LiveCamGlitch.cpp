@@ -137,15 +137,12 @@ void LiveCamGlitch::glitchUpdate(ofPixels _p) {
     //        reset();
     //    }
  
-    
-    
 }
 
 
 
 //--------------------------------------------------------------
 void LiveCamGlitch::draw(){
-    
     
     webCamHD->draw(0, 0);
     glitchEffect.generateFx();
@@ -162,7 +159,6 @@ void LiveCamGlitch::draw(){
         imgDirectGlitch.draw(_x, _y, _w, _h);
     }
 
-    
 }
 
 

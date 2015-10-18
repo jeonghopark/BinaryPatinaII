@@ -80,6 +80,11 @@ public:
 
     void drawBaseArch();
     
+    int labyrinthOldNumParticle;
+    int labyrinthOldType;
+    bool labyrinthChangeNum;
+    
+    
 };
 
 

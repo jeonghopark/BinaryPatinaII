@@ -37,12 +37,23 @@ void GuiApp::setup(){
     liveCamGlitch.setPosition(220, 310);
     liveCamGlitch.add( OnOff_LiveCamGlitch.set("On/Off", false) );
     liveCamGlitch.add( ResetShader.setup("Reset Shader"));
+    
 
     labyrinth.setup();
     labyrinth.setName("Labyrinth");
     labyrinth.setPosition(220, 370);
     labyrinth.add( OnOff_Labyrinth.set("On/Off", false) );
     labyrinth.add( LineType.setup("Line Type", false) );
+    labyrinth.add( NumParticles.setup("Number Particles", 100, 1, 400));
+    labyrinth.add( UpdateRandom.setup("Update Random", false) );
+    labyrinth.add( Speed.setup("Speed", 1, 0, 10));
+    labyrinth.add( ParticleSize.setup("Particle Size", 1, 0.1, 100));
+    labyrinth.add( ParticleColor.setup("Particles Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    labyrinth.add( PathColor.setup("Path Color", ofColor(255,255,255,20), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    labyrinth.add( ConnectionColor.setup("Connection Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+
+    
+    
     
     calligraphy.setup();
     calligraphy.setName("Calligraphy");
