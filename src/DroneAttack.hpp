@@ -12,6 +12,9 @@
 #define DroneAttack_hpp
 
 #include "ofMain.h"
+
+#include "SceneSetup.hpp"
+
 #include "ofxImmediateModeInput.h"
 #include "ofxFirstPersonCamera.h"
 
@@ -24,7 +27,7 @@ struct DronData{
     
 };
 
-class DroneAttack : public ofBaseApp{
+class DroneAttack : public SceneSetup {
     
 public:
     

@@ -7,10 +7,8 @@
 #include "ofMain.h"
 
 #include "SceneSetup.hpp"
-#include "BaseArch.h"
 
-class GlungeWinter : public ofBaseApp, public SceneSetup {
-    
+class GlungeWinter : public SceneSetup {
     
 public:
 
@@ -26,8 +24,6 @@ public:
     void drawVertical();
     void drawHorizon();
  
-//    void inputBaseArch(BaseArch &);
-    BaseArch * baseArchData;
     
     ofImage grungeTexture;
     

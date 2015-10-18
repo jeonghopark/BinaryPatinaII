@@ -12,8 +12,6 @@
 //--------------------------------------------------------------
 IndiaTower::IndiaTower(){
     
-
-    
 }
 
 
@@ -21,7 +19,6 @@ IndiaTower::IndiaTower(){
 IndiaTower::~IndiaTower(){
     
 }
-
 
 
 //--------------------------------------------------------------
@@ -33,41 +30,18 @@ void IndiaTower::setup(){
     //    spectrumNumbers.setSpaceSize(40);
     spectrumNumbers.setLineHeight(15.0f);
     spectrumNumbers.setLetterSpacing(1.2);
-    
-//    baseArch = baseArch;
-//    processFFT = SceneSetup::processFFT;
 
 }
-
-
 
 
 //--------------------------------------------------------------
 void IndiaTower::update(){
     
-    
 }
-
-////--------------------------------------------------------------
-//void IndiaTower::inputFFTP(ProcessFFT & _processFFT){
-//    
-//    processFFT = & _processFFT;
-//    
-//}
-//
-//
-////--------------------------------------------------------------
-//void IndiaTower::inputbaseArch(BaseArch & _baseArch){
-//    
-//    baseArch = & _baseArch;
-//    
-//}
 
 
 //--------------------------------------------------------------
 void IndiaTower::draw(){
-    
-    
     
 }
 
@@ -136,9 +110,6 @@ void IndiaTower::drawingRectColumn(){
     }
     
     
-    
-    
-    
 }
 
 //--------------------------------------------------------------
@@ -201,8 +172,6 @@ void IndiaTower::drawingNumber(){
 
 //--------------------------------------------------------------
 void IndiaTower::drawingBeziel(){
-    
-    
     
     vector<float> _inputBins = processFFT->fft.getBins();
     float _numberIndexBins = _inputBins.size();

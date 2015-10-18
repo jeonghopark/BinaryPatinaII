@@ -4,7 +4,7 @@
 #include "ofxGui.h"
 
 
-class GuiApp: public ofBaseApp {
+class GuiApp : public ofBaseApp {
 
 public:
 

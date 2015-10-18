@@ -13,6 +13,9 @@
 #define TrierFlyingCam_hpp
 
 #include "ofMain.h"
+
+#include "SceneSetup.hpp"
+
 #include "ofxImmediateModeInput.h"
 #include "ofxFirstPersonCamera.h"
 #include "FeatureNode.h"
@@ -21,7 +24,7 @@
 #include "ofxJSON.h"
 
 
-class TrierFlyingCam : public ofBaseApp{
+class TrierFlyingCam : public SceneSetup{
     
 public :
     

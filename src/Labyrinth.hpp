@@ -12,7 +12,8 @@
 #define Labyrinth_hpp
 
 #include "ofMain.h"
-#include "BaseArch.h"
+
+#include "SceneSetup.hpp"
 
 namespace LABYRINTH_LINE_TYPE {
     enum TYPE {
@@ -21,7 +22,7 @@ namespace LABYRINTH_LINE_TYPE {
     };
 }
 
-struct Particle : public ofBaseApp {
+struct Particle{
     
     ofPolyline pathPolyLine;
     float movingFactor = 0;
@@ -33,9 +34,9 @@ struct Particle : public ofBaseApp {
 
 
 
-class Labyrinth {
+class Labyrinth : public SceneSetup {
     
-    public :
+public:
     
     Labyrinth();
     ~Labyrinth();
@@ -43,19 +44,14 @@ class Labyrinth {
     void setup();
     void update();
     void draw();
-
-    void keyReleased(int key);
-
-
-    void inputBaseArch(BaseArch &);
     
-    BaseArch * baseArchData;
-
+    void keyReleased(int key);
+    
     void initParticles(int _i);
     void drawParticles();
-
+    
     vector<Particle> particles;
-
+    
     int _oldType;
     
     

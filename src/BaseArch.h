@@ -23,7 +23,7 @@
 
 using namespace wng;
 
-class BaseArch : public ofBaseApp{
+class BaseArch {
     
 public:
     

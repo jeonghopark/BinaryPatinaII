@@ -23,9 +23,11 @@ public:
     
     void inputBaseArch(BaseArch & _baseArch);
     void inputFFTP(ProcessFFT & _processFFT);
+    void inputWebCam(ofVideoGrabber & _webCamHD);
 
     BaseArch * baseArch;
     ProcessFFT * processFFT;
+    ofVideoGrabber * webCamHD;
     
 };
 

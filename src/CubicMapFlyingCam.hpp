@@ -23,7 +23,7 @@
 #include "ofxJSON.h"
 
 
-class CubicMapFlyingCam: public ofBaseApp, public SceneSetup {
+class CubicMapFlyingCam : public SceneSetup {
     
 public:
     

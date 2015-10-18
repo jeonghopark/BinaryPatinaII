@@ -11,8 +11,9 @@
 #define MovingObjects_hpp
 
 #include "ofMain.h"
+#include "SceneSetup.hpp"
+
 #include "ofxJSON.h"
-#include "BaseArch.h"
 
 
 struct GuidID{
@@ -26,17 +27,13 @@ struct GuidID{
 };
 
 
-class MovingObjects : public ofBaseApp{
+class MovingObjects : public SceneSetup{
     
     public:
     
     MovingObjects();
     ~MovingObjects();
-    
-    BaseArch * baseArchData;
-
-    
-    void inputBaseArch(BaseArch &);
+        
     void setup();
     void update();
     void draw(ofColor _c = ofColor(255));

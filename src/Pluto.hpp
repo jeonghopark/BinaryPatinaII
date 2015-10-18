@@ -12,11 +12,10 @@
 #define Pluto_hpp
 
 #include "ofMain.h"
+#include "SceneSetup.hpp"
 
-#include "BaseArch.h"
 
-
-class Pluto : public ofBaseApp {
+class Pluto : public SceneSetup{
     
     public :
     
@@ -26,11 +25,7 @@ class Pluto : public ofBaseApp {
     void setup();
     void update();
     void draw();
-    
-    void inputBaseArch(BaseArch & _baseArch);
-
-    BaseArch * baseArchData;
-    
+        
     ofImage pluto;
     
     float xyScale;

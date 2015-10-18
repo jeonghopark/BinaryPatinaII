@@ -22,17 +22,11 @@ Labyrinth::~Labyrinth(){
 }
 
 
-//--------------------------------------------------------------
-void Labyrinth::inputBaseArch(BaseArch & _baseArch){
-    baseArchData = & _baseArch;
-}
-
 
 //--------------------------------------------------------------
 void Labyrinth::setup(){
     
     initParticles(LABYRINTH_LINE_TYPE::CURVE);
-    
     _oldType = LABYRINTH_LINE_TYPE::CURVE;
     
 }
@@ -114,12 +108,13 @@ void Labyrinth::initParticles(int _i){
                 }
                 
                 
+                ofVec2f _v;
                 if (_i == LABYRINTH_LINE_TYPE::LINE) {
-                    ofVec2f _vD = baseArchData->framesCenter[abs(_xIndex)%23][abs(_yIndex)%6];
-                    _p.addVertex( _vD );
+                    _v = baseArch->framesCenter[abs(_xIndex)%23][abs(_yIndex)%6];
+                    _p.addVertex(_v);
                 } else if (_i == LABYRINTH_LINE_TYPE::CURVE) {
-                    ofVec2f _vC = baseArchData->framesCenter[abs(_xIndex)%21+1][abs(_yIndex)%4+1];
-                    _p.curveTo(_vC);
+                    _v = baseArch->framesCenter[abs(_xIndex)%21+1][abs(_yIndex)%4+1];
+                    _p.curveTo(_v);
                 }
                 
                 

@@ -196,9 +196,9 @@ void KinectView::drawNightVision(){
     ofPushStyle();
     ofSetColor(0, 255, 0);
     
-    float _x = baseArchData->framesCenter[0][0].x;
-    float _y = baseArchData->framesCenter[0][0].y;
-    float _h = baseArchData->framesCenter[0][5].y - baseArchData->framesCenter[0][0].y;
+    float _x = baseArch->framesCenter[0][0].x;
+    float _y = baseArch->framesCenter[0][0].y;
+    float _h = baseArch->framesCenter[0][5].y - baseArch->framesCenter[0][0].y;
     float _w = _h * 400.0 / 300.0;
 
     //    contrastKinect.invert();
@@ -222,15 +222,6 @@ void KinectView::exit(){
 
     
 }
-
-
-//--------------------------------------------------------------
-void KinectView::inputBaseArch(BaseArch & _baseArch){
-    
-    baseArchData = & _baseArch;
-    
-}
-
 
 
 //--------------------------------------------------------------

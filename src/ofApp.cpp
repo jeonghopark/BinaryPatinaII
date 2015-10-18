@@ -37,12 +37,12 @@ void ofApp::setup(){
     glungeWinter.inputBaseArch( baseArch );
     glungeWinter.setup();
 
-    liveCamGlitch.inputBaseArch(baseArch);
+    liveCamGlitch.inputBaseArch( baseArch );
     liveCamGlitch.inputMidiInput(midiInput);
-    liveCamGlitch.inputCam(webCamHD);
+    liveCamGlitch.inputWebCam( webCamHD );
     liveCamGlitch.setup();
     
-    labyrinth.inputBaseArch(baseArch);
+    labyrinth.inputBaseArch( baseArch );
     labyrinth.setup();
     
     calligraphy.inputBaseArch( baseArch );
@@ -61,7 +61,7 @@ void ofApp::setup(){
     
     lineVideo.inputBaseArch( baseArch);
     lineVideo.setup();
-    lineVideo.inputCam(webCamHD);
+    lineVideo.inputWebCam( webCamHD );
 
     movingObjects.inputBaseArch( baseArch );
     movingObjects.setup();
@@ -71,7 +71,7 @@ void ofApp::setup(){
     webLiveCam.inputBaseArch( baseArch );
     webLiveCam.setup();
     
-    kinectView.inputBaseArch(baseArch);
+    kinectView.inputBaseArch( baseArch );
     kinectView.setup();
     
     
@@ -96,9 +96,9 @@ void ofApp::update(){
             webCamHD.close();
             webCamHD.setDeviceID(0);
             webCamHD.setup(1280,720);
-            liveCamGlitch.inputBaseArch(baseArch);
+            liveCamGlitch.inputBaseArch( baseArch );
             liveCamGlitch.inputMidiInput(midiInput);
-            liveCamGlitch.inputCam(webCamHD);
+            liveCamGlitch.inputWebCam( webCamHD );
             liveCamGlitch.glitchEffect.loadShader();
             liveCamGlitch.setup();
             liveCamGlitch.update();

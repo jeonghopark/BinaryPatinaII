@@ -20,21 +20,6 @@ LineVideo::~LineVideo(){
 }
 
 
-////--------------------------------------------------------------
-//void LineVideo::setupBaseArch(BaseArch & _baseArch){
-//    
-//    baseArch = & _baseArch;
-//
-//
-//}
-//
-//
-//--------------------------------------------------------------
-void LineVideo::inputCam(ofVideoGrabber & _c){
-    webCam = & _c;
-}
-
-
 //--------------------------------------------------------------
 void LineVideo::setup(){
     
@@ -53,12 +38,11 @@ void LineVideo::setup(){
 }
 
 
-
 //--------------------------------------------------------------
 void LineVideo::update(){
     
-    if (webCam->isFrameNew()){
-        colorImg.setFromPixels(webCam->getPixels());
+    if (webCamHD->isFrameNew()){
+        colorImg.setFromPixels(webCamHD->getPixels());
         colorImg.setROI(180,0,120,360);
         halfCam.setFromPixels( colorImg.getRoiPixels() );
         
@@ -68,7 +52,6 @@ void LineVideo::update(){
     }
     
 }
-
 
 
 //--------------------------------------------------------------

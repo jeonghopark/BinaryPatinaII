@@ -12,13 +12,13 @@
 #define KinectView_hpp
 
 #include "ofMain.h"
+
+#include "SceneSetup.hpp"
+
 #include "ofxOpenCv.h"
 #include "ofxKinect.h"
 
-#include "BaseArch.h"
-
-
-class KinectView : public ofBaseApp {
+class KinectView : public SceneSetup {
     
     public :
     
@@ -32,10 +32,6 @@ class KinectView : public ofBaseApp {
     
     void drawNightVision();
     void drawPointCloud();
-
-    void inputBaseArch(BaseArch &);
-
-    BaseArch * baseArchData;
     
     ofxKinect kinect;
 
@@ -45,9 +41,9 @@ class KinectView : public ofBaseApp {
     
     ofxCvColorImage colorImg;
     
-    ofxCvGrayscaleImage grayImage; // grayscale depth image
-    ofxCvGrayscaleImage grayThreshNear; // the near thresholded image
-    ofxCvGrayscaleImage grayThreshFar; // the far thresholded image
+    ofxCvGrayscaleImage grayImage;
+    ofxCvGrayscaleImage grayThreshNear;
+    ofxCvGrayscaleImage grayThreshFar;
     
     ofxCvContourFinder contourFinder;
 
@@ -60,7 +56,6 @@ class KinectView : public ofBaseApp {
     
     int angle;
     
-    // used for viewing the point cloud
     ofEasyCam easyCam;
     
     ofxCvGrayscaleImage contrastKinect;

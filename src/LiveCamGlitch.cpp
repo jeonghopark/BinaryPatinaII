@@ -22,20 +22,8 @@ LiveCamGlitch::~LiveCamGlitch(){
 
 
 //--------------------------------------------------------------
-void LiveCamGlitch::inputBaseArch(BaseArch & _baseArch){
-    baseArchData = & _baseArch;
-}
-
-
-//--------------------------------------------------------------
 void LiveCamGlitch::inputMidiInput(MidiInput & _midiInput){
     midiInput = & _midiInput;
-}
-
-
-//--------------------------------------------------------------
-void LiveCamGlitch::inputCam(ofVideoGrabber & _c){
-    webCam = & _c;
 }
 
 
@@ -54,10 +42,11 @@ void LiveCamGlitch::setup(){
     windowView.allocate(videoW, videoH);
     captureCam.allocate(videoW * 0.5, videoH);
     
-    float _w = baseArchData->fassadeCorner[1].x - baseArchData->fassadeCorner[0].x;
-    float _h = baseArchData->fassadeCorner[2].y - baseArchData->fassadeCorner[0].y;
+    float _w = baseArch->fassadeCorner[1].x - baseArch->fassadeCorner[0].x;
+    float _h = baseArch->fassadeCorner[2].y - baseArch->fassadeCorner[0].y;
     imgDirectGlitch.allocate(videoW, videoH, OF_IMAGE_COLOR);
     
+    glitchEffect.loadShader();
     glitchEffect.setup(&liveVideoFbo);
     
     bDirectglitch = false;
@@ -72,9 +61,9 @@ void LiveCamGlitch::setup(){
 //--------------------------------------------------------------
 void LiveCamGlitch::update(){
     
-    if (webCam->isFrameNew()){
+    if (webCamHD->isFrameNew()){
 
-        windowView.setFromPixels(webCam->getPixels());
+        windowView.setFromPixels(webCamHD->getPixels());
         windowView.setROI(640, 0, videoW * 0.5, videoH);
         captureCam.setFromPixels( windowView.getRoiPixels() );
 
@@ -83,8 +72,12 @@ void LiveCamGlitch::update(){
         captureCam.draw(0, 0);
         liveVideoFbo.end();
 
+
     }
-        
+    
+    
+    
+    
 //    glitchEffect.setFx(OFXPOSTGLITCH_CONVERGENCE, midiInput->drumPad[0]);
 //    glitchEffect.setFx(OFXPOSTGLITCH_GLOW, midiInput->drumPad[1]);
 //    glitchEffect.setFx(OFXPOSTGLITCH_SHAKER, midiInput->drumPad[2]);
@@ -93,7 +86,7 @@ void LiveCamGlitch::update(){
 //    glitchEffect.setFx(OFXPOSTGLITCH_NOISE, midiInput->drumPad[5]);
 //    glitchEffect.setFx(OFXPOSTGLITCH_SLITSCAN, midiInput->drumPad[6]);
 //    glitchEffect.setFx(OFXPOSTGLITCH_SWELL, midiInput->drumPad[7]);
-//
+
 }
 
 
@@ -112,8 +105,8 @@ void LiveCamGlitch::glitchUpdate(ofPixels _p) {
     
     imgDirectGlitch.setImageType(OF_IMAGE_COLOR);
     
-    float _w = baseArchData->fassadeCorner[1].x - baseArchData->fassadeCorner[0].x;
-    float _h = baseArchData->fassadeCorner[2].y - baseArchData->fassadeCorner[0].y;
+    float _w = baseArch->fassadeCorner[1].x - baseArch->fassadeCorner[0].x;
+    float _h = baseArch->fassadeCorner[2].y - baseArch->fassadeCorner[0].y;
     imgDirectGlitch.setFromPixels(_c, videoW, videoH, OF_IMAGE_COLOR);
     
     imgDirectGlitch.save(compressedFilename, quality);
@@ -154,16 +147,18 @@ void LiveCamGlitch::glitchUpdate(ofPixels _p) {
 void LiveCamGlitch::draw(){
     
     
-    webCam->draw(0, 0);
+    webCamHD->draw(0, 0);
     glitchEffect.generateFx();
     liveVideoFbo.draw(640, 0);  // 640 : 960
 
     if (bDirectglitch) {
-        float _w = baseArchData->fassadeCorner[1].x - baseArchData->fassadeCorner[0].x;
-        float _h = baseArchData->fassadeCorner[2].y - baseArchData->fassadeCorner[0].y;
-        float _x = baseArchData->fassadeCorner[0].x;
-        float _y = baseArchData->fassadeCorner[0].y;
+        float _w = baseArch->fassadeCorner[1].x - baseArch->fassadeCorner[0].x;
+        float _h = baseArch->fassadeCorner[2].y - baseArch->fassadeCorner[0].y;
+        float _x = baseArch->fassadeCorner[0].x;
+        float _y = baseArch->fassadeCorner[0].y;
         
+        glitchUpdate(webCamHD->getPixels());
+
         imgDirectGlitch.draw(_x, _y, _w, _h);
     }
 
@@ -217,7 +212,7 @@ void LiveCamGlitch::keyReleased(int key){
     if (key == 'y') glitchEffect.setFx(OFXPOSTGLITCH_CR_REDINVERT	, false);
     if (key == 'u') glitchEffect.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, false);
     
-//    if (key == ' ') baseArchData->keyInteraction(' ');
+//    if (key == ' ') baseArch->keyInteraction(' ');
     
 }
 

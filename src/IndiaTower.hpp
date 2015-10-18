@@ -14,10 +14,7 @@
 #include "ofMain.h"
 #include "SceneSetup.hpp"
 
-//#include "ofxProcessFFT.h"
-//#include "BaseArch.h"
-
-class IndiaTower : public ofBaseApp, public SceneSetup {
+class IndiaTower : public SceneSetup {
     
     public :
     
@@ -27,16 +24,10 @@ class IndiaTower : public ofBaseApp, public SceneSetup {
     void setup();
     void update();
     void draw();
-//    void inputBaseArch(BaseArch & _baseArch);
-//    void inputFFTP(ProcessFFT & _processFFT);
     
     void drawingRectColumn();
     void drawingNumber();
     void drawingBeziel();
-
-    
-//    BaseArch * baseArchData;
-//    ProcessFFT * processFFT;
 
     ofTrueTypeFont spectrumNumbers;
 

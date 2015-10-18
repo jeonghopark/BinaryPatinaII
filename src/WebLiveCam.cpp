@@ -12,24 +12,13 @@
 //--------------------------------------------------------------
 WebLiveCam::WebLiveCam(){
     
-    
 }
 
 
 //--------------------------------------------------------------
 WebLiveCam::~WebLiveCam(){
     
-    
 }
-
-
-//--------------------------------------------------------------
-void WebLiveCam::inputBaseArch(BaseArch & _baseArch){
-    
-    baseArchData = & _baseArch;
-    
-}
-
 
 
 //--------------------------------------------------------------
@@ -39,8 +28,8 @@ void WebLiveCam::setup(){
     webCam01.play();
     windowView.allocate(webCam01.getWidth(), webCam01.getHeight());
     
-    float _w = baseArchData->framesCenter[1][0].x - baseArchData->framesCenter[0][0].x;
-    float _h = baseArchData->framesCenter[0][1].y - baseArchData->framesCenter[0][0].y;
+    float _w = baseArch->framesCenter[1][0].x - baseArch->framesCenter[0][0].x;
+    float _h = baseArch->framesCenter[0][1].y - baseArch->framesCenter[0][0].y;
     
     windowsNum = 20;
     
@@ -49,16 +38,8 @@ void WebLiveCam::setup(){
         windowMovies[i].allocate(_w, _h);
     }
     
-    indexX.resize(windowsNum);
-    indexY.resize(windowsNum);
-    captureIndexX.resize(windowsNum);
-    captureIndexY.resize(windowsNum);
-    for (int i=0; i<windowMovies.size(); i++){
-        indexX[i] = floor( ofRandom(10) );
-        indexY[i] = floor( ofRandom(5) );
-        captureIndexX[i] = floor( ofRandom(10) );
-        captureIndexY[i] = floor( ofRandom(5) );
-    }
+    randomWindowsPosition();
+    
 
     
 }
@@ -67,7 +48,6 @@ void WebLiveCam::setup(){
 
 //--------------------------------------------------------------
 void WebLiveCam::update(){
-    
 
     webCam01.update();
     
@@ -75,8 +55,8 @@ void WebLiveCam::update(){
         
         windowView.setFromPixels(webCam01.getPixels());
         
-        float _w = baseArchData->framesCenter[1][0].x - baseArchData->framesCenter[0][0].x;
-        float _h = baseArchData->framesCenter[0][1].y - baseArchData->framesCenter[0][0].y;
+        float _w = baseArch->framesCenter[1][0].x - baseArch->framesCenter[0][0].x;
+        float _h = baseArch->framesCenter[0][1].y - baseArch->framesCenter[0][0].y;
         
         for (int i=0; i<windowsNum; i++){
             float _x = captureIndexX[i] * _w;
@@ -95,34 +75,39 @@ void WebLiveCam::update(){
 //--------------------------------------------------------------
 void WebLiveCam::draw(){
     
-    
     for (int i=0; i<windowsNum; i++){
-        windowMovies[i].draw( baseArchData->framesCenter[indexX[i]][indexY[i]] );
+        windowMovies[i].draw( baseArch->framesCenter[indexX[i]][indexY[i]] );
     }
     
-    float _mainX = baseArchData->framesCenter[11][0].x;
-    float _mainY = baseArchData->framesCenter[11][0].y;
-    float _mainW = baseArchData->framesCenter[22][0].x - baseArchData->framesCenter[11][0].x;
-    float _mainH = baseArchData->framesCenter[11][5].y - baseArchData->framesCenter[11][0].y;
+    float _mainX = baseArch->framesCenter[11][0].x;
+    float _mainY = baseArch->framesCenter[11][0].y;
+    float _mainW = baseArch->framesCenter[22][0].x - baseArch->framesCenter[11][0].x;
+    float _mainH = baseArch->framesCenter[11][5].y - baseArch->framesCenter[11][0].y;
     windowView.draw(_mainX, _mainY, _mainW, _mainH);
 
 }
 
 
-
 //--------------------------------------------------------------
-void WebLiveCam::keyReleased(int key){
+void WebLiveCam::randomWindowsPosition(){
     
     indexX.resize(windowsNum);
     indexY.resize(windowsNum);
     captureIndexX.resize(windowsNum);
     captureIndexY.resize(windowsNum);
-    for (int i=0; i<windowsNum; i++){
+    for (int i=0; i<windowMovies.size(); i++){
         indexX[i] = floor( ofRandom(10) );
         indexY[i] = floor( ofRandom(5) );
         captureIndexX[i] = floor( ofRandom(10) );
         captureIndexY[i] = floor( ofRandom(5) );
     }
+
+}
+
+//--------------------------------------------------------------
+void WebLiveCam::keyReleased(int key){
+    
+    randomWindowsPosition();
     
 }
 

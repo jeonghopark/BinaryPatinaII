@@ -12,6 +12,9 @@
 #define MoonCreator_hpp
 
 #include "ofMain.h"
+
+#include "SceneSetup.hpp"
+
 #include "ofxImmediateModeInput.h"
 #include "ofxFirstPersonCamera.h"
 
@@ -46,7 +49,7 @@ typedef struct{
 
 
 
-class MoonCreator : public ofBaseApp{
+class MoonCreator : public SceneSetup{
     
 public:
     

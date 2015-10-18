@@ -15,8 +15,6 @@
 #include "SceneSetup.hpp"
 
 #include "ofxOpenCv.h"
-#include "BaseArch.h"
-
 
 
 class LineVideo: public SceneSetup {
@@ -32,16 +30,9 @@ class LineVideo: public SceneSetup {
     void drawStartPoints();
     void drawLines();
     void drawColorNumber();
-    
-//    void setupBaseArch(BaseArch & _baseArch);
-    void inputCam(ofVideoGrabber & _c);
-    
+        
     void drawWindows();
     
-//    BaseArch * baseArch;
-    ofVideoGrabber * webCam;
-    
-//    ofVideoGrabber cam;
     ofImage halfCam;
 
     ofxCvColorImage colorImg;

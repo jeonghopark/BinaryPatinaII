@@ -25,16 +25,6 @@ Pluto::~Pluto(){
 }
 
 
-
-//--------------------------------------------------------------
-void Pluto::inputBaseArch(BaseArch & _baseArch){
-    
-    baseArchData = & _baseArch;
-    
-}
-
-
-
 //--------------------------------------------------------------
 void Pluto::setup(){
     

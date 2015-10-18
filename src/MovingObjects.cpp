@@ -26,15 +26,6 @@ MovingObjects::~MovingObjects(){
 
 
 //--------------------------------------------------------------
-void MovingObjects::inputBaseArch(BaseArch & _baseArch){
-    
-    baseArchData = & _baseArch;
-    
-}
-
-
-
-//--------------------------------------------------------------
 void MovingObjects::setup(){
     
     
@@ -43,8 +34,8 @@ void MovingObjects::setup(){
         ofPolyline _p;
         for (int j=0; j<23; j++) {
             ofVec2f _v;
-            float _x = baseArchData->framesCenter[j][i/2].x;
-            float _y = baseArchData->framesCenter[j][i/2].y + (i%2 * 7 - 7);
+            float _x = baseArch->framesCenter[j][i/2].x;
+            float _y = baseArch->framesCenter[j][i/2].y + (i%2 * 7 - 7);
             _v = ofVec2f(_x, _y);
             _p.addVertex(_v);
         }
@@ -66,8 +57,8 @@ void MovingObjects::setup(){
         ofPolyline _p;
         for (int j=0; j<23; j++) {
             ofVec2f _v;
-            float _x = baseArchData->framesCenter[j][i].x;
-            float _y = baseArchData->framesCenter[j][i].y;
+            float _x = baseArch->framesCenter[j][i].x;
+            float _y = baseArch->framesCenter[j][i].y;
             _v = ofVec2f(_x, _y);
             _p.addVertex(_v);
         }

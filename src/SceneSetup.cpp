@@ -8,6 +8,8 @@
 
 #include "SceneSetup.hpp"
 
+
+//--------------------------------------------------------------
 void SceneSetup::inputBaseArch(BaseArch & _baseArch){
     
     baseArch = & _baseArch;
@@ -15,8 +17,21 @@ void SceneSetup::inputBaseArch(BaseArch & _baseArch){
 }
 
 
+//--------------------------------------------------------------
 void SceneSetup::inputFFTP(ProcessFFT & _processFFT){
     
     processFFT = & _processFFT;
 
 }
+
+
+//--------------------------------------------------------------
+void SceneSetup::inputWebCam(ofVideoGrabber & _webCamHD){
+    
+    webCamHD = & _webCamHD;
+    
+}
+
+
+
+

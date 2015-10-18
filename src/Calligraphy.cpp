@@ -28,22 +28,8 @@ Calligraphy::~Calligraphy(){
 
 //--------------------------------------------------------------
 void Calligraphy::setup(){
- 
-    baseArch = SceneSetup::baseArch;
-    processFFT = SceneSetup::processFFT;
     
 }
-
-
-////--------------------------------------------------------------
-//void Calligraphy::inputFFTP(ProcessFFT & _processFFT){
-//    processFFT = & _processFFT;
-//}
-
-////--------------------------------------------------------------
-//void Calligraphy::inputBaseArch(BaseArch & _baseArch){
-//    baseArch = & _baseArch;
-//}
 
 
 //--------------------------------------------------------------

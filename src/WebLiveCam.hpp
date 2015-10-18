@@ -12,11 +12,12 @@
 #define WebLiveCam_hpp
 
 #include "ofMain.h"
+
+#include "SceneSetup.hpp"
+
 #include "ofxOpenCv.h"
 
-#include "BaseArch.h"
-
-class WebLiveCam : public ofBaseApp{
+class WebLiveCam : public SceneSetup {
     
 public:
     
@@ -27,12 +28,10 @@ public:
     void update();
     void draw();
     
+    void randomWindowsPosition();
+    
     void keyReleased(int key);
     
-    void inputBaseArch(BaseArch &);
-    
-    BaseArch * baseArchData;
-
     ofVideoPlayer webCam01;
 
     ofxCvColorImage windowView;
@@ -43,6 +42,8 @@ public:
     vector<int> captureIndexY;
     
     int windowsNum;
+    
+    
 
 };
 

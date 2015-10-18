@@ -26,7 +26,7 @@
 #include "KinectView.hpp"
 
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp {
     
 public:
     void setup();
@@ -45,14 +45,11 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    
-    ofxFontStash font;
-    
-    MidiInput midiInput;
-
-    ofVideoGrabber webCamHD;
-
     shared_ptr<GuiApp> gui;
+
+    ofxFontStash font;
+    MidiInput midiInput;
+    ofVideoGrabber webCamHD;
 
     BaseArch baseArch;
     
