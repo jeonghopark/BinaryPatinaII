@@ -3,12 +3,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    
-    ofEnableAlphaBlending();
     ofSetFrameRate( 60 );
     ofBackground( 0 );
-    
-    //    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
     mainOffSetXPos = (ofGetWidth() - (baseArch.fassadeCorner[0].x + baseArch.fassadeCorner[1].x)) * 0.5;
     mainOffSetYPos = (ofGetHeight() - (baseArch.fassadeCorner[0].y + baseArch.fassadeCorner[3].y)) * 0.5;
@@ -17,22 +13,29 @@ void ofApp::setup(){
     baseArch.mainOffSetYPos = mainOffSetYPos;
     
 
+    
+    font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
+    font.addFont("VeraMono-Bold.ttf");
+    
     nBandsToGet = 32 * 2;
     
     fft.fft.stream.setDeviceID(2);
     fft.setup();
-    fft.fft.setup(16384);
+    fft.fft.setup(16384 * 0.5);
     fft.setNumFFTBins(nBandsToGet);
     fft.setFFTpercentage(0.9);
     
     midiInput.setup();
 
-    
-    webCamHD.setDeviceID(1);
+    webCamHD.setDeviceID(0);
     webCamHD.setup(1280,720);
     
 
-    glungeWinter.inputBaseArch(baseArch);
+    
+    baseArch.inputFont( font );
+
+    glungeWinter.inputBaseArch( baseArch );
+    glungeWinter.setup();
 
     liveCamGlitch.inputBaseArch(baseArch);
     liveCamGlitch.inputMidiInput(midiInput);
@@ -44,9 +47,11 @@ void ofApp::setup(){
     
     calligraphy.inputBaseArch( baseArch );
     calligraphy.inputFFTP( fft );
-    
+    calligraphy.setup();
+
     indiaTower.inputBaseArch( baseArch );
     indiaTower.inputFFTP( fft );
+    indiaTower.setup();
     
     trierFlyingCam.setup();
     
@@ -54,8 +59,8 @@ void ofApp::setup(){
     
     moonCreator.setup();
     
+    lineVideo.inputBaseArch( baseArch);
     lineVideo.setup();
-    lineVideo.setupBaseArch(baseArch);
     lineVideo.inputCam(webCamHD);
 
     movingObjects.inputBaseArch( baseArch );
@@ -79,21 +84,27 @@ void ofApp::update(){
     midiInput.update();
     midiInput.drumPadOutput();
     
-    if (gui->ResetShader) {
-        webCamHD.close();
-        webCamHD.setDeviceID(1);
+    if (gui->webcamOn) {
+        webCamHD.setDeviceID(0);
         webCamHD.setup(1280,720);
-        liveCamGlitch.inputBaseArch(baseArch);
-        liveCamGlitch.inputMidiInput(midiInput);
-        liveCamGlitch.inputCam(webCamHD);
-        liveCamGlitch.glitchEffect.loadShader();
-        liveCamGlitch.setup();
-        liveCamGlitch.update();
-        liveCamGlitch.draw();
     }
     
     if (gui->OnOff_LiveCamGlitch) {
         liveCamGlitch.update();
+        
+        if (gui->ResetShader) {
+            webCamHD.close();
+            webCamHD.setDeviceID(0);
+            webCamHD.setup(1280,720);
+            liveCamGlitch.inputBaseArch(baseArch);
+            liveCamGlitch.inputMidiInput(midiInput);
+            liveCamGlitch.inputCam(webCamHD);
+            liveCamGlitch.glitchEffect.loadShader();
+            liveCamGlitch.setup();
+            liveCamGlitch.update();
+            liveCamGlitch.draw();
+        }
+
     }
     
     if (gui->OnOff_Labyrinth) {
@@ -104,6 +115,7 @@ void ofApp::update(){
     if (gui->OnOff_Calligraphy) {
         fft.update();
         calligraphy.update();
+        calligraphy.fftValue = gui->fftSize;
     }
 
     if (gui->OnOff_Pluto) {
@@ -145,8 +157,6 @@ void ofApp::update(){
     if (gui->OnOff_NightVision) {
         kinectView.update();
     }
-
-
     
 }
 
@@ -290,11 +300,15 @@ void ofApp::drawBaseArch(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     
+    liveCamGlitch.keyPressed(key);
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     
+    liveCamGlitch.keyReleased(key);
+
     baseArch.keyInteraction(key);
     
     labyrinth.keyReleased(key);
@@ -305,6 +319,9 @@ void ofApp::keyReleased(int key){
         baseArch.setupDefault();
     }
     
+    if (key == ' ') {
+        indiaTower.setup();
+    }
 
 }
 

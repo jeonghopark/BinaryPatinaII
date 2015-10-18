@@ -12,12 +12,6 @@
 //--------------------------------------------------------------
 IndiaTower::IndiaTower(){
     
-    ofTrueTypeFont::setGlobalDpi(72);
-    
-    spectrumNumbers.load("verdana.ttf", 12);
-    //    spectrumNumbers.setSpaceSize(40);
-    spectrumNumbers.setLineHeight(15.0f);
-    spectrumNumbers.setLetterSpacing(1.2);
 
     
 }
@@ -26,7 +20,6 @@ IndiaTower::IndiaTower(){
 //--------------------------------------------------------------
 IndiaTower::~IndiaTower(){
     
-    
 }
 
 
@@ -34,7 +27,16 @@ IndiaTower::~IndiaTower(){
 //--------------------------------------------------------------
 void IndiaTower::setup(){
     
+    spectrumNumbers.setGlobalDpi(72);
     
+    spectrumNumbers.load("verdana.ttf", 12);
+    //    spectrumNumbers.setSpaceSize(40);
+    spectrumNumbers.setLineHeight(15.0f);
+    spectrumNumbers.setLetterSpacing(1.2);
+    
+//    baseArch = baseArch;
+//    processFFT = SceneSetup::processFFT;
+
 }
 
 
@@ -46,21 +48,20 @@ void IndiaTower::update(){
     
 }
 
-//--------------------------------------------------------------
-void IndiaTower::inputFFTP(ProcessFFT & _processFFT){
-    
-    processFFT = & _processFFT;
-    
-}
-
-
-
-//--------------------------------------------------------------
-void IndiaTower::inputBaseArch(BaseArch & _baseArch){
-    
-    baseArchData = & _baseArch;
-    
-}
+////--------------------------------------------------------------
+//void IndiaTower::inputFFTP(ProcessFFT & _processFFT){
+//    
+//    processFFT = & _processFFT;
+//    
+//}
+//
+//
+////--------------------------------------------------------------
+//void IndiaTower::inputbaseArch(BaseArch & _baseArch){
+//    
+//    baseArch = & _baseArch;
+//    
+//}
 
 
 //--------------------------------------------------------------
@@ -87,7 +88,7 @@ void IndiaTower::drawingRectColumn(){
         
         
         float _numberIndex = _inputBins.size();
-        float _heightFassade = baseArchData->fassadeCorner[3].y - baseArchData->fassadeCorner[0].y;
+        float _heightFassade = baseArch->fassadeCorner[3].y - baseArch->fassadeCorner[0].y;
         float _rectHeight = _heightFassade / _numberIndex * _tY;
         
         ofPushStyle();
@@ -99,10 +100,10 @@ void IndiaTower::drawingRectColumn(){
             float _hue = ofMap( i, 0, _numberIndex, 0, 255 );
             ofSetColor( ofColor::fromHsb(_hue, 255, 255, 60));
             
-            float _center = baseArchData->framesCenter[11][0].x;
+            float _center = baseArch->framesCenter[11][0].x;
             float _widthRightRect = _inputBins[i] * 10000;
             float _widthLeftRect = -_inputBins[i] * 10000;
-            float _indexPosY = baseArchData->fassadeCorner[3].y - _rectHeight * i - _rectHeight;
+            float _indexPosY = baseArch->fassadeCorner[3].y - _rectHeight * i - _rectHeight;
             
             ofDrawLine( _center, _indexPosY, _center + _widthRightRect, _indexPosY );
             ofDrawLine( _center, _indexPosY, _center + _widthLeftRect, _indexPosY );
@@ -115,7 +116,7 @@ void IndiaTower::drawingRectColumn(){
         if (processFFT->getSpectrum().size()>0) {
             bezielStart.resize(processFFT->getSpectrum().size());
             
-            float _center = baseArchData->framesCenter[11][0].x;
+            float _center = baseArch->framesCenter[11][0].x;
             
             for (int i=0; i<bezielStart.size(); i++) {
                 
@@ -123,7 +124,7 @@ void IndiaTower::drawingRectColumn(){
                 
                 float _widthRightRect = _inputBins[i*_indexShift] * 10000;
                 float _widthLeftRect = -_inputBins[i*_indexShift] * 10000;
-                float _indexPosY = baseArchData->fassadeCorner[3].y - _rectHeight * i *_indexShift - _rectHeight;
+                float _indexPosY = baseArch->fassadeCorner[3].y - _rectHeight * i *_indexShift - _rectHeight;
                 
                 ofVec2f _v = ofVec2f(_widthLeftRect + _center, _indexPosY);
                 bezielStart[i] = _v;
@@ -149,25 +150,26 @@ void IndiaTower::drawingNumber(){
         vector<float> _inputSpectrum = processFFT->getSpectrum();
         
         float _numberIndex = _inputSpectrum.size();
-        float _heightFassade = baseArchData->fassadeCorner[3].y - baseArchData->fassadeCorner[0].y;
+        float _heightFassade = baseArch->fassadeCorner[3].y - baseArch->fassadeCorner[0].y;
         float _rectHeight = _heightFassade / _numberIndex;
         
         bezielEnd.resize(processFFT->getSpectrum().size());
         
         
+        ofEnableAlphaBlending();
+
         ofPushStyle();
         
-        ofNoFill();
         
-        float _center = baseArchData->framesCenter[11][0].x;
+        float _center = baseArch->framesCenter[11][0].x;
         
         for (int i=0; i<_numberIndex; i++) {
             
             float _widthRightRect = _inputSpectrum[i] * 1;
             float _widthLeftRect = -_inputSpectrum[i] * 1;
-            float _indexPosY = baseArchData->fassadeCorner[3].y - _rectHeight * i;
-            float _indexPosLeftX = baseArchData->fassadeCorner[0].x;
-            float _indexPosRightX = baseArchData->fassadeCorner[1].x;
+            float _indexPosY = baseArch->fassadeCorner[3].y - _rectHeight * i;
+            float _indexPosLeftX = baseArch->fassadeCorner[0].x;
+            float _indexPosRightX = baseArch->fassadeCorner[1].x;
             
             float _hue = ofMap( i, 0, _numberIndex, 0, 255 );
             ofSetColor( ofColor::fromHsb(_hue, 255, 255, 180));
@@ -182,11 +184,12 @@ void IndiaTower::drawingNumber(){
             
             ofVec2f _v = ofVec2f(_indexPosLeftX + _w, _indexPosY);
             bezielEnd[i] = _v;
-            
+    
         }
         
-        
         ofPopStyle();
+
+        ofDisableAlphaBlending();
 
     }
     
@@ -203,12 +206,12 @@ void IndiaTower::drawingBeziel(){
     
     vector<float> _inputBins = processFFT->fft.getBins();
     float _numberIndexBins = _inputBins.size();
-    float _heightFassadeBins = baseArchData->fassadeCorner[3].y - baseArchData->fassadeCorner[0].y;
+    float _heightFassadeBins = baseArch->fassadeCorner[3].y - baseArch->fassadeCorner[0].y;
     float _rectHeightBins = _heightFassadeBins / _numberIndexBins;
     
     vector<float> _inputSpectrum = processFFT->getSpectrum();
     float _numberIndexSpectrum = _inputSpectrum.size();
-    float _heightFassadeSpectrum = baseArchData->fassadeCorner[3].y - baseArchData->fassadeCorner[0].y;
+    float _heightFassadeSpectrum = baseArch->fassadeCorner[3].y - baseArch->fassadeCorner[0].y;
     float _rectHeightSpectrum = _heightFassadeSpectrum / _numberIndexSpectrum;
     
     
@@ -216,7 +219,7 @@ void IndiaTower::drawingBeziel(){
     
     ofNoFill();
     
-    float _center = baseArchData->framesCenter[11][0].x;
+    float _center = baseArch->framesCenter[11][0].x;
     
     if (bezielStart.size()>0) {
         for (int i=0; i<bezielStart.size(); i++) {

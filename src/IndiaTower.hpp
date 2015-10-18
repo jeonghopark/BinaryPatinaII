@@ -12,11 +12,12 @@
 #define IndiaTower_hpp
 
 #include "ofMain.h"
-#include "ofxProcessFFT.h"
+#include "SceneSetup.hpp"
 
-#include "BaseArch.h"
+//#include "ofxProcessFFT.h"
+//#include "BaseArch.h"
 
-class IndiaTower : public ofBaseApp {
+class IndiaTower : public ofBaseApp, public SceneSetup {
     
     public :
     
@@ -26,16 +27,16 @@ class IndiaTower : public ofBaseApp {
     void setup();
     void update();
     void draw();
-    void inputBaseArch(BaseArch & _baseArch);
-    void inputFFTP(ProcessFFT & _processFFT);
+//    void inputBaseArch(BaseArch & _baseArch);
+//    void inputFFTP(ProcessFFT & _processFFT);
     
     void drawingRectColumn();
     void drawingNumber();
     void drawingBeziel();
 
     
-    BaseArch * baseArchData;
-    ProcessFFT * processFFT;
+//    BaseArch * baseArchData;
+//    ProcessFFT * processFFT;
 
     ofTrueTypeFont spectrumNumbers;
 

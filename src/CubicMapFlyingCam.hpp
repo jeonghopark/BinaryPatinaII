@@ -12,6 +12,9 @@
 #define CubicMapFlyingCam_hpp
 
 #include "ofMain.h"
+
+#include "SceneSetup.hpp"
+
 #include "ofxImmediateModeInput.h"
 #include "ofxFirstPersonCamera.h"
 #include "FeatureNode.h"
@@ -20,7 +23,7 @@
 #include "ofxJSON.h"
 
 
-class CubicMapFlyingCam : public ofBaseApp{
+class CubicMapFlyingCam: public ofBaseApp, public SceneSetup {
     
 public:
     

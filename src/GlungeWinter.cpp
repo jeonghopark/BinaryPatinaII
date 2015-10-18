@@ -17,18 +17,17 @@ GlungeWinter::~GlungeWinter() {
 //--------------------------------------------------------------
 void GlungeWinter::setup(){
 
-    
-    
-}
-
-
-//--------------------------------------------------------------
-void GlungeWinter::inputBaseArch(BaseArch & _baseArch){
-    
-    baseArchData = & _baseArch;
+    baseArchData = baseArch;
     
 }
 
+
+////--------------------------------------------------------------
+//void GlungeWinter::inputbaseArch(baseArch & _baseArch){
+//    
+//    baseArchData = & _baseArch;
+//    
+//}
 
 
 //--------------------------------------------------------------

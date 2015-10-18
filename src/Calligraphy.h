@@ -12,11 +12,13 @@
 #define __MusicFFT_score__Calligraphy__
 
 #include "ofMain.h"
+#include "SceneSetup.hpp"
+
 #include "ofxProcessFFT.h"
 
 #include "BaseArch.h"
 
-class Calligraphy{
+class Calligraphy: public ofBaseApp, public SceneSetup {
     
     vector<float> captureFFTSmoothed;
     vector<int> captureFFTIndex;
@@ -32,11 +34,12 @@ public :
     
     void setup();
     void update();
-    void inputBaseArch(BaseArch & _baseArch);
-    void inputFFTP(ProcessFFT & _processFFT);
+//    void inputBaseArch(BaseArch & _baseArch);
+//    void inputFFTP(ProcessFFT & _processFFT);
+    
     void inputFftSmoothed(vector<float> );
     void draw();
-    void drawElement(float _xPos, float _yPos, int _h);
+    void drawElement(float _xPos, float _yPos, int _h, float _size);
     
     BaseArch * baseArch;
     ProcessFFT * processFFT;
@@ -46,6 +49,8 @@ public :
     int calliYShift;
     bool bClliXPosChange;
     int calliIndex;
+    
+    float fftValue;
 
     
     

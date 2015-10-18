@@ -18,18 +18,23 @@ BaseArch::BaseArch(){
 
 }
 
+
 //--------------------------------------------------------------
 BaseArch::~BaseArch(){
-    
+
 }
 
 
+//--------------------------------------------------------------
+void BaseArch::inputFont(ofxFontStash & _f){
+    font = & _f;
+}
 
 //--------------------------------------------------------------
 void BaseArch::setupDefault(){
         
-    font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
-    font.addFont("VeraMono-Bold.ttf");
+//    font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
+//    font.addFont("VeraMono-Bold.ttf");
 
     float _sizeRatio = 1; // 1.5 : 1
     
@@ -42,8 +47,6 @@ void BaseArch::setupDefault(){
     fassadeCorner[3] = ofVec2f( ofToFloat(csv.data[31][0]), ofToFloat(csv.data[31][1]) ) * _sizeRatio;
 
 
-    
-    
     for (int j=0; j<110; j++) {
         for (int i=0; i<4; i++) {
             float _x = ofToFloat(csv.data[j+54][i*2]) * _sizeRatio;
@@ -108,8 +111,6 @@ void BaseArch::setupDefault(){
 }
 
 
-
-
 //--------------------------------------------------------------
 void BaseArch::guideFrames(ofColor _c){
     
@@ -163,13 +164,11 @@ void BaseArch::guideFrames(ofColor _c){
     ofPopStyle();
     ofPopMatrix();
     
-    
 }
 
 
 //--------------------------------------------------------------
 void BaseArch::guideLines(ofColor _c){
-    
     
     ofPushMatrix();
     
@@ -210,15 +209,11 @@ void BaseArch::guideLines(ofColor _c){
     
     ofPopMatrix();
     
-    
-    
 }
-
 
 
 //--------------------------------------------------------------
 void BaseArch::guidePoints(ofColor _c){
-    
     
     int _size = 3;
     
@@ -230,10 +225,8 @@ void BaseArch::guidePoints(ofColor _c){
     
     for (int i=0; i<110; i++) {
         for (int j=0; j<4; j++) {
-            
             float _xS = windowsCorner[i][j].x;
             float _yS = windowsCorner[i][j].y;
-            
             ofDrawCircle( _xS, _yS, _size );
         }
     }
@@ -242,10 +235,8 @@ void BaseArch::guidePoints(ofColor _c){
 
     for (int i=0; i<23; i++) {
         for (int j=0; j<6; j++) {
-            
             float _xS = framesCenter[i][j].x;
             float _yS = framesCenter[i][j].y;
-            
             ofDrawCircle( _xS, _yS, _size );
         }
     }
@@ -259,7 +250,6 @@ void BaseArch::guidePoints(ofColor _c){
     ofPopStyle();
     
     ofPopMatrix();
-    
     
 }
 
@@ -275,10 +265,8 @@ void BaseArch::guideCrossPoints(ofColor _c, float _size){
     
     for (int i=0; i<110; i++) {
         for (int j=0; j<4; j++) {
-            
             float _xS = windowsCorner[i][j].x;
             float _yS = windowsCorner[i][j].y;
-            
             ofDrawLine( _xS - _size, _yS, _xS + _size, _yS );
             ofDrawLine( _xS, _yS - _size, _xS, _yS + _size );
         }
@@ -288,10 +276,8 @@ void BaseArch::guideCrossPoints(ofColor _c, float _size){
     
     for (int i=0; i<23; i++) {
         for (int j=0; j<6; j++) {
-            
             float _xS = framesCenter[i][j].x;
             float _yS = framesCenter[i][j].y;
-            
             ofDrawLine( _xS - _size, _yS, _xS + _size, _yS );
             ofDrawLine( _xS, _yS - _size, _xS, _yS + _size );
         }
@@ -303,7 +289,6 @@ void BaseArch::guideCrossPoints(ofColor _c, float _size){
         float _yS = fassadeCorner[i].y;
         ofDrawLine( _xS - _size, _yS, _xS + _size, _yS );
         ofDrawLine( _xS, _yS - _size, _xS, _yS + _size );
-
     }
     
     ofPopStyle();
@@ -312,7 +297,6 @@ void BaseArch::guideCrossPoints(ofColor _c, float _size){
     
     
 }
-
 
 
 //--------------------------------------------------------------
@@ -361,9 +345,10 @@ void BaseArch::drawPointNumber( ofColor _c ){
     
     ofPushMatrix();
     
+    ofEnableAlphaBlending();
+
     ofPushStyle();
     
-    ofEnableAlphaBlending();
     
     ofSetColor(_c);
     
@@ -382,14 +367,11 @@ void BaseArch::drawPointNumber( ofColor _c ){
     
     for (int i=0; i<23; i++) {
         for (int j=0; j<6; j++) {
-            
             float _xS = framesCenter[i][j].x;
             float _yS = framesCenter[i][j].y;
-         
             string _s = ofToHex(&windowsCornerNumber[i+j]);
             string _sS = ofToString(windowsCornerNumber[i+j], 4);
-            font.draw(ofToString(windowsCornerNumber[i+j]), 14, _xS, _yS + 6);
-
+            font->draw(ofToString(windowsCornerNumber[i+j]), 14, _xS, _yS + 6);
         }
     }
     
@@ -402,10 +384,11 @@ void BaseArch::drawPointNumber( ofColor _c ){
 //
 //    }
     
-    ofDisableBlendMode();
     
     ofPopStyle();
-    
+
+    ofDisableBlendMode();
+
     ofPopMatrix();
     
     
@@ -460,7 +443,7 @@ void BaseArch::keyInteraction(int key){
     if (key == ' ') {
         randomNumberGenerator();
     }
-    
+        
 }
 
 

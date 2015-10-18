@@ -41,7 +41,9 @@ public:
     
     void randomNumberGenerator();
     
-    ofxFontStash font;
+    ofxFontStash * font;
+    void inputFont(ofxFontStash & _f);
+    
     
     void keyInteraction(int key);
     

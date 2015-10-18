@@ -13,17 +13,18 @@ void GuiApp::setup(){
     main.setName("parameters");
     main.setPosition(10, 10);
     main.add(FrameRate.set("FrameRate", ""));
-    main.add(color_Windows.set("Color Windows", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(webcamOn.setup("Web Cam On / Off", false));
+    main.add(color_Windows.set("Color Windows", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Windows.set("OnOff Windows", false));
-    main.add(color_Frames.set("Color Frames", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(color_Frames.set("Color Frames", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Frames.set("OnOff Frames", false));
-    main.add(color_Lines.set("Color Lines", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(color_Lines.set("Color Lines", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Lines.set("OnOff Lines", false));
-    main.add(color_Points.set("Color Points", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(color_Points.set("Color Points", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Points.set("OnOff Points", false));
-    main.add(color_Cross.set("Color Cross", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(color_Cross.set("Color Cross", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Cross.set("OnOff Cross", false));
-    main.add(color_Numbers.set("Color Numbers", ofColor(255,0,0,0), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    main.add(color_Numbers.set("Color Numbers", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Numbers.set("OnOff Numbers", false));
 
     glungeWinter.setup();
@@ -47,6 +48,7 @@ void GuiApp::setup(){
     calligraphy.setName("Calligraphy");
     calligraphy.setPosition(220, 420);
     calligraphy.add( OnOff_Calligraphy.set("On/Off", false) );
+    calligraphy.add( fftSize.setup("FFT Size", 1, 0, 2));
 
     pluto.setup();
     pluto.setName("Pluto");

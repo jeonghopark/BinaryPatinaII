@@ -2,7 +2,10 @@
 
 #include "ofMain.h"
 #include "GuiApp.h"
+
 #include "BaseArch.h"
+
+#include "ofxFontStash.h"
 
 #include "ofxProcessFFT.h"
 #include "MidiInput.hpp"
@@ -43,14 +46,15 @@ public:
     void gotMessage(ofMessage msg);
     
     
+    ofxFontStash font;
+    
     MidiInput midiInput;
 
     ofVideoGrabber webCamHD;
 
     shared_ptr<GuiApp> gui;
-    
+
     BaseArch baseArch;
-    
     
     GlungeWinter glungeWinter;
     LiveCamGlitch liveCamGlitch;

@@ -11,43 +11,38 @@
 //--------------------------------------------------------------
 LineVideo::LineVideo(){
     
-    
 }
 
 
 //--------------------------------------------------------------
 LineVideo::~LineVideo(){
     
-    
 }
 
 
-//--------------------------------------------------------------
-void LineVideo::setupBaseArch(BaseArch & _baseArch){
-    
-    baseArch = & _baseArch;
-
-    float _h = baseArch->fassadeCorner[3].y - baseArch->fassadeCorner[0].y;
-    for (int i=0; i<startLineColors.size(); i++) {
-        controlPosY[i] = ofRandom(_h);
-    }
-
-
-}
-
-
+////--------------------------------------------------------------
+//void LineVideo::setupBaseArch(BaseArch & _baseArch){
+//    
+//    baseArch = & _baseArch;
+//
+//
+//}
+//
+//
 //--------------------------------------------------------------
 void LineVideo::inputCam(ofVideoGrabber & _c){
-    
     webCam = & _c;
-    
 }
 
 
 //--------------------------------------------------------------
 void LineVideo::setup(){
-
     
+    float _h = baseArch->fassadeCorner[3].y - baseArch->fassadeCorner[0].y;
+    for (int i=0; i<startLineColors.size(); i++) {
+        controlPosY[i] = ofRandom(_h);
+    }
+
     colorImg.allocate(480, 360);
     
     //    halfCam.allocate( 480, 360, OF_IMAGE_COLOR );
@@ -55,7 +50,6 @@ void LineVideo::setup(){
     startLineColors.resize( 120 );
     controlPosY.resize( 120 );
 
-    
 }
 
 
@@ -63,17 +57,15 @@ void LineVideo::setup(){
 //--------------------------------------------------------------
 void LineVideo::update(){
     
-    
-    colorImg.setFromPixels(webCam->getPixels());
-    colorImg.setROI(180,0,120,360);
-    halfCam.setFromPixels( colorImg.getRoiPixels() );
-    
-    for (int i=0; i<startLineColors.size(); i++) {
-        startLineColors[i] = halfCam.getColor(i * 120 * 3 * 3 + 359 * 3);
+    if (webCam->isFrameNew()){
+        colorImg.setFromPixels(webCam->getPixels());
+        colorImg.setROI(180,0,120,360);
+        halfCam.setFromPixels( colorImg.getRoiPixels() );
+        
+        for (int i=0; i<startLineColors.size(); i++) {
+            startLineColors[i] = halfCam.getColor(i * 120 * 3 * 3 + 359 * 3);
+        }
     }
-    
-    
-
     
 }
 
@@ -112,7 +104,6 @@ void LineVideo::drawStartPoints(){
         
     }
 
-    
 }
 
 
@@ -185,9 +176,6 @@ void LineVideo::drawColorNumber(){
 
 //--------------------------------------------------------------
 void LineVideo::drawWindows(){
-    
-    
-    
     
 }
 

@@ -1,14 +1,15 @@
 #pragma once
 
-#ifndef __binarypatina__sceneSketch2__
-#define __binarypatina__sceneSketch2__
+#ifndef __GlungeWinter__
+#define __GlungeWinter__
 
 
 #include "ofMain.h"
 
+#include "SceneSetup.hpp"
 #include "BaseArch.h"
 
-class GlungeWinter : public ofBaseApp {
+class GlungeWinter : public ofBaseApp, public SceneSetup {
     
     
 public:
@@ -25,8 +26,7 @@ public:
     void drawVertical();
     void drawHorizon();
  
-    void inputBaseArch(BaseArch &);
-
+//    void inputBaseArch(BaseArch &);
     BaseArch * baseArchData;
     
     ofImage grungeTexture;

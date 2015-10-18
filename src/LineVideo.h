@@ -11,12 +11,15 @@
 #define LineVideo_h
 
 #include "ofMain.h"
+
+#include "SceneSetup.hpp"
+
 #include "ofxOpenCv.h"
 #include "BaseArch.h"
 
 
 
-class LineVideo {
+class LineVideo: public SceneSetup {
     
     public :
     
@@ -30,12 +33,12 @@ class LineVideo {
     void drawLines();
     void drawColorNumber();
     
-    void setupBaseArch(BaseArch & _baseArch);
+//    void setupBaseArch(BaseArch & _baseArch);
     void inputCam(ofVideoGrabber & _c);
     
     void drawWindows();
     
-    BaseArch * baseArch;
+//    BaseArch * baseArch;
     ofVideoGrabber * webCam;
     
 //    ofVideoGrabber cam;

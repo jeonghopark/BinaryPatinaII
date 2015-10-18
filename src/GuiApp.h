@@ -12,8 +12,8 @@ public:
 	void update();
 	void draw();
 
-	
     ofParameter<string> FrameRate;
+    ofxButton webcamOn;
 	ofParameter<bool> OnOff_Windows;
     ofParameter<ofColor> color_Windows;
     ofParameter<bool> OnOff_Frames;
@@ -37,7 +37,8 @@ public:
     ofxToggle LineType;
 
     ofParameter<bool> OnOff_Calligraphy;
-
+    ofxFloatSlider fftSize;
+    
     ofParameter<bool> OnOff_Pluto;
 
     ofParameter<bool> OnOff_IndiaTower;
