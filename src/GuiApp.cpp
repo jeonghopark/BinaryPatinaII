@@ -41,7 +41,7 @@ void GuiApp::setup(){
 
     labyrinth.setup();
     labyrinth.setName("Labyrinth");
-    labyrinth.setPosition(220, 370);
+    labyrinth.setPosition(430, 110);
     labyrinth.add( OnOff_Labyrinth.set("On/Off", false) );
     labyrinth.add( LineType.setup("Line Type", false) );
     labyrinth.add( NumParticles.setup("Number Particles", 100, 1, 400));

@@ -25,10 +25,18 @@ class Pluto : public SceneSetup{
     void setup();
     void update();
     void draw();
-        
-    ofImage pluto;
     
-    float xyScale;
+    void loadImages();
+    
+    ofImage moon;
+    ofImage earthBlur;
+    
+    float xyScaleMoon;
+    float xyScaleEarth;
+    float yPosMoon;
+    float yPosEarth;
+    
+    float speedFactor;
 
 };
 

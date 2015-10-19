@@ -164,8 +164,10 @@ void Labyrinth::changeType(int _i, ofVec2f _v){
 //--------------------------------------------------------------
 void Labyrinth::drawParticles(){
     
-    ofPushMatrix();
     
+    ofEnableAlphaBlending();
+    
+    ofPushMatrix();
     
     ofPushStyle();
     
@@ -182,7 +184,7 @@ void Labyrinth::drawParticles(){
     
     ofPopMatrix();
 
-    
+    ofDisableAlphaBlending();
     
 }
 
@@ -190,6 +192,8 @@ void Labyrinth::drawParticles(){
 //--------------------------------------------------------------
 void Labyrinth::drawPath(){
 
+    ofEnableAlphaBlending();
+    
     ofPushMatrix();
     
     ofPushStyle();
@@ -203,12 +207,15 @@ void Labyrinth::drawPath(){
     
     ofPopMatrix();
 
+    ofDisableAlphaBlending();
     
 }
 
 
 //--------------------------------------------------------------
 void Labyrinth::drawConnection(){
+    
+    ofEnableAlphaBlending();
     
     ofPushMatrix();
 
@@ -240,6 +247,8 @@ void Labyrinth::drawConnection(){
     ofPopStyle();
     
     ofPopMatrix();
+    
+    ofDisableAlphaBlending();
    
 }
 

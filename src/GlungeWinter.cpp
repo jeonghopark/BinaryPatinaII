@@ -30,6 +30,8 @@ void GlungeWinter::update() {
 //--------------------------------------------------------------
 void GlungeWinter::drawBackTexture() {
 
+    ofEnableAlphaBlending();
+
     ofPushMatrix();
     
     ofPushStyle();
@@ -46,6 +48,8 @@ void GlungeWinter::drawBackTexture() {
 
     ofPopMatrix();
     
+    ofDisableAlphaBlending();
+    
 }
 
 
@@ -53,6 +57,8 @@ void GlungeWinter::drawBackTexture() {
 //--------------------------------------------------------------
 void GlungeWinter::drawBack() {
     
+    ofEnableAlphaBlending();
+
     ofPushMatrix();
     
     ofPushStyle();
@@ -111,6 +117,7 @@ void GlungeWinter::drawBack() {
     
     ofPopMatrix();
     
+    ofDisableAlphaBlending();
     
 }
 
@@ -121,6 +128,9 @@ void GlungeWinter::drawFront() {
     
 
     ofPushMatrix();
+
+    ofEnableAlphaBlending();
+    
     ofPushStyle();
     
 //        ofSetPolyMode(OF_POLY_WINDING_NONZERO);
@@ -131,9 +141,12 @@ void GlungeWinter::drawFront() {
     
     drawHorizon();
     
-    
     ofDisableBlendMode();
+    
+    ofDisableAlphaBlending();
+    
     ofPopStyle();
+    
     ofPopMatrix();
     
 

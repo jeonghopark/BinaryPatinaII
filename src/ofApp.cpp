@@ -52,6 +52,8 @@ void ofApp::setup(){
     calligraphy.inputFFTP( fft );
     calligraphy.setup();
 
+    pluto.setup();
+    
     indiaTower.inputBaseArch( baseArch );
     indiaTower.inputFFTP( fft );
     indiaTower.setup();
@@ -344,6 +346,7 @@ void ofApp::keyReleased(int key){
     
     if (key == ' ') {
         indiaTower.setup();
+        pluto.loadImages();
     }
 
 }
