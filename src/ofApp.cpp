@@ -6,6 +6,8 @@ void ofApp::setup(){
     ofSetFrameRate( 60 );
     ofBackground( 0 );
     
+    
+    // syphon
     dir.setup();
     client.setup();
     ofAddListener(dir.events.serverAnnounced, this, &ofApp::serverAnnounced);
@@ -84,8 +86,8 @@ void ofApp::setup(){
     webLiveCam.inputBaseArch( baseArch );
     webLiveCam.setup();
     
-    kinectView.inputBaseArch( baseArch );
-    kinectView.setup();
+    nightVision.inputBaseArch( baseArch );
+    nightVision.setup();
     
     
     fullScreen = false;
@@ -93,6 +95,7 @@ void ofApp::setup(){
 }
 
 
+// syphon
 //--------------------------------------------------------------
 void ofApp::serverAnnounced(ofxSyphonServerDirectoryEventArgs &arg)
 {
@@ -236,17 +239,16 @@ void ofApp::update(){
         }
     }
 
-    
-    if (gui->OnOff_NightVision) {
-        kinectView.update();
+    if (gui->CanonView) {
+        if (gui->OnOff_NightVision) {
+            nightVision.update(client);
+        }
     }
     
     
-    
+    // syphon
     if (gui->SyphonSearch) {
-        
-        if (dir.size() > 0)
-        {
+        if (dir.size() > 0) {
             dirIdx++;
             if(dirIdx > dir.size() - 1)
                 dirIdx = 0;
@@ -263,6 +265,7 @@ void ofApp::update(){
             }
         }
     }
+    
     
 }
 
@@ -286,9 +289,11 @@ void ofApp::draw(){
         webLiveCam.draw();
     }
 
+    
     if (gui->OnOff_NightVision) {
-        kinectView.drawNightVision();
+        nightVision.draw();
     }
+    
 
     if (gui->OnOff_LineVideo) {
         lineVideo.draw();
@@ -354,16 +359,18 @@ void ofApp::draw(){
     }
 
     if (gui->CanonView) {
-        if(dir.isValidIndex(dirIdx))
-            client.draw(0, 0);
+        if(dir.isValidIndex(dirIdx)) {
+//            client.draw(0, 0);
+        }
     }
 
+    
     
     baseArch.drawEdgeCover( ofColor(0) );
 
     ofPopMatrix();
     
-//    oscPad.draw();
+
     
 }
 

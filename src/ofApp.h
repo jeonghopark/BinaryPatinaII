@@ -25,7 +25,7 @@
 #include "MovingObjects.h"
 #include "DroneAttack.hpp"
 #include "WebLiveCam.hpp"
-#include "KinectView.hpp"
+#include "NightVision.hpp"
 
 
 class ofApp : public ofBaseApp {
@@ -69,7 +69,7 @@ public:
     MovingObjects movingObjects;
     DroneAttack droneAttack;
     WebLiveCam webLiveCam;
-    KinectView kinectView;
+    NightVision nightVision;
 
     
     int nBandsToGet;
@@ -97,6 +97,8 @@ public:
     ofxSyphonClient client;
     int dirIdx;
 
+    
+    ofImage testTexture;
     
 };
 

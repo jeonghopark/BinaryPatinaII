@@ -79,6 +79,7 @@
 		D8E43C141BD5936000FDAA21 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E43C0A1BD5936000FDAA21 /* Syphon.framework */; settings = {ASSET_TAGS = (); }; };
 		D8E43C151BD5936800FDAA21 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E43C0A1BD5936000FDAA21 /* Syphon.framework */; };
 		D8E43C161BD5936800FDAA21 /* Syphon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8E43C0A1BD5936000FDAA21 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D8E43C1B1BD5995600FDAA21 /* NightVision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8E43C191BD5995600FDAA21 /* NightVision.cpp */; settings = {ASSET_TAGS = (); }; };
 		DE0F5E83650646A1D5D96CED /* ofTextConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA27F811D4C99262D9C1DCEE /* ofTextConverter.cpp */; };
 		DE4A1CFF12825B0F5CE715F9 /* CubicMapFlyingCam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4C070B6765E46BCA257CEE6A /* CubicMapFlyingCam.cpp */; };
 		E3A93874D15B148E880CFD12 /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A92D73B789B3347CBCD18F7B /* ofxMidiOut.cpp */; };
@@ -437,6 +438,8 @@
 		D8E43C071BD5936000FDAA21 /* SyphonNameboundClient.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = SyphonNameboundClient.h; path = ../libs/Syphon/src/SyphonNameboundClient.h; sourceTree = "<group>"; };
 		D8E43C081BD5936000FDAA21 /* SyphonNameboundClient.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = SyphonNameboundClient.m; path = ../libs/Syphon/src/SyphonNameboundClient.m; sourceTree = "<group>"; };
 		D8E43C0A1BD5936000FDAA21 /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = ../../../addons/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
+		D8E43C191BD5995600FDAA21 /* NightVision.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NightVision.cpp; sourceTree = "<group>"; };
+		D8E43C1A1BD5995600FDAA21 /* NightVision.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NightVision.hpp; sourceTree = "<group>"; };
 		DC0AFDF6B6A43C396EA99F56 /* devmem2d.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = devmem2d.hpp; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv2/core/devmem2d.hpp; sourceTree = SOURCE_ROOT; };
 		DD609FDCDD349BDAAD103432 /* reduce.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = reduce.hpp; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/device/detail/reduce.hpp; sourceTree = SOURCE_ROOT; };
 		DEA33E64DBF8BEA83B471088 /* ml.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ml.h; path = ../../../../openFrameworks/addons/ofxOpenCv/libs/opencv/include/opencv/ml.h; sourceTree = SOURCE_ROOT; };
@@ -1551,6 +1554,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				07E618777BE2F7CEF5633D20 /* Pluto.cpp */,
 				148B1E44F806C4C7EEA34BBB /* Pluto.hpp */,
+				D8E43C191BD5995600FDAA21 /* NightVision.cpp */,
+				D8E43C1A1BD5995600FDAA21 /* NightVision.hpp */,
 				93537F1EE7F346D4A0EC268C /* TrierFlyingCam.cpp */,
 				BF351121760D9621FA5CA767 /* TrierFlyingCam.hpp */,
 				03FAE05E227B33DFB66DB24B /* WebLiveCam.cpp */,
@@ -1802,6 +1807,7 @@
 				E5E7676A92AF9C0C5D7C1518 /* ofxProcessFFT.cpp in Sources */,
 				28850C8A0355962C0F440A9D /* kiss_fft.c in Sources */,
 				D8E43C101BD5936000FDAA21 /* ofxSyphonClient.mm in Sources */,
+				D8E43C1B1BD5995600FDAA21 /* NightVision.cpp in Sources */,
 				4376D8F5342C0D1674CAF6CA /* kiss_fftr.c in Sources */,
 				A7C5B114CDF3DA9BC3D5D890 /* ofxFirstPersonCamera.cpp in Sources */,
 				EB1D0C5ED9B3BADF9CC51E4B /* ofxFontStash.cpp in Sources */,
