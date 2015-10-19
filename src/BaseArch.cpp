@@ -36,7 +36,7 @@ void BaseArch::setupDefault(){
 //    font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
 //    font.addFont("VeraMono-Bold.ttf");
 
-    float _sizeRatio = 1; // 1.5 : 1
+    float _sizeRatio = 1.5; // 1.5 : 1
     
     csv.clear();
     csv.loadFile(ofToDataPath("facadeData.csv"));
@@ -170,6 +170,8 @@ void BaseArch::guideFrames(ofColor _c){
 //--------------------------------------------------------------
 void BaseArch::guideLines(ofColor _c){
     
+    ofEnableAlphaBlending();
+    
     ofPushMatrix();
     
     ofPushStyle();
@@ -209,6 +211,9 @@ void BaseArch::guideLines(ofColor _c){
     
     ofPopMatrix();
     
+    ofDisableAlphaBlending();
+
+    
 }
 
 
@@ -216,6 +221,9 @@ void BaseArch::guideLines(ofColor _c){
 void BaseArch::guidePoints(ofColor _c){
     
     int _size = 3;
+    
+    ofEnableAlphaBlending();
+
     
     ofPushMatrix();
     
@@ -251,11 +259,17 @@ void BaseArch::guidePoints(ofColor _c){
     
     ofPopMatrix();
     
+    ofDisableAlphaBlending();
+
+    
 }
 
 
 //--------------------------------------------------------------
 void BaseArch::guideCrossPoints(ofColor _c, float _size){
+    
+    ofEnableAlphaBlending();
+
     
     ofPushMatrix();
     
@@ -296,11 +310,17 @@ void BaseArch::guideCrossPoints(ofColor _c, float _size){
     ofPopMatrix();
     
     
+    ofDisableAlphaBlending();
+
+    
 }
 
 
 //--------------------------------------------------------------
 void BaseArch::drawEdgeCover(ofColor _c){
+    
+    ofEnableAlphaBlending();
+
     
     ofPushStyle();
     
@@ -336,6 +356,9 @@ void BaseArch::drawEdgeCover(ofColor _c){
     
     ofPopStyle();
     
+    ofDisableAlphaBlending();
+
+    
 }
 
 
@@ -343,9 +366,10 @@ void BaseArch::drawEdgeCover(ofColor _c){
 //--------------------------------------------------------------
 void BaseArch::drawPointNumber( ofColor _c ){
     
+    ofEnableAlphaBlending();
+
     ofPushMatrix();
     
-    ofEnableAlphaBlending();
 
     ofPushStyle();
     
@@ -387,10 +411,11 @@ void BaseArch::drawPointNumber( ofColor _c ){
     
     ofPopStyle();
 
-    ofDisableBlendMode();
 
     ofPopMatrix();
     
+    ofDisableAlphaBlending();
+
     
 }
 
@@ -398,6 +423,9 @@ void BaseArch::drawPointNumber( ofColor _c ){
 //--------------------------------------------------------------
 void BaseArch::drawWindows( ofColor _c ){
 
+    ofEnableAlphaBlending();
+
+    
     ofPushMatrix();
     ofPushStyle();
     
@@ -420,6 +448,9 @@ void BaseArch::drawWindows( ofColor _c ){
     
     ofPopStyle();
     ofPopMatrix();
+    
+    ofDisableAlphaBlending();
+
     
 }
 

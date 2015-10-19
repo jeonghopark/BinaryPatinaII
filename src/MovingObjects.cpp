@@ -85,6 +85,8 @@ void MovingObjects::setup(){
     }
     
     
+    colorRect = ofColor(255);
+    colorText = ofColor(255);
     
 }
 
@@ -119,17 +121,54 @@ void MovingObjects::update(){
 //--------------------------------------------------------------
 void MovingObjects::draw(ofColor _c){
 
+    drawRectangles();
+    
+    drawText();
+    
+}
+
+
+
+
+//--------------------------------------------------------------
+void MovingObjects::drawRectangles(){
+
+    
+    ofEnableAlphaBlending();
+    
     ofPushMatrix();
     
     ofPushStyle();
     
-    ofSetColor(_c);
+    ofSetColor(colorRect);
     
     for (int i=0; i<12; i++) {
         ofRectMode(OF_CENTER);
         ofDrawRectangle( hFrames[i].getPointAtPercent((hMovingXPos[i]+1) * 0.5), 7, 7 );
     }
 
+    ofPopStyle();
+
+    ofPopMatrix();
+    
+    ofDisableAlphaBlending();
+    
+
+}
+
+
+//--------------------------------------------------------------
+void MovingObjects::drawText(){
+
+    
+    ofEnableAlphaBlending();
+
+    ofPushMatrix();
+    
+    ofPushStyle();
+    
+    ofSetColor(colorText);
+    
     for (int j=0; j<12; j++) {
         for (int i=0; i<6; i++) {
             int _index = i + j * 6;
@@ -141,11 +180,16 @@ void MovingObjects::draw(ofColor _c){
             ofDrawBitmapString( _s, _xy );
         }
     }
-
+    
     ofPopStyle();
+    
     ofPopMatrix();
+
+    ofDisableAlphaBlending();
+
     
 }
+
 
 
 

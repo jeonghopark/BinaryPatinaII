@@ -84,7 +84,7 @@ public:
     int labyrinthOldType;
     bool labyrinthChangeNum;
     
-    
+    bool fullScreen;
     
 };
 

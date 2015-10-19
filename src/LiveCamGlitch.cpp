@@ -33,8 +33,8 @@ void LiveCamGlitch::setup(){
     
     quality = OF_IMAGE_QUALITY_WORST;
     
-    videoW = 1280;
-    videoH = 720;
+    videoW = 1920;  // 1920, 1280
+    videoH = 1080;   // 1080, 720
     
     liveVideoFbo.clear();
     liveVideoFbo.allocate(videoW, videoH);
@@ -64,7 +64,7 @@ void LiveCamGlitch::update(){
     if (webCamHD->isFrameNew()){
 
         windowView.setFromPixels(webCamHD->getPixels());
-        windowView.setROI(640, 0, videoW * 0.5, videoH);
+        windowView.setROI(960, 0, videoW * 0.5, videoH);
         captureCam.setFromPixels( windowView.getRoiPixels() );
 
         liveVideoFbo.begin();
@@ -144,10 +144,18 @@ void LiveCamGlitch::glitchUpdate(ofPixels _p) {
 //--------------------------------------------------------------
 void LiveCamGlitch::draw(){
     
+    ofEnableAlphaBlending();
+
     webCamHD->draw(0, 0);
     glitchEffect.generateFx();
-    liveVideoFbo.draw(640, 0);  // 640 : 960
+    liveVideoFbo.draw(960, 0);  // 640 : 960
 
+    ofDisableAlphaBlending();
+
+    
+    
+    ofEnableAlphaBlending();
+    
     if (bDirectglitch) {
         float _w = baseArch->fassadeCorner[1].x - baseArch->fassadeCorner[0].x;
         float _h = baseArch->fassadeCorner[2].y - baseArch->fassadeCorner[0].y;
@@ -158,6 +166,8 @@ void LiveCamGlitch::draw(){
 
         imgDirectGlitch.draw(_x, _y, _w, _h);
     }
+    
+    ofDisableAlphaBlending();
 
 }
 

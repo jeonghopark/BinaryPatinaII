@@ -27,8 +27,9 @@ void ofApp::setup(){
     
     midiInput.setup();
 
-    webCamHD.setDeviceID(0);
-    webCamHD.setup(1280,720);
+    webCamHD.listDevices();
+    webCamHD.setDeviceID(1);
+    webCamHD.setup(1920,1080);
     
 
     
@@ -80,6 +81,8 @@ void ofApp::setup(){
     kinectView.setup();
     
     
+    fullScreen = false;
+    
 }
 
 //--------------------------------------------------------------
@@ -90,8 +93,9 @@ void ofApp::update(){
     midiInput.drumPadOutput();
     
     if (gui->webcamOn) {
-        webCamHD.setDeviceID(0);
-        webCamHD.setup(1280,720);
+        webCamHD.close();
+        webCamHD.setDeviceID(1);
+        webCamHD.setup(1920,1080);
     }
     
     if (gui->OnOff_LiveCamGlitch) {
@@ -99,8 +103,8 @@ void ofApp::update(){
         
         if (gui->ResetShader) {
             webCamHD.close();
-            webCamHD.setDeviceID(0);
-            webCamHD.setup(1280,720);
+            webCamHD.setDeviceID(1);
+            webCamHD.setup(1920,1080);
             liveCamGlitch.inputBaseArch( baseArch );
             liveCamGlitch.inputMidiInput(midiInput);
             liveCamGlitch.inputWebCam( webCamHD );
@@ -169,16 +173,33 @@ void ofApp::update(){
 
     if (gui->OnOff_MovingObject) {
         movingObjects.update();
+        
+        movingObjects.colorRect = gui->ColorRect;
+        movingObjects.colorText = gui->ColorText;
+        
     }
 
+    
     if (gui->OnOff_DroneAttack) {
         droneAttack.update();
+        droneAttack.speedFactor = gui->DroneSpeedFactor;
+        droneAttack.colorAttack = gui->AttackColor;
+        droneAttack.colorEarth = gui->EarthColor;
     }
+    
 
     if (gui->OnOff_WebLiveCam) {
         webLiveCam.update();
+        webLiveCam.indexMovie = gui->IndexMovie;
+        if (gui->LoadMovies) {
+            webLiveCam.movieLoad();
+        }
+        if (gui->RandomPosition) {
+            webLiveCam.randomWindowsPosition();
+        }
     }
 
+    
     if (gui->OnOff_NightVision) {
         kinectView.update();
     }
@@ -285,6 +306,8 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::drawBaseArch(){
     
+    ofEnableAlphaBlending();
+    
     ofPushStyle();
     
 //    ofEnableBlendMode(OF_BLENDMODE_ADD);
@@ -319,6 +342,8 @@ void ofApp::drawBaseArch(){
     
     ofPopStyle();
     
+    ofDisableAlphaBlending();
+    
 
 }
 
@@ -347,6 +372,12 @@ void ofApp::keyReleased(int key){
     if (key == ' ') {
         indiaTower.setup();
         pluto.loadImages();
+        webLiveCam.movieLoad();
+    }
+    
+    if (key == 'f') {
+        fullScreen = !fullScreen;
+        ofSetFullscreen(fullScreen);
     }
 
 }

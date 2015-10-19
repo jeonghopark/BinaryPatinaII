@@ -10,7 +10,7 @@
 void GuiApp::setup(){
 	
     main.setup();
-    main.setName("parameters");
+    main.setName("Main - Windows");
     main.setPosition(10, 10);
     main.add(FrameRate.set("FrameRate", ""));
     main.add(webcamOn.setup("Web Cam On / Off", false));
@@ -28,19 +28,19 @@ void GuiApp::setup(){
     main.add(OnOff_Numbers.set("OnOff Numbers", false));
 
     glungeWinter.setup();
-    glungeWinter.setName("GlungeWinter");
+    glungeWinter.setName("01-Glunge Winter");
     glungeWinter.setPosition(220, 260);
     glungeWinter.add( OnOff_GlungeWinter.set("On/Off", false) );
     
     liveCamGlitch.setup();
-    liveCamGlitch.setName("LiveCamGlitch");
+    liveCamGlitch.setName("02-Shell LiveCamGlitch");
     liveCamGlitch.setPosition(220, 310);
     liveCamGlitch.add( OnOff_LiveCamGlitch.set("On/Off", false) );
     liveCamGlitch.add( ResetShader.setup("Reset Shader"));
     
 
     labyrinth.setup();
-    labyrinth.setName("Labyrinth");
+    labyrinth.setName("03-Thingy Labyrinth");
     labyrinth.setPosition(430, 110);
     labyrinth.add( OnOff_Labyrinth.set("On/Off", false) );
     labyrinth.add( LineType.setup("Line Type", false) );
@@ -53,60 +53,71 @@ void GuiApp::setup(){
     labyrinth.add( ConnectionColor.setup("Connection Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
 
     
-    
-    
     calligraphy.setup();
-    calligraphy.setName("Calligraphy");
-    calligraphy.setPosition(220, 420);
+    calligraphy.setName("04-Dub Calligraphy");
+    calligraphy.setPosition(220, 390);
     calligraphy.add( OnOff_Calligraphy.set("On/Off", false) );
     calligraphy.add( fftSize.setup("FFT Size", 1, 0, 2));
 
     pluto.setup();
-    pluto.setName("Pluto");
+    pluto.setName("05-Fiona Pluto");
     pluto.setPosition(220, 470);
     pluto.add( OnOff_Pluto.set("On/Off", false) );
 
     indiaTower.setup();
-    indiaTower.setName("IndiaTower");
+    indiaTower.setName("06-India IndiaTower");
     indiaTower.setPosition(220, 520);
     indiaTower.add( OnOff_IndiaTower.set("On/Off", false) );
 
     trierFlyingCam.setup();
-    trierFlyingCam.setName("TrierFlyingCam");
+    trierFlyingCam.setName("07-MIdinight Trier");
     trierFlyingCam.setPosition(220, 570);
     trierFlyingCam.add( OnOff_TrierFlyingCam.set("On/Off", false) );
 
     cubicMapFlyingCam.setup();
-    cubicMapFlyingCam.setName("CubicMapFlyingCam");
+    cubicMapFlyingCam.setName("08-Glass CubicMap");
     cubicMapFlyingCam.setPosition(430, 10);
     cubicMapFlyingCam.add( OnOff_CubicMapFlyingCam.set("On/Off", false) );
     
 
     moonCreator.setup();
-    moonCreator.setName("MoonCreator");
+    moonCreator.setName("09-Stringer Moon");
     moonCreator.setPosition(220, 10);
     moonCreator.add( OnOff_MoonCreator.set("On/Off", false) );
 
     lineVideo.setup();
-    lineVideo.setName("LineVideo");
+    lineVideo.setName("10-BlowFiles LineVideo");
     lineVideo.setPosition(220, 60);
     lineVideo.add( OnOff_LineVideo.set("On/Off", false) );
 
     movingObject.setup();
-    movingObject.setName("MovingObject");
-    movingObject.setPosition(220, 110);
+    movingObject.setName("11-Granu MovingObject");
+    movingObject.setPosition(640, 310);
     movingObject.add( OnOff_MovingObject.set("On/Off", false) );
+    movingObject.add( ColorText.setup("Text Color", ofColor(255,0,0,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    movingObject.add( ColorRect.setup("Rect Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
 
+
+    
     droneAttack.setup();
-    droneAttack.setName("DroneAttack");
-    droneAttack.setPosition(220, 160);
+    droneAttack.setName("12-Patina DroneAttack");
+    droneAttack.setPosition(640, 10);
     droneAttack.add( OnOff_DroneAttack.set("On/Off", false) );
+    droneAttack.add( DroneSpeedFactor.setup("Drone Speed : 7", 7, 0.02, 14) );
+    droneAttack.add( AttackColor.setup("Attack Color", ofColor(255,0,0,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    droneAttack.add( EarthColor.setup("Earth Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+
+    
 
     webLiveCam.setup();
-    webLiveCam.setName("WebLiveCam");
-    webLiveCam.setPosition(220, 210);
+    webLiveCam.setName("13-Oddity WebLiveCam");
+    webLiveCam.setPosition(220, 120);
     webLiveCam.add( OnOff_WebLiveCam.set("On/Off", false) );
-
+    webLiveCam.add( LoadMovies.setup("Load", false) );
+    webLiveCam.add( IndexMovie.setup("Index Movie", 0, 0, 2) );
+    webLiveCam.add( RandomPosition.setup("Random", false) );
+    
+    
     
     nightVision.setup();
     nightVision.setName("NightVision");
@@ -146,8 +157,6 @@ void GuiApp::draw(){
     nightVision.draw();
     
 }
-
-
 
 
 

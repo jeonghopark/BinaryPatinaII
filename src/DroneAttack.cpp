@@ -95,6 +95,10 @@ void DroneAttack::setup(){
 
     jsonDataSetup();
     
+    colorEarth = ofColor( 255 );
+    colorAttack = ofColor( 255, 0, 0 );
+
+    speedFactor = 1;
     
 }
 
@@ -108,9 +112,9 @@ void DroneAttack::update(){
     auto holded = in.keyHolded;
     auto pulled = in.keyPulled;
     
-    if( pushed[GLFW_KEY_LEFT_SHIFT] ) cam.movespeed = 7.0f;
+    if( pushed[GLFW_KEY_LEFT_SHIFT] ) cam.movespeed = 1.0f * speedFactor;
     if( pulled[GLFW_KEY_LEFT_SHIFT] ) cam.movespeed = 1.0f;
-    
+
     if( pushed[GLFW_MOUSE_BUTTON_LEFT] ) paint.push_back( ofPolyline() );
     if( holded[GLFW_MOUSE_BUTTON_LEFT] ) paint.back().addVertex( cam.getPosition() + (cam.getLookAtDir() * 50.0f) );
     
@@ -124,10 +128,28 @@ void DroneAttack::update(){
 //--------------------------------------------------------------
 void DroneAttack::draw(){
     
+    
     cam.begin();
     
+
+    drawAttackPosition();
+    
+    drawEarth();
+    
+    cam.end();
+
+    
+}
+
+
+//--------------------------------------------------------------
+void DroneAttack::drawAttackPosition(){
+
+    
+    ofEnableAlphaBlending();
+    
     ofPushStyle();
-    ofSetColor(255, 0, 0);
+    ofSetColor( ofColor(colorAttack) );
     for (int i=0; i<dronData.size(); i++) {
         ofVec3f _v = dronData[i].coord;
         
@@ -138,19 +160,35 @@ void DroneAttack::draw(){
     
     ofPopStyle();
     
+    ofDisableAlphaBlending();
+    
+
+}
+
+
+
+//--------------------------------------------------------------
+void DroneAttack::drawEarth(){
+    
+    
+    ofEnableAlphaBlending();
     
     ofPushStyle();
-    ofSetColor(255);
+
+    ofSetColor( ofColor(colorEarth) );
+
     for (int i=0; i<oceanLineCoord.size(); i++) {
         oceanLineCoord[i].draw();
     }
     ofPopStyle();
     
+    ofDisableAlphaBlending();
     
-    cam.end();
-
-
-
     
 }
+
+
+
+
+
 

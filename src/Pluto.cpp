@@ -28,7 +28,7 @@ void Pluto::setup(){
     
     loadImages();
     
-    speedFactor = 0.3;
+    speedFactor = 1;
     
 }
 
@@ -43,7 +43,7 @@ void Pluto::update(){
         
         xyScaleMoon = xyScaleMoon - 2.5 * speedFactor;
         
-        cout << xyScaleMoon << endl;
+//        cout << xyScaleMoon << endl;
 
         if (xyScaleMoon < 1800) {
             yPosEarth = yPosEarth + 1 * speedFactor;
@@ -58,11 +58,7 @@ void Pluto::update(){
             xyScaleMoon = 0;
         }
         
-        
     }
-    
-    
-    
     
 }
 
@@ -70,13 +66,23 @@ void Pluto::update(){
 //--------------------------------------------------------------
 void Pluto::draw(){
     
+    ofEnableAlphaBlending();
+    
+    ofPushMatrix();
+    ofTranslate( 0, -200 );
     moon.draw( ofGetWidth() * 0.5 - xyScaleMoon * 0.5, ofGetHeight() * 0.5 + yPosMoon - xyScaleMoon * 0.5, xyScaleMoon, xyScaleMoon );
     
-    earthBlur.draw(ofGetWidth() * 0.5 - xyScaleEarth * 0.5, ofGetHeight() * 0.5 + yPosEarth- xyScaleEarth * 0.5, xyScaleEarth, xyScaleEarth );
+    ofPopMatrix();
     
 
-}
+    ofPushMatrix();
+    earthBlur.draw(ofGetWidth() * 0.5 - xyScaleEarth * 0.5, ofGetHeight() * 0.5 + yPosEarth - xyScaleEarth * 0.5, xyScaleEarth, xyScaleEarth );
+    
+    ofDisableAlphaBlending();
+    ofPopMatrix();
 
+    
+}
 
 
 //--------------------------------------------------------------

@@ -60,7 +60,7 @@ void KinectView::setup(){
     ofSetFrameRate(60);
     
     // zero the tilt on startup
-    angle = 0;
+    angle = 45;
     kinect.setCameraTiltAngle(angle);
     
     // start from the front
@@ -198,12 +198,13 @@ void KinectView::drawNightVision(){
     
     float _x = baseArch->framesCenter[0][0].x;
     float _y = baseArch->framesCenter[0][0].y;
-    float _h = baseArch->framesCenter[0][5].y - baseArch->framesCenter[0][0].y;
-    float _w = _h * 400.0 / 300.0;
+//    float _h = baseArch->framesCenter[0][5].y - baseArch->framesCenter[0][0].y;
+    float _w = baseArch->framesCenter[22][0].x - baseArch->framesCenter[0][1].x;
+//    float _w = _h * 400.0 / 300.0;
+    float _h = _w * 300.0 / 400.0;
 
-    //    contrastKinect.invert();
-    
-    contrastKinect.draw( _x, _y);
+//        contrastKinect.invert();
+    contrastKinect.draw( _x, _y, _w, _h );
     
     ofPopStyle();
     

@@ -30,9 +30,14 @@ public:
     
     void randomWindowsPosition();
     
+    void movieLoad();
     void keyReleased(int key);
+
+    void movieAllPlay(int _pos);
     
     ofVideoPlayer webCam01;
+    ofVideoPlayer webCam02;
+    ofVideoPlayer webCam03;
 
     ofxCvColorImage windowView;
     vector<ofxCvColorImage> windowMovies;
@@ -43,7 +48,8 @@ public:
     
     int windowsNum;
     
-    
+    int indexMovie;
+        
 
 };
 

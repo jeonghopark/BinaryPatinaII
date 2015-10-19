@@ -40,6 +40,9 @@ public:
     
     void jsonDataSetup();
     
+    void drawAttackPosition();
+    void drawEarth();
+    
     vector<DronData> dronData;
     
     vector<ofPolyline> oceanLineCoord;
@@ -47,8 +50,12 @@ public:
     ofxImmediateModeInput in;
     ofxFirstPersonCamera cam;
     vector<ofPolyline> paint;
-
     
+    
+    ofColor colorEarth;
+    ofColor colorAttack;
+
+    float speedFactor;
     
 };
 

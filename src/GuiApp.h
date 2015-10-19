@@ -59,11 +59,23 @@ public:
 
     ofParameter<bool> OnOff_LineVideo;
     
+    
     ofParameter<bool> OnOff_MovingObject;
+    ofxColorSlider ColorText;
+    ofxColorSlider ColorRect;
+
 
     ofParameter<bool> OnOff_DroneAttack;
+    ofxFloatSlider DroneSpeedFactor;
+    ofxColorSlider EarthColor;
+    ofxColorSlider AttackColor;
+    
 
     ofParameter<bool> OnOff_WebLiveCam;
+    ofxButton LoadMovies;
+    ofxButton RandomPosition;
+    ofxIntSlider IndexMovie;
+    
 
     ofParameter<bool> OnOff_NightVision;
     

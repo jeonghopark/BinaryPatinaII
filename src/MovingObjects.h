@@ -37,7 +37,10 @@ class MovingObjects : public SceneSetup{
     void setup();
     void update();
     void draw(ofColor _c = ofColor(255));
-        
+    
+    void drawRectangles();
+    void drawText();
+    
     vector< ofPolyline > hFrames;
     vector< ofPolyline > vFrames;
     vector< ofPolyline > hCenterFrames;
@@ -50,6 +53,9 @@ class MovingObjects : public SceneSetup{
     int guidIDNumber[72];
     
     float mainOffSetXPos, mainOffSetYPos;
+    
+    ofColor colorRect;
+    ofColor colorText;
     
     
 };
