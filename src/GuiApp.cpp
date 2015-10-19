@@ -14,6 +14,8 @@ void GuiApp::setup(){
     main.setPosition(10, 10);
     main.add(FrameRate.set("FrameRate", ""));
     main.add(webcamOn.setup("Web Cam On / Off", false));
+    main.add(CanonView.setup("Canon On / Off", false));
+    main.add(SyphonSearch.setup("SyphonSearch", false));
     main.add(color_Windows.set("Color Windows", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Windows.set("OnOff Windows", false));
     main.add(color_Frames.set("Color Frames", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));

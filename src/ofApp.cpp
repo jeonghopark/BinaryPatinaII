@@ -6,6 +6,13 @@ void ofApp::setup(){
     ofSetFrameRate( 60 );
     ofBackground( 0 );
     
+    dir.setup();
+    client.setup();
+    ofAddListener(dir.events.serverAnnounced, this, &ofApp::serverAnnounced);
+    ofAddListener(dir.events.serverRetired, this, &ofApp::serverRetired);
+    dirIdx = -1;
+
+    
     mainOffSetXPos = (ofGetWidth() - (baseArch.fassadeCorner[0].x + baseArch.fassadeCorner[1].x)) * 0.5;
     mainOffSetYPos = (ofGetHeight() - (baseArch.fassadeCorner[0].y + baseArch.fassadeCorner[3].y)) * 0.5;
     
@@ -84,6 +91,36 @@ void ofApp::setup(){
     fullScreen = false;
     
 }
+
+
+//--------------------------------------------------------------
+void ofApp::serverAnnounced(ofxSyphonServerDirectoryEventArgs &arg)
+{
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Announced")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+    }
+    dirIdx = 0;
+}
+
+//--------------------------------------------------------------
+void ofApp::serverUpdated(ofxSyphonServerDirectoryEventArgs &arg)
+{
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Updated")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+    }
+    dirIdx = 0;
+}
+
+//--------------------------------------------------------------
+void ofApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg)
+{
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Retired")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+    }
+    dirIdx = 0;
+}
+
+
 
 //--------------------------------------------------------------
 void ofApp::update(){
@@ -204,6 +241,29 @@ void ofApp::update(){
         kinectView.update();
     }
     
+    
+    
+    if (gui->SyphonSearch) {
+        
+        if (dir.size() > 0)
+        {
+            dirIdx++;
+            if(dirIdx > dir.size() - 1)
+                dirIdx = 0;
+            
+            client.set(dir.getDescription(dirIdx));
+            string serverName = client.getServerName();
+            string appName = client.getApplicationName();
+            
+            if(serverName == ""){
+                serverName = "null";
+            }
+            if(appName == ""){
+                appName = "null";
+            }
+        }
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -291,6 +351,11 @@ void ofApp::draw(){
 
     if (gui->OnOff_MovingObject) {
         movingObjects.draw();
+    }
+
+    if (gui->CanonView) {
+        if(dir.isValidIndex(dirIdx))
+            client.draw(0, 0);
     }
 
     

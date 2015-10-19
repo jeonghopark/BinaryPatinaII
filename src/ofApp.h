@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxSyphon.h"
+
 #include "GuiApp.h"
 
 #include "BaseArch.h"
@@ -85,6 +87,16 @@ public:
     bool labyrinthChangeNum;
     
     bool fullScreen;
+    
+    
+    void serverAnnounced(ofxSyphonServerDirectoryEventArgs &arg);
+    void serverUpdated(ofxSyphonServerDirectoryEventArgs &args);
+    void serverRetired(ofxSyphonServerDirectoryEventArgs &arg);
+    
+    ofxSyphonServerDirectory dir;
+    ofxSyphonClient client;
+    int dirIdx;
+
     
 };
 

@@ -14,6 +14,8 @@ public:
 
     ofParameter<string> FrameRate;
     ofxButton webcamOn;
+    ofxToggle CanonView;
+    ofxButton SyphonSearch;
 	ofParameter<bool> OnOff_Windows;
     ofParameter<ofColor> color_Windows;
     ofParameter<bool> OnOff_Frames;
