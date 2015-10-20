@@ -260,6 +260,7 @@ void ofApp::update(){
     
     if (gui->OnOff_Pluto) {
         pluto.update();
+        pluto.speedRatio = gui->SpeedRatioMoon;
     }
 
     if (gui->OnOff_IndiaTower) {

@@ -56,6 +56,7 @@ public:
     
     ofParameter<bool> OnOff_Pluto;
     ofxButton Return;
+    ofxFloatSlider SpeedRatioMoon;
 
     ofParameter<bool> OnOff_IndiaTower;
 

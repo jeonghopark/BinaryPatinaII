@@ -71,6 +71,7 @@ void GuiApp::setup(){
     pluto.setPosition(650, 10);
     pluto.add( OnOff_Pluto.set("On/Off", false) );
     pluto.add( Return.setup("Return", false));
+    pluto.add( SpeedRatioMoon.setup("Speed Moon", 1, 0.1, 5));
     
     
 

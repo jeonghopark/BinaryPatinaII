@@ -40,6 +40,7 @@ class Pluto : public SceneSetup{
     
     float speedFactor;
 
+    float speedRatio;
     
     
 };

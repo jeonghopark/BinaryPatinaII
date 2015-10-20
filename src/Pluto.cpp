@@ -28,7 +28,7 @@ void Pluto::setup(){
     
     loadImages();
     
-    speedFactor = 1;
+    speedFactor = 0.4;
     
 }
 
@@ -41,12 +41,12 @@ void Pluto::update(){
     if (yPosMoon > -180) {
         yPosMoon = -180;
         
-        xyScaleMoon = xyScaleMoon - 2.5 * speedFactor;
+        xyScaleMoon = xyScaleMoon - 1.3 * speedFactor * speedRatio;
         
 //        cout << xyScaleMoon << endl;
 
         if (xyScaleMoon < 1800) {
-            yPosEarth = yPosEarth + 1 * speedFactor;
+            yPosEarth = yPosEarth + 1 * speedFactor * speedRatio;
         }
         
         if (yPosEarth > 400) {
