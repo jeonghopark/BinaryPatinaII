@@ -141,6 +141,11 @@ void GuiApp::setup(){
     speechVideo.add( IndexSpeechMovie.setup("Index Movie", 0, 0, 3 ));
 
     
+    glitchMain.setup();
+    glitchMain.setName("Glitch Main");
+    glitchMain.setPosition(850, 60);
+    glitchMain.add( plutoGlitch.setup("Pluto", false ));
+
     
     
     ofBackground(30);
@@ -173,6 +178,8 @@ void GuiApp::draw(){
     nightVision.draw();
     
     speechVideo.draw();
+    
+    glitchMain.draw();
     
 }
 

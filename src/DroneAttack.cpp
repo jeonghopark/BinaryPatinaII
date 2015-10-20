@@ -95,8 +95,8 @@ void DroneAttack::setup(){
     cam.setFarClip(10000.0f);
     cam.toggleControl();
 
-    ofDisableArbTex();
-    ofEnableDepthTest();
+//    ofDisableArbTex();
+//    ofEnableDepthTest();
 
 
     jsonDataSetup();

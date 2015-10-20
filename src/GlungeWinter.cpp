@@ -143,10 +143,11 @@ void GlungeWinter::drawFront() {
     
     ofDisableBlendMode();
     
-    ofDisableAlphaBlending();
     
     ofPopStyle();
-    
+
+    ofDisableAlphaBlending();
+
     ofPopMatrix();
     
 

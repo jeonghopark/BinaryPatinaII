@@ -92,6 +92,10 @@ public:
     ofxIntSlider IndexSpeechMovie;
     
 
+    ofxButton plutoGlitch;
+    
+    
+    
     
     ofxPanel main;
     ofxPanel glungeWinter;
@@ -109,6 +113,7 @@ public:
     ofxPanel webLiveCam;
     ofxPanel nightVision;
     ofxPanel speechVideo;
+    ofxPanel glitchMain;
     
     ofParameter<bool> audioInputOnOff;
     

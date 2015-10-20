@@ -28,8 +28,9 @@
 #include "NightVision.hpp"
 #include "SpeechVideoSynth.hpp"
 
-#define WEBCAM_WIDTH 480
-#define WEBCAM_HEIGHT 360
+#define WEBCAM_WIDTH 640
+#define WEBCAM_HEIGHT 480
+#define WEBCAM_ID 2
 
 
 class ofApp : public ofBaseApp {

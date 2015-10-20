@@ -36,7 +36,7 @@ void ofApp::setup(){
     midiInput.setup();
 
     webCamHD.listDevices();
-    webCamHD.setDeviceID(0);
+    webCamHD.setDeviceID(WEBCAM_ID);
     webCamHD.setup(WEBCAM_WIDTH, WEBCAM_HEIGHT);
     
 
@@ -150,7 +150,7 @@ void ofApp::update(){
     
     if (gui->webcamOn) {
         webCamHD.close();
-        webCamHD.setDeviceID(0);
+        webCamHD.setDeviceID(WEBCAM_ID);
         webCamHD.setup(WEBCAM_WIDTH, WEBCAM_HEIGHT);
     }
     
@@ -159,7 +159,7 @@ void ofApp::update(){
         
         if (gui->ResetShader) {
             webCamHD.close();
-            webCamHD.setDeviceID(0);
+            webCamHD.setDeviceID(WEBCAM_ID);
             webCamHD.setup(WEBCAM_WIDTH, WEBCAM_HEIGHT);
             liveCamGlitch.inputBaseArch( baseArch );
             liveCamGlitch.inputMidiInput(midiInput);
@@ -292,6 +292,7 @@ void ofApp::update(){
     if (gui->OnOFf_SpeechVideo) {
         speechVideoSynth.update();
         speechVideoSynth.indexMovie = gui->IndexSpeechMovie;
+        
     }
 
     
@@ -376,6 +377,7 @@ void ofApp::draw(){
         glungeWinter.drawBackTexture();
         glungeWinter.drawBack();
     }
+
 
     if (gui->OnOff_Labyrinth) {
         labyrinth.draw();
