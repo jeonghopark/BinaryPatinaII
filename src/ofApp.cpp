@@ -27,7 +27,7 @@ void ofApp::setup(){
     
     nBandsToGet = 32 * 2;
     
-    fft.fft.stream.setDeviceID(2);
+    fft.fft.stream.setDeviceID(5);
     fft.setup();
     fft.fft.setup(16384 * 0.5);
     fft.setNumFFTBins(nBandsToGet);
@@ -577,7 +577,7 @@ void ofApp::keyReleased(int key){
     
     webLiveCam.keyReleased(key);
 
-    if (key == 'o') {
+    if (key == 'c') {
         baseArch.setupDefault();
     }
     
