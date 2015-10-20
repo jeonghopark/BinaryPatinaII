@@ -34,4 +34,13 @@ void SceneSetup::inputWebCam(ofVideoGrabber & _webCamHD){
 
 
 
+//--------------------------------------------------------------
+void SceneSetup::inputLeapMotion(ofxLeapMotion & _leapMotion){
+    
+    leapMotion = & _leapMotion;
+    
+}
+
+
+
 

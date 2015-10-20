@@ -39,6 +39,7 @@ void ofApp::setup(){
     webCamHD.setDeviceID(WEBCAM_ID);
     webCamHD.setup(WEBCAM_WIDTH, WEBCAM_HEIGHT);
     
+    leapMotion.open();
 
     
     baseArch.inputFont( font );
@@ -67,6 +68,7 @@ void ofApp::setup(){
     indiaTower.inputFFTP( fft );
     indiaTower.setup();
     
+    trierFlyingCam.inputLeapMotion( leapMotion );
     trierFlyingCam.setup();
     
     cubicMapFlyingCam.setup();
@@ -491,18 +493,18 @@ void ofApp::keyPressed(int key){
     if (key == '4') mainGlitch.setFx(OFXPOSTGLITCH_CUTSLIDER		, true);
     if (key == '5') mainGlitch.setFx(OFXPOSTGLITCH_TWIST			, true);
 //    if (key == '6') backGlitch.setFx(OFXPOSTGLITCH_OUTLINE		, true);
-    if (key == '7') mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, true);
-    if (key == '8') mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, true);
-    if (key == '9') mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, true);
-    if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, true);
+    if (key == '6') mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, true);
+    if (key == '7') mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, true);
+    if (key == '8') mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, true);
+    if (key == '9') mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, true);
     
-    if (key == 'q') mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, true);
-    if (key == 'w') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, true);
-    if (key == 'e') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, true);
-    if (key == 'r') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, true);
-    if (key == 't') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, true);
-    if (key == 'y') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, true);
-    if (key == 'u') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, true);
+    if (key == 't') mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, true);
+    if (key == 'z') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, true);
+    if (key == 'u') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, true);
+    if (key == 'i') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, true);
+    if (key == 'o') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, true);
+    if (key == 'p') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, true);
+    if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, true);
 
 }
 
@@ -516,18 +518,18 @@ void ofApp::keyReleased(int key){
     if (key == '4') mainGlitch.setFx(OFXPOSTGLITCH_CUTSLIDER		, false);
     if (key == '5') mainGlitch.setFx(OFXPOSTGLITCH_TWIST			, false);
 //    if (key == '6') backGlitch.setFx(OFXPOSTGLITCH_OUTLINE		, false);
-    if (key == '7') mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, false);
-    if (key == '8') mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, false);
-    if (key == '9') mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, false);
-    if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, false);
+    if (key == '6') mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, false);
+    if (key == '7') mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, false);
+    if (key == '8') mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, false);
+    if (key == '9') mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, false);
     
-    if (key == 'q') mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, false);
-    if (key == 'w') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, false);
-    if (key == 'e') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, false);
-    if (key == 'r') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, false);
-    if (key == 't') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, false);
-    if (key == 'y') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, false);
-    if (key == 'u') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, false);
+    if (key == 't') mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, false);
+    if (key == 'z') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, false);
+    if (key == 'u') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, false);
+    if (key == 'i') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, false);
+    if (key == 'o') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, false);
+    if (key == 'p') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, false);
+    if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, false);
 
 
 

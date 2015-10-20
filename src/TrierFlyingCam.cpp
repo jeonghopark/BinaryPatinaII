@@ -215,6 +215,25 @@ void TrierFlyingCam::update(){
     roadMoving_33975_22294 = sin( ofDegToRad(roadMovingFactor_33975_22294) ) * 0.5 + 0.5;
     
 
+    simpleHands = leapMotion->getSimpleHands();
+
+    if( leapMotion->isFrameNew() && simpleHands.size() ){
+        ofPoint _p;
+        if (!leapMotionPause) {
+            _p = ofPoint( simpleHands[0].yaw * -8, simpleHands[0].pitch * 10 - 2 );
+        } else {
+            _p = ofPoint( 0, 0 );
+        }
+        cam.nodeRotateLeapMotion( _p );
+        
+    }
+    
+    
+    camera.lookAt(cam.getLookAtDir());
+    camera.setGlobalPosition(cam.getGlobalPosition());
+    camera.setGlobalOrientation(cam.getGlobalOrientation());
+    
+    
 }
 
 

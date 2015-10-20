@@ -8,6 +8,8 @@
 
 #include "BaseArch.h"
 
+#include "ofxLeapMotion2.h"
+
 #include "ofxFontStash.h"
 
 #include "ofxProcessFFT.h"
@@ -59,6 +61,8 @@ public:
     MidiInput midiInput;
     ofVideoGrabber webCamHD;
 
+    ofxLeapMotion leapMotion;
+    
     BaseArch baseArch;
     
     GlungeWinter glungeWinter;
