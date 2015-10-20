@@ -122,6 +122,12 @@ public:
     ofFbo			mainFBO;
     ofxPostGlitch	mainGlitch;
     
+    bool bMainDirectglitch;
+    ofImage mainImgDirectGlitch;
+    ofImageQualityType qualityMain;
+    void mainGlitchPixel(ofPixels _p);
+
+    
 };
 
 

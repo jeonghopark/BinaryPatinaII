@@ -70,6 +70,9 @@ void GuiApp::setup(){
     pluto.setName("05-Fiona Pluto");
     pluto.setPosition(650, 10);
     pluto.add( OnOff_Pluto.set("On/Off", false) );
+    pluto.add( Return.setup("Return", false));
+    
+    
 
     indiaTower.setup();
     indiaTower.setName("06-India IndiaTower");
@@ -92,7 +95,7 @@ void GuiApp::setup(){
     cubicMapFlyingCam.setPosition(870, 600);
     cubicMapFlyingCam.add( OnOff_CubicMapFlyingCam.set("On/Off", false) );
     cubicMapFlyingCam.add( BuildColor.setup("Building Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
-    cubicMapFlyingCam.add( BuildSideColor.setup("BuildSide Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    cubicMapFlyingCam.add( BuildSideColor.setup("BuildSide Color", ofColor(125,125,125,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
     cubicMapFlyingCam.add( RoadColor.setup("Road Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
     cubicMapFlyingCam.add( MovingColor.setup("Moving Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
 

@@ -71,8 +71,7 @@ void LiveCamGlitch::update(){
         ofColor(0,255);
         captureCam.draw(0, 0);
         liveVideoFbo.end();
-
-
+        
     }
     
     

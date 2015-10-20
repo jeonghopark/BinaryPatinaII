@@ -28,6 +28,8 @@ class Pluto : public SceneSetup{
     
     void loadImages();
     
+    void returnValue();
+    
     ofImage moon;
     ofImage earthBlur;
     
@@ -38,6 +40,8 @@ class Pluto : public SceneSetup{
     
     float speedFactor;
 
+    
+    
 };
 
 #endif /* Pluto_hpp */

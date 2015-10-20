@@ -97,9 +97,21 @@ void Pluto::loadImages(){
     xyScaleMoon = moon.getWidth();
     xyScaleEarth = earthBlur.getWidth();
     
+    returnValue();
+    
+}
+
+
+
+//--------------------------------------------------------------
+void Pluto::returnValue(){
+    
     yPosMoon = -moon.getWidth() * 0.5 - 350;
     yPosEarth = -earthBlur.getWidth() * 0.5 - 350;
-
+    
 }
+
+
+
 
 

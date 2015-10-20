@@ -34,6 +34,10 @@ void ofApp::setup(){
     fft.setFFTpercentage(0.9);
     
     midiInput.setup();
+    
+    mainImgDirectGlitch.allocate(1920, 1080, OF_IMAGE_COLOR);
+    bMainDirectglitch = false;
+
 
     webCamHD.listDevices();
     webCamHD.setDeviceID(WEBCAM_ID);
@@ -229,6 +233,10 @@ void ofApp::update(){
         calligraphy.fftValue = gui->fftSize;
     }
 
+    if (gui->Return) {
+        pluto.returnValue();
+    }
+    
     if (gui->OnOff_Pluto) {
         pluto.update();
     }
@@ -467,8 +475,27 @@ void ofApp::draw(){
     
     baseArch.drawEdgeCover( ofColor(0) );
 
-    ofPopMatrix();
     
+
+    
+    
+    ofEnableAlphaBlending();
+    
+    if (bMainDirectglitch) {
+        float _w = baseArch.fassadeCorner[1].x - baseArch.fassadeCorner[0].x;
+        float _h = baseArch.fassadeCorner[2].y - baseArch.fassadeCorner[0].y;
+        float _x = baseArch.fassadeCorner[0].x;
+        float _y = baseArch.fassadeCorner[0].y;
+        
+        ofPixels _p;
+        mainFBO.readToPixels(_p);
+        mainGlitchPixel(_p);
+        mainImgDirectGlitch.draw(_x, _y, _w, _h);
+    }
+    
+    ofDisableAlphaBlending();
+
+    ofPopMatrix();
 
 }
 
@@ -517,6 +544,61 @@ void ofApp::drawBaseArch(){
 
 }
 
+
+
+//--------------------------------------------------------------
+void ofApp::mainGlitchPixel(ofPixels _p) {
+    
+    string compressedFilename = "compressed.jpg";
+    
+    unsigned char * _c = _p.getData();
+    
+    float coin = ofRandom(100);
+    if (coin > 95) {
+        _c = _p.getData() + (int)ofRandom(100);
+    }
+    
+    mainImgDirectGlitch.setImageType(OF_IMAGE_COLOR);
+    
+    float _w = baseArch.fassadeCorner[1].x - baseArch.fassadeCorner[0].x;
+    float _h = baseArch.fassadeCorner[2].y - baseArch.fassadeCorner[0].y;
+    mainImgDirectGlitch.setFromPixels(_c, 1920, 1080, OF_IMAGE_COLOR);
+    
+    mainImgDirectGlitch.save(compressedFilename, qualityMain);
+    
+    ofBuffer file = ofBufferFromFile(compressedFilename);
+    int fileSize = file.size();
+    char * buffer = file.getData();
+    
+    int whichByte = (int) ofRandom(fileSize);
+    
+    int whichBit = ofRandom(16);
+    
+    
+    char bitMask;
+    if ( whichBit >8 ) {
+        bitMask = 1 << whichBit;
+    } else {
+        bitMask = 7 << whichBit;
+    }
+    
+    buffer[whichByte] |= bitMask;
+    
+    ofBufferToFile(compressedFilename, file);
+    mainImgDirectGlitch.load(compressedFilename);
+    
+    //    float coin = ofRandom(100);
+    //    if (coin > 95) {
+    //        reset();
+    //    }
+    
+}
+
+
+
+
+
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     
@@ -539,6 +621,8 @@ void ofApp::keyPressed(int key){
     if (key == 'o') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, true);
     if (key == 'p') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, true);
     if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, true);
+    
+    if (key == 'k') bMainDirectglitch = true;
 
 }
 
@@ -565,6 +649,7 @@ void ofApp::keyReleased(int key){
     if (key == 'p') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, false);
     if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, false);
 
+    if (key == 'k') bMainDirectglitch = false;
 
 
     
