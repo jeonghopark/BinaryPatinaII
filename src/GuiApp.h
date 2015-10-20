@@ -32,6 +32,10 @@ public:
 
     
     ofParameter<bool> OnOff_GlungeWinter;
+    ofxToggle verticalOnOff;
+    ofxColorSlider VerticalColor;
+    ofxToggle horizonOnOff;
+    ofxColorSlider HorizonColor;
     
     ofParameter<bool> OnOff_LiveCamGlitch;
     ofxButton ResetShader;

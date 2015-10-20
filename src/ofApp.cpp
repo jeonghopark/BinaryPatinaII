@@ -377,6 +377,8 @@ void ofApp::update(){
     
     
     if (gui->OnOff_GlungeWinter) {
+        glungeWinter.verticalColor = gui->VerticalColor;
+        glungeWinter.horizonColor = gui->HorizonColor;
         glungeWinter.drawBackTexture();
         glungeWinter.drawBack();
     }
@@ -395,7 +397,12 @@ void ofApp::update(){
     }
     
     if (gui->OnOff_GlungeWinter) {
-        glungeWinter.drawFront();
+        if (gui->verticalOnOff) {
+            glungeWinter.drawFrontVertical();
+        }
+        if (gui->horizonOnOff) {
+            glungeWinter.drawFrontHorizon();
+        }
     }
     
     

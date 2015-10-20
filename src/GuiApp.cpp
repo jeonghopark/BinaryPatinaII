@@ -32,8 +32,12 @@ void GuiApp::setup(){
 
     glungeWinter.setup();
     glungeWinter.setName("01-Glunge Winter");
-    glungeWinter.setPosition(220, 260);
+    glungeWinter.setPosition(850, 260);
     glungeWinter.add( OnOff_GlungeWinter.set("On/Off", false) );
+    glungeWinter.add( VerticalColor.setup("Color Numbers", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    glungeWinter.add( verticalOnOff.setup("On/Off", true) );
+    glungeWinter.add( HorizonColor.setup("Color Numbers", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    glungeWinter.add( horizonOnOff.setup("On/Off", true) );
     
     liveCamGlitch.setup();
     liveCamGlitch.setName("02-Shell LiveCamGlitch");

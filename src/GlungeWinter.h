@@ -19,13 +19,18 @@ public:
     void update();
     void drawBackTexture();
     void drawBack();
-    void drawFront();
+    void drawFrontHorizon();
+    void drawFrontVertical();
     
     void drawVertical();
     void drawHorizon();
  
     
     ofImage grungeTexture;
+    
+    ofColor verticalColor;
+    ofColor horizonColor;
+    
     
 };
 
