@@ -57,7 +57,7 @@ void CubicMapFlyingCam::setup(){
     //    camera.move(0, 0, 300);
     //    camera.setTarget(_rootNode_33975_22294->getGlobalPosition());
     
-    mainLight = ofLight();
+//    mainLight = ofLight();
     mainLight.setPointLight();
     mainLight.setGlobalPosition(0, 0, 0);
     mainLight.setDiffuseColor(ofColor(255, 255, 255));
@@ -82,6 +82,27 @@ void CubicMapFlyingCam::update(){
     
     if( pushed[GLFW_MOUSE_BUTTON_RIGHT] ) cam.toggleControl();
     
+    
+    simpleHands = leapMotion->getSimpleHands();
+    
+    if( leapMotion->isFrameNew() && simpleHands.size() ){
+        ofPoint _p;
+        if (!leapMotionPause) {
+            _p = ofPoint( simpleHands[0].yaw * -8, simpleHands[0].pitch * 10 - 2 );
+        } else {
+            _p = ofPoint( 0, 0 );
+        }
+        cam.nodeRotateLeapMotion( _p );
+        
+    }
+    
+    
+    camera.lookAt(cam.getLookAtDir());
+    camera.setGlobalPosition(cam.getGlobalPosition());
+    camera.setGlobalOrientation(cam.getGlobalOrientation());
+
+    
+    
     roadMovingFactor_top = roadMovingFactor_top + 4;
     roadMoving_top = sin( ofDegToRad(roadMovingFactor_top) ) * 0.5 + 0.5;
 
@@ -98,38 +119,38 @@ void CubicMapFlyingCam::draw(){
     
     //    ofEnableLighting();
     
-    cam.begin();
+    camera.begin();
     
     
 
-//    ofEnableDepthTest();
+    ofEnableDepthTest();
 //    ofDisableAlphaBlending();
 //    ofDisableArbTex();
 
     //    mainLight.enable();
     
-    ofVec3f _offSetPos = ofVec3f(540, 540, 540);
+    ofVec3f _offSetPos = ofVec3f(0, 0, 0);
     
     drawBuildingsMesh(buildingsMesh_top, ofVec3f(0, 0, _offSetPos.z), ofVec3f(0, 0, 0));
-    //    drawBuildingsMesh(buildingsMesh_left, ofVec3f(-_offSetPos.x, 0, 0), ofVec3f(0, -90, 0));
-    //    drawBuildingsMesh(buildingsMesh_right, ofVec3f(_offSetPos.x, 0, 0), ofVec3f(0, 90, 0));
+        drawBuildingsMesh(buildingsMesh_left, ofVec3f(-_offSetPos.x, 0, 0), ofVec3f(0, -90, 0));
+        drawBuildingsMesh(buildingsMesh_right, ofVec3f(_offSetPos.x, 0, 0), ofVec3f(0, 90, 0));
     //    drawBuildingsMesh(buildingsMesh_front, ofVec3f(0, _offSetPos.y, 0), ofVec3f(-90, 0, 0));
     //    drawBuildingsMesh(buildingsMesh_back, ofVec3f(0, -_offSetPos.y, 0), ofVec3f(90, 0, 0));
     //    drawBuildingsMesh(buildingsMesh_bottom, ofVec3f(0, 0, -_offSetPos.z), ofVec3f(180, 0, 0));
     
     drawRoadPolyLineMoving(roadsPolyline_top, ofVec3f(0, 0, _offSetPos.z), ofVec3f(0, 0, 0));
-    //    drawRoadPolyLineMoving(roadsPolyline_left, ofVec3f(-_offSetPos.x, 0, 0), ofVec3f(0, -90, 0));
-    //    drawRoadPolyLineMoving(roadsPolyline_right, ofVec3f(_offSetPos.x, 0, 0), ofVec3f(0, 90, 0));
+        drawRoadPolyLineMoving(roadsPolyline_left, ofVec3f(-_offSetPos.x, 0, 0), ofVec3f(0, -90, 0));
+        drawRoadPolyLineMoving(roadsPolyline_right, ofVec3f(_offSetPos.x, 0, 0), ofVec3f(0, 90, 0));
     //    drawRoadPolyLineMoving(roadsPolyline_front, ofVec3f(0, _offSetPos.y, 0), ofVec3f(-90, 0, 0));
     //    drawRoadPolyLineMoving(roadsPolyline_back, ofVec3f(0, -_offSetPos.y, 0), ofVec3f(90, 0, 0));
     //    drawRoadPolyLineMoving(roadsPolyline_bottom, ofVec3f(0, 0, -_offSetPos.z), ofVec3f(180, 0, 0));
     
     
-//    ofDisableDepthTest();
+    ofDisableDepthTest();
     
     //    mainLight.disable();
     
-    cam.end();
+    camera.end();
     
     //    ofDisableLighting();
 

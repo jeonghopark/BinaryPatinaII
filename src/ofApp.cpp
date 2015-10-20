@@ -71,6 +71,7 @@ void ofApp::setup(){
     trierFlyingCam.inputLeapMotion( leapMotion );
     trierFlyingCam.setup();
     
+    cubicMapFlyingCam.inputLeapMotion( leapMotion );
     cubicMapFlyingCam.setup();
     
     moonCreator.setup();
