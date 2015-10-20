@@ -92,7 +92,10 @@ public:
     ofxFirstPersonCamera cam;
     vector<ofPolyline> paint;
 
-    
+    ofColor buildingColor;
+    ofColor buildingSideColor;
+    ofColor roadColor;
+    ofColor movingColor;
     
 };
 

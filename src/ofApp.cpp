@@ -62,40 +62,54 @@ void ofApp::setup(){
     calligraphy.inputFFTP( fft );
     calligraphy.setup();
 
+    pluto.inputBaseArch( baseArch );
     pluto.setup();
     
     indiaTower.inputBaseArch( baseArch );
     indiaTower.inputFFTP( fft );
     indiaTower.setup();
     
+    trierFlyingCam.inputBaseArch( baseArch );
     trierFlyingCam.inputLeapMotion( leapMotion );
     trierFlyingCam.setup();
     
+    cubicMapFlyingCam.inputBaseArch( baseArch );
     cubicMapFlyingCam.inputLeapMotion( leapMotion );
     cubicMapFlyingCam.setup();
     
+
+    moonCreator.inputBaseArch( baseArch );
     moonCreator.setup();
+    
     
     lineVideo.inputBaseArch( baseArch);
     lineVideo.setup();
     lineVideo.inputWebCam( webCamHD );
 
+    
     movingObjects.inputBaseArch( baseArch );
     movingObjects.setup();
+    
     
     droneAttack.inputBaseArch( baseArch );
     droneAttack.setup();
 
+    
     webLiveCam.inputBaseArch( baseArch );
     webLiveCam.setup();
+    
     
     nightVision.inputBaseArch( baseArch );
     nightVision.setup();
     
+    
     speechVideoSynth.inputBaseArch( baseArch );
     speechVideoSynth.setup();
     
+    
     fullScreen = false;
+
+    
     
 //    backFBO.allocate(1920, 1080);
 //    backGlitch.setup(& backFBO);
@@ -227,6 +241,10 @@ void ofApp::update(){
 
     if (gui->OnOff_CubicMapFlyingCam) {
         cubicMapFlyingCam.update();
+        cubicMapFlyingCam.buildingColor = gui->BuildColor;
+        cubicMapFlyingCam.buildingSideColor = gui->BuildSideColor;
+        cubicMapFlyingCam.roadColor = gui->RoadColor;
+        cubicMapFlyingCam.movingColor = gui->MovingColor;
     }
     
     if (gui->OnOff_MoonCreator) {

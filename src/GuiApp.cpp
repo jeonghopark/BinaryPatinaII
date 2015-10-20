@@ -83,9 +83,13 @@ void GuiApp::setup(){
 
     cubicMapFlyingCam.setup();
     cubicMapFlyingCam.setName("08-Glass CubicMap");
-    cubicMapFlyingCam.setPosition(430, 10);
+    cubicMapFlyingCam.setPosition(960, 10);
     cubicMapFlyingCam.add( OnOff_CubicMapFlyingCam.set("On/Off", false) );
-    
+    cubicMapFlyingCam.add( BuildColor.setup("Building Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    cubicMapFlyingCam.add( BuildSideColor.setup("BuildSide Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    cubicMapFlyingCam.add( RoadColor.setup("Road Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    cubicMapFlyingCam.add( MovingColor.setup("Moving Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+
 
     moonCreator.setup();
     moonCreator.setName("09-Stringer Moon");

@@ -61,6 +61,16 @@ public:
     ofParameter<bool> OnOff_TrierFlyingCam;
 
     ofParameter<bool> OnOff_CubicMapFlyingCam;
+    ofxColorSlider BuildColor;
+    ofxColorSlider BuildSideColor;
+    ofxColorSlider RoadColor;
+    ofxColorSlider MovingColor;
+    ofxToggle BuildOnOff;
+    ofxToggle BuildSideOnOff;
+    ofxToggle RoadOnOff;
+    ofxToggle MovingOnOff;
+    
+    
     
     ofParameter<bool> OnOff_MoonCreator;
 

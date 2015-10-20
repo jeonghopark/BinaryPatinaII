@@ -187,7 +187,7 @@ void CubicMapFlyingCam::drawBuildingsMesh(vector<ofMesh> _mesh, ofVec3f _positio
     
     
     
-    ofSetColor(255, 255);
+    ofSetColor( buildingColor );
     
     float _height = 20;
     
@@ -212,7 +212,7 @@ void CubicMapFlyingCam::drawBuildingsMesh(vector<ofMesh> _mesh, ofVec3f _positio
         
         
         ofPushStyle();
-        ofSetColor(180, 255);
+        ofSetColor( buildingSideColor );
         vector<ofVec3f>& _verticesSide = _mesh[i].getVertices();
         for(int j = 0; j < _verticesSide.size()-1; j++) {
             ofBeginShape();
@@ -261,13 +261,14 @@ void CubicMapFlyingCam::drawRoadPolyLineMoving(vector< ofPolyline > _ofPolyline,
     
     
     ofPushStyle();
-    ofSetColor(255, 120);
+    ofSetColor(roadColor);
     
     ofSetLineWidth(1);
     for (int i=0; i<_ofPolyline.size(); i++) {
         _ofPolyline[i].draw();
     }
     
+    ofSetColor(movingColor);
     for (int i=0; i<_ofPolyline.size(); i++) {
         ofDrawCircle(_ofPolyline[i].getPointAtPercent( roadMoving_top ) , 2);
     }
