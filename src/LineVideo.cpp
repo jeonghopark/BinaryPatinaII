@@ -109,7 +109,7 @@ void LineVideo::drawLines(){
         ofSetColor( startLineColors[i] );
         
         float _y = i * _h / 120.0;
-        float _controlY = controlPosY[i];
+        float _controlY = controlPosY[i] + ofRandom(100, 300) * controlPointRandom;
         
         ofDrawBezier(_x + _w, _y,
                      _x + _w + 100, _controlY,

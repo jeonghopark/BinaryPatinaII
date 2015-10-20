@@ -39,6 +39,10 @@ class LineVideo: public SceneSetup {
     
     vector<ofColor> startLineColors;
     vector<float> controlPosY;
+    
+    
+    float controlPointRandom;
+    
 };
 
 

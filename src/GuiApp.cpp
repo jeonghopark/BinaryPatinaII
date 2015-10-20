@@ -92,10 +92,13 @@ void GuiApp::setup(){
     moonCreator.setPosition(220, 10);
     moonCreator.add( OnOff_MoonCreator.set("On/Off", false) );
 
+    
     lineVideo.setup();
     lineVideo.setName("10-BlowFiles LineVideo");
     lineVideo.setPosition(220, 60);
     lineVideo.add( OnOff_LineVideo.set("On/Off", false) );
+    lineVideo.add( ControlRandom.setup("RandomRation", 1, 0.01, 20));
+    
 
     movingObject.setup();
     movingObject.setName("11-Granu MovingObject");

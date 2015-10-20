@@ -235,14 +235,13 @@ void ofApp::update(){
 
     if (gui->OnOff_LineVideo) {
         lineVideo.update();
+        lineVideo.controlPointRandom = gui->ControlRandom;
     }
 
     if (gui->OnOff_MovingObject) {
         movingObjects.update();
-        
         movingObjects.colorRect = gui->ColorRect;
         movingObjects.colorText = gui->ColorText;
-        
     }
 
     

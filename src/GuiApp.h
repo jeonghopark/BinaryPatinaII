@@ -65,6 +65,7 @@ public:
     ofParameter<bool> OnOff_MoonCreator;
 
     ofParameter<bool> OnOff_LineVideo;
+    ofxFloatSlider ControlRandom;
     
     
     ofParameter<bool> OnOff_MovingObject;
