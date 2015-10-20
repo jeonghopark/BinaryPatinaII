@@ -33,8 +33,8 @@ void LiveCamGlitch::setup(){
     
     quality = OF_IMAGE_QUALITY_WORST;
     
-    videoW = 1920;  // 1920, 1280
-    videoH = 1080;   // 1080, 720
+    videoW = 480;  // 1920, 1280
+    videoH = 360;   // 1080, 720
     
     liveVideoFbo.clear();
     liveVideoFbo.allocate(videoW, videoH);
@@ -64,7 +64,7 @@ void LiveCamGlitch::update(){
     if (webCamHD->isFrameNew()){
 
         windowView.setFromPixels(webCamHD->getPixels());
-        windowView.setROI(960, 0, videoW * 0.5, videoH);
+        windowView.setROI(240, 0, videoW * 0.5, videoH);
         captureCam.setFromPixels( windowView.getRoiPixels() );
 
         liveVideoFbo.begin();
@@ -148,7 +148,9 @@ void LiveCamGlitch::draw(){
 
     webCamHD->draw(0, 0);
     glitchEffect.generateFx();
-    liveVideoFbo.draw(960, 0);  // 640 : 960
+    
+    float _center = baseArch->framesCenter[11][0].x;
+    liveVideoFbo.draw( _center, 0 );  // 640 : 960
 
     ofDisableAlphaBlending();
 

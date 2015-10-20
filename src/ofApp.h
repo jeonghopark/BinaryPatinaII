@@ -26,6 +26,10 @@
 #include "DroneAttack.hpp"
 #include "WebLiveCam.hpp"
 #include "NightVision.hpp"
+#include "SpeechVideoSynth.hpp"
+
+#define WEBCAM_WIDTH 480
+#define WEBCAM_HEIGHT 360
 
 
 class ofApp : public ofBaseApp {
@@ -69,7 +73,9 @@ public:
     MovingObjects movingObjects;
     DroneAttack droneAttack;
     WebLiveCam webLiveCam;
-    NightVision nightVision;
+
+    NightVision nightVision;    
+    SpeechVideoSynth speechVideoSynth;
 
     
     int nBandsToGet;
@@ -85,6 +91,10 @@ public:
     int labyrinthOldNumParticle;
     int labyrinthOldType;
     bool labyrinthChangeNum;
+
+    
+    int speechVideoOldNum;
+
     
     bool fullScreen;
     
@@ -98,7 +108,6 @@ public:
     int dirIdx;
 
     
-    ofImage testTexture;
     
 };
 

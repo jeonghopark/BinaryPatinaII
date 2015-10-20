@@ -13,6 +13,7 @@ void GuiApp::setup(){
     main.setName("Main - Windows");
     main.setPosition(10, 10);
     main.add(FrameRate.set("FrameRate", ""));
+    main.add(FullScreen.setup("FullScreen", false));
     main.add(webcamOn.setup("Web Cam On / Off", false));
     main.add(CanonView.setup("Canon On / Off", false));
     main.add(SyphonSearch.setup("SyphonSearch", false));
@@ -94,7 +95,7 @@ void GuiApp::setup(){
 
     movingObject.setup();
     movingObject.setName("11-Granu MovingObject");
-    movingObject.setPosition(640, 310);
+    movingObject.setPosition(640, 350);
     movingObject.add( OnOff_MovingObject.set("On/Off", false) );
     movingObject.add( ColorText.setup("Text Color", ofColor(255,0,0,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
     movingObject.add( ColorRect.setup("Rect Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
@@ -105,9 +106,14 @@ void GuiApp::setup(){
     droneAttack.setName("12-Patina DroneAttack");
     droneAttack.setPosition(640, 10);
     droneAttack.add( OnOff_DroneAttack.set("On/Off", false) );
+    droneAttack.add( DrawEarth.setup("On/Off", true) );
+    droneAttack.add( DrawAttack.setup("On/Off", true) );
+    droneAttack.add( DrawEarthTexture.setup("On/Off", false) );
+    
     droneAttack.add( DroneSpeedFactor.setup("Drone Speed : 7", 7, 0.02, 14) );
     droneAttack.add( AttackColor.setup("Attack Color", ofColor(255,0,0,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
     droneAttack.add( EarthColor.setup("Earth Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    droneAttack.add( LoadImage.setup("LoadImage", false));
 
     
 
@@ -125,6 +131,14 @@ void GuiApp::setup(){
     nightVision.setName("NightVision");
     nightVision.setPosition(430, 60);
     nightVision.add( OnOff_NightVision.set("On/Off", false) );
+
+    
+    speechVideo.setup();
+    speechVideo.setName("Speech Video");
+    speechVideo.setPosition(850, 10);
+    speechVideo.add( OnOFf_SpeechVideo.set("On/Off", false) );
+    speechVideo.add( LoadSpeechVideos.setup("Load Video", false ));
+    speechVideo.add( IndexSpeechMovie.setup("Index Movie", 0, 0, 3 ));
 
     
     
@@ -157,6 +171,8 @@ void GuiApp::draw(){
     droneAttack.draw();
     webLiveCam.draw();
     nightVision.draw();
+    
+    speechVideo.draw();
     
 }
 

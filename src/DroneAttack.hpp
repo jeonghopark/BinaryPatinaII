@@ -36,12 +36,14 @@ public:
     
     void setup();
     void update();
-    void draw();
     
     void jsonDataSetup();
     
+    void drawEarthTexture();
     void drawAttackPosition();
     void drawEarth();
+    
+    void loadImage();
     
     vector<DronData> dronData;
     
@@ -52,10 +54,16 @@ public:
     vector<ofPolyline> paint;
     
     
+    ofSpherePrimitive earth;
+    
+    ofImage earthImages;
+    
     ofColor colorEarth;
     ofColor colorAttack;
 
     float speedFactor;
+    
+    
     
 };
 

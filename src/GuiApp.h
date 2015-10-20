@@ -13,6 +13,7 @@ public:
 	void draw();
 
     ofParameter<string> FrameRate;
+    ofxButton FullScreen;
     ofxButton webcamOn;
     ofxToggle CanonView;
     ofxButton SyphonSearch;
@@ -68,9 +69,14 @@ public:
 
 
     ofParameter<bool> OnOff_DroneAttack;
+    ofxButton LoadImage;
+    ofxToggle DrawEarth;
+    ofxToggle DrawAttack;
+    ofxButton DrawEarthTexture;
     ofxFloatSlider DroneSpeedFactor;
     ofxColorSlider EarthColor;
     ofxColorSlider AttackColor;
+    
     
 
     ofParameter<bool> OnOff_WebLiveCam;
@@ -80,7 +86,12 @@ public:
     
 
     ofParameter<bool> OnOff_NightVision;
+
+    ofParameter<bool> OnOFf_SpeechVideo;
+    ofxButton LoadSpeechVideos;
+    ofxIntSlider IndexSpeechMovie;
     
+
     
     ofxPanel main;
     ofxPanel glungeWinter;
@@ -97,7 +108,7 @@ public:
     ofxPanel droneAttack;
     ofxPanel webLiveCam;
     ofxPanel nightVision;
-
+    ofxPanel speechVideo;
     
     ofParameter<bool> audioInputOnOff;
     

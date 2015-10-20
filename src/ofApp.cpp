@@ -21,7 +21,6 @@ void ofApp::setup(){
     baseArch.mainOffSetXPos = mainOffSetXPos;
     baseArch.mainOffSetYPos = mainOffSetYPos;
     
-
     
     font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
     font.addFont("VeraMono-Bold.ttf");
@@ -37,8 +36,8 @@ void ofApp::setup(){
     midiInput.setup();
 
     webCamHD.listDevices();
-    webCamHD.setDeviceID(1);
-    webCamHD.setup(1920,1080);
+    webCamHD.setDeviceID(0);
+    webCamHD.setup(WEBCAM_WIDTH, WEBCAM_HEIGHT);
     
 
     
@@ -81,6 +80,7 @@ void ofApp::setup(){
     movingObjects.inputBaseArch( baseArch );
     movingObjects.setup();
     
+    droneAttack.inputBaseArch( baseArch );
     droneAttack.setup();
 
     webLiveCam.inputBaseArch( baseArch );
@@ -89,8 +89,12 @@ void ofApp::setup(){
     nightVision.inputBaseArch( baseArch );
     nightVision.setup();
     
+    speechVideoSynth.inputBaseArch( baseArch );
+    speechVideoSynth.setup();
     
     fullScreen = false;
+    
+    
     
 }
 
@@ -128,14 +132,26 @@ void ofApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg)
 //--------------------------------------------------------------
 void ofApp::update(){
     
+    
+    if (gui->FullScreen) {
+        
+        ofSetFullscreen(true);
+        ofSetWindowPosition(2560, 0);
+        ofSetWindowShape(1920, 1080);
+        
+    }
+    
+    
+    
+    
     webCamHD.update();
     midiInput.update();
     midiInput.drumPadOutput();
     
     if (gui->webcamOn) {
         webCamHD.close();
-        webCamHD.setDeviceID(1);
-        webCamHD.setup(1920,1080);
+        webCamHD.setDeviceID(0);
+        webCamHD.setup(WEBCAM_WIDTH, WEBCAM_HEIGHT);
     }
     
     if (gui->OnOff_LiveCamGlitch) {
@@ -143,8 +159,8 @@ void ofApp::update(){
         
         if (gui->ResetShader) {
             webCamHD.close();
-            webCamHD.setDeviceID(1);
-            webCamHD.setup(1920,1080);
+            webCamHD.setDeviceID(0);
+            webCamHD.setup(WEBCAM_WIDTH, WEBCAM_HEIGHT);
             liveCamGlitch.inputBaseArch( baseArch );
             liveCamGlitch.inputMidiInput(midiInput);
             liveCamGlitch.inputWebCam( webCamHD );
@@ -225,6 +241,9 @@ void ofApp::update(){
         droneAttack.speedFactor = gui->DroneSpeedFactor;
         droneAttack.colorAttack = gui->AttackColor;
         droneAttack.colorEarth = gui->EarthColor;
+        if (gui->LoadImage) {
+            droneAttack.loadImage();
+        }
     }
     
 
@@ -238,6 +257,8 @@ void ofApp::update(){
             webLiveCam.randomWindowsPosition();
         }
     }
+    
+    
 
     if (gui->CanonView) {
         if (gui->OnOff_NightVision) {
@@ -267,6 +288,14 @@ void ofApp::update(){
     }
     
     
+    
+    if (gui->OnOFf_SpeechVideo) {
+        speechVideoSynth.update();
+        speechVideoSynth.indexMovie = gui->IndexSpeechMovie;
+    }
+
+    
+        
 }
 
 //--------------------------------------------------------------
@@ -285,13 +314,20 @@ void ofApp::draw(){
         liveCamGlitch.draw();
     }
     
+    if (gui->OnOFf_SpeechVideo) {
+        speechVideoSynth.draw();
+    }
+
+    
     if (gui->OnOff_WebLiveCam) {
         webLiveCam.draw();
     }
 
     
-    if (gui->OnOff_NightVision) {
-        nightVision.draw();
+    if (gui->CanonView) {
+        if (gui->OnOff_NightVision) {
+            nightVision.draw();
+        }
     }
     
 
@@ -315,10 +351,21 @@ void ofApp::draw(){
         moonCreator.draw();
     }
     
+
+    
     if (gui->OnOff_DroneAttack) {
-        droneAttack.draw();
+        if (gui->DrawEarthTexture) {
+            droneAttack.drawEarthTexture();
+        }
+        if (gui->DrawEarth) {
+            droneAttack.drawEarth();
+        }
+        if (gui->DrawAttack) {
+            droneAttack.drawAttackPosition();
+        }
     }
 
+    
 
     if (gui->OnOff_Calligraphy) {
         calligraphy.draw();
@@ -371,7 +418,6 @@ void ofApp::draw(){
     ofPopMatrix();
     
 
-    
 }
 
 

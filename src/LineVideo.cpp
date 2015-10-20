@@ -42,7 +42,7 @@ void LineVideo::setup(){
 void LineVideo::update(){
     
     if (webCamHD->isFrameNew()){
-        colorImg.setFromPixels(webCamHD->getPixels());
+        colorImg.setFromPixels( webCamHD->getPixels() );
         colorImg.setROI(180,0,120,360);
         halfCam.setFromPixels( colorImg.getRoiPixels() );
         

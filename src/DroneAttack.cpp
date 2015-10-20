@@ -89,9 +89,15 @@ void DroneAttack::jsonDataSetup(){
 //--------------------------------------------------------------
 void DroneAttack::setup(){
     
+//    ofSetOrientation(ofGetOrientation(), false);
+    
     cam.setNearClip(0.0001f);
     cam.setFarClip(10000.0f);
     cam.toggleControl();
+
+    ofDisableArbTex();
+    ofEnableDepthTest();
+
 
     jsonDataSetup();
     
@@ -99,6 +105,21 @@ void DroneAttack::setup(){
     colorAttack = ofColor( 255, 0, 0 );
 
     speedFactor = 1;
+    
+    earthImages.load("earthMap copy.jpg");
+    earthImages.getTexture().setTextureWrap( GL_REPEAT, GL_REPEAT );
+
+    earth.set(600, 64);
+    earth.setPosition(0, 0, 0);
+    
+    
+}
+
+
+//--------------------------------------------------------------
+void DroneAttack::loadImage(){
+    
+    earthImages.load("earthMap.jpg");
     
 }
 
@@ -126,18 +147,21 @@ void DroneAttack::update(){
 
 
 //--------------------------------------------------------------
-void DroneAttack::draw(){
+void DroneAttack::drawEarthTexture(){
     
     
     cam.begin();
     
 
-    drawAttackPosition();
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_FRONT);
     
-    drawEarth();
+    earthImages.getTexture().bind();
+    earth.draw();
+    earthImages.getTexture().unbind();
+    
     
     cam.end();
-
     
 }
 
@@ -146,6 +170,8 @@ void DroneAttack::draw(){
 void DroneAttack::drawAttackPosition(){
 
     
+    cam.begin();
+
     ofEnableAlphaBlending();
     
     ofPushStyle();
@@ -162,6 +188,7 @@ void DroneAttack::drawAttackPosition(){
     
     ofDisableAlphaBlending();
     
+    cam.end();
 
 }
 
@@ -169,7 +196,8 @@ void DroneAttack::drawAttackPosition(){
 
 //--------------------------------------------------------------
 void DroneAttack::drawEarth(){
-    
+    cam.begin();
+
     
     ofEnableAlphaBlending();
     
@@ -184,7 +212,8 @@ void DroneAttack::drawEarth(){
     
     ofDisableAlphaBlending();
     
-    
+    cam.end();
+
 }
 
 
