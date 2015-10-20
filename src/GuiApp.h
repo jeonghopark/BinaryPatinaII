@@ -59,6 +59,9 @@ public:
     ofParameter<bool> OnOff_IndiaTower;
 
     ofParameter<bool> OnOff_TrierFlyingCam;
+    ofxColorSlider TrierBuildColor;
+    ofxColorSlider TrierRoadColor;
+    ofxColorSlider TrierMovingColor;
 
     ofParameter<bool> OnOff_CubicMapFlyingCam;
     ofxColorSlider BuildColor;

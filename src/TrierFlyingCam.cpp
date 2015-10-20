@@ -243,9 +243,11 @@ void TrierFlyingCam::draw(){
     
     //    ofEnableLighting();
     
+    
     cam.begin();
     
     
+    ofEnableAlphaBlending();
     
     //    mainLight.enable();
     
@@ -266,19 +268,24 @@ void TrierFlyingCam::draw(){
     //    ofPopStyle();
     
     
+    ofPushStyle();
+    ofSetColor(roadColor);
     for (int i=0; i<roadsPolyline_33975_22294.size(); i++) {
         roadsPolyline_33975_22294[i].draw();
     }
+    ofPopStyle();
     
-    
+
+    ofPushStyle();
+    ofSetColor(movingColor);
     for (int i=0; i<roadsPolyline_33975_22294.size(); i++) {
         ofDrawCircle(roadsPolyline_33975_22294[i].getPointAtPercent( roadMoving_33975_22294 ) , 2);
     }
-    
+    ofPopStyle();
     
     
     ofPushStyle();
-    ofSetColor(255, 180);
+    ofSetColor(buildingColor);
     for (int i=0; i<buildingsPolyline_33975_22294.size(); i++) {
         
         buildingsPolyline_33975_22294[i].draw();
@@ -302,6 +309,7 @@ void TrierFlyingCam::draw(){
     ofPopStyle();
     
     
+    ofDisableAlphaBlending();
     
     //    mainLight.disable();
     

@@ -80,10 +80,16 @@ void GuiApp::setup(){
     trierFlyingCam.setName("07-MIdinight Trier");
     trierFlyingCam.setPosition(220, 570);
     trierFlyingCam.add( OnOff_TrierFlyingCam.set("On/Off", false) );
+    trierFlyingCam.add( TrierBuildColor.setup("Building Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    trierFlyingCam.add( TrierRoadColor.setup("Road Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    trierFlyingCam.add( TrierMovingColor.setup("Moving Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    
+    
+    
 
     cubicMapFlyingCam.setup();
     cubicMapFlyingCam.setName("08-Glass CubicMap");
-    cubicMapFlyingCam.setPosition(960, 10);
+    cubicMapFlyingCam.setPosition(1060, 10);
     cubicMapFlyingCam.add( OnOff_CubicMapFlyingCam.set("On/Off", false) );
     cubicMapFlyingCam.add( BuildColor.setup("Building Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
     cubicMapFlyingCam.add( BuildSideColor.setup("BuildSide Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));

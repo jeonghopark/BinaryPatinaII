@@ -61,6 +61,10 @@ public :
     vector<ofPolyline> paint;
 
     
+    ofColor roadColor;
+    ofColor buildingColor;
+    ofColor movingColor;
+    
     
 };
 

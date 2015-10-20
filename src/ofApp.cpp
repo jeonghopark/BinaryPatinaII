@@ -73,6 +73,7 @@ void ofApp::setup(){
     trierFlyingCam.inputLeapMotion( leapMotion );
     trierFlyingCam.setup();
     
+    
     cubicMapFlyingCam.inputBaseArch( baseArch );
     cubicMapFlyingCam.inputLeapMotion( leapMotion );
     cubicMapFlyingCam.setup();
@@ -237,6 +238,9 @@ void ofApp::update(){
     
     if (gui->OnOff_TrierFlyingCam) {
         trierFlyingCam.update();
+        trierFlyingCam.buildingColor = gui->TrierBuildColor;
+        trierFlyingCam.roadColor = gui->TrierRoadColor;
+        trierFlyingCam.movingColor = gui->TrierMovingColor;
     }
 
     if (gui->OnOff_CubicMapFlyingCam) {
