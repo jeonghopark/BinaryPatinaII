@@ -355,7 +355,6 @@ void ofApp::update(){
     }
     
     
-    
     if (gui->OnOff_DroneAttack) {
         if (gui->DrawEarthTexture) {
             droneAttack.drawEarthTexture();
@@ -367,7 +366,6 @@ void ofApp::update(){
             droneAttack.drawAttackPosition();
         }
     }
-    
     
     
     if (gui->OnOff_Calligraphy) {
@@ -422,8 +420,7 @@ void ofApp::draw(){
     
     ofTranslate( mainOffSetXPos, mainOffSetYPos );
     mainFBO.draw(0, 0);
-
-
+    
     
     ofPushMatrix();
     ofTranslate( -mainOffSetXPos, -mainOffSetYPos );
@@ -431,7 +428,6 @@ void ofApp::draw(){
     mainFBO.draw(0, 0);
     ofPopMatrix();
 
-    
     
     baseArch.drawEdgeCover( ofColor(0) );
 

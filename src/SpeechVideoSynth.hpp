@@ -56,6 +56,9 @@ public:
     int indexMovieOldNum;
     bool movieOn;
     
+    int movieFrame[4];
+    
+    
 };
 
 

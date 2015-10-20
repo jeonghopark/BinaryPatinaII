@@ -143,7 +143,7 @@ void GuiApp::setup(){
     
     glitchMain.setup();
     glitchMain.setName("Glitch Main");
-    glitchMain.setPosition(850, 60);
+    glitchMain.setPosition(850, 160);
     glitchMain.add( plutoGlitch.setup("Pluto", false ));
 
     

@@ -25,16 +25,17 @@ SpeechVideoSynth::~SpeechVideoSynth(){
 //--------------------------------------------------------------
 void SpeechVideoSynth::movieLoad(){
     
-    speech01_shell.load("02_shell_snowden.mp4");
-    speech02_thingy.load("03_thingy_harvested.mp4");
-    speech03_stringer.load("09_stringer_ericschmidt_fin.mp4");
-    speech04_oddity.load("13_oddity_We kill people based on metadata-f.mp4");
     
     speechVideo[0].load("02_shell_snowden.mp4");
     speechVideo[1].load("03_thingy_harvested.mp4");
     speechVideo[2].load("09_stringer_ericschmidt_fin.mp4");
     speechVideo[3].load("13_oddity_We kill people based on metadata-f.mp4");
-    
+
+    movieFrame[0] = speechVideo[0].getTotalNumFrames();
+    movieFrame[1] = speechVideo[1].getTotalNumFrames();
+    movieFrame[2] = speechVideo[2].getTotalNumFrames();
+    movieFrame[3] = speechVideo[3].getTotalNumFrames();
+
 }
 
 
@@ -74,7 +75,13 @@ void SpeechVideoSynth::update(){
 
     if (speechVideo[indexMovie].isFrameNew()) {
         windowView.setFromPixels(speechVideo[indexMovie].getPixels());
+
+        if (speechVideo[indexMovie].getCurrentFrame() >= movieFrame[indexMovie]-1) {
+            speechVideo[indexMovie].stop();
+        }
+        
     }
+    
     
     
     if ((indexMovie == 0)&&!movieOn) {
