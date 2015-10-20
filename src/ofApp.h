@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxSyphon.h"
+#include "ofxPostGlitch.h"
 
 #include "GuiApp.h"
 
@@ -109,6 +110,13 @@ public:
     int dirIdx;
 
     
+    ofFbo			backFBO;
+    ofFbo			frontFBO;
+    ofxPostGlitch	backGlitch;
+    ofxPostGlitch	frontGlitch;
+    
+    ofFbo			mainFBO;
+    ofxPostGlitch	mainGlitch;
     
 };
 

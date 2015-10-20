@@ -94,8 +94,15 @@ void ofApp::setup(){
     
     fullScreen = false;
     
-    
-    
+//    backFBO.allocate(1920, 1080);
+//    backGlitch.setup(& backFBO);
+//    
+//    frontFBO.allocate(1920, 1080);
+//    frontGlitch.setup(& frontFBO);
+
+    mainFBO.allocate(1920, 1080);
+    mainGlitch.setup(& mainFBO);
+
 }
 
 
@@ -295,22 +302,17 @@ void ofApp::update(){
         
     }
 
-    
-        
-}
 
-//--------------------------------------------------------------
-void ofApp::draw(){
     
     
+    mainFBO.begin();
+    ofClear(0, 0, 0, 0);
     ofPushMatrix();
-    
     ofTranslate( mainOffSetXPos, mainOffSetYPos );
-    
     if (gui->OnOff_Pluto) {
         pluto.draw();
     }
-
+    
     if (gui->OnOff_LiveCamGlitch) {
         liveCamGlitch.draw();
     }
@@ -318,12 +320,12 @@ void ofApp::draw(){
     if (gui->OnOFf_SpeechVideo) {
         speechVideoSynth.draw();
     }
-
+    
     
     if (gui->OnOff_WebLiveCam) {
         webLiveCam.draw();
     }
-
+    
     
     if (gui->CanonView) {
         if (gui->OnOff_NightVision) {
@@ -331,14 +333,14 @@ void ofApp::draw(){
         }
     }
     
-
+    
     if (gui->OnOff_LineVideo) {
         lineVideo.draw();
         lineVideo.drawStartPoints();
         lineVideo.drawLines();
         lineVideo.drawColorNumber();
     }
-
+    
     if (gui->OnOff_TrierFlyingCam) {
         trierFlyingCam.draw();
     }
@@ -346,13 +348,13 @@ void ofApp::draw(){
     if (gui->OnOff_CubicMapFlyingCam) {
         cubicMapFlyingCam.draw();
     }
-
+    
     
     if (gui->OnOff_MoonCreator) {
         moonCreator.draw();
     }
     
-
+    
     
     if (gui->OnOff_DroneAttack) {
         if (gui->DrawEarthTexture) {
@@ -365,33 +367,32 @@ void ofApp::draw(){
             droneAttack.drawAttackPosition();
         }
     }
-
     
-
+    
+    
     if (gui->OnOff_Calligraphy) {
         calligraphy.draw();
     }
-
+    
     
     if (gui->OnOff_GlungeWinter) {
         glungeWinter.drawBackTexture();
         glungeWinter.drawBack();
     }
-
-
+    
+    
     if (gui->OnOff_Labyrinth) {
         labyrinth.draw();
     }
-
-
+    
     drawBaseArch();
-    
-    
+
+
     if (gui->OnOff_Windows) {
         ofColor _c = gui->color_Windows;
         baseArch.drawWindows( _c );
     }
-
+    
     if (gui->OnOff_GlungeWinter) {
         glungeWinter.drawFront();
     }
@@ -402,16 +403,33 @@ void ofApp::draw(){
         indiaTower.drawingNumber();
         indiaTower.drawingBeziel();
     }
-
+    
     if (gui->OnOff_MovingObject) {
         movingObjects.draw();
     }
 
-    if (gui->CanonView) {
-        if(dir.isValidIndex(dirIdx)) {
-//            client.draw(0, 0);
-        }
-    }
+    ofPopMatrix();
+    mainFBO.end();
+    
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::draw(){
+    
+    
+    ofPushMatrix();
+    
+    ofTranslate( mainOffSetXPos, mainOffSetYPos );
+    mainFBO.draw(0, 0);
+
+
+    
+    ofPushMatrix();
+    ofTranslate( -mainOffSetXPos, -mainOffSetYPos );
+    mainGlitch.generateFx();
+    mainFBO.draw(0, 0);
+    ofPopMatrix();
 
     
     
@@ -471,11 +489,53 @@ void ofApp::drawBaseArch(){
 void ofApp::keyPressed(int key){
     
     liveCamGlitch.keyPressed(key);
+    if (key == '1') mainGlitch.setFx(OFXPOSTGLITCH_CONVERGENCE	, true);
+    if (key == '2') mainGlitch.setFx(OFXPOSTGLITCH_GLOW			, true);
+    if (key == '3') mainGlitch.setFx(OFXPOSTGLITCH_SHAKER			, true);
+    if (key == '4') mainGlitch.setFx(OFXPOSTGLITCH_CUTSLIDER		, true);
+    if (key == '5') mainGlitch.setFx(OFXPOSTGLITCH_TWIST			, true);
+//    if (key == '6') backGlitch.setFx(OFXPOSTGLITCH_OUTLINE		, true);
+    if (key == '7') mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, true);
+    if (key == '8') mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, true);
+    if (key == '9') mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, true);
+    if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, true);
     
+    if (key == 'q') mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, true);
+    if (key == 'w') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, true);
+    if (key == 'e') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, true);
+    if (key == 'r') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, true);
+    if (key == 't') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, true);
+    if (key == 'y') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, true);
+    if (key == 'u') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, true);
+
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+    
+    if (key == '1') mainGlitch.setFx(OFXPOSTGLITCH_CONVERGENCE	, false);
+    if (key == '1') mainGlitch.setFx(OFXPOSTGLITCH_CONVERGENCE	, false);
+    if (key == '2') mainGlitch.setFx(OFXPOSTGLITCH_GLOW			, false);
+    if (key == '3') mainGlitch.setFx(OFXPOSTGLITCH_SHAKER			, false);
+    if (key == '4') mainGlitch.setFx(OFXPOSTGLITCH_CUTSLIDER		, false);
+    if (key == '5') mainGlitch.setFx(OFXPOSTGLITCH_TWIST			, false);
+//    if (key == '6') backGlitch.setFx(OFXPOSTGLITCH_OUTLINE		, false);
+    if (key == '7') mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, false);
+    if (key == '8') mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, false);
+    if (key == '9') mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, false);
+    if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, false);
+    
+    if (key == 'q') mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, false);
+    if (key == 'w') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, false);
+    if (key == 'e') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, false);
+    if (key == 'r') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, false);
+    if (key == 't') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, false);
+    if (key == 'y') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, false);
+    if (key == 'u') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, false);
+
+
+
+    
     
     liveCamGlitch.keyReleased(key);
 
