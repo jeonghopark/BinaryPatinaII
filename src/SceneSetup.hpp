@@ -16,7 +16,7 @@
 #include "BaseArch.h"
 #include "ofxProcessFFT.h"
 #include "ofxLeapMotion2.h"
-
+#include "ofxFontStash.h"
 
 class SceneSetup {
     
@@ -26,10 +26,13 @@ public:
     void inputFFTP(ProcessFFT & _processFFT);
     void inputWebCam(ofVideoGrabber & _webCamHD);
     void inputLeapMotion(ofxLeapMotion & _leapMotion);
-
+    void inputFont(ofxFontStash & _f);
+    
+    
     BaseArch * baseArch;
     ProcessFFT * processFFT;
     ofVideoGrabber * webCamHD;
+    ofxFontStash * font;
     
     ofxLeapMotion * leapMotion;
     vector <ofxLeapMotionSimpleHand> simpleHands;

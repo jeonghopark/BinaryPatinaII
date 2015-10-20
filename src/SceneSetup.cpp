@@ -33,6 +33,14 @@ void SceneSetup::inputWebCam(ofVideoGrabber & _webCamHD){
 }
 
 
+//--------------------------------------------------------------
+void SceneSetup::inputFont(ofxFontStash & _f){
+    
+    font = & _f;
+    
+}
+
+
 
 //--------------------------------------------------------------
 void SceneSetup::inputLeapMotion(ofxLeapMotion & _leapMotion){

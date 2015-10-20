@@ -152,6 +152,7 @@ void MoonCreator::creatorDraw(){
     ofPushStyle();
     
     ofSetColor(255);
+    
     for (int i=0; i<point3D.size(); i++) {
         point3D[i].vboCreator.draw(GL_LINE_STRIP, 0, 37);
     }

@@ -84,6 +84,8 @@ public:
     ofParameter<bool> OnOff_MovingObject;
     ofxColorSlider ColorText;
     ofxColorSlider ColorRect;
+    ofxColorSlider ColorRandomText;
+    ofxToggle RandomTextOnOff;
 
 
     ofParameter<bool> OnOff_DroneAttack;

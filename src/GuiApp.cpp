@@ -116,6 +116,8 @@ void GuiApp::setup(){
     movingObject.add( OnOff_MovingObject.set("On/Off", false) );
     movingObject.add( ColorText.setup("Text Color", ofColor(255,0,0,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
     movingObject.add( ColorRect.setup("Rect Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    movingObject.add( ColorRandomText.setup("Rect Color", ofColor(255,255,255,255), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    movingObject.add( RandomTextOnOff.setup("RandomText OnOff", false));
 
 
     

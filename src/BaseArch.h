@@ -12,6 +12,7 @@
 
 #include "ofMain.h"
 #include "ofxFontStash.h"
+
 #include "ofxCsv.h"
 
 #define COLUMN_SIZE 23

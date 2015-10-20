@@ -41,6 +41,8 @@ class MovingObjects : public SceneSetup{
     void drawRectangles();
     void drawText();
     
+    void drawRandomText();
+    
     vector< ofPolyline > hFrames;
     vector< ofPolyline > vFrames;
     vector< ofPolyline > hCenterFrames;
@@ -56,6 +58,7 @@ class MovingObjects : public SceneSetup{
     
     ofColor colorRect;
     ofColor colorText;
+    ofColor colorRandomText;
     
     
 };

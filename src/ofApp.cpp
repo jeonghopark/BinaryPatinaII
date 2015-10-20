@@ -89,6 +89,7 @@ void ofApp::setup(){
 
     
     movingObjects.inputBaseArch( baseArch );
+    movingObjects.inputFont( font );
     movingObjects.setup();
     
     
@@ -435,6 +436,10 @@ void ofApp::update(){
     
     if (gui->OnOff_MovingObject) {
         movingObjects.draw();
+        if (gui->RandomTextOnOff) {
+            movingObjects.drawRandomText();
+            movingObjects.colorRandomText = gui->ColorRandomText;
+        }
     }
 
     ofPopMatrix();

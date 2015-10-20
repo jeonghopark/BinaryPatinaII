@@ -191,5 +191,28 @@ void MovingObjects::drawText(){
 }
 
 
+//--------------------------------------------------------------
+void MovingObjects::drawRandomText(){
 
+    ofEnableAlphaBlending();
+    
+    ofPushMatrix();
+    
+    ofPushStyle();
+    
+    ofSetColor(colorRandomText);
+    
+    for (int j=0; j<180; j+=2) {
+        for (int i=0; i<50; i+=2) {
+            font->draw( ofToString(ofRandom(10),2), 30, j * 10, i * 20 );
+        }
+    }
+    
+    ofPopStyle();
+    
+    ofPopMatrix();
+    
+    ofDisableAlphaBlending();
+    
+}
 
