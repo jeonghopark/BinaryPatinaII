@@ -163,6 +163,28 @@ void ofApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg)
 void ofApp::update(){
     
     
+    gui->OnOff_GlungeWinter = sceneSelect[0];
+    gui->OnOff_LiveCamGlitch = sceneSelect[1];
+    gui->OnOff_Labyrinth = sceneSelect[2];
+    gui->OnOff_Calligraphy = sceneSelect[3];
+    gui->OnOff_Pluto = sceneSelect[4];
+    gui->OnOff_IndiaTower= sceneSelect[5];
+    gui->OnOff_TrierFlyingCam= sceneSelect[6];
+    gui->OnOff_CubicMapFlyingCam= sceneSelect[7];
+    gui->OnOff_MoonCreator= sceneSelect[8];
+    gui->OnOff_LineVideo= sceneSelect[9];
+    gui->OnOff_MovingObject= sceneSelect[10];
+    gui->OnOff_DroneAttack= sceneSelect[11];
+    gui->OnOff_WebLiveCam= sceneSelect[12];
+    
+    gui->OnOff_Windows = BaseArchSelect[0];
+    gui->OnOff_Frames = BaseArchSelect[1];
+    gui->OnOff_Lines = BaseArchSelect[2];
+    gui->OnOff_Points = BaseArchSelect[3];
+    gui->OnOff_Cross = BaseArchSelect[4];
+    gui->OnOff_Numbers = BaseArchSelect[5];
+    
+    
     if (gui->FullScreen) {
         
         ofSetFullscreen(true);
@@ -170,7 +192,6 @@ void ofApp::update(){
         ofSetWindowShape(1920, 1080);
         
     }
-    
     
     
     
@@ -355,16 +376,18 @@ void ofApp::update(){
     }
     
     
-    if (gui->OnOff_WebLiveCam) {
-        webLiveCam.draw();
-    }
-    
-    
     if (gui->CanonView) {
         if (gui->OnOff_NightVision) {
             nightVision.draw();
         }
     }
+
+    
+    if (gui->OnOff_WebLiveCam) {
+        webLiveCam.draw();
+    }
+    
+    
     
     
     if (gui->OnOff_LineVideo) {
@@ -677,6 +700,34 @@ void ofApp::keyReleased(int key){
         ofSetFullscreen(fullScreen);
     }
 
+    cout << key << endl;
+    
+    if (key == 161) sceneSelect[0] = !sceneSelect[0];
+    if (key == 8220) sceneSelect[1] = !sceneSelect[1];
+    if (key == 182) sceneSelect[2] = !sceneSelect[2];
+    if (key == 162) sceneSelect[3] = !sceneSelect[3];
+    if (key == 91) sceneSelect[4] = !sceneSelect[4];
+    if (key == 93) sceneSelect[5] = !sceneSelect[5];
+    if (key == 124) sceneSelect[6] = !sceneSelect[6];
+    if (key == 123) sceneSelect[7] = !sceneSelect[7];
+    if (key == 125) sceneSelect[8] = !sceneSelect[8];
+    if (key == 8800) sceneSelect[9] = !sceneSelect[9];
+    if (key == 171) sceneSelect[10] = !sceneSelect[10];
+    if (key == 8721) sceneSelect[11] = !sceneSelect[11];
+    if (key == 8364) sceneSelect[12] = !sceneSelect[12];
+    if (key == 174) sceneSelect[13] = !sceneSelect[13];
+
+    
+    if (key == 229) BaseArchSelect[0] = !BaseArchSelect[0];
+    if (key == 8218) BaseArchSelect[1] = !BaseArchSelect[1];
+    if (key == 8706) BaseArchSelect[2] = !BaseArchSelect[2];
+    if (key == 402) BaseArchSelect[3] = !BaseArchSelect[3];
+    if (key == 169) BaseArchSelect[4] = !BaseArchSelect[4];
+    if (key == 170) BaseArchSelect[5] = !BaseArchSelect[5];
+    
+    
+    
+    
 }
 
 //--------------------------------------------------------------

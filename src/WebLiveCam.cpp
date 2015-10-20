@@ -61,6 +61,8 @@ void WebLiveCam::setup(){
     randomWindowsPosition();
     
     indexMovie = 0;
+    indexMovieOldNum = 0;
+    movieOn = false;
     
 }
 
@@ -69,15 +71,37 @@ void WebLiveCam::setup(){
 //--------------------------------------------------------------
 void WebLiveCam::update(){
 
+    if ((indexMovie == 0)&&!movieOn) {
+        webCam01.play();
+        webCam02.stop();
+        webCam03.stop();
+        indexMovieOldNum = indexMovie;
+        movieOn = true;
+    } else if ((indexMovie == 1)&&!movieOn) {
+        webCam01.stop();
+        webCam02.play();
+        webCam03.stop();
+        indexMovieOldNum = indexMovie;
+        movieOn = true;
+    } else if ((indexMovie == 2)&&!movieOn) {
+        webCam01.stop();
+        webCam02.stop();
+        webCam03.play();
+        indexMovieOldNum = indexMovie;
+        movieOn = true;
+    }
+    
+    if (indexMovie != indexMovieOldNum) {
+        movieOn = false;
+    }
 
+    
+    
+    
     switch (indexMovie) {
 
         case 0:
             webCam01.update();
-            webCam01.play();
-            webCam02.stop();
-            webCam03.stop();
-            
             if (webCam01.isFrameNew()) {
                 
                 windowView.setFromPixels(webCam01.getPixels());
@@ -97,11 +121,7 @@ void WebLiveCam::update(){
             break;
 
         case 1:
-            webCam01.stop();
             webCam02.update();
-            webCam02.play();
-            webCam03.stop();
-            
             if (webCam02.isFrameNew()) {
                 
                 windowView.setFromPixels(webCam02.getPixels());
@@ -122,11 +142,7 @@ void WebLiveCam::update(){
 
             
         case 2:
-            webCam01.stop();
-            webCam02.stop();
             webCam03.update();
-            webCam03.play();
-
             if (webCam03.isFrameNew()) {
                 
                 windowView.setFromPixels(webCam03.getPixels());

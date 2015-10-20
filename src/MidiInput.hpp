@@ -61,6 +61,9 @@ public:
     
     bool _oldOn;
     
+    bool sceneSelect[13];
+    int sceneIndex[13];
+    
 };
 
 #endif /* MidiInput_hpp */

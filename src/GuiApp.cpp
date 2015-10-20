@@ -179,6 +179,7 @@ void GuiApp::update(){
 
     FrameRate = ofToString( ofGetFrameRate(), 2 );
 
+    
 }
 
 void GuiApp::draw(){

@@ -49,7 +49,8 @@ public:
     int windowsNum;
     
     int indexMovie;
-        
+    bool movieOn;
+    int indexMovieOldNum;
 
 };
 

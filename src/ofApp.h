@@ -127,6 +127,10 @@ public:
     ofImageQualityType qualityMain;
     void mainGlitchPixel(ofPixels _p);
 
+    bool scene01;
+    
+    bool sceneSelect[13];
+    bool BaseArchSelect[6];
     
 };
 

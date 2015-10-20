@@ -42,6 +42,10 @@ void MidiInput::setup() {
 
     _oldOn = false;
 
+    for (int i=0; i<13; i++) {
+        sceneSelect[i] = false;
+    }
+    
 }
 
 
@@ -66,13 +70,20 @@ void MidiInput::padKONTROL(){
         
         if (midiMessage.channel == 1) {
             
-            if (midiMessage.control == 48) {
+            for (int i=0; i<13; i++) {
                 
-                if ((midiMessage.value > 10)&&(!_oldOn)) {
-                    _oldOn = true;
-                } else if ((midiMessage.value < 10)&&(_oldOn)) {
-                    _oldOn = false;
+                if (midiMessage.control == (48 + i)) {
+                    
+                    if ((midiMessage.value > 64)) {
+                        sceneSelect[i] = true;
+                    } else if ((midiMessage.value < 64)) {
+                        sceneSelect[i] = false;
+                    }
+                    
+                    
                 }
+
+            
             }
             
         }
