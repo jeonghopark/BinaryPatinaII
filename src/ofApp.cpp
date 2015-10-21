@@ -27,9 +27,10 @@ void ofApp::setup(){
     
     nBandsToGet = 32 * 2;
     
-    fft.fft.stream.setDeviceID(5);
+    fft.fft.stream.setDeviceID(3);
+    fft.setVolumeRange(0);
     fft.setup();
-    fft.fft.setup(16384 * 0.5);
+    fft.fft.setup(16384 * 0.25);
     fft.setNumFFTBins(nBandsToGet);
     fft.setFFTpercentage(0.9);
     
@@ -359,7 +360,7 @@ void ofApp::update(){
 
 
     
-    
+    // draw FBO
     mainFBO.begin();
     ofClear(0, 0, 0, 0);
     ofPushMatrix();
@@ -442,6 +443,7 @@ void ofApp::update(){
         labyrinth.draw();
     }
     
+    
     drawBaseArch();
 
 
@@ -488,7 +490,7 @@ void ofApp::draw(){
     ofPushMatrix();
     
     ofTranslate( mainOffSetXPos, mainOffSetYPos );
-    mainFBO.draw(0, 0);
+//    mainFBO.draw(0, 0);
     
     
     ofPushMatrix();
@@ -498,7 +500,7 @@ void ofApp::draw(){
     ofPopMatrix();
 
     
-    baseArch.drawEdgeCover( ofColor(0) );
+    baseArch.drawEdgeCover( ofColor(255,70) );
 
     
 
@@ -733,7 +735,6 @@ void ofApp::keyReleased(int key){
     if (key == 171) sceneSelect[10] = !sceneSelect[10];
     if (key == 8721) sceneSelect[11] = !sceneSelect[11];
     if (key == 8364) sceneSelect[12] = !sceneSelect[12];
-    if (key == 174) sceneSelect[13] = !sceneSelect[13];
 
     
     if (key == 229) BaseArchSelect[0] = !BaseArchSelect[0];

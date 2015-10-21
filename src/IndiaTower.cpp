@@ -75,8 +75,8 @@ void IndiaTower::drawingRectColumn(){
             ofSetColor( ofColor::fromHsb(_hue, 255, 255, 60));
             
             float _center = baseArch->framesCenter[11][0].x;
-            float _widthRightRect = _inputBins[i] * 10000;
-            float _widthLeftRect = -_inputBins[i] * 10000;
+            float _widthRightRect = pow(_inputBins[i], 0.75) * 3000;
+            float _widthLeftRect = -_widthRightRect;
             float _indexPosY = baseArch->fassadeCorner[3].y - _rectHeight * i - _rectHeight;
             
             ofDrawLine( _center, _indexPosY, _center + _widthRightRect, _indexPosY );

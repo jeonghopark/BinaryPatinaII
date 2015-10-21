@@ -64,7 +64,7 @@ void LiveCamGlitch::update(){
     if (webCamHD->isFrameNew()){
 
         windowView.setFromPixels(webCamHD->getPixels());
-        windowView.setROI(320, 0, videoW * 0.5, videoH);
+        windowView.setROI(videoW * 0.5, 0, videoW * 0.5, videoH);
         captureCam.setFromPixels( windowView.getRoiPixels() );
 
         liveVideoFbo.begin();
@@ -146,8 +146,8 @@ void LiveCamGlitch::draw(){
     ofEnableAlphaBlending();
 
     float _w = baseArch->fassadeCorner[1].x - baseArch->fassadeCorner[0].x;
-    float _h = _w * 320.0 / 480.0;
-    webCamHD->draw(0, 0, _w, _h);
+    float _h = _w * videoW * 0.5 / videoH;
+    webCamHD->draw( baseArch->fassadeCorner[0].x, baseArch->fassadeCorner[0].y, _w, _h);
     glitchEffect.generateFx();
     
 //    float _center = baseArch->framesCenter[11][0].x;
