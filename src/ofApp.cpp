@@ -36,8 +36,9 @@ void ofApp::setup(){
     
     midiInput.setup();
     
-    mainImgDirectGlitch.allocate(1920, 1080, OF_IMAGE_COLOR);
+    mainImgDirectGlitch.allocate(640, 480, OF_IMAGE_COLOR);
     bMainDirectglitch = false;
+    qualityMain = OF_IMAGE_QUALITY_WORST;
 
 
     webCamHD.listDevices();
@@ -492,17 +493,13 @@ void ofApp::draw(){
     ofTranslate( mainOffSetXPos, mainOffSetYPos );
 //    mainFBO.draw(0, 0);
     
-    
     ofPushMatrix();
     ofTranslate( -mainOffSetXPos, -mainOffSetYPos );
     mainGlitch.generateFx();
     mainFBO.draw(0, 0);
     ofPopMatrix();
-
     
-    baseArch.drawEdgeCover( ofColor(255,70) );
-
-    
+    baseArch.drawEdgeCover( ofColor(0) );
 
     
     
@@ -515,6 +512,7 @@ void ofApp::draw(){
         float _y = baseArch.fassadeCorner[0].y;
         
         ofPixels _p;
+        _p.allocate(640, 480, 3);
         mainFBO.readToPixels(_p);
         mainGlitchPixel(_p);
         mainImgDirectGlitch.draw(_x, _y, _w, _h);
@@ -594,6 +592,7 @@ void ofApp::mainGlitchPixel(ofPixels _p) {
     
     string compressedFilename = "compressed.jpg";
     
+    _p.setImageType(OF_IMAGE_COLOR);
     unsigned char * _c = _p.getData();
     
     float coin = ofRandom(100);
@@ -602,24 +601,18 @@ void ofApp::mainGlitchPixel(ofPixels _p) {
     }
     
     mainImgDirectGlitch.setImageType(OF_IMAGE_COLOR);
-    
-    float _w = baseArch.fassadeCorner[1].x - baseArch.fassadeCorner[0].x;
-    float _h = baseArch.fassadeCorner[2].y - baseArch.fassadeCorner[0].y;
-    mainImgDirectGlitch.setFromPixels(_c, 1920, 1080, OF_IMAGE_COLOR);
-    
+    mainImgDirectGlitch.setFromPixels(_c, (int)ofRandom(10, 640), (int)ofRandom(10, 480), OF_IMAGE_COLOR);
     mainImgDirectGlitch.save(compressedFilename, qualityMain);
     
-    ofBuffer file = ofBufferFromFile(compressedFilename);
-    int fileSize = file.size();
-    char * buffer = file.getData();
+    ofBuffer fileGlitchBuffer = ofBufferFromFile(compressedFilename);
+    int fileSize = fileGlitchBuffer.size();
+    char * buffer = fileGlitchBuffer.getData();
     
     int whichByte = (int) ofRandom(fileSize);
-    
     int whichBit = ofRandom(16);
     
-    
     char bitMask;
-    if ( whichBit >8 ) {
+    if ( whichBit > 4 ) {
         bitMask = 1 << whichBit;
     } else {
         bitMask = 7 << whichBit;
@@ -627,7 +620,7 @@ void ofApp::mainGlitchPixel(ofPixels _p) {
     
     buffer[whichByte] |= bitMask;
     
-    ofBufferToFile(compressedFilename, file);
+    ofBufferToFile(compressedFilename, fileGlitchBuffer);
     mainImgDirectGlitch.load(compressedFilename);
     
     //    float coin = ofRandom(100);
@@ -645,54 +638,56 @@ void ofApp::mainGlitchPixel(ofPixels _p) {
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     
-    liveCamGlitch.keyPressed(key);
-    if (key == '1') mainGlitch.setFx(OFXPOSTGLITCH_CONVERGENCE	, true);
-    if (key == '2') mainGlitch.setFx(OFXPOSTGLITCH_GLOW			, true);
-    if (key == '3') mainGlitch.setFx(OFXPOSTGLITCH_SHAKER			, true);
-    if (key == '4') mainGlitch.setFx(OFXPOSTGLITCH_CUTSLIDER		, true);
-    if (key == '5') mainGlitch.setFx(OFXPOSTGLITCH_TWIST			, true);
+    if (key == 49) mainGlitch.setFx(OFXPOSTGLITCH_CONVERGENCE	, true);
+    if (key == 50) mainGlitch.setFx(OFXPOSTGLITCH_GLOW			, true);
+    if (key == 51) mainGlitch.setFx(OFXPOSTGLITCH_SHAKER			, true);
+    if (key == 52) mainGlitch.setFx(OFXPOSTGLITCH_CUTSLIDER		, true);
+    if (key == 53) mainGlitch.setFx(OFXPOSTGLITCH_TWIST			, true);
 //    if (key == '6') backGlitch.setFx(OFXPOSTGLITCH_OUTLINE		, true);
-    if (key == '6') mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, true);
-    if (key == '7') mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, true);
-    if (key == '8') mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, true);
-    if (key == '9') mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, true);
+    if (key == 54) mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, true);
+    if (key == 55) mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, true);
+    if (key == 56) mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, true);
+    if (key == 57) mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, true);
     
-    if (key == 't') mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, true);
-    if (key == 'z') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, true);
-    if (key == 'u') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, true);
-    if (key == 'i') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, true);
-    if (key == 'o') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, true);
-    if (key == 'p') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, true);
-    if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, true);
+    if (key == 48) mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, true);
+    if (key == 223) mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, true);
+    if (key == 112) mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, true);
+    if (key == 111) mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, true);
+    if (key == 105) mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, true);
+    if (key == 117) mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, true);
+    if (key == 252) mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, true);
     
-    if (key == 'k') bMainDirectglitch = true;
+    if (key == 43) bMainDirectglitch = true;
+    
+    
+    liveCamGlitch.keyPressed(key);
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
     
-    if (key == '1') mainGlitch.setFx(OFXPOSTGLITCH_CONVERGENCE	, false);
-    if (key == '1') mainGlitch.setFx(OFXPOSTGLITCH_CONVERGENCE	, false);
-    if (key == '2') mainGlitch.setFx(OFXPOSTGLITCH_GLOW			, false);
-    if (key == '3') mainGlitch.setFx(OFXPOSTGLITCH_SHAKER			, false);
-    if (key == '4') mainGlitch.setFx(OFXPOSTGLITCH_CUTSLIDER		, false);
-    if (key == '5') mainGlitch.setFx(OFXPOSTGLITCH_TWIST			, false);
+    if (key == 127 || key == 49) mainGlitch.setFx(OFXPOSTGLITCH_CONVERGENCE	, false);
+    if (key == 127 || key == 50) mainGlitch.setFx(OFXPOSTGLITCH_GLOW			, false);
+    if (key == 127 || key == 51) mainGlitch.setFx(OFXPOSTGLITCH_SHAKER			, false);
+    if (key == 127 || key == 52) mainGlitch.setFx(OFXPOSTGLITCH_CUTSLIDER		, false);
+    if (key == 127 || key == 53) mainGlitch.setFx(OFXPOSTGLITCH_TWIST			, false);
 //    if (key == '6') backGlitch.setFx(OFXPOSTGLITCH_OUTLINE		, false);
-    if (key == '6') mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, false);
-    if (key == '7') mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, false);
-    if (key == '8') mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, false);
-    if (key == '9') mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, false);
+    if (key == 127 || key == 54) mainGlitch.setFx(OFXPOSTGLITCH_NOISE			, false);
+    if (key == 127 || key == 55) mainGlitch.setFx(OFXPOSTGLITCH_SLITSCAN		, false);
+    if (key == 127 || key == 56) mainGlitch.setFx(OFXPOSTGLITCH_SWELL			, false);
+    if (key == 127 || key == 57) mainGlitch.setFx(OFXPOSTGLITCH_INVERT			, false);
     
-    if (key == 't') mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, false);
-    if (key == 'z') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, false);
-    if (key == 'u') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, false);
-    if (key == 'i') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, false);
-    if (key == 'o') mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, false);
-    if (key == 'p') mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, false);
-    if (key == '0') mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, false);
+    if (key == 127 || key == 48) mainGlitch.setFx(OFXPOSTGLITCH_CR_HIGHCONTRAST, false);
+    if (key == 127 || key == 223) mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUERAISE	, false);
+    if (key == 127 || key == 112) mainGlitch.setFx(OFXPOSTGLITCH_CR_REDRAISE	, false);
+    if (key == 127 || key == 111) mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENRAISE	, false);
+    if (key == 127 || key == 105) mainGlitch.setFx(OFXPOSTGLITCH_CR_BLUEINVERT	, false);
+    if (key == 127 || key == 117) mainGlitch.setFx(OFXPOSTGLITCH_CR_REDINVERT	, false);
+    if (key == 127 || key == 252) mainGlitch.setFx(OFXPOSTGLITCH_CR_GREENINVERT	, false);
 
-    if (key == 'k') bMainDirectglitch = false;
+    if (key == 127 || key == 43) bMainDirectglitch = false;
 
 
     

@@ -132,6 +132,8 @@ public:
     bool sceneSelect[13];
     bool BaseArchSelect[6];
     
+    
+    
 };
 
 

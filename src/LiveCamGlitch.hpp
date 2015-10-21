@@ -19,7 +19,6 @@
 
 #include "MidiInput.hpp"
 
-
 class LiveCamGlitch : public SceneSetup {
     
     public :
