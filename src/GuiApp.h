@@ -29,6 +29,8 @@ public:
     ofParameter<ofColor> color_Cross;
     ofParameter<bool> OnOff_Points;
     ofParameter<ofColor> color_Points;
+    ofParameter<bool> OnOff_RandomW;
+    ofParameter<ofColor> color_RandomW;
 
     
     ofParameter<bool> OnOff_GlungeWinter;

@@ -57,10 +57,14 @@ public:
     void guidePoints(ofColor _c = ofColor(0, 220, 0, 180));
     void drawEdgeCover(ofColor _c = ofColor(255, 30));
     void guideCrossPoints(ofColor _c = ofColor(0, 220, 0, 180), float _size = 6);
-    
     void drawPointNumber( ofColor _c = ofColor(255, 255) );
-    
     void drawWindows( ofColor _c = ofColor(255, 0) );
+    void drawRandomWindows( ofColor _c = ofColor(255, 0) );
+    void drawWindowNumber( ofColor _c = ofColor(255, 0) );
+    
+    bool oldOn;
+
+    string alphabet[26] = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
     
 };
 

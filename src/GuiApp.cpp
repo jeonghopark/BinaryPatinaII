@@ -29,7 +29,11 @@ void GuiApp::setup(){
     main.add(OnOff_Cross.set("OnOff Cross", false));
     main.add(color_Numbers.set("Color Numbers", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Numbers.set("OnOff Numbers", false));
+    main.add(color_RandomW.set("Color Numbers", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    main.add(OnOff_RandomW.set("OnOff Numbers", false));
 
+    
+    
     glungeWinter.setup();
     glungeWinter.setName("01-Glunge Winter");
     glungeWinter.setPosition(220, 10);

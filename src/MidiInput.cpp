@@ -51,106 +51,38 @@ void MidiInput::setup() {
 
 //--------------------------------------------------------------
 void MidiInput::update(){
-    
-    
-    padKONTROL();
-    
-    kaosPad();
-    
-    
-}
 
-
-
-//--------------------------------------------------------------
-void MidiInput::padKONTROL(){
-    
-    if (midiMessage.portName == "padKONTROL PORT B") {
-        
-        if (midiMessage.channel == 1) {
-            
-            for (int i=0; i<13; i++) {
-                
-                if (midiMessage.control == (48 + i)) {
-                    
-                    if ((midiMessage.value > 64)) {
-                        sceneSelect[i] = true;
-                    } else if ((midiMessage.value < 64)) {
-                        sceneSelect[i] = false;
-                    }
-                    
-                    
-                }
-            
-            }
-            
-        }
-        
-    }
-
-}
-
-
-//--------------------------------------------------------------
-void MidiInput::kaosPad(){
-    
-    if (midiMessage.portName == "KP3 PAD") {
-        
-        if (midiMessage.channel == 1) {
-            
-            if (midiMessage.control == 12) {
-
-            }
-
-            if (midiMessage.control == 13) {
-
-            }
-            
-        }
-        
-    }
     
 }
 
 
 //--------------------------------------------------------------
-void MidiInput::drumPadOutput(){
+void MidiInput::kaosPadMessage(ofxMidiMessage& msg){
     
-    int _torelance = 10;
-    if (midiMessage.channel == 10) {
+}
 
-        cout << midiMessage.value << endl;
-        
-//        for (int i=0; i<8; i++) {
-//            if (midiMessage.pitch == (127 - i)) {
-//                if ((midiMessage.value > _torelance)) {
-//                    drumPad[i] = true;
-//                } else if ((midiMessage.value < _torelance)) {
-//                    drumPad[i] = false;
-//                }
-//            }
-//        }
+
+//--------------------------------------------------------------
+void MidiInput::drumPadMessage(ofxMidiMessage& msg){
+
+    int _torelance = 5;
+    
+    if ( ((int)msg.bytes[0] == 153)) {
 
         for (int i=0; i<8; i++) {
-            
-            if (midiMessage.pitch == (127-i)) {
-                drumPad[i] = true;
-            } else {
-                drumPad[i] = false;
+            if ((int)msg.bytes[1] == (127-i)) {
+                if ((int)msg.bytes[2] > _torelance) {
+                    drumPad[i] = true;
+                } else {
+                    drumPad[i] = false;
+                }
             }
-
+            
         }
-
-        
-        
-        
-
         
     }
-    
+
 }
-
-
 
 
 //--------------------------------------------------------------
@@ -202,8 +134,8 @@ void MidiInput::draw(){
 //--------------------------------------------------------------
 void MidiInput::exit() {
     
-    midiIn.closePort();
-    midiIn.removeListener(this);
+//    midiIn.closePort();
+//    midiIn.removeListener(this);
     
 }
 
@@ -263,7 +195,13 @@ void MidiInput::newMidiMessage(ofxMidiMessage& msg) {
         
     };
     
-    
+    // Input !!!
+    if(msg.portNum == midiInKaosPad.getPort()) {
+        kaosPadMessage(msg);
+    } else if (msg.portNum == midiInDrumPad.getPort()) {
+        drumPadMessage(msg);
+    }
+
     
     
 }

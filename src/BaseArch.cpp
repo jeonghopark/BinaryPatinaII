@@ -32,7 +32,8 @@ void BaseArch::inputFont(ofxFontStash & _f){
 
 //--------------------------------------------------------------
 void BaseArch::setupDefault(){
-        
+    
+    
 //    font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
 //    font.addFont("VeraMono-Bold.ttf");
 
@@ -107,6 +108,9 @@ void BaseArch::setupDefault(){
     mainOffSetXPos = (ofGetWidth() - (fassadeCorner[0].x + fassadeCorner[1].x)) * 0.5;
     mainOffSetYPos = (ofGetHeight() - (fassadeCorner[0].y + fassadeCorner[3].y)) * 0.5;
 
+    
+    
+    oldOn = false;
     
 }
 
@@ -453,6 +457,112 @@ void BaseArch::drawWindows( ofColor _c ){
 
     
 }
+
+
+//--------------------------------------------------------------
+void BaseArch::drawRandomWindows( ofColor _c ){
+    
+    
+    int _windowsVerticalOn[4];
+    int _windowsHorizomOn[2];
+    for (int i=0; i<4; i++) {
+        _windowsVerticalOn[i] = (int)ofRandom(21);
+    }
+    for (int i=0; i<2; i++) {
+        _windowsHorizomOn[i] = (int)ofRandom(4);
+    }
+    
+    ofEnableAlphaBlending();
+    
+    
+    ofPushMatrix();
+    ofPushStyle();
+    
+    
+    ofSetColor(_c);
+    
+    float _w = windowsCorner[0][1].x - windowsCorner[0][0].x;
+    float _h = windowsCorner[0][0].y - windowsCorner[0][3].y;
+    
+    for (int i=0; i<4; i++) {
+        for (int j=0; j<2; j++) {
+            
+            int _i = _windowsVerticalOn[i];
+            int _j = _windowsHorizomOn[j];
+            
+            float _x = windowsOriginCenter[_i][_j].x - _w * 0.5;
+            float _y = windowsOriginCenter[_i][_j].y - _h * 0.5;
+            
+            ofDrawRectangle( _x, _y, _w, _h );
+
+        }
+    }
+    
+    
+    ofPopStyle();
+    ofPopMatrix();
+    
+    ofDisableAlphaBlending();
+    
+    
+}
+
+
+
+//--------------------------------------------------------------
+void BaseArch::drawWindowNumber( ofColor _c ){
+    
+    
+    int _windowsVerticalOn[4];
+    int _windowsHorizomOn[2];
+    int _windowsNumbers[26];
+
+    for (int i=0; i<4; i++) {
+        _windowsVerticalOn[i] = floor(ofRandom(22));
+    }
+    for (int i=0; i<2; i++) {
+        _windowsHorizomOn[i] = floor(ofRandom(5));
+    }
+    for (int i=0; i<8; i++) {
+        _windowsNumbers[i] = (int)ofRandom(26);
+    }
+    
+    ofEnableAlphaBlending();
+    
+    
+    ofPushMatrix();
+    ofPushStyle();
+    
+    
+    ofSetColor(_c);
+    
+    float _w = windowsCorner[0][1].x - windowsCorner[0][0].x;
+    float _h = windowsCorner[0][0].y - windowsCorner[0][3].y;
+    
+    for (int i=0; i<4; i++) {
+        for (int j=0; j<2; j++) {
+            
+            int _i = _windowsVerticalOn[i];
+            int _j = _windowsHorizomOn[j];
+            
+            float _x = windowsOriginCenter[_i][_j].x - _w * 0.5;
+            float _y = windowsOriginCenter[_i][_j].y - _h * 0.5;
+            
+            int _index = i + j * 4;
+            string _s = alphabet[_windowsNumbers[_index]];
+            font->draw(_s, 100, _x, _y - 30 );
+        }
+    }
+    
+    
+    ofPopStyle();
+    ofPopMatrix();
+    
+    ofDisableAlphaBlending();
+    
+    
+}
+
 
 //--------------------------------------------------------------
 void BaseArch::randomNumberGenerator(){

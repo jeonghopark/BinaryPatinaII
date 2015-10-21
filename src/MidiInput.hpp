@@ -31,13 +31,15 @@ public:
     void draw();
     void exit();
 
-    void drumPadOutput();
-    
-    void padKONTROL();
-   
-    void kaosPad();
+//    void drumPadOutput();
+//    
+//    void padKONTROL();
+//   
+//    void kaosPad();
     
     void newMidiMessage(ofxMidiMessage& eventArgs);
+    void drumPadMessage(ofxMidiMessage& msg);
+    void kaosPadMessage(ofxMidiMessage& msg);
     
     stringstream text;
     

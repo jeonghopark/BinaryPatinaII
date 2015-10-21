@@ -125,6 +125,7 @@ void ofApp::setup(){
     mainFBO.allocate(1920, 1080);
     mainGlitch.setup(& mainFBO);
 
+
 }
 
 
@@ -195,8 +196,8 @@ void ofApp::update(){
     
     
     webCamHD.update();
-    midiInput.update();
-    midiInput.drumPadOutput();
+//    midiInput.update();
+//    midiInput.drumPadOutput();
     
     if (gui->webcamOn) {
         webCamHD.close();
@@ -479,6 +480,7 @@ void ofApp::update(){
     
 }
 
+
 //--------------------------------------------------------------
 void ofApp::draw(){
     
@@ -561,6 +563,17 @@ void ofApp::drawBaseArch(){
         ofColor _c = gui->color_Numbers;
         baseArch.drawPointNumber( _c );
     }
+    
+    if ( (gui->OnOff_RandomW) || ( midiInput.drumPad[6] )) {
+        ofColor _c = gui->color_RandomW;
+        baseArch.drawRandomWindows( _c );
+    }
+ 
+    if ( (gui->OnOff_RandomW) || ( midiInput.drumPad[7] )) {
+        ofColor _c = gui->color_RandomW;
+        baseArch.drawWindowNumber( _c );
+    }
+    
     
 //    ofDisableBlendMode();
     
