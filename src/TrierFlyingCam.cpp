@@ -234,6 +234,8 @@ void TrierFlyingCam::update(){
     camera.setGlobalOrientation(cam.getGlobalOrientation());
     
     
+    
+    
 }
 
 

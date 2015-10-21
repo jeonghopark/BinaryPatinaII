@@ -60,6 +60,11 @@ void Pluto::update(){
         
     }
     
+//    cout << yPosMoon << endl;
+//    cout << yPosEarth << endl;
+//    cout << xyScaleMoon << endl;
+//    cout << xyScaleEarth << endl;
+    
 }
 
 
@@ -108,6 +113,8 @@ void Pluto::returnValue(){
     
     yPosMoon = -moon.getWidth() * 0.5 - 350;
     yPosEarth = -earthBlur.getWidth() * 0.5 - 350;
+    xyScaleMoon = 3200;
+    xyScaleEarth = 2037;
     
 }
 
