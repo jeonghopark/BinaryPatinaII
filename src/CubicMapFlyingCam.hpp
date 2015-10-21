@@ -97,6 +97,8 @@ public:
     ofColor roadColor;
     ofColor movingColor;
     
+    void returnBase();
+    
 };
 
 

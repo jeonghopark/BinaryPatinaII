@@ -66,6 +66,11 @@ public :
     ofColor movingColor;
     
     
+    void returnBase();
+    
+    
+
+    
 };
 
 

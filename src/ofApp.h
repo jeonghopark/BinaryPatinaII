@@ -133,7 +133,6 @@ public:
     bool BaseArchSelect[6];
     
     
-    
 };
 
 

@@ -38,6 +38,7 @@ void TrierFlyingCam::setup(){
     mainLight.setDiffuseColor(ofColor(35, 35, 35));
     mainLight.setSpecularColor(ofColor(170, 170, 170));
 
+    returnBase();
     
 }
 
@@ -233,8 +234,10 @@ void TrierFlyingCam::update(){
     camera.setGlobalPosition(cam.getGlobalPosition());
     camera.setGlobalOrientation(cam.getGlobalOrientation());
     
-    
-    
+//    cout << cam.getLookAtDir() << endl;
+//    cout << cam.getPosition() << endl;
+//    cout << cam.getGlobalOrientation() << endl;
+//    cout << cam.getModelViewProjectionMatrix() << endl;
     
 }
 
@@ -321,6 +324,18 @@ void TrierFlyingCam::draw(){
     
 }
 
+
+
+//--------------------------------------------------------------
+void TrierFlyingCam::returnBase(){
+    
+    ofVec3f _vP = ofVec3f(-1000, -1000, 1000);
+    cam.setPosition( _vP );
+
+    ofVec3f _vL = ofVec3f(-1, 0, 0);
+    cam.lookAt( _vL );
+    
+}
 
 
 

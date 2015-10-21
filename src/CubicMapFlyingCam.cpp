@@ -63,6 +63,9 @@ void CubicMapFlyingCam::setup(){
     mainLight.setDiffuseColor(ofColor(255, 255, 255));
     mainLight.setSpecularColor(ofColor(170, 170, 170));
     
+    
+    returnBase();
+    
 }
 
 
@@ -410,5 +413,16 @@ vector< ofPolyline > CubicMapFlyingCam::roadsPolyline(string _fileName){
 }
 
 
+
+//--------------------------------------------------------------
+void CubicMapFlyingCam::returnBase(){
+    
+    ofVec3f _vP = ofVec3f(-400, -400, 400);
+    cam.setPosition( _vP );
+    
+    ofVec3f _vL = ofVec3f(-1, 0, 0);
+    cam.lookAt( _vL );
+    
+}
 
 

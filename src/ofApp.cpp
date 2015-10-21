@@ -700,19 +700,24 @@ void ofApp::keyReleased(int key){
     
     webLiveCam.keyReleased(key);
 
-    if (key == 'c') {
+    if (key == 248) {
         baseArch.setupDefault();
     }
     
-    if (key == ' ') {
-        indiaTower.setup();
-        pluto.loadImages();
-        webLiveCam.movieLoad();
-    }
+//    if (key == ' ') {
+//        indiaTower.setup();
+//        pluto.loadImages();
+//        webLiveCam.movieLoad();
+//    }
     
     if (key == 'f') {
         fullScreen = !fullScreen;
         ofSetFullscreen(fullScreen);
+    }
+    
+    if (key == 362) {
+        trierFlyingCam.returnBase();
+        cubicMapFlyingCam.returnBase();
     }
 
     cout << key << endl;
@@ -738,6 +743,7 @@ void ofApp::keyReleased(int key){
     if (key == 402) BaseArchSelect[3] = !BaseArchSelect[3];
     if (key == 169) BaseArchSelect[4] = !BaseArchSelect[4];
     if (key == 170) BaseArchSelect[5] = !BaseArchSelect[5];
+    
     
     
     
