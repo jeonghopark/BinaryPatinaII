@@ -15,7 +15,7 @@ void MidiInput::setup() {
     midiIn.listPorts();
     
     midiIn.openPort("IAC Driver Bus 1");
-    midiInDrumPad.openPort("E-MU Xmidi 2x2 Midi In 2");
+    midiInDrumPad.openPort("MIDI4x4 Midi In 2");
     midiInKaosPad.openPort("KP3 PAD");
     midiInPadKontrol.openPort("padKONTROL PORT B");
     
@@ -34,9 +34,8 @@ void MidiInput::setup() {
     midiInKaosPad.setVerbose(true);
     midiInPadKontrol.setVerbose(true);
     
-    drumPad.resize(8);
 
-    for (int i=0; i<drumPad.size(); i++) {
+    for (int i=0; i<8; i++) {
         drumPad[i] = false;
     }
 
@@ -82,7 +81,6 @@ void MidiInput::padKONTROL(){
                     
                     
                 }
-
             
             }
             
@@ -116,83 +114,39 @@ void MidiInput::kaosPad(){
 
 
 //--------------------------------------------------------------
-vector<bool> MidiInput::drumPadOutput(){
+void MidiInput::drumPadOutput(){
     
     int _torelance = 10;
     if (midiMessage.channel == 10) {
 
-        for (int i=0; i<drumPad.size(); i++) {
-            drumPad[i] = false;
-        }
+        cout << midiMessage.value << endl;
+        
+//        for (int i=0; i<8; i++) {
+//            if (midiMessage.pitch == (127 - i)) {
+//                if ((midiMessage.value > _torelance)) {
+//                    drumPad[i] = true;
+//                } else if ((midiMessage.value < _torelance)) {
+//                    drumPad[i] = false;
+//                }
+//            }
+//        }
 
-        if (midiMessage.pitch == 49) {
-            if (midiMessage.velocity > _torelance) {
-                drumPad[0] = true;
+        for (int i=0; i<8; i++) {
+            
+            if (midiMessage.pitch == (127-i)) {
+                drumPad[i] = true;
             } else {
-                drumPad[0] = false;
+                drumPad[i] = false;
             }
+
         }
 
-        if (midiMessage.pitch == 59) {
-            if (midiMessage.velocity > _torelance) {
-                drumPad[1] = true;
-            } else {
-                drumPad[1] = false;
-            }
-        }
+        
+        
+        
 
-        if (midiMessage.pitch == 51) {
-            if (midiMessage.velocity > _torelance) {
-                drumPad[2] = true;
-            } else {
-                drumPad[2] = false;
-            }
-        }
-
-        if (midiMessage.pitch == 52) {
-            if (midiMessage.velocity > _torelance) {
-                drumPad[3] = true;
-            } else {
-                drumPad[3] = false;
-            }
-        }
-
-        if (midiMessage.pitch == 50) {
-            if (midiMessage.velocity > _torelance) {
-                drumPad[4] = true;
-            } else {
-                drumPad[4] = false;
-            }
-        }
-
-        if (midiMessage.pitch == 48) {
-            if (midiMessage.velocity > _torelance) {
-                drumPad[5] = true;
-            } else {
-                drumPad[5] = false;
-            }
-        }
-
-        if (midiMessage.pitch == 45) {
-            if (midiMessage.velocity > _torelance) {
-                drumPad[6] = true;
-            } else {
-                drumPad[6] = false;
-            }
-        }
-
-        if (midiMessage.pitch == 41) {
-            if (midiMessage.velocity > _torelance) {
-                drumPad[7] = true;
-            } else {
-                drumPad[7] = false;
-            }
-        }
-
+        
     }
-    
-
-    return drumPad;
     
 }
 

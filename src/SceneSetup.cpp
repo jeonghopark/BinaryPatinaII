@@ -51,4 +51,13 @@ void SceneSetup::inputLeapMotion(ofxLeapMotion & _leapMotion){
 
 
 
+////--------------------------------------------------------------
+//void SceneSetup::inputMIDI(MidiInput & _m){
+//    
+//    midi = & _m;
+//    
+//}
+
+
+
 

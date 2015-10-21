@@ -17,6 +17,7 @@
 #include "ofxProcessFFT.h"
 #include "ofxLeapMotion2.h"
 #include "ofxFontStash.h"
+//#include "MidiInput.hpp"
 
 class SceneSetup {
     
@@ -27,12 +28,14 @@ public:
     void inputWebCam(ofVideoGrabber & _webCamHD);
     void inputLeapMotion(ofxLeapMotion & _leapMotion);
     void inputFont(ofxFontStash & _f);
+//    void inputMIDI(MidiInput & _m);
     
     
     BaseArch * baseArch;
     ProcessFFT * processFFT;
     ofVideoGrabber * webCamHD;
     ofxFontStash * font;
+//    MidiInput * midi;
     
     ofxLeapMotion * leapMotion;
     vector <ofxLeapMotionSimpleHand> simpleHands;

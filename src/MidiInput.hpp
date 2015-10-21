@@ -31,8 +31,7 @@ public:
     void draw();
     void exit();
 
-    vector<bool> drumPadOutput();
-    vector<bool> drumPad;
+    void drumPadOutput();
     
     void padKONTROL();
    
@@ -63,6 +62,7 @@ public:
     
     bool sceneSelect[13];
     int sceneIndex[13];
+    bool drumPad[8];
     
 };
 

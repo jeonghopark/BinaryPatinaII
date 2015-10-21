@@ -45,7 +45,6 @@ void ofApp::setup(){
     
     leapMotion.open();
 
-    
     baseArch.inputFont( font );
 
     glungeWinter.inputBaseArch( baseArch );
@@ -445,7 +444,7 @@ void ofApp::update(){
     drawBaseArch();
 
 
-    if (gui->OnOff_Windows) {
+    if ( (gui->OnOff_Windows) || midiInput.drumPad[0] ) {
         ofColor _c = gui->color_Windows;
         baseArch.drawWindows( _c );
     }
@@ -530,30 +529,35 @@ void ofApp::drawBaseArch(){
     ofEnableAlphaBlending();
     
     ofPushStyle();
-    
+        
 //    ofEnableBlendMode(OF_BLENDMODE_ADD);
     
-    if (gui->OnOff_Frames) {
+    if ( (gui->OnOff_Frames) || midiInput.drumPad[1] )
+    {
         ofColor _c = gui->color_Frames;
         baseArch.guideFrames( _c );
     }
     
-    if (gui->OnOff_Lines) {
+    if ( (gui->OnOff_Lines) || midiInput.drumPad[2] )
+    {
         ofColor _c = gui->color_Lines;
         baseArch.guideLines( _c );
     }
     
-    if (gui->OnOff_Points) {
+    if ( (gui->OnOff_Points) || midiInput.drumPad[3] )
+    {
         ofColor _c = gui->color_Points;
         baseArch.guidePoints( _c );
     }
     
-    if (gui->OnOff_Cross) {
+    if ( (gui->OnOff_Cross) || midiInput.drumPad[4] )
+    {
         ofColor _c = gui->color_Cross;
         baseArch.guideCrossPoints( _c );
     }
     
-    if (gui->OnOff_Numbers) {
+    if ( (gui->OnOff_Numbers) || midiInput.drumPad[5] )
+    {
         ofColor _c = gui->color_Numbers;
         baseArch.drawPointNumber( _c );
     }
