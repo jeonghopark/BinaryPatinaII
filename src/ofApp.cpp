@@ -49,30 +49,39 @@ void ofApp::setup(){
 
     baseArch.inputFont( font );
 
+
     glungeWinter.inputBaseArch( baseArch );
     glungeWinter.setup();
 
+    
     liveCamGlitch.inputBaseArch( baseArch );
     liveCamGlitch.inputMidiInput(midiInput);
     liveCamGlitch.inputWebCam( webCamHD );
     liveCamGlitch.setup();
     
+
     labyrinth.inputBaseArch( baseArch );
     labyrinth.setup();
     labyrinthOldNumParticle = 0;
     labyrinthOldType = 0;
     labyrinthChangeNum = false;
     
+    
     calligraphy.inputBaseArch( baseArch );
     calligraphy.inputFFTP( fft );
     calligraphy.setup();
 
+    
     pluto.inputBaseArch( baseArch );
     pluto.setup();
     
+
+    indiaTower.inputMIDI(midiInput);
     indiaTower.inputBaseArch( baseArch );
     indiaTower.inputFFTP( fft );
     indiaTower.setup();
+    
+    
     
     trierFlyingCam.inputBaseArch( baseArch );
     trierFlyingCam.inputLeapMotion( leapMotion );
@@ -267,9 +276,12 @@ void ofApp::update(){
         pluto.speedRatio = gui->SpeedRatioMoon;
     }
 
+
     if (gui->OnOff_IndiaTower) {
         fft.update();
+        indiaTower.update();
     }
+    
     
     if (gui->OnOff_TrierFlyingCam) {
         trierFlyingCam.update();
@@ -714,11 +726,12 @@ void ofApp::keyReleased(int key){
 //        webLiveCam.movieLoad();
 //    }
     
-    if (key == 'f') {
-        fullScreen = !fullScreen;
-        ofSetFullscreen(fullScreen);
-    }
+//    if (key == 'f') {
+//        fullScreen = !fullScreen;
+//        ofSetFullscreen(fullScreen);
+//    }
     
+
     if (key == 362) {
         trierFlyingCam.returnBase();
         cubicMapFlyingCam.returnBase();
@@ -726,6 +739,7 @@ void ofApp::keyReleased(int key){
         droneAttack.returnBase();
     }
 
+    
     cout << key << endl;
     
     if (key == 161) sceneSelect[0] = !sceneSelect[0];

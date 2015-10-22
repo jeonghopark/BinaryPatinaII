@@ -66,6 +66,8 @@ public:
     int sceneIndex[13];
     bool drumPad[8];
     
+    ofVec2f indiaControl;
+    
 };
 
 #endif /* MidiInput_hpp */

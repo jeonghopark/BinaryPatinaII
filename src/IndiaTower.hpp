@@ -14,6 +14,9 @@
 #include "ofMain.h"
 #include "SceneSetup.hpp"
 
+//#include "MidiInput.hpp"
+
+
 class IndiaTower : public SceneSetup {
     
     public :
@@ -31,9 +34,15 @@ class IndiaTower : public SceneSetup {
 
     ofTrueTypeFont spectrumNumbers;
 
+//    MidiInput * midiInput;
+
     vector<ofVec2f> bezielStart;
     vector<ofVec2f> bezielEnd;
 
+    
+    ofVec2f kasoPadInput;
+    
+    ofColor bezielcolor;
     
 };
 

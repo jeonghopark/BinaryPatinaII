@@ -59,6 +59,19 @@ void MidiInput::update(){
 //--------------------------------------------------------------
 void MidiInput::kaosPadMessage(ofxMidiMessage& msg){
     
+
+    if ( (int)msg.bytes[0] == 176 ) {
+        
+        if ((int)msg.bytes[1]==12){
+            indiaControl.x = (int)msg.bytes[2];
+        }
+        
+        if ((int)msg.bytes[1]==13){
+            indiaControl.y = (int)msg.bytes[2];
+        }
+
+    }
+
 }
 
 
