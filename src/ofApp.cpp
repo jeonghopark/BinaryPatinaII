@@ -85,6 +85,8 @@ void ofApp::setup(){
     
 
     moonCreator.inputBaseArch( baseArch );
+    moonCreator.inputFFTP( fft );
+    moonCreator.inputBaseArch( baseArch );
     moonCreator.setup();
     
     
@@ -99,6 +101,8 @@ void ofApp::setup(){
     
     
     droneAttack.inputBaseArch( baseArch );
+    droneAttack.inputFFTP( fft );
+    droneAttack.inputFont( font );
     droneAttack.setup();
 
     
@@ -127,6 +131,8 @@ void ofApp::setup(){
     mainFBO.allocate(1920, 1080);
     mainGlitch.setup(& mainFBO);
 
+    
+    ofSetEscapeQuitsApp(false);
 
 }
 
@@ -164,7 +170,6 @@ void ofApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg)
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    
     gui->OnOff_GlungeWinter = sceneSelect[0];
     gui->OnOff_LiveCamGlitch = sceneSelect[1];
     gui->OnOff_Labyrinth = sceneSelect[2];
@@ -186,13 +191,10 @@ void ofApp::update(){
     gui->OnOff_Cross = BaseArchSelect[4];
     gui->OnOff_Numbers = BaseArchSelect[5];
     
-    
     if (gui->FullScreen) {
-        
         ofSetFullscreen(true);
         ofSetWindowPosition(2560, 0);
         ofSetWindowShape(1920, 1080);
-        
     }
     
     
@@ -285,6 +287,7 @@ void ofApp::update(){
     }
     
     if (gui->OnOff_MoonCreator) {
+        fft.update();
         moonCreator.update();
     }
 
@@ -410,7 +413,8 @@ void ofApp::update(){
     
     
     if (gui->OnOff_MoonCreator) {
-        moonCreator.draw();
+        moonCreator.creatorDraw();
+        moonCreator.drawLines();
     }
     
     
@@ -718,6 +722,8 @@ void ofApp::keyReleased(int key){
     if (key == 362) {
         trierFlyingCam.returnBase();
         cubicMapFlyingCam.returnBase();
+        moonCreator.returnBase();
+        droneAttack.returnBase();
     }
 
     cout << key << endl;

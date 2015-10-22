@@ -43,7 +43,7 @@ void MoonCreator::setup(){
     mesh.clear();
     
     point3D.resize(csv.data.size());
-    
+    lineLengthRandom.resize(csv.data.size());
     
     for (int i=0; i<point3D.size(); i++) {
         
@@ -71,10 +71,16 @@ void MoonCreator::setup(){
         
         point3D[i].point3DRaw = _point3D;
         
+        lineLengthRandom[i] = ofRandom(0.5, 1.5);
+        
     }
     
     creatorSetting();
 
+    returnBase();
+    
+    lineFFTFactor = 1;
+    
     
     
 }
@@ -103,13 +109,14 @@ void MoonCreator::update(){
 //--------------------------------------------------------------
 void MoonCreator::draw(){
     
-    cam.begin();
-
-    
-    meshMoon.draw();
-    creatorDraw();
-    
-    cam.end();
+//    cam.begin();
+//    
+////    meshMoon.draw();
+//    creatorDraw();
+//    
+//    drawLines();
+//    
+//    cam.end();
 
     
 }
@@ -147,8 +154,52 @@ void MoonCreator::creatorSetting(){
 
 
 //--------------------------------------------------------------
+void MoonCreator::drawLines(){
+
+    cam.begin();
+
+    
+    ofEnableAlphaBlending();
+    
+    ofPushStyle();
+    
+    
+    int _fftIndex = processFFT->getSpectrum().size();
+
+    float _fftLength = processFFT->getMidVal();
+    cout << _fftLength << endl;
+    
+    ofSetColor( ofColor(255, 80) );
+    
+    
+    for (int i=0; i<meshMoon.getNumVertices(); i++) {
+        ofPoint _pS = ofPoint(0, 0, 0);
+        ofPoint _pE = ofPoint(meshMoon.getVertex(i).x, meshMoon.getVertex(i).y, meshMoon.getVertex(i).z) * lineLengthRandom[i] * _fftLength * lineFFTFactor;
+        ofDrawLine(_pS, _pE);
+    }
+    
+    ofPopStyle();
+    
+    
+    ofDisableAlphaBlending();
+    
+    cam.end();
+
+
+}
+
+
+
+
+//--------------------------------------------------------------
 void MoonCreator::creatorDraw(){
     
+    
+    cam.begin();
+
+    
+    ofEnableAlphaBlending();
+
     ofPushStyle();
     
     ofSetColor(255);
@@ -159,7 +210,24 @@ void MoonCreator::creatorDraw(){
     
     ofPopStyle();
     
+    ofDisableAlphaBlending();
+
+    cam.end();
+    
 }
+
+
+//--------------------------------------------------------------
+void MoonCreator::returnBase(){
+    
+    ofVec3f _vP = ofVec3f(-500, -500, 500);
+    cam.setPosition( _vP );
+    
+    ofVec3f _vL = ofVec3f(-1, 0, 0);
+    cam.lookAt( _vL );
+    
+}
+
 
 
 

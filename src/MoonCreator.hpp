@@ -73,14 +73,20 @@ public:
     
     ofEasyCam camera;
     
-    void creatorDraw();
     void creatorSetting();
 
+    void creatorDraw();
+    void drawLines();
+    
+    vector<float> lineLengthRandom;
+    
     
     ofxImmediateModeInput in;
     ofxFirstPersonCamera cam;
     vector<ofPolyline> paint;
 
+    void returnBase();
+    float lineFFTFactor;
     
 };
 

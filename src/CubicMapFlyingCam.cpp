@@ -51,7 +51,6 @@ void CubicMapFlyingCam::setup(){
     roadsPolyline_bottom = roadsPolyline("vectorTile_16_33975_22296.json");
     
     
-    
 //    camera = ofEasyCam();
     //    camera.setPosition(_rootNode_33975_22294->getGlobalPosition());
     //    camera.move(0, 0, 300);
@@ -65,6 +64,24 @@ void CubicMapFlyingCam::setup(){
     
     
     returnBase();
+    
+    
+//    building_vboMesh_top.resize(buildingsMesh_top.size());
+//    building_vboMesh_left.resize(buildingsMesh_left.size());
+//    building_vboMesh_right.resize(buildingsMesh_right.size());
+//    
+//    for (int i=0; i<buildingsMesh_top.size(); i++) {
+//        building_vboMesh_top[i] = buildingsMesh_top[i];
+//    }
+//    
+//    for (int i=0; i<buildingsMesh_left.size(); i++) {
+//        building_vboMesh_left[i] = buildingsMesh_left[i];
+//    }
+//
+//    for (int i=0; i<buildingsMesh_right.size(); i++) {
+//        building_vboMesh_right[i] = buildingsMesh_right[i];
+//    }
+
     
 }
 
@@ -149,6 +166,9 @@ void CubicMapFlyingCam::draw(){
     //    drawRoadPolyLineMoving(roadsPolyline_bottom, ofVec3f(0, 0, -_offSetPos.z), ofVec3f(180, 0, 0));
     
     
+    
+    
+    
     ofDisableDepthTest();
     
     //    mainLight.disable();
@@ -210,8 +230,6 @@ void CubicMapFlyingCam::drawBuildingsMesh(vector<ofMesh> _mesh, ofVec3f _positio
             ofVertex(_vertices[j]);
         }
         ofEndShape();
-        
-        
         
         
         ofPushStyle();
