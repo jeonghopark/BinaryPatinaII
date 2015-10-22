@@ -14,25 +14,29 @@ void MidiInput::setup() {
     
     midiIn.listPorts();
     
-    midiIn.openPort("IAC Driver Bus 1");
+//    midiIn.openPort("IAC Driver Bus 1");
     midiInDrumPad.openPort("MIDI4x4 Midi In 2");
     midiInKaosPad.openPort("KP3 PAD");
     midiInPadKontrol.openPort("padKONTROL PORT B");
+    midiInIACControl.openPort("IAC Driver IAC Bus 1");
     
-    midiIn.ignoreTypes(false, false, false);
+//    midiIn.ignoreTypes(false, false, false);
     midiInDrumPad.ignoreTypes(false, false, false);
     midiInKaosPad.ignoreTypes(false, false, false);
     midiInPadKontrol.ignoreTypes(false, false, false);
+    midiInIACControl.ignoreTypes(false, false, false);
     
-    midiIn.addListener(this);
+//    midiIn.addListener(this);
     midiInDrumPad.addListener(this);
     midiInKaosPad.addListener(this);
     midiInPadKontrol.addListener(this);
+    midiInIACControl.addListener(this);
     
-    midiIn.setVerbose(true);
+//    midiIn.setVerbose(true);
     midiInDrumPad.setVerbose(true);
     midiInKaosPad.setVerbose(true);
     midiInPadKontrol.setVerbose(true);
+    midiInIACControl.setVerbose(true);
     
 
     for (int i=0; i<8; i++) {
@@ -44,7 +48,13 @@ void MidiInput::setup() {
     for (int i=0; i<13; i++) {
         sceneSelect[i] = false;
     }
+
     
+    for (int i=0; i<10; i++) {
+        iacNoteOnCh1[i] = false;
+        oldNote[01] = false;
+    }
+
 }
 
 
@@ -96,6 +106,71 @@ void MidiInput::drumPadMessage(ofxMidiMessage& msg){
     }
 
 }
+
+
+//--------------------------------------------------------------
+void MidiInput::iacMessage(ofxMidiMessage& msg){
+
+
+    for (int i=0; i<11; i++) {
+        
+        if ( (int)msg.bytes[0]==144 && (int)msg.bytes[1] == (60 + i) ) {
+            iacNoteOnCh1[i] = true;
+        }
+        if ((int)msg.bytes[0] == 128) {
+            iacNoteOnCh1[i] = false;
+        }
+        
+    }
+    
+//    if ( (int)msg.bytes[0]==144 && (int)msg.bytes[1] == 60 ) {
+//        iacNoteOnCh1[0] = true;
+//    }    
+//    if ((int)msg.bytes[0] == 128) {
+//        iacNoteOnCh1[0] = false;
+//    }
+//
+//    if ( (int)msg.bytes[0]==144 && (int)msg.bytes[1] == 61 ) {
+//        iacNoteOnCh1[1] = true;
+//    }
+//    if ((int)msg.bytes[0] == 128) {
+//        iacNoteOnCh1[1] = false;
+//    }
+//
+//    if ( (int)msg.bytes[0]==144 && (int)msg.bytes[1] == 62 ) {
+//        iacNoteOnCh1[2] = true;
+//    }
+//    if ((int)msg.bytes[0] == 128) {
+//        iacNoteOnCh1[2] = false;
+//    }
+//    
+//    if ( (int)msg.bytes[0]==144 && (int)msg.bytes[1] == 64 ) {
+//        iacNoteOnCh1[3] = true;
+//    }
+//    if ((int)msg.bytes[0] == 128) {
+//        iacNoteOnCh1[3] = false;
+//    }
+
+    
+}
+
+
+
+//--------------------------------------------------------------
+void MidiInput::keyboardMessage(ofxMidiMessage& msg){
+    
+    if ((int)msg.bytes[0]==144){
+        
+        if ((int)msg.bytes[1]==60){
+
+        }
+        if ((int)msg.bytes[1]==61){
+        
+        }
+    }
+}
+
+
 
 
 //--------------------------------------------------------------
@@ -213,8 +288,9 @@ void MidiInput::newMidiMessage(ofxMidiMessage& msg) {
         kaosPadMessage(msg);
     } else if (msg.portNum == midiInDrumPad.getPort()) {
         drumPadMessage(msg);
+    } else if (msg.portNum == midiInIACControl.getPort()) {
+        iacMessage(msg);
     }
 
-    
     
 }

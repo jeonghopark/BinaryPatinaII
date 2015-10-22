@@ -133,6 +133,36 @@ public:
     bool BaseArchSelect[6];
     
     
+    
+    
+    ofVideoPlayer C_shell_snowden_start_FIN;
+    ofVideoPlayer CSharp_02_shell_snowden_worldwide_FIN;
+    ofVideoPlayer D_02_shell_snowden_everything_FIN;
+    ofVideoPlayer E_03_thingy_harvested_complete_FIN;
+    ofVideoPlayer F_03_thingy_harvested_FIN;
+    ofVideoPlayer FSharp_09_stringer_ericschmidt_FIN;
+    ofVideoPlayer G_13_oddity_We_kill_people_FIN;
+    ofVideoPlayer GSharp_Bowie_Mind_Control;
+    ofVideoPlayer A_Bowie_payyourbills;
+    ofVideoPlayer ASharp_Bowie_thenetworks;
+    ofVideoPlayer B_Bowie_conquer_the_world;
+    
+    
+    bool moviesOn[11];
+    bool movie0On;
+    bool movie1On;
+    bool movie2On;
+    bool movie3On;
+    bool movie4On;
+    bool movie5On;
+    bool movie6On;
+    bool movie7On;
+    bool movie8On;
+    bool movie9On;
+    bool movie10On;
+    
+    void speechMovieUpdate(ofVideoPlayer _p, int _i);
+    
 };
 
 

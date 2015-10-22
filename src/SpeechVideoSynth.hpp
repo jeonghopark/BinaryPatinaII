@@ -16,6 +16,8 @@
 
 #include "SceneSetup.hpp"
 
+
+#include "MidiInput.hpp"
 #include "ofxOpenCv.h"
 
 class SpeechVideoSynth : public SceneSetup {
@@ -36,12 +38,14 @@ public:
     
     void movieAllPlay(int _pos);
     
-    ofVideoPlayer speech01_shell;
-    ofVideoPlayer speech02_thingy;
-    ofVideoPlayer speech03_stringer;
-    ofVideoPlayer speech04_oddity;
+    MidiInput midiInput;
     
-    ofVideoPlayer speechVideo[4];
+    ofVideoPlayer C_shell_snowden_start_FIN;
+    ofVideoPlayer CSharp_02_shell_snowden_worldwide_FIN;
+    ofVideoPlayer D_02_shell_snowden_everything_FIN;
+    
+    ofVideoPlayer E_03_thingy_harvested_complete_FIN;
+
     
     ofxCvColorImage windowView;
     vector<ofxCvColorImage> windowMovies;
@@ -54,9 +58,17 @@ public:
     
     int indexMovie;
     int indexMovieOldNum;
-    bool movieOn;
+    bool movie0On;
+    bool movie4On;
     
-    int movieFrame[4];
+    int C_shell_snowden_start_FIN_Frame;
+    int CSharp_02_shell_snowden_worldwide_FIN_Frame;
+    int D_02_shell_snowden_everything_FIN_Frame;
+    
+    
+    int E_03_thingy_harvested_complete_FIN_Frame;
+    
+
     
     
 };

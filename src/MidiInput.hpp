@@ -23,6 +23,7 @@ public:
     ofxMidiIn midiInDrumPad;
     ofxMidiIn midiInKaosPad;
     ofxMidiIn midiInPadKontrol;
+    ofxMidiIn midiInIACControl;
     ofxMidiMessage midiMessage;
     
     
@@ -40,6 +41,10 @@ public:
     void newMidiMessage(ofxMidiMessage& eventArgs);
     void drumPadMessage(ofxMidiMessage& msg);
     void kaosPadMessage(ofxMidiMessage& msg);
+    void iacMessage(ofxMidiMessage& msg);
+
+    void keyboardMessage(ofxMidiMessage& msg);
+
     
     stringstream text;
     
@@ -67,6 +72,10 @@ public:
     bool drumPad[8];
     
     ofVec2f indiaControl;
+    
+    bool iacNoteOnCh1[11];|
+    bool oldNote[11];
+    
     
 };
 

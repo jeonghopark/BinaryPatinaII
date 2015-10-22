@@ -26,15 +26,16 @@ SpeechVideoSynth::~SpeechVideoSynth(){
 void SpeechVideoSynth::movieLoad(){
     
     
-    speechVideo[0].load("02_shell_snowden.mp4");
-    speechVideo[1].load("03_thingy_harvested.mp4");
-    speechVideo[2].load("09_stringer_ericschmidt_fin.mp4");
-    speechVideo[3].load("13_oddity_We kill people based on metadata-f.mp4");
-
-    movieFrame[0] = speechVideo[0].getTotalNumFrames();
-    movieFrame[1] = speechVideo[1].getTotalNumFrames();
-    movieFrame[2] = speechVideo[2].getTotalNumFrames();
-    movieFrame[3] = speechVideo[3].getTotalNumFrames();
+//    C_shell_snowden_start_FIN.load("C_shell_snowden_start_FIN.mp4");
+//    CSharp_02_shell_snowden_worldwide_FIN.load("C#_02_shell_snowden worldwide_FIN.mp4");
+//    D_02_shell_snowden_everything_FIN.load("D_02 shell_snowden everything FIN.mp4");
+//
+////    C_shell_snowden_start_FIN_Frame = C_shell_snowden_start_FIN.getTotalNumFrames();
+////    CSharp_02_shell_snowden_worldwide_FIN_Frame = CSharp_02_shell_snowden_worldwide_FIN.getTotalNumFrames();
+////    D_02_shell_snowden_everything_FIN_Frame = D_02_shell_snowden_everything_FIN.getTotalNumFrames();
+//    
+//    
+//    E_03_thingy_harvested_complete_FIN.load("E_03_thingy_harvested_complete_FIN.mp4");
 
 }
 
@@ -62,8 +63,10 @@ void SpeechVideoSynth::setup(){
 //    randomWindowsPosition();
     
     indexMovie = 0;
-    movieOn = false;
-    
+    movie0On = false;
+    movie4On = false;
+//    E_03_thingy_harvested_complete_FIN.play();
+
 }
 
 
@@ -71,55 +74,24 @@ void SpeechVideoSynth::setup(){
 //--------------------------------------------------------------
 void SpeechVideoSynth::update(){
 
-    speechVideo[indexMovie].update();
-
-    if (speechVideo[indexMovie].isFrameNew()) {
-        windowView.setFromPixels(speechVideo[indexMovie].getPixels());
-
-        if (speechVideo[indexMovie].getCurrentFrame() >= movieFrame[indexMovie]-1) {
-            speechVideo[indexMovie].stop();
-        }
-        
-    }
+//    C_shell_snowden_start_FIN.update();
+//    CSharp_02_shell_snowden_worldwide_FIN.update();
+//    D_02_shell_snowden_everything_FIN.update();
+ 
     
-    
-    
-    if ((indexMovie == 0)&&!movieOn) {
-        speechVideo[0].play();
-        speechVideo[1].stop();
-        speechVideo[2].stop();
-        speechVideo[3].stop();
-        indexMovieOldNum = indexMovie;
-        movieOn = true;
-    } else if ((indexMovie == 1)&&!movieOn) {
-        speechVideo[1].play();
-        speechVideo[2].stop();
-        speechVideo[3].stop();
-        speechVideo[0].stop();
-        indexMovieOldNum = indexMovie;
-        movieOn = true;
-    } else if ((indexMovie == 2)&&!movieOn) {
-        speechVideo[2].play();
-        speechVideo[0].stop();
-        speechVideo[1].stop();
-        speechVideo[3].stop();
-        indexMovieOldNum = indexMovie;
-        movieOn = true;
-    } else if ((indexMovie == 3)&&!movieOn) {
-        speechVideo[3].play();
-        speechVideo[0].stop();
-        speechVideo[1].stop();
-        speechVideo[2].stop();
-        indexMovieOldNum = indexMovie;
-        movieOn = true;
-    }
-    
-    if (indexMovie != indexMovieOldNum) {
-        movieOn = false;
-    }
-    
-
-    
+//        if (midiInput.iacNoteOnCh1[3]) {
+//            E_03_thingy_harvested_complete_FIN.update();
+//        }
+//
+//    
+//    if ( midiInput.iacNoteOnCh1[3] && !movie4On ) {
+//        E_03_thingy_harvested_complete_FIN.play();
+//        movie4On = true;
+//    } else if (!midiInput.iacNoteOnCh1[3] && movie4On) {
+//        E_03_thingy_harvested_complete_FIN.stop();
+//        E_03_thingy_harvested_complete_FIN.firstFrame();
+//        movie4On = false;
+//    }
     
 }
 
@@ -128,21 +100,68 @@ void SpeechVideoSynth::update(){
 //--------------------------------------------------------------
 void SpeechVideoSynth::draw(){
     
+//    cout << midiInput.iacNoteOnCh1[3] << endl;
+//
+//    if ( midiInput.iacNoteOnCh1[3]) {
+//        cout << "bang" << endl;
+//        E_03_thingy_harvested_complete_FIN.draw(0, 0);
+//    }
+
     
-    switch (indexMovie%2) {
-            
-        case 0:
-            movieAllPlay( 0 );
-            break;
-            
-        case 1:
-            movieAllPlay( -1 );
-            break;
-            
-        default:
-            break;
-            
-    }
+//    if ( midi->iacNoteOnCh1[0] && !movie0On ) {
+//        C_shell_snowden_start_FIN.play();
+//        movie0On = true;
+//    } else {
+//        C_shell_snowden_start_FIN.stop();
+//        C_shell_snowden_start_FIN.firstFrame();
+//        movie0On = false;
+//    }
+//
+//    
+//    if ( midi->iacNoteOnCh1[1] ) {
+//        CSharp_02_shell_snowden_worldwide_FIN.play();
+//    } else {
+//        CSharp_02_shell_snowden_worldwide_FIN.stop();
+//        CSharp_02_shell_snowden_worldwide_FIN.firstFrame();
+//    }
+//
+//    
+//    if ( midi->iacNoteOnCh1[2] ) {
+//        D_02_shell_snowden_everything_FIN.play();
+//    } else {
+//        D_02_shell_snowden_everything_FIN.stop();
+//        D_02_shell_snowden_everything_FIN.firstFrame();
+//    }
+
+//    if ( midi->iacNoteOnCh1[3]) {
+//    }
+//
+    
+
+//    if ( midi->iacNoteOnCh1[3] && !movie4On ) {
+//        movie4On = true;
+//    } else if (!midi->iacNoteOnCh1[3]) {
+//        E_03_thingy_harvested_complete_FIN.stop();
+//        E_03_thingy_harvested_complete_FIN.firstFrame();
+//        movie4On = false;
+//    }
+
+    
+//    C_shell_snowden_start_FIN.draw(0, 0);
+//
+//    CSharp_02_shell_snowden_worldwide_FIN.draw(0, 0);
+//
+//    D_02_shell_snowden_everything_FIN.draw(0, 0);
+
+    
+//    if (movie4On) {
+//        E_03_thingy_harvested_complete_FIN.play();
+//    }
+
+    
+//    E_03_thingy_harvested_complete_FIN.draw(0, 0);
+    
+    
     
     
 }

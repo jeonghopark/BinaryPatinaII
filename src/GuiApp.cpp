@@ -163,7 +163,7 @@ void GuiApp::setup(){
     speechVideo.setup();
     speechVideo.setName("Speech Video");
     speechVideo.setPosition(430, 900);
-    speechVideo.add( OnOFf_SpeechVideo.set("On/Off", false) );
+    speechVideo.add( OnOFf_SpeechVideo.set("On/Off", true) );
     speechVideo.add( LoadSpeechVideos.setup("Load Video", false ));
     speechVideo.add( IndexSpeechMovie.setup("Index Movie", 0, 0, 3 ));
 

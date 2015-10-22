@@ -27,7 +27,7 @@ void ofApp::setup(){
     
     nBandsToGet = 32 * 2;
     
-    fft.fft.stream.setDeviceID(3);
+    fft.fft.stream.setDeviceID(5);
     fft.setVolumeRange(0);
     fft.setup();
     fft.fft.setup(16384 * 0.25);
@@ -122,7 +122,7 @@ void ofApp::setup(){
     nightVision.inputBaseArch( baseArch );
     nightVision.setup();
     
-    
+//    speechVideoSynth.inputMIDI(midiInput);
     speechVideoSynth.inputBaseArch( baseArch );
     speechVideoSynth.setup();
     
@@ -143,6 +143,38 @@ void ofApp::setup(){
     
     ofSetEscapeQuitsApp(false);
 
+
+    
+    C_shell_snowden_start_FIN.load("C_shell_snowden_start_FIN.mp4");
+    CSharp_02_shell_snowden_worldwide_FIN.load("C#_02_shell_snowden worldwide_FIN.mp4");
+    D_02_shell_snowden_everything_FIN.load("D_02 shell_snowden everything FIN.mp4");
+    E_03_thingy_harvested_complete_FIN.load("E_03_thingy_harvested_complete_FIN.mp4");
+    F_03_thingy_harvested_FIN.load("F_03_thingy_harvested_FIN.mp4");
+    FSharp_09_stringer_ericschmidt_FIN.load("F#_09_stringer_ericschmidt_FIN.mp4");
+    G_13_oddity_We_kill_people_FIN.load("G_13_oddity_We kill people FIN.mp4");
+    GSharp_Bowie_Mind_Control.load("G#_Bowie_Mind Control.mp4");
+    A_Bowie_payyourbills.load("A_Bowie_payyourbills.mp4");
+    ASharp_Bowie_thenetworks.load("A#_Bowie_thenetworks.mp4");
+    B_Bowie_conquer_the_world.load("B_Bowie_conquer the world.mp4");
+
+    
+    for (int i=0; i<11; i++) {
+        moviesOn[i] = false;
+    }
+    
+    movie0On = false;
+    movie1On = false;
+    movie2On = false;
+    movie3On = false;
+    movie4On = false;
+    movie5On = false;
+    movie6On = false;
+    movie7On = false;
+    movie8On = false;
+    movie9On = false;
+    movie10On = false;
+    
+    
 }
 
 
@@ -369,10 +401,26 @@ void ofApp::update(){
     
     
     if (gui->OnOFf_SpeechVideo) {
-        speechVideoSynth.update();
-        speechVideoSynth.indexMovie = gui->IndexSpeechMovie;
-        
+//        speechVideoSynth.update();
+//        speechVideoSynth.indexMovie = gui->IndexSpeechMovie;
     }
+
+
+    
+    
+    speechMovieUpdate(C_shell_snowden_start_FIN, 0);
+    speechMovieUpdate(CSharp_02_shell_snowden_worldwide_FIN, 1);
+    speechMovieUpdate(D_02_shell_snowden_everything_FIN, 2);
+    speechMovieUpdate(E_03_thingy_harvested_complete_FIN, 3);
+    speechMovieUpdate(F_03_thingy_harvested_FIN, 4);
+    speechMovieUpdate(FSharp_09_stringer_ericschmidt_FIN, 5);
+    speechMovieUpdate(G_13_oddity_We_kill_people_FIN, 6);
+    speechMovieUpdate(GSharp_Bowie_Mind_Control, 7);
+    speechMovieUpdate(A_Bowie_payyourbills, 8);
+    speechMovieUpdate(ASharp_Bowie_thenetworks, 9);
+    speechMovieUpdate(B_Bowie_conquer_the_world, 10);
+
+    
 
 
     
@@ -389,10 +437,46 @@ void ofApp::update(){
         liveCamGlitch.draw();
     }
     
+
+    // Speech Video
     if (gui->OnOFf_SpeechVideo) {
-        speechVideoSynth.draw();
+        if (midiInput.iacNoteOnCh1[0]) {
+            C_shell_snowden_start_FIN.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[1]) {
+            CSharp_02_shell_snowden_worldwide_FIN.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[2]) {
+            D_02_shell_snowden_everything_FIN.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[3]) {
+            E_03_thingy_harvested_complete_FIN.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[4]) {
+            F_03_thingy_harvested_FIN.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[5]) {
+            FSharp_09_stringer_ericschmidt_FIN.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[6]) {
+            G_13_oddity_We_kill_people_FIN.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[7]) {
+            GSharp_Bowie_Mind_Control.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[8]) {
+            A_Bowie_payyourbills.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[9]) {
+            ASharp_Bowie_thenetworks.draw(0, 0);
+        }
+        if (midiInput.iacNoteOnCh1[10]) {
+            B_Bowie_conquer_the_world.draw(0, 0);
+        }
+
+
     }
-    
+  
     
     if (gui->CanonView) {
         if (gui->OnOff_NightVision) {
@@ -406,6 +490,7 @@ void ofApp::update(){
     }
     
     
+
     
     
     if (gui->OnOff_LineVideo) {
@@ -461,9 +546,11 @@ void ofApp::update(){
     }
     
     
+
+    
     drawBaseArch();
 
-
+    
     if ( (gui->OnOff_Windows) || midiInput.drumPad[0] ) {
         ofColor _c = gui->color_Windows;
         baseArch.drawWindows( _c );
@@ -497,7 +584,74 @@ void ofApp::update(){
     mainFBO.end();
     
     
+
+    
+    
 }
+
+
+
+//--------------------------------------------------------------
+void ofApp::speechMovieUpdate(ofVideoPlayer _p, int _i){
+    
+    // Speech
+    if (midiInput.iacNoteOnCh1[_i]) {
+        _p.update();
+    }
+    if ( midiInput.iacNoteOnCh1[_i] && !moviesOn[_i] ) {
+        _p.play();
+        moviesOn[_i] = true;
+    } else if (!midiInput.iacNoteOnCh1[_i] && moviesOn[_i]) {
+        _p.stop();
+        _p.firstFrame();
+        moviesOn[_i] = false;
+    }
+
+//    
+//    if (midiInput.iacNoteOnCh1[3]) {
+//        E_03_thingy_harvested_complete_FIN.update();
+//    }
+//    if ( midiInput.iacNoteOnCh1[3] && !movie4On ) {
+//        E_03_thingy_harvested_complete_FIN.play();
+//        movie4On = true;
+//    } else if (!midiInput.iacNoteOnCh1[3] && movie4On) {
+//        E_03_thingy_harvested_complete_FIN.stop();
+//        E_03_thingy_harvested_complete_FIN.firstFrame();
+//        movie4On = false;
+//    }
+//
+//    
+//    if (midiInput.iacNoteOnCh1[3]) {
+//        E_03_thingy_harvested_complete_FIN.update();
+//    }
+//    if ( midiInput.iacNoteOnCh1[3] && !movie4On ) {
+//        E_03_thingy_harvested_complete_FIN.play();
+//        movie4On = true;
+//    } else if (!midiInput.iacNoteOnCh1[3] && movie4On) {
+//        E_03_thingy_harvested_complete_FIN.stop();
+//        E_03_thingy_harvested_complete_FIN.firstFrame();
+//        movie4On = false;
+//    }
+//
+//    
+//    
+//    if (midiInput.iacNoteOnCh1[3]) {
+//        E_03_thingy_harvested_complete_FIN.update();
+//    }
+//    if ( midiInput.iacNoteOnCh1[3] && !movie4On ) {
+//        E_03_thingy_harvested_complete_FIN.play();
+//        movie4On = true;
+//    } else if (!midiInput.iacNoteOnCh1[3] && movie4On) {
+//        E_03_thingy_harvested_complete_FIN.stop();
+//        E_03_thingy_harvested_complete_FIN.firstFrame();
+//        movie4On = false;
+//    }
+
+
+}
+
+
+
 
 
 //--------------------------------------------------------------
@@ -536,6 +690,7 @@ void ofApp::draw(){
     
     ofDisableAlphaBlending();
 
+    
     ofPopMatrix();
 
 }
