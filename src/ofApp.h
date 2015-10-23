@@ -33,7 +33,7 @@
 
 #define WEBCAM_WIDTH 640
 #define WEBCAM_HEIGHT 480
-#define WEBCAM_ID 1
+#define WEBCAM_ID 0
 
 
 class ofApp : public ofBaseApp {
@@ -58,6 +58,7 @@ public:
     shared_ptr<GuiApp> gui;
 
     ofxFontStash font;
+    ofxFontStash fontVideo;
     MidiInput midiInput;
     ofVideoGrabber webCamHD;
 
@@ -133,6 +134,8 @@ public:
     bool BaseArchSelect[6];
     
     
+    float fassadeWidth;
+    float fassadeHeight;
     
     
     ofVideoPlayer C_shell_snowden_start_FIN;
@@ -149,17 +152,7 @@ public:
     
     
     bool moviesOn[11];
-    bool movie0On;
-    bool movie1On;
-    bool movie2On;
-    bool movie3On;
-    bool movie4On;
-    bool movie5On;
-    bool movie6On;
-    bool movie7On;
-    bool movie8On;
-    bool movie9On;
-    bool movie10On;
+    bool movieAllOnOff;
     
     void speechMovieUpdate(ofVideoPlayer _p, int _i);
     

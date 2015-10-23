@@ -111,11 +111,14 @@ void MidiInput::drumPadMessage(ofxMidiMessage& msg){
 //--------------------------------------------------------------
 void MidiInput::iacMessage(ofxMidiMessage& msg){
 
-
+    
+    
     for (int i=0; i<11; i++) {
         
-        if ( (int)msg.bytes[0]==144 && (int)msg.bytes[1] == (60 + i) ) {
-            iacNoteOnCh1[i] = true;
+        if ( (int)msg.bytes[0]==144 ) {
+            if ((int)msg.bytes[1] == (60 + i) ) {
+                iacNoteOnCh1[i] = true;
+            }
         }
         if ((int)msg.bytes[0] == 128) {
             iacNoteOnCh1[i] = false;

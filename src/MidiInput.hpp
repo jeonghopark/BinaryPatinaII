@@ -73,7 +73,7 @@ public:
     
     ofVec2f indiaControl;
     
-    bool iacNoteOnCh1[11];|
+    bool iacNoteOnCh1[11];
     bool oldNote[11];
     
     

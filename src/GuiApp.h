@@ -32,6 +32,11 @@ public:
     ofParameter<bool> OnOff_RandomW;
     ofParameter<ofColor> color_RandomW;
 
+    ofxFloatSlider xPos;
+    ofxFloatSlider yPos;
+    ofxFloatSlider xScale;
+    ofxFloatSlider yScale;
+    
     
     ofParameter<bool> OnOff_GlungeWinter;
     ofxToggle verticalOnOff;
@@ -60,8 +65,11 @@ public:
     ofxButton Return;
     ofxFloatSlider SpeedRatioMoon;
 
+    
     ofParameter<bool> OnOff_IndiaTower;
-
+    ofxColorSlider BezielColor;
+    
+    
     ofParameter<bool> OnOff_TrierFlyingCam;
     ofxColorSlider TrierBuildColor;
     ofxColorSlider TrierRoadColor;

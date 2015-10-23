@@ -21,10 +21,15 @@ void ofApp::setup(){
     baseArch.mainOffSetXPos = mainOffSetXPos;
     baseArch.mainOffSetYPos = mainOffSetYPos;
     
+    fassadeWidth=  baseArch.fassadeCorner[1].x - baseArch.fassadeCorner[0].x;
+    fassadeHeight =  baseArch.fassadeCorner[3].y - baseArch.fassadeCorner[0].y;
     
     font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
     font.addFont("VeraMono-Bold.ttf");
-    
+
+    fontVideo.setup("Tungsten-Medium.ttf", 1.0, 1024, true, 8, 1.0);
+//    fontVideo.addFont("Tungsten-Medium.otf");
+
     nBandsToGet = 32 * 2;
     
     fft.fft.stream.setDeviceID(5);
@@ -157,22 +162,13 @@ void ofApp::setup(){
     ASharp_Bowie_thenetworks.load("A#_Bowie_thenetworks.mp4");
     B_Bowie_conquer_the_world.load("B_Bowie_conquer the world.mp4");
 
+    movieAllOnOff = true;
     
     for (int i=0; i<11; i++) {
         moviesOn[i] = false;
     }
     
-    movie0On = false;
-    movie1On = false;
-    movie2On = false;
-    movie3On = false;
-    movie4On = false;
-    movie5On = false;
-    movie6On = false;
-    movie7On = false;
-    movie8On = false;
-    movie9On = false;
-    movie10On = false;
+
     
     
 }
@@ -312,6 +308,7 @@ void ofApp::update(){
     if (gui->OnOff_IndiaTower) {
         fft.update();
         indiaTower.update();
+        indiaTower.bezielcolor = gui->BezielColor;
     }
     
     
@@ -405,8 +402,6 @@ void ofApp::update(){
 //        speechVideoSynth.indexMovie = gui->IndexSpeechMovie;
     }
 
-
-    
     
     speechMovieUpdate(C_shell_snowden_start_FIN, 0);
     speechMovieUpdate(CSharp_02_shell_snowden_worldwide_FIN, 1);
@@ -419,8 +414,6 @@ void ofApp::update(){
     speechMovieUpdate(A_Bowie_payyourbills, 8);
     speechMovieUpdate(ASharp_Bowie_thenetworks, 9);
     speechMovieUpdate(B_Bowie_conquer_the_world, 10);
-
-    
 
 
     
@@ -439,44 +432,266 @@ void ofApp::update(){
     
 
     // Speech Video
-    if (gui->OnOFf_SpeechVideo) {
-        if (midiInput.iacNoteOnCh1[0]) {
-            C_shell_snowden_start_FIN.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[1]) {
-            CSharp_02_shell_snowden_worldwide_FIN.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[2]) {
-            D_02_shell_snowden_everything_FIN.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[3]) {
-            E_03_thingy_harvested_complete_FIN.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[4]) {
-            F_03_thingy_harvested_FIN.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[5]) {
-            FSharp_09_stringer_ericschmidt_FIN.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[6]) {
-            G_13_oddity_We_kill_people_FIN.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[7]) {
-            GSharp_Bowie_Mind_Control.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[8]) {
-            A_Bowie_payyourbills.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[9]) {
-            ASharp_Bowie_thenetworks.draw(0, 0);
-        }
-        if (midiInput.iacNoteOnCh1[10]) {
-            B_Bowie_conquer_the_world.draw(0, 0);
-        }
+    
+    ofEnableAlphaBlending();
+    
+    ofPushMatrix();
+    ofTranslate( (baseArch.windowsCorner[0][1].x - baseArch.windowsCorner[0][0].x) * 0.25, 0);
 
+    if (movieAllOnOff) {
+     
+        
+        float _windowW = baseArch.windowsCorner[0][1].x - baseArch.windowsCorner[0][0].x;
+        float _windowH = baseArch.windowsCorner[0][0].y - baseArch.windowsCorner[0][3].y;
+        float _fassadeCenterX = (baseArch.fassadeCorner[1].x - baseArch.fassadeCorner[0].x) * 0.5;
+        
+        if (gui->OnOFf_SpeechVideo) {
+            
+            if (midiInput.iacNoteOnCh1[0]) {
+                float _vW = C_shell_snowden_start_FIN.getWidth();
+                float _vH = C_shell_snowden_start_FIN.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                C_shell_snowden_start_FIN.draw(0, 0, _w, _h);
+
+                
+                ofPushStyle();
+                ofSetColor(0);
+                ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
+                ofPopStyle();
+                
+            
+                string _title1[6] = {"E", "D", "W", "A", "R", "D"};
+                for (int i=0; i<6; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][0].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][0].y - _windowH * 0.5;
+                    fontVideo.draw(_title1[i], 100, _x, _y - 30);
+                }
+                string _title2[7] = {"S", "N", "O", "W", "D", "E", "N"};
+                for (int i=0; i<7; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    fontVideo.draw(_title2[i], 100, _x, _y - 30);
+                }
+//                string _title3[11] = {"E", "x", "-", " ", "N", "S", "A"};
+//                for (int i=0; i<11; i++) {
+//                    float _x = baseArch.windowsOriginCenter[11 + i][2].x - _windowW * 0.5;
+//                    float _y = baseArch.windowsOriginCenter[11 + i][2].y - _windowH * 0.5;
+//                    font.draw(_title3[i], 100, _x, _y - 30);
+//                }
+//                string _title4[11] = {"W", "h", "i", "s", "t", "l", "e", "b", "l", "o", "w"};
+//                for (int i=0; i<11; i++) {
+//                    float _x = baseArch.windowsOriginCenter[21 - i][3].x - _windowW * 0.5;
+//                    float _y = baseArch.windowsOriginCenter[21 - i][3].y - _windowH * 0.5;
+//                    font.draw(_title3[i], 100, _x, _y - 30);
+//                }
+                
+                
+                
+            }
+            
+            if (midiInput.iacNoteOnCh1[1]) {
+                float _vW = CSharp_02_shell_snowden_worldwide_FIN.getWidth();
+                float _vH = CSharp_02_shell_snowden_worldwide_FIN.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                CSharp_02_shell_snowden_worldwide_FIN.draw(0, 0, _w, _h);
+            }
+            
+            if (midiInput.iacNoteOnCh1[2]) {
+                float _vW = D_02_shell_snowden_everything_FIN.getWidth();
+                float _vH = D_02_shell_snowden_everything_FIN.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                D_02_shell_snowden_everything_FIN.draw(0, 0, _w, _h);
+            }
+            
+            
+            
+            
+            if (midiInput.iacNoteOnCh1[3]) {
+                float _vW = E_03_thingy_harvested_complete_FIN.getWidth();
+                float _vH = E_03_thingy_harvested_complete_FIN.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                E_03_thingy_harvested_complete_FIN.draw(0, 0, _w, _h);
+                
+                
+                ofPushStyle();
+                ofSetColor(0);
+                ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
+                ofPopStyle();
+                
+                string _title1[8] = {"S", "H", "O", "S", "H", "A", "N", "A"};
+                for (int i=0; i<8; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][0].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][0].y - _windowH * 0.5;
+                    fontVideo.draw(_title1[i], 100, _x, _y - 30);
+                }
+                string _title2[7] = {"Z", "U", "B", "O", "F", "F"};
+                for (int i=0; i<7; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    fontVideo.draw(_title2[i], 100, _x, _y - 30);
+                }
+                string _title3[8] = {"H", "A", "R", "V", "A", "R", "D"};
+                for (int i=0; i<8; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    fontVideo.draw(_title3[i], 100, _x, _y - 30);
+                }
+
+                
+//                ofPushMatrix();
+//                ofTranslate(baseArch.windowsOriginCenter[11][0].x, baseArch.windowsOriginCenter[11][0].y - 30);
+//                string _title1 = string("Shoshana");
+//                font.draw(_title1, 100, 0, 20);
+//                string _title2 = string("Zuboff");
+//                font.draw(_title2, 100, 0, 120);
+//                string _title3 = string("Harvard");
+//                font.draw(_title3, 70, 0, 220);
+//                string _title4 = string("Business School");
+//                font.draw(_title4, 70, 0, 290);
+//                ofPopMatrix();
+
+            }
+            
+            if (midiInput.iacNoteOnCh1[4]) {
+                float _vW = F_03_thingy_harvested_FIN.getWidth();
+                float _vH = F_03_thingy_harvested_FIN.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                F_03_thingy_harvested_FIN.draw(0, 0, _w, _h);
+            }
+            
+            
+            if (midiInput.iacNoteOnCh1[5]) {
+                float _vW = FSharp_09_stringer_ericschmidt_FIN.getWidth();
+                float _vH = FSharp_09_stringer_ericschmidt_FIN.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                FSharp_09_stringer_ericschmidt_FIN.draw(0, 0, _w, _h);
+                
+                ofPushStyle();
+                ofSetColor(0);
+                ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
+                ofPopStyle();
+                
+                string _title1[4] = {"E", "R", "I", "C"};
+                for (int i=0; i<4; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][0].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][0].y - _windowH * 0.5;
+                    fontVideo.draw(_title1[i], 100, _x, _y - 30);
+                }
+                string _title2[8] = {"S", "C", "H", "I", "M", "I", "D", "T"};
+                for (int i=0; i<8; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    fontVideo.draw(_title2[i], 100, _x, _y - 30);
+                }
+                string _title3[7] = {"G", "O", "O", "G", "L", "E"};
+                for (int i=0; i<7; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    fontVideo.draw(_title3[i], 100, _x, _y - 30);
+                }
+
+
+
+            }
+            
+            
+            if (midiInput.iacNoteOnCh1[6]) {
+                float _vW = G_13_oddity_We_kill_people_FIN.getWidth();
+                float _vH = G_13_oddity_We_kill_people_FIN.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                G_13_oddity_We_kill_people_FIN.draw(0, 0, _w, _h);
+                
+
+                ofPushStyle();
+                ofSetColor(0);
+                ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
+                ofPopStyle();
+                
+                string _title1[7] = {"M", "I", "C", "H", "A", "E", "L"};
+                for (int i=0; i<7; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][0].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][0].y - _windowH * 0.5;
+                    fontVideo.draw(_title1[i], 100, _x, _y - 30);
+                }
+                string _title2[6] = {"H", "A", "Y", "D", "E", "N"};
+                for (int i=0; i<6; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    fontVideo.draw(_title2[i], 100, _x, _y - 30);
+                }
+                string _title3[6] = {"E", "X", "-", "N", "S", "A"};
+                for (int i=0; i<6; i++) {
+                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    fontVideo.draw(_title3[i], 100, _x, _y - 30);
+                }
+
+            }
+            
+            
+            if (midiInput.iacNoteOnCh1[7]) {
+                float _vW = GSharp_Bowie_Mind_Control.getWidth();
+                float _vH = GSharp_Bowie_Mind_Control.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                GSharp_Bowie_Mind_Control.draw(0, 0, _w, _h);
+            }
+            
+            if (midiInput.iacNoteOnCh1[8]) {
+                float _vW = A_Bowie_payyourbills.getWidth();
+                float _vH = A_Bowie_payyourbills.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                A_Bowie_payyourbills.draw(0, 0, _w, _h);
+            }
+            
+            if (midiInput.iacNoteOnCh1[9]) {
+                float _vW = ASharp_Bowie_thenetworks.getWidth();
+                float _vH = ASharp_Bowie_thenetworks.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                ASharp_Bowie_thenetworks.draw(0, 0, _w, _h);
+            }
+            
+            if (midiInput.iacNoteOnCh1[10]) {
+                float _vW = B_Bowie_conquer_the_world.getWidth();
+                float _vH = B_Bowie_conquer_the_world.getHeight();
+                
+                float _h =  fassadeHeight;
+                float _w = _vW * _h / _vH;
+                B_Bowie_conquer_the_world.draw(0, 0, _w, _h);
+            }
+            
+            
+        }
 
     }
-  
+
+    ofPopMatrix();
+    
+    ofDisableAlphaBlending();
+
+    
+    
+    
+    
     
     if (gui->CanonView) {
         if (gui->OnOff_NightVision) {
@@ -594,6 +809,8 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::speechMovieUpdate(ofVideoPlayer _p, int _i){
     
+    
+
     // Speech
     if (midiInput.iacNoteOnCh1[_i]) {
         _p.update();
@@ -606,46 +823,6 @@ void ofApp::speechMovieUpdate(ofVideoPlayer _p, int _i){
         _p.firstFrame();
         moviesOn[_i] = false;
     }
-
-//    
-//    if (midiInput.iacNoteOnCh1[3]) {
-//        E_03_thingy_harvested_complete_FIN.update();
-//    }
-//    if ( midiInput.iacNoteOnCh1[3] && !movie4On ) {
-//        E_03_thingy_harvested_complete_FIN.play();
-//        movie4On = true;
-//    } else if (!midiInput.iacNoteOnCh1[3] && movie4On) {
-//        E_03_thingy_harvested_complete_FIN.stop();
-//        E_03_thingy_harvested_complete_FIN.firstFrame();
-//        movie4On = false;
-//    }
-//
-//    
-//    if (midiInput.iacNoteOnCh1[3]) {
-//        E_03_thingy_harvested_complete_FIN.update();
-//    }
-//    if ( midiInput.iacNoteOnCh1[3] && !movie4On ) {
-//        E_03_thingy_harvested_complete_FIN.play();
-//        movie4On = true;
-//    } else if (!midiInput.iacNoteOnCh1[3] && movie4On) {
-//        E_03_thingy_harvested_complete_FIN.stop();
-//        E_03_thingy_harvested_complete_FIN.firstFrame();
-//        movie4On = false;
-//    }
-//
-//    
-//    
-//    if (midiInput.iacNoteOnCh1[3]) {
-//        E_03_thingy_harvested_complete_FIN.update();
-//    }
-//    if ( midiInput.iacNoteOnCh1[3] && !movie4On ) {
-//        E_03_thingy_harvested_complete_FIN.play();
-//        movie4On = true;
-//    } else if (!midiInput.iacNoteOnCh1[3] && movie4On) {
-//        E_03_thingy_harvested_complete_FIN.stop();
-//        E_03_thingy_harvested_complete_FIN.firstFrame();
-//        movie4On = false;
-//    }
 
 
 }
@@ -660,7 +837,11 @@ void ofApp::draw(){
     
     ofPushMatrix();
     
-    ofTranslate( mainOffSetXPos, mainOffSetYPos );
+    ofTranslate( gui->xPos, gui->yPos );
+    ofScale( gui->xScale, gui->yScale );
+    
+    ofTranslate( mainOffSetXPos, mainOffSetYPos);
+    
 //    mainFBO.draw(0, 0);
     
     ofPushMatrix();
@@ -669,7 +850,7 @@ void ofApp::draw(){
     mainFBO.draw(0, 0);
     ofPopMatrix();
     
-    baseArch.drawEdgeCover( ofColor(0) );
+    baseArch.drawEdgeCover( ofColor(255, 80) );
 
     
     
@@ -864,16 +1045,32 @@ void ofApp::keyReleased(int key){
     
     
     liveCamGlitch.keyReleased(key);
-
     baseArch.keyInteraction(key);
-    
     labyrinth.keyReleased(key);
-    
     webLiveCam.keyReleased(key);
 
     if (key == 248) {
         baseArch.setupDefault();
     }
+    
+    if (key == 'x' ) {
+        C_shell_snowden_start_FIN.stop();
+        CSharp_02_shell_snowden_worldwide_FIN.stop();
+        D_02_shell_snowden_everything_FIN.stop();
+        E_03_thingy_harvested_complete_FIN.stop();
+        F_03_thingy_harvested_FIN.stop();
+        FSharp_09_stringer_ericschmidt_FIN.stop();
+        G_13_oddity_We_kill_people_FIN.stop();
+        GSharp_Bowie_Mind_Control.stop();
+        A_Bowie_payyourbills.stop();
+        ASharp_Bowie_thenetworks.stop();
+        B_Bowie_conquer_the_world.stop();
+    }
+    
+    if ( key == 'v' ) {
+        movieAllOnOff = !movieAllOnOff;
+    }
+    
     
 //    if (key == ' ') {
 //        indiaTower.setup();

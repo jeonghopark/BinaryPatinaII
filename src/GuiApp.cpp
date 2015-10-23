@@ -17,20 +17,24 @@ void GuiApp::setup(){
     main.add(webcamOn.setup("Web Cam On / Off", false));
     main.add(CanonView.setup("Canon On / Off", false));
     main.add(SyphonSearch.setup("SyphonSearch", false));
-    main.add(color_Windows.set("Color Windows", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    main.add(color_Windows.set("Color Windows", ofColor(255,0,0,255), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Windows.set("OnOff Windows", false));
-    main.add(color_Frames.set("Color Frames", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    main.add(color_Frames.set("Color Frames", ofColor(255,0,0,255), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Frames.set("OnOff Frames", false));
-    main.add(color_Lines.set("Color Lines", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    main.add(color_Lines.set("Color Lines", ofColor(255,0,0,255), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Lines.set("OnOff Lines", false));
-    main.add(color_Points.set("Color Points", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    main.add(color_Points.set("Color Points", ofColor(255,0,0,255), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Points.set("OnOff Points", false));
-    main.add(color_Cross.set("Color Cross", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    main.add(color_Cross.set("Color Cross", ofColor(255,0,0,255), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Cross.set("OnOff Cross", false));
-    main.add(color_Numbers.set("Color Numbers", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    main.add(color_Numbers.set("Color Numbers", ofColor(255,0,0,255), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_Numbers.set("OnOff Numbers", false));
-    main.add(color_RandomW.set("Color Numbers", ofColor(255,0,0,1), ofColor(0,0,0,1), ofColor(255,255,255,255)));
+    main.add(color_RandomW.set("Color Numbers", ofColor(255,0,0,255), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_RandomW.set("OnOff Numbers", false));
+    main.add(xPos.setup("xPos", 0, -200, 200));
+    main.add(yPos.setup("yPos", 0, -200, 200));
+    main.add(xScale.setup("xScale", 1, 0.8, 1.2));
+    main.add(yScale.setup("xScale", 1, 0.8, 1.2));
 
     
     
@@ -83,6 +87,10 @@ void GuiApp::setup(){
     indiaTower.setName("06-India IndiaTower");
     indiaTower.setPosition(650, 600);
     indiaTower.add( OnOff_IndiaTower.set("On/Off", false) );
+    indiaTower.add( BezielColor.setup("Bezel Color", ofColor(255,255,255,180), ofColor(0,0,0,0), ofColor(255,255,255,255)));
+    
+    
+    
 
     trierFlyingCam.setup();
     trierFlyingCam.setName("07-MIdinight Trier");
@@ -148,7 +156,7 @@ void GuiApp::setup(){
     webLiveCam.setName("13-Oddity WebLiveCam");
     webLiveCam.setPosition(1530, 10);
     webLiveCam.add( OnOff_WebLiveCam.set("On/Off", false) );
-    webLiveCam.add( LoadMovies.setup("Load", false) );
+//    webLiveCam.add( LoadMovies.setup("Load", false) );
     webLiveCam.add( IndexMovie.setup("Index Movie", 0, 0, 2) );
     webLiveCam.add( RandomPosition.setup("Random", false) );
     
