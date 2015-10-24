@@ -169,7 +169,7 @@ void MoonCreator::drawLines(){
     float _fftLength = processFFT->getMidVal();
     cout << _fftLength << endl;
     
-    ofSetColor( ofColor(255, 80) );
+    ofSetColor(moonMiddlelinesColor);
     
     
     for (int i=0; i<meshMoon.getNumVertices(); i++) {

@@ -88,6 +88,8 @@ public:
     void returnBase();
     float lineFFTFactor;
     
+    ofColor moonMiddlelinesColor;
+    
 };
 
 

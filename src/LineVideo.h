@@ -43,6 +43,8 @@ class LineVideo: public SceneSetup {
     
     float controlPointRandom;
     
+    ofVec2f kasoPadInput;
+    
 };
 
 

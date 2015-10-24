@@ -41,6 +41,10 @@ void LineVideo::setup(){
 //--------------------------------------------------------------
 void LineVideo::update(){
     
+    float _x = ofMap( midi->indiaControl.x, 0, 127, -400, 400 );
+    float _y = ofMap( midi->indiaControl.y, 0, 127, -500, 500 );
+    kasoPadInput = ofVec2f( _x, _y );
+    cout << kasoPadInput << endl;
     if (webCamHD->isFrameNew()){
         colorImg.setFromPixels( webCamHD->getPixels() );
         colorImg.setROI(180,0,120,360);
@@ -111,10 +115,16 @@ void LineVideo::drawLines(){
         float _y = i * _h / 120.0;
         float _controlY = controlPosY[i] + ofRandom(100, 300) * controlPointRandom;
         
+//        ofDrawBezier(_x + _w, _y,
+//                     _x + _w + 100, _controlY,
+//                     _rightX - _x - _w - 100, _controlY,
+//                     _rightX - _x - _w, _y);
+
         ofDrawBezier(_x + _w, _y,
-                     _x + _w + 100, _controlY,
-                     _rightX - _x - _w - 100, _controlY,
+                     _x + _w + 100 + kasoPadInput.x, _controlY + kasoPadInput.y,
+                     _rightX - _x - _w - 100 + kasoPadInput.x, _controlY + kasoPadInput.y,
                      _rightX - _x - _w, _y);
+
         
         ofPopStyle();
         

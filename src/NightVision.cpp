@@ -65,7 +65,7 @@ void NightVision::draw(){
 
     float _xShift = abs(_h - _center);
     
-    syphon->draw( _x - _xShift, _y, _w, _h );
+    syphon->draw( _x - _xShift, _y, _w + 50, _h + 50 );
     
     ofPopStyle();
     

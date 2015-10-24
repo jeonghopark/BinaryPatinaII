@@ -31,7 +31,7 @@ void IndiaTower::setup(){
     spectrumNumbers.setLineHeight(15.0f);
     spectrumNumbers.setLetterSpacing(1.2);
 
-    bezielcolor = ofColor(255, 120);
+    bezielcolor = ofColor(255, 255);
     
 }
 
@@ -88,7 +88,7 @@ void IndiaTower::drawingRectColumn(){
         for (int i=0; i<_numberIndex; i+=20) {
             
             float _hue = ofMap( i, 0, _numberIndex, 0, 255 );
-            ofSetColor( ofColor::fromHsb(_hue, 255, 255, 220));
+            ofSetColor( ofColor::fromHsb(_hue, 255, 255, 255));
             
             float _center = baseArch->framesCenter[11][0].x;
             float _widthRightRect = pow(_inputBins[i], 0.75) * 3000 * _xRatio;

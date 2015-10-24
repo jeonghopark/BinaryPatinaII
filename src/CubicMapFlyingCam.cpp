@@ -83,6 +83,8 @@ void CubicMapFlyingCam::setup(){
 //    }
 
     
+    Cubic_backGroundColor = ofColor (0, 0);
+    
 }
 
 
@@ -139,6 +141,8 @@ void CubicMapFlyingCam::draw(){
     
     //    ofEnableLighting();
     
+
+    
     camera.begin();
     
     
@@ -149,6 +153,7 @@ void CubicMapFlyingCam::draw(){
 
     //    mainLight.enable();
     
+        
     ofVec3f _offSetPos = ofVec3f(0, 0, 0);
     
     drawBuildingsMesh(buildingsMesh_top, ofVec3f(0, 0, _offSetPos.z), ofVec3f(0, 0, 0));

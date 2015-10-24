@@ -33,7 +33,7 @@
 
 #define WEBCAM_WIDTH 640
 #define WEBCAM_HEIGHT 480
-#define WEBCAM_ID 0
+#define WEBCAM_ID 1
 
 
 class ofApp : public ofBaseApp {
@@ -155,6 +155,19 @@ public:
     bool movieAllOnOff;
     
     void speechMovieUpdate(ofVideoPlayer _p, int _i);
+    
+    
+    ofVideoPlayer staminaVideo;
+    bool staminaVideoALL;
+    bool staminaVideoA;
+    bool staminaVideoB;
+    bool staminaVideoC;
+    bool staminaVideoD;
+    
+    bool randomText;
+    
+    
+    ofColor Cubic_backGroundColor;
     
 };
 

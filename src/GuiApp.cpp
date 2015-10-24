@@ -31,10 +31,10 @@ void GuiApp::setup(){
     main.add(OnOff_Numbers.set("OnOff Numbers", false));
     main.add(color_RandomW.set("Color Numbers", ofColor(255,0,0,255), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_RandomW.set("OnOff Numbers", false));
-    main.add(xPos.setup("xPos", 0, -200, 200));
-    main.add(yPos.setup("yPos", 0, -200, 200));
-    main.add(xScale.setup("xScale", 1, 0.8, 1.2));
-    main.add(yScale.setup("xScale", 1, 0.8, 1.2));
+    main.add(xPos.setup("xPos", -54, -200, 200));
+    main.add(yPos.setup("yPos", -166, -200, 200));
+    main.add(xScale.setup("xScale", 1.054, 0.8, 1.2));
+    main.add(yScale.setup("yScale", 1.038, 0.8, 1.2));
 
     
     
@@ -117,13 +117,14 @@ void GuiApp::setup(){
     moonCreator.setName("09-Stringer Moon");
     moonCreator.setPosition(1090, 10);
     moonCreator.add( OnOff_MoonCreator.set("On/Off", false) );
+    moonCreator.add( moonStraightLine.setup("Lines Color", ofColor(255,255,255,10), ofColor(0,0,0,0), ofColor(255,255,255,255)));
 
     
     lineVideo.setup();
     lineVideo.setName("10-BlowFiles LineVideo");
     lineVideo.setPosition(1090, 600);
     lineVideo.add( OnOff_LineVideo.set("On/Off", false) );
-    lineVideo.add( ControlRandom.setup("RandomRation", 1, 0.01, 20));
+    lineVideo.add( ControlRandom.setup("RandomRation", 1.8, 0.01, 20));
     
 
     movingObject.setup();

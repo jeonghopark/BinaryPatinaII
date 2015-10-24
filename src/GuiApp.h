@@ -88,6 +88,9 @@ public:
     
     
     ofParameter<bool> OnOff_MoonCreator;
+    ofxColorSlider moonStraightLine;
+    
+    
 
     ofParameter<bool> OnOff_LineVideo;
     ofxFloatSlider ControlRandom;

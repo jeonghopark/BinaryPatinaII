@@ -99,6 +99,8 @@ public:
     
     void returnBase();
     
+    ofColor Cubic_backGroundColor;
+    
 //    vector<ofVboMesh> building_vboMesh_top;
 //    vector<ofVboMesh> building_vboMesh_left;
 //    vector<ofVboMesh> building_vboMesh_right;

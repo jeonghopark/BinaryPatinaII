@@ -60,10 +60,10 @@ void Pluto::update(){
         
     }
     
-//    cout << yPosMoon << endl;
-//    cout << yPosEarth << endl;
-//    cout << xyScaleMoon << endl;
-//    cout << xyScaleEarth << endl;
+    cout << yPosMoon << endl;
+    cout << yPosEarth << endl;
+    cout << xyScaleMoon << endl;
+    cout << xyScaleEarth << endl;
     
 }
 

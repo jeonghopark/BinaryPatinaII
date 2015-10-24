@@ -14,6 +14,13 @@ void ofApp::setup(){
     ofAddListener(dir.events.serverRetired, this, &ofApp::serverRetired);
     dirIdx = -1;
 
+    staminaVideo.load("Stamina_Video_2.mp4");
+    staminaVideoALL = false;
+    staminaVideoA = false;
+    staminaVideoB = false;
+    staminaVideoC = false;
+    staminaVideoD = false;
+    
     
     mainOffSetXPos = (ofGetWidth() - (baseArch.fassadeCorner[0].x + baseArch.fassadeCorner[1].x)) * 0.5;
     mainOffSetYPos = (ofGetHeight() - (baseArch.fassadeCorner[0].y + baseArch.fassadeCorner[3].y)) * 0.5;
@@ -105,6 +112,7 @@ void ofApp::setup(){
     
     
     lineVideo.inputBaseArch( baseArch);
+    lineVideo.inputMIDI( midiInput );
     lineVideo.setup();
     lineVideo.inputWebCam( webCamHD );
 
@@ -169,6 +177,9 @@ void ofApp::setup(){
     }
     
 
+    randomText = false;
+    
+    Cubic_backGroundColor = ofColor(0,0);
     
     
 }
@@ -206,6 +217,11 @@ void ofApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg)
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
+    if (staminaVideoALL || staminaVideoA || staminaVideoB || staminaVideoC || staminaVideoD) {
+        staminaVideo.update();
+    }
+    
     
     gui->OnOff_GlungeWinter = sceneSelect[0];
     gui->OnOff_LiveCamGlitch = sceneSelect[1];
@@ -431,12 +447,17 @@ void ofApp::update(){
     }
     
 
+    if (staminaVideoALL) {
+        staminaVideo.draw(0, -170, 1920, 1080);
+    }
+    
+    
     // Speech Video
     
     ofEnableAlphaBlending();
     
     ofPushMatrix();
-    ofTranslate( (baseArch.windowsCorner[0][1].x - baseArch.windowsCorner[0][0].x) * 0.25, 0);
+    ofTranslate( (baseArch.windowsCorner[0][1].x - baseArch.windowsCorner[0][0].x) * 0.25 + 19, 0);
 
     if (movieAllOnOff) {
      
@@ -453,7 +474,7 @@ void ofApp::update(){
                 
                 float _h =  fassadeHeight;
                 float _w = _vW * _h / _vH;
-                C_shell_snowden_start_FIN.draw(0, 0, _w, _h);
+                C_shell_snowden_start_FIN.draw(0 - _windowW * 3, 0, _w, _h);
 
                 
                 ofPushStyle();
@@ -462,6 +483,8 @@ void ofApp::update(){
                 ofPopStyle();
                 
             
+                ofPushMatrix();
+                ofTranslate(-19, 0);
                 string _title1[6] = {"E", "D", "W", "A", "R", "D"};
                 for (int i=0; i<6; i++) {
                     float _x = baseArch.windowsOriginCenter[11 + i][0].x - _windowW * 0.5;
@@ -474,6 +497,8 @@ void ofApp::update(){
                     float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
                     fontVideo.draw(_title2[i], 100, _x, _y - 30);
                 }
+                ofPopMatrix();
+
 //                string _title3[11] = {"E", "x", "-", " ", "N", "S", "A"};
 //                for (int i=0; i<11; i++) {
 //                    float _x = baseArch.windowsOriginCenter[11 + i][2].x - _windowW * 0.5;
@@ -497,7 +522,13 @@ void ofApp::update(){
                 
                 float _h =  fassadeHeight;
                 float _w = _vW * _h / _vH;
-                CSharp_02_shell_snowden_worldwide_FIN.draw(0, 0, _w, _h);
+                CSharp_02_shell_snowden_worldwide_FIN.draw(0 - _windowW * 3, 0, _w, _h);
+                
+                ofPushStyle();
+                ofSetColor(0);
+                ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
+                ofPopStyle();
+
             }
             
             if (midiInput.iacNoteOnCh1[2]) {
@@ -506,7 +537,13 @@ void ofApp::update(){
                 
                 float _h =  fassadeHeight;
                 float _w = _vW * _h / _vH;
-                D_02_shell_snowden_everything_FIN.draw(0, 0, _w, _h);
+                D_02_shell_snowden_everything_FIN.draw(0 - _windowW * 3, 0, _w, _h);
+                
+                ofPushStyle();
+                ofSetColor(0);
+                ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
+                ofPopStyle();
+
             }
             
             
@@ -518,7 +555,7 @@ void ofApp::update(){
                 
                 float _h =  fassadeHeight;
                 float _w = _vW * _h / _vH;
-                E_03_thingy_harvested_complete_FIN.draw(0, 0, _w, _h);
+                E_03_thingy_harvested_complete_FIN.draw(0 - _windowW * 2, 0, _w, _h);
                 
                 
                 ofPushStyle();
@@ -526,13 +563,15 @@ void ofApp::update(){
                 ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
                 ofPopStyle();
                 
+                ofPushMatrix();
+                ofTranslate(-19, 0);
                 string _title1[8] = {"S", "H", "O", "S", "H", "A", "N", "A"};
                 for (int i=0; i<8; i++) {
                     float _x = baseArch.windowsOriginCenter[11 + i][0].x - _windowW * 0.5;
                     float _y = baseArch.windowsOriginCenter[11 + i][0].y - _windowH * 0.5;
                     fontVideo.draw(_title1[i], 100, _x, _y - 30);
                 }
-                string _title2[7] = {"Z", "U", "B", "O", "F", "F"};
+                string _title2[7] = {"Z", "U", "B", "O", "F", "F", ","};
                 for (int i=0; i<7; i++) {
                     float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
                     float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
@@ -540,11 +579,11 @@ void ofApp::update(){
                 }
                 string _title3[8] = {"H", "A", "R", "V", "A", "R", "D"};
                 for (int i=0; i<8; i++) {
-                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
-                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    float _x = baseArch.windowsOriginCenter[11 + i][2].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][2].y - _windowH * 0.5;
                     fontVideo.draw(_title3[i], 100, _x, _y - 30);
                 }
-
+                ofPopMatrix();
                 
 //                ofPushMatrix();
 //                ofTranslate(baseArch.windowsOriginCenter[11][0].x, baseArch.windowsOriginCenter[11][0].y - 30);
@@ -560,13 +599,20 @@ void ofApp::update(){
 
             }
             
+
             if (midiInput.iacNoteOnCh1[4]) {
+
                 float _vW = F_03_thingy_harvested_FIN.getWidth();
                 float _vH = F_03_thingy_harvested_FIN.getHeight();
                 
                 float _h =  fassadeHeight;
                 float _w = _vW * _h / _vH;
-                F_03_thingy_harvested_FIN.draw(0, 0, _w, _h);
+                F_03_thingy_harvested_FIN.draw(0 - _windowW * 2, 0, _w, _h);
+
+                ofPushStyle();
+                ofSetColor(0);
+                ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
+                ofPopStyle();
             }
             
             
@@ -576,20 +622,22 @@ void ofApp::update(){
                 
                 float _h =  fassadeHeight;
                 float _w = _vW * _h / _vH;
-                FSharp_09_stringer_ericschmidt_FIN.draw(0, 0, _w, _h);
+                FSharp_09_stringer_ericschmidt_FIN.draw(0 - _windowW, 0, _w, _h);
                 
                 ofPushStyle();
                 ofSetColor(0);
                 ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
                 ofPopStyle();
                 
+                ofPushMatrix();
+                ofTranslate(-19, 0);
                 string _title1[4] = {"E", "R", "I", "C"};
                 for (int i=0; i<4; i++) {
                     float _x = baseArch.windowsOriginCenter[11 + i][0].x - _windowW * 0.5;
                     float _y = baseArch.windowsOriginCenter[11 + i][0].y - _windowH * 0.5;
                     fontVideo.draw(_title1[i], 100, _x, _y - 30);
                 }
-                string _title2[8] = {"S", "C", "H", "I", "M", "I", "D", "T"};
+                string _title2[8] = {"S", "C", "H", "M", "I", "D", "T", ","};
                 for (int i=0; i<8; i++) {
                     float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
                     float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
@@ -597,11 +645,11 @@ void ofApp::update(){
                 }
                 string _title3[7] = {"G", "O", "O", "G", "L", "E"};
                 for (int i=0; i<7; i++) {
-                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
-                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    float _x = baseArch.windowsOriginCenter[11 + i][2].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][2].y - _windowH * 0.5;
                     fontVideo.draw(_title3[i], 100, _x, _y - 30);
                 }
-
+                ofPopMatrix();
 
 
             }
@@ -613,7 +661,7 @@ void ofApp::update(){
                 
                 float _h =  fassadeHeight;
                 float _w = _vW * _h / _vH;
-                G_13_oddity_We_kill_people_FIN.draw(0, 0, _w, _h);
+                G_13_oddity_We_kill_people_FIN.draw(0 - _windowW * 3, 0, _w, _h);
                 
 
                 ofPushStyle();
@@ -621,28 +669,34 @@ void ofApp::update(){
                 ofDrawRectangle(_fassadeCenterX, 0, _w * 0.5, _h);
                 ofPopStyle();
                 
+                ofPushMatrix();
+                ofTranslate(-19, 0);
                 string _title1[7] = {"M", "I", "C", "H", "A", "E", "L"};
                 for (int i=0; i<7; i++) {
                     float _x = baseArch.windowsOriginCenter[11 + i][0].x - _windowW * 0.5;
                     float _y = baseArch.windowsOriginCenter[11 + i][0].y - _windowH * 0.5;
                     fontVideo.draw(_title1[i], 100, _x, _y - 30);
                 }
-                string _title2[6] = {"H", "A", "Y", "D", "E", "N"};
-                for (int i=0; i<6; i++) {
+                string _title2[7] = {"H", "A", "Y", "D", "E", "N", ","};
+                for (int i=0; i<7; i++) {
                     float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
                     float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
                     fontVideo.draw(_title2[i], 100, _x, _y - 30);
                 }
                 string _title3[6] = {"E", "X", "-", "N", "S", "A"};
                 for (int i=0; i<6; i++) {
-                    float _x = baseArch.windowsOriginCenter[11 + i][1].x - _windowW * 0.5;
-                    float _y = baseArch.windowsOriginCenter[11 + i][1].y - _windowH * 0.5;
+                    float _x = baseArch.windowsOriginCenter[11 + i][2].x - _windowW * 0.5;
+                    float _y = baseArch.windowsOriginCenter[11 + i][2].y - _windowH * 0.5;
                     fontVideo.draw(_title3[i], 100, _x, _y - 30);
                 }
+                ofPopMatrix();
 
             }
             
             
+            ofPushMatrix();
+            ofTranslate(_windowW * 3, 0);
+
             if (midiInput.iacNoteOnCh1[7]) {
                 float _vW = GSharp_Bowie_Mind_Control.getWidth();
                 float _vH = GSharp_Bowie_Mind_Control.getHeight();
@@ -678,6 +732,8 @@ void ofApp::update(){
                 float _w = _vW * _h / _vH;
                 B_Bowie_conquer_the_world.draw(0, 0, _w, _h);
             }
+            
+            ofPopMatrix();
             
             
         }
@@ -720,6 +776,10 @@ void ofApp::update(){
     }
     
     if (gui->OnOff_CubicMapFlyingCam) {
+        ofEnableAlphaBlending();
+        ofSetColor( Cubic_backGroundColor );
+        ofDrawRectangle(0, 0, 1920, 1080);
+        ofDisableAlphaBlending();
         cubicMapFlyingCam.draw();
     }
     
@@ -727,6 +787,7 @@ void ofApp::update(){
     if (gui->OnOff_MoonCreator) {
         moonCreator.creatorDraw();
         moonCreator.drawLines();
+        moonCreator.moonMiddlelinesColor = gui->moonStraightLine;
     }
     
     
@@ -790,8 +851,10 @@ void ofApp::update(){
     if (gui->OnOff_MovingObject) {
         movingObjects.draw();
         if (gui->RandomTextOnOff) {
-            movingObjects.drawRandomText();
             movingObjects.colorRandomText = gui->ColorRandomText;
+        }
+        if (randomText) {
+            movingObjects.drawRandomText();
         }
     }
 
@@ -850,7 +913,7 @@ void ofApp::draw(){
     mainFBO.draw(0, 0);
     ofPopMatrix();
     
-    baseArch.drawEdgeCover( ofColor(255, 80) );
+    baseArch.drawEdgeCover( ofColor(0, 255) );
 
     
     
@@ -1043,7 +1106,7 @@ void ofApp::keyReleased(int key){
 
 
     
-    
+    labyrinth.initParticles();
     liveCamGlitch.keyReleased(key);
     baseArch.keyInteraction(key);
     labyrinth.keyReleased(key);
@@ -1117,8 +1180,123 @@ void ofApp::keyReleased(int key){
     if (key == 170) BaseArchSelect[5] = !BaseArchSelect[5];
     
     
+    if (key == 'j') {
+        staminaVideoALL = !staminaVideoALL;
+        if(staminaVideoALL) {
+            staminaVideo.setFrame(0);
+            staminaVideo.play();
+        } else {
+            staminaVideo.stop();
+        }
+    }
+
+    if (key == 'k') {
+        staminaVideoA = !staminaVideoA;
+        if(staminaVideoA) {
+            staminaVideo.setFrame(2275);
+            staminaVideo.play();
+        } else {
+            staminaVideo.stop();
+        }
+    }
+
+    if (key == 'l') {
+        staminaVideoB = !staminaVideoB;
+        if(staminaVideoB) {
+            staminaVideo.setFrame(2350);
+            staminaVideo.play();
+        } else {
+            staminaVideo.stop();
+        }
+    }
+
+    if (key == 246) {
+        staminaVideoC = !staminaVideoC;
+        if(staminaVideoC) {
+            staminaVideo.setFrame(2525);
+            staminaVideo.play();
+        } else {
+            staminaVideo.stop();
+        }
+    }
+
+    if (key == 228) {
+        staminaVideoD = !staminaVideoD;
+        if(staminaVideoD) {
+            staminaVideo.setFrame(2775);
+            staminaVideo.play();
+        } else {
+            staminaVideo.stop();
+        }
+    }
+
+    
+    if (key == 35) {
+        staminaVideoD = !staminaVideoD;
+        if(staminaVideoD) {
+            staminaVideo.setFrame((int)ofRandom(2000));
+            staminaVideo.play();
+        } else {
+            staminaVideo.stop();
+        }
+    }
+
     
     
+    if (key == ' ') {
+    
+        gui->VerticalColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->HorizonColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->VerticalColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->HorizonColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        
+        gui->color_Windows = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->color_Frames = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->color_Lines = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->color_Numbers = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->color_Cross = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->color_Points = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->color_RandomW = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        
+        gui->BuildColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->BuildSideColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->MovingColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        
+
+    }
+    
+
+    if (key == 'n') {
+        gui->color_Windows = ofColor( 255, 0, 0 );
+        gui->color_Frames = ofColor( 255, 0, 0 );
+        gui->color_Lines = ofColor( 255, 0, 0 );
+        gui->color_Numbers = ofColor( 255, 0, 0 );
+        gui->color_Cross = ofColor( 255, 0, 0 );
+        gui->color_Points = ofColor( 255, 0, 0 );
+        gui->color_RandomW = ofColor( 255, 0, 0 );
+        
+        gui->BuildColor = ofColor( 255 );
+        gui->BuildSideColor = ofColor( 180 );
+        gui->MovingColor = ofColor( 255 );
+
+    }
+    
+    if (key == 'b') {
+        Cubic_backGroundColor = ofColor(255, 255);
+        gui->BuildColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->BuildSideColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+        gui->MovingColor = ofColor( ofRandom(255), ofRandom(255), ofRandom(255));
+    }
+    
+    
+    if (key == '.') {
+        Cubic_backGroundColor = ofColor(0, 0);
+    }
+
+    
+    if (key == 'm') {
+        randomText = !randomText;
+    }
     
 }
 
