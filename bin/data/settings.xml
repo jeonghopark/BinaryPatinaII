@@ -27,8 +27,9 @@
 		<OnOff_Cross>0</OnOff_Cross>
 		<Color_Numbers>255, 0, 0, 255</Color_Numbers>
 		<OnOff_Numbers>0</OnOff_Numbers>
-		<xPos>-54</xPos>
-		<yPos>-166</yPos>
-		<xScale>1.038</xScale>
+		<xPos>0</xPos>
+		<yPos>0</yPos>
+		<xScale>0</xScale>
+        <yScale>0</xScale>
 	</Main_-_Windows>
 </parameters>
