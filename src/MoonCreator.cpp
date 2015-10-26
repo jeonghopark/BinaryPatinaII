@@ -103,6 +103,11 @@ void MoonCreator::update(){
     if( pushed[GLFW_MOUSE_BUTTON_RIGHT] ) cam.toggleControl();
     
     
+//    cout << cam.getPosition() << endl;
+//    cout << cam.getLookAtDir() << endl;
+    
+
+    
 }
 
 
@@ -220,10 +225,10 @@ void MoonCreator::creatorDraw(){
 //--------------------------------------------------------------
 void MoonCreator::returnBase(){
     
-    ofVec3f _vP = ofVec3f(-500, -500, 500);
+    ofVec3f _vP = ofVec3f(-1820.91, -1051.97, -179.716);
     cam.setPosition( _vP );
     
-    ofVec3f _vL = ofVec3f(-1, 0, 0);
+    ofVec3f _vL = ofVec3f(0.806166, 0.531315, -0.260386);
     cam.lookAt( _vL );
     
 }

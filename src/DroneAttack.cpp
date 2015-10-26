@@ -225,10 +225,10 @@ void DroneAttack::drawEarth(){
 //--------------------------------------------------------------
 void DroneAttack::returnBase(){
     
-    ofVec3f _vP = ofVec3f(-100, -100, 100);
+    ofVec3f _vP = ofVec3f(-515.91, -493.947, -1543.81);
     cam.setPosition( _vP );
     
-    ofVec3f _vL = ofVec3f(-1, 0, 0);
+    ofVec3f _vL = ofVec3f(0.643749, 0.510508, 0.57006);
     cam.lookAt( _vL );
     
 }

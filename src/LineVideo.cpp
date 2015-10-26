@@ -44,7 +44,6 @@ void LineVideo::update(){
     float _x = ofMap( midi->indiaControl.x, 0, 127, -400, 400 );
     float _y = ofMap( midi->indiaControl.y, 0, 127, -500, 500 );
     kasoPadInput = ofVec2f( _x, _y );
-    cout << kasoPadInput << endl;
     if (webCamHD->isFrameNew()){
         colorImg.setFromPixels( webCamHD->getPixels() );
         colorImg.setROI(180,0,120,360);

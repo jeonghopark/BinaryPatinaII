@@ -435,21 +435,36 @@ void ofApp::update(){
     
     // draw FBO
     mainFBO.begin();
+
     ofClear(0, 0, 0, 0);
     ofPushMatrix();
+
+    ofEnableAlphaBlending();
+    
     ofTranslate( mainOffSetXPos, mainOffSetYPos );
+    
     if (gui->OnOff_Pluto) {
         pluto.draw();
     }
-    
+
+    ofDisableAlphaBlending();
+
+    ofEnableAlphaBlending();
+
     if (gui->OnOff_LiveCamGlitch) {
         liveCamGlitch.draw();
     }
     
 
+    ofDisableAlphaBlending();
+    
+    ofEnableAlphaBlending();
+
     if (staminaVideoALL) {
         staminaVideo.draw(0, -170, 1920, 1080);
     }
+    
+    ofDisableAlphaBlending();
     
     
     // Speech Video

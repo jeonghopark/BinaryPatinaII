@@ -60,10 +60,10 @@ void Pluto::update(){
         
     }
     
-    cout << yPosMoon << endl;
-    cout << yPosEarth << endl;
-    cout << xyScaleMoon << endl;
-    cout << xyScaleEarth << endl;
+//    cout << yPosMoon << endl;
+//    cout << yPosEarth << endl;
+//    cout << xyScaleMoon << endl;
+//    cout << xyScaleEarth << endl;
     
 }
 
@@ -83,9 +83,9 @@ void Pluto::draw(){
     ofPushMatrix();
     earthBlur.draw(ofGetWidth() * 0.5 - xyScaleEarth * 0.5, ofGetHeight() * 0.5 + yPosEarth - xyScaleEarth * 0.5, xyScaleEarth, xyScaleEarth );
     
-    ofDisableAlphaBlending();
     ofPopMatrix();
 
+    ofDisableAlphaBlending();
     
 }
 

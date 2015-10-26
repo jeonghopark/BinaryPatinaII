@@ -144,7 +144,7 @@ public:
     ofVideoPlayer E_03_thingy_harvested_complete_FIN;
     ofVideoPlayer F_03_thingy_harvested_FIN;
     ofVideoPlayer FSharp_09_stringer_ericschmidt_FIN;
-    ofVideoPlayer G_13_oddity_We_kill_people_FIN;
+    ofVideoPlayer G_13_oddity_We_kill_people_FIN;  
     ofVideoPlayer GSharp_Bowie_Mind_Control;
     ofVideoPlayer A_Bowie_payyourbills;
     ofVideoPlayer ASharp_Bowie_thenetworks;
