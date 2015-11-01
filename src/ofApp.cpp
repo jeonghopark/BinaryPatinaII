@@ -33,7 +33,6 @@ void ofApp::setup(){
     
     font.setup("Vera.ttf", 1.0, 1024, true, 8, 1.0);
     font.addFont("VeraMono-Bold.ttf");
-
     fontVideo.setup("Tungsten-Medium.ttf", 1.0, 1024, true, 8, 1.0);
 //    fontVideo.addFont("Tungsten-Medium.otf");
 
@@ -246,7 +245,7 @@ void ofApp::update(){
     
     if (gui->FullScreen) {
         ofSetFullscreen(true);
-        ofSetWindowPosition(2560, 0);
+        ofSetWindowPosition(0, 0);
         ofSetWindowShape(1920, 1080);
     }
     
@@ -922,14 +921,20 @@ void ofApp::draw(){
     
 //    mainFBO.draw(0, 0);
     
+    ofEnableAlphaBlending();
+
     ofPushMatrix();
     ofTranslate( -mainOffSetXPos, -mainOffSetYPos );
     mainGlitch.generateFx();
     mainFBO.draw(0, 0);
     ofPopMatrix();
     
-    baseArch.drawEdgeCover( ofColor(0, 255) );
+    ofDisableAlphaBlending();
 
+
+    ofEnableAlphaBlending();
+    baseArch.drawEdgeCover( ofColor(0, 255) );
+    ofDisableAlphaBlending();
     
     
     ofEnableAlphaBlending();

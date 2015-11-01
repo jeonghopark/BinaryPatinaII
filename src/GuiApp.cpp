@@ -31,10 +31,10 @@ void GuiApp::setup(){
     main.add(OnOff_Numbers.set("OnOff Numbers", false));
     main.add(color_RandomW.set("Color Numbers", ofColor(255,0,0,255), ofColor(0,0,0,1), ofColor(255,255,255,255)));
     main.add(OnOff_RandomW.set("OnOff Numbers", false));
-    main.add(xPos.setup("xPos", -54, -200, 200));
-    main.add(yPos.setup("yPos", -166, -200, 200));
-    main.add(xScale.setup("xScale", 1.054, 0.8, 1.2));
-    main.add(yScale.setup("yScale", 1.038, 0.8, 1.2));
+    main.add(xPos.setup("xPos", 0, -200, 200));
+    main.add(yPos.setup("yPos", 0, -200, 200));
+    main.add(xScale.setup("xScale", 1.0, 0.8, 1.2));
+    main.add(yScale.setup("yScale", 1.0, 0.8, 1.2));
 
     
     
