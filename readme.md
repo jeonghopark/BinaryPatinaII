@@ -1,4 +1,4 @@
-Binary Patina II code
+Binary Patina II code for Macbook Pro 13 Display
 
 Live Music Visual Performance
 
