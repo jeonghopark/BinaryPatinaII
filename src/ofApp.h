@@ -7,6 +7,7 @@
 #include "GuiApp.h"
 
 #include "BaseArch.h"
+#include "MakeChecker.hpp"
 
 #include "ofxLeapMotion2.h"
 
@@ -64,7 +65,7 @@ public:
 
     ofxLeapMotion leapMotion;
     
-    BaseArch baseArch;
+    MakeChecker baseArch;
     
     GlungeWinter glungeWinter;
     LiveCamGlitch liveCamGlitch;

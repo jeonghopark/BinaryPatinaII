@@ -14,6 +14,8 @@
 #include "ofMain.h"
 
 #include "BaseArch.h"
+#include "MakeChecker.hpp"
+
 #include "ofxProcessFFT.h"
 #include "ofxLeapMotion2.h"
 #include "ofxFontStash.h"
@@ -23,7 +25,7 @@ class SceneSetup {
     
 public:
     
-    void inputBaseArch(BaseArch & _baseArch);
+    void inputBaseArch(MakeChecker & _baseArch);
     void inputFFTP(ProcessFFT & _processFFT);
     void inputWebCam(ofVideoGrabber & _webCamHD);
     void inputLeapMotion(ofxLeapMotion & _leapMotion);
@@ -31,7 +33,7 @@ public:
     void inputMIDI(MidiInput & _m);
     
     
-    BaseArch * baseArch;
+    MakeChecker * baseArch;
     ProcessFFT * processFFT;
     ofVideoGrabber * webCamHD;
     ofxFontStash * font;

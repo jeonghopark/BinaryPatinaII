@@ -13,7 +13,7 @@ void ofApp::setup(){
     ofAddListener(dir.events.serverAnnounced, this, &ofApp::serverAnnounced);
     ofAddListener(dir.events.serverRetired, this, &ofApp::serverRetired);
     dirIdx = -1;
-
+    
     staminaVideo.load("Stamina_Video_2.mp4");
     staminaVideoALL = false;
     staminaVideoA = false;
@@ -912,6 +912,8 @@ void ofApp::speechMovieUpdate(ofVideoPlayer _p, int _i){
 void ofApp::draw(){
     
     
+    cout << baseArch.windowsCorner[0][0] << endl;
+    
     ofPushMatrix();
     
     ofTranslate( gui->xPos, gui->yPos );
@@ -1175,7 +1177,7 @@ void ofApp::keyReleased(int key){
     }
 
     
-    cout << key << endl;
+//    cout << key << endl;
     
     if (key == 161) sceneSelect[0] = !sceneSelect[0];
     if (key == 8220) sceneSelect[1] = !sceneSelect[1];

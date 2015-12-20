@@ -10,7 +10,7 @@
 
 
 //--------------------------------------------------------------
-void SceneSetup::inputBaseArch(BaseArch & _baseArch){
+void SceneSetup::inputBaseArch(MakeChecker & _baseArch){
     
     baseArch = & _baseArch;
 

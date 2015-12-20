@@ -61,6 +61,7 @@
 		A7C5B114CDF3DA9BC3D5D890 /* ofxFirstPersonCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8B0C5C26C3222C13C5AFA030 /* ofxFirstPersonCamera.cpp */; };
 		A82540EC1BD3FBFF00113C40 /* SceneSetup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A82540EA1BD3FBFF00113C40 /* SceneSetup.cpp */; };
 		A8261F381BD06DAB001191BB /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8261F371BD06DAB001191BB /* CoreMIDI.framework */; };
+		A8644F791C26F48E00C2C756 /* MakeChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A8644F771C26F48E00C2C756 /* MakeChecker.cpp */; };
 		A8E1203D1BDE56B0004864F2 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E1202B1BDE56B0004864F2 /* SyphonNameboundClient.m */; };
 		A8E1203F1BDE56B0004864F2 /* ofxSyphonClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8E120311BDE56B0004864F2 /* ofxSyphonClient.mm */; };
 		A8E120401BDE56B0004864F2 /* ofxSyphonServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = A8E120331BDE56B0004864F2 /* ofxSyphonServer.mm */; };
@@ -364,6 +365,8 @@
 		A82540EA1BD3FBFF00113C40 /* SceneSetup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SceneSetup.cpp; sourceTree = "<group>"; };
 		A82540EB1BD3FBFF00113C40 /* SceneSetup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SceneSetup.hpp; sourceTree = "<group>"; };
 		A8261F371BD06DAB001191BB /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		A8644F771C26F48E00C2C756 /* MakeChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MakeChecker.cpp; sourceTree = "<group>"; };
+		A8644F781C26F48E00C2C756 /* MakeChecker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MakeChecker.hpp; sourceTree = "<group>"; };
 		A8E120281BDE56B0004864F2 /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Syphon.framework; sourceTree = "<group>"; };
 		A8E1202A1BDE56B0004864F2 /* SyphonNameboundClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyphonNameboundClient.h; sourceTree = "<group>"; };
 		A8E1202B1BDE56B0004864F2 /* SyphonNameboundClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyphonNameboundClient.m; sourceTree = "<group>"; };
@@ -1511,6 +1514,8 @@
 			isa = PBXGroup;
 			children = (
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				A8644F771C26F48E00C2C756 /* MakeChecker.cpp */,
+				A8644F781C26F48E00C2C756 /* MakeChecker.hpp */,
 				01F66143C4126F509106CC2C /* BaseArch.cpp */,
 				401E27664A1AE3AC55F8B500 /* BaseArch.h */,
 				1791D73DFCE685A0B703528F /* Calligraphy.cpp */,
@@ -1793,6 +1798,7 @@
 				89B03647DFBCC8375B43100C /* IndiaTower.cpp in Sources */,
 				8F8887A353D20A912E989043 /* JsonLoader.cpp in Sources */,
 				EAE896F17F952950CDFA6565 /* KinectView.cpp in Sources */,
+				A8644F791C26F48E00C2C756 /* MakeChecker.cpp in Sources */,
 				11BC85EF0F5498C18731C70A /* Labyrinth.cpp in Sources */,
 				A9311CF553D8AB13F2028BEF /* LineVideo.cpp in Sources */,
 				50E499700D6CA0E8B5E2E03F /* LiveCamGlitch.cpp in Sources */,

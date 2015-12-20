@@ -178,7 +178,7 @@ void LiveCamGlitch::draw(){
 //--------------------------------------------------------------
 void LiveCamGlitch::keyPressed(int key){
 
-    cout << key << endl;
+//    cout << key << endl;
     
     if (key == 33) glitchEffect.setFx(OFXPOSTGLITCH_CONVERGENCE	, true);
     if (key == 34) glitchEffect.setFx(OFXPOSTGLITCH_GLOW			, true);
